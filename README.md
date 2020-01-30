@@ -1,34 +1,22 @@
-# AngularSeed
+# Cost Book
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+A mobile-first web app that can record daily costs.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:1234/`. The app will automatically reload if you change any of the source files.
 
-## Add additional packages
+# Features
 
-`npm run material` to install `@angular/material`.
-`npm run ngrx-store` to install `@ngrx/store`.
-`npm run ngrx-effects` to install `@ngrx/effects`.
-`npm run ngrx-entity` to install `@ngrx/entity`.
+1. Cost: amount, date, catagories, sub-catagory
+2. Custom catagory name
+3. Editable records
+4. Offline editing
+5. Mutiple-user on same book
 
-## Code scaffolding
+# Tech Highlight
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Mobile-first, reactive
+2. PWA
 
-## Build
+# How to run
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`npm install`, then `ng serve`, open `localhost:1234` in browser
