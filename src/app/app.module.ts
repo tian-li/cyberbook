@@ -3,11 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -16,15 +13,8 @@ import { AppEffects } from './app.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
-    }),
     BrowserAnimationsModule,
-    EffectsModule.forRoot([AppEffects])
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
