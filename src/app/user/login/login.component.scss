@@ -1,0 +1,8 @@
+.container {
+  justify-items: center;
+  grid-template-rows: 1fr 150px 3fr 3fr;
+
+  form {
+    width: 70%;
+  }
+}

@@ -1,0 +1,17 @@
+.nav-bar {
+  width: 100%;
+  position: fixed;
+
+  mat-toolbar-row {
+    position: relative;
+    button {
+      position: absolute;
+      left: 0;
+    }
+
+    span {
+      flex: 1 1 auto;
+    }
+  }
+
+}

@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { NgModule } from '@angular/core';
+import { LedgerHomeComponent } from './components/ledger-home/ledger-home.component';
+import { LedgerRoutingModule } from './ledger-routing.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [LedgerHomeComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    LedgerRoutingModule
   ]
 })
 export class LedgerModule { }

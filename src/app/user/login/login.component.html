@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="grid container">
+  <div class="grid"></div>
+
+  <div class="grid">
+    <img class="mat-elevation-z4" src="https://picsum.photos/150" alt="logo" />
+  </div>
+
+  <div class="grid"></div>
+
+  <form class="grid" [formGroup]="form">
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">
+      Login
+    </button>
+  </form>
+</div>

@@ -1,32 +1,17 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Optional, SkipSelf, ErrorHandler } from "@angular/core";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { StoreModule } from "@ngrx/store";
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule, Optional, SkipSelf } from "@angular/core";
 import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-
 import { environment } from "../../environments/environment";
-
-import {
-  AppState,
-  reducers,
-  selectRouterState
-} from "./core.state";
-import { AuthEffects } from "./auth/auth.effects";
-import { selectIsAuthenticated, selectAuth } from "./auth/auth.selectors";
-import { authLogin, authLogout } from "./auth/auth.actions";
 import { AuthGuardService } from "./auth/auth-guard.service";
+import { authLogin, authLogout } from "./auth/auth.actions";
+import { AuthEffects } from "./auth/auth.effects";
+import { selectAuth, selectIsAuthenticated } from "./auth/auth.selectors";
+import { AppState, reducers, selectRouterState } from "./core.state";
 
-export {
-  selectAuth,
-  authLogin,
-  authLogout,
-  AppState,
-  selectIsAuthenticated,
-  AuthGuardService,
-  selectRouterState
-};
-
+export { selectAuth, authLogin, authLogout, AppState, selectIsAuthenticated, AuthGuardService, selectRouterState };
 
 @NgModule({
   imports: [
