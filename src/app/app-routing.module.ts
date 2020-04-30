@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./ledger/ledger.module').then(m => m.LedgerModule)
+      import('./book/book.module').then(m => m.BookModule)
   },
   {
     path: '**',
