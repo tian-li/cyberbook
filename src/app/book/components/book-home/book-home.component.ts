@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { notifyWithSnackBar } from '../../../core/store/notification/notification.actions';
 
 @Component({
   selector: 'app-book-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
+  }
+
+  notify() {
+    this.store.dispatch(notifyWithSnackBar({snackBar: {message: 'this is a snack bar'}}))
   }
 
 }

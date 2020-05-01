@@ -4,11 +4,11 @@ import {
   createFeatureSelector
 } from "@ngrx/store";
 
-import { AuthState } from "./auth/auth.reducer";
-import { authReducer } from "./auth/auth.reducer";
+import { AuthState } from "./store/auth/auth.reducer";
+import { authReducer } from "./store/auth/auth.reducer";
 
 export const reducers: ActionReducerMap<AppState> = {
-  auth: authReducer
+  auth: authReducer,
 };
 
 export const selectAuthState = createFeatureSelector<AppState, AuthState>(
