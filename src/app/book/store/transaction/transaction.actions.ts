@@ -1,10 +1,11 @@
+import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 
 import { Transaction } from '../../model/transaction';
 
 export const loadTransactionsByBook = createAction(
   '[Transaction] Load Transactions by Book',
-  props<{ bookId: string }>()
+  props<{ bookId: number }>()
 );
 
 export const loadTransactionsByBookSuccess = createAction(
@@ -19,7 +20,7 @@ export const addTransaction = createAction(
 
 export const addTransactionSuccess = createAction(
   '[Transaction] Add Transaction Success',
-  props<{ transaction: Partial<Transaction> }>()
+  props<{ transaction: Transaction }>()
 );
 
 export const updateTransaction = createAction(
@@ -29,9 +30,9 @@ export const updateTransaction = createAction(
 
 export const updateTransactionSuccess = createAction(
   '[Transaction] Update Transaction Success',
-  props<{ transaction: Partial<Transaction> }>()
+  props<{ update: Update<Transaction> }>()
 );
 
-export const removeTransaction = createAction('[Transaction] Remove Transaction', props<{ id: string }>());
+export const removeTransaction = createAction('[Transaction] Remove Transaction', props<{ id: number }>());
 
 export const removeTransactionSuccess = createAction('[Transaction] Remove Transaction Success');

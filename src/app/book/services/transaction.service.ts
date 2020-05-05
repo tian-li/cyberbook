@@ -10,8 +10,8 @@ export class TransactionService {
   constructor(private http: HttpClient) {
   }
 
-  loadTransactionsByBook(bookId: string): Observable<Transaction[]> {
-    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}/${bookId}`);
+  loadTransactionsByBook(bookId: number): Observable<Transaction[]> {
+    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}/book/${bookId}`);
   }
 
   addTransaction(transaction: Partial<Transaction>): Observable<Transaction> {
@@ -22,7 +22,7 @@ export class TransactionService {
     return <Observable<Transaction>>this.http.put(`${this.transactionRoute}/${transaction.id}`, transaction);
   }
 
-  removeTransaction(id: string): Observable<any> {
+  removeTransaction(id: number): Observable<any> {
     return this.http.delete(`${this.transactionRoute}/${id}`);
   }
 }

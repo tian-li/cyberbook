@@ -9,7 +9,7 @@ import { BookService } from '../../services/book.service';
 import { loadBook, loadBookSuccess } from './book.actions';
 
 @Injectable()
-export class TransactionEffects {
+export class BookEffects {
 
   loadBook$ = createEffect(() =>
     this.actions$.pipe(

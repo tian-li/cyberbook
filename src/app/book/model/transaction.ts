@@ -1,10 +1,9 @@
 export interface Transaction {
-  id: string;
-  bookId: string;
+  id: number;
+  bookId: number;
   description: string;
-  detail: string;
   dateCreated: string;
   dateModified: string;
-  categoryId: string;
-  subCategoryId: string;
+  categoryId: number;
+  subCategoryId: number;
 }

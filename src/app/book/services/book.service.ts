@@ -8,7 +8,7 @@ export class BookService {
   constructor(private http: HttpClient) {
   }
 
-  loadBook(id: string) {
+  loadBook(id: number) {
     return this.http.get(`${this.bookRoute}/${id}`);
   }
 }

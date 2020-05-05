@@ -1,6 +1,7 @@
 export interface Category {
-  id: string;
+  id: number;
+  bookId: number;
   name: string;
   icon: string;
-  subCategoryIds: string[];
+  parentId?: number; // if parentId is null, this category is root category
 }

@@ -47,7 +47,7 @@ export class TransactionEffects {
       ofType(updateTransaction),
       mergeMap(action =>
         this.transactionService.updateTransaction(action.transaction).pipe(
-          map((transaction: Transaction) => updateTransactionSuccess({ transaction })),
+          map((transaction: Transaction) => updateTransactionSuccess({ update: { id: transaction.id, changes: transaction } })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '编辑失败，请稍后重试' } })))
         ))
     )
