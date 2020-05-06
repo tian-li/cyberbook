@@ -2,6 +2,8 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { Book } from '../../model/book';
 import { loadBookSuccess } from './book.actions';
 
+export const bookFeatureKey = 'book';
+
 export interface State {
   book: Book;
 }

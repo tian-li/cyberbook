@@ -1,14 +1,19 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Action, createFeatureSelector, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
 import { Transaction } from '../../model/transaction';
 import { addTransactionSuccess, loadTransactionsByBookSuccess, removeTransaction, updateTransactionSuccess } from './transaction.actions';
+
+export const transactionFeatureKey = 'transaction';
 
 export interface State extends EntityState<Transaction> {
   selectedTransactionId: number;
 }
 
-export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transaction>();
+export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transaction>({
+  selectId: (transaction: Transaction) => transaction.id,
+  sortComparer: false,
+});
 
 export const initialState: State = adapter.getInitialState({
   selectedTransactionId: null,

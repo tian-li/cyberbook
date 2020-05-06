@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "bookId": 2,
+    "amount": 15311.38,
+    "description": null,
+    "categoryId": 6,
+    "dateCreated": "1582730197",
+    "dateModified": "1583683937"
+  },
+  {
+    "id": 2,
+    "bookId": 3,
+    "amount": 60416.78,
+    "description": "elementum in hac habitasse",
+    "categoryId": 8,
+    "dateCreated": "1582455320",
+    "dateModified": "1586429760"
+  },
+  {
+    "id": 3,
+    "bookId": 1,
+    "amount": 71706.53,
+    "description": null,
+    "categoryId": 10,
+    "dateCreated": "1582189437",
+    "dateModified": "1588067985"
+  },
+  {
+    "id": 4,
+    "bookId": 3,
+    "amount": 37640.44,
+    "description": null,
+    "categoryId": 9,
+    "dateCreated": "1580759306",
+    "dateModified": "1585252748"
+  },
+  {
+    "id": 5,
+    "bookId": 2,
+    "amount": 93981.4,
+    "description": "lacus at",
+    "categoryId": 9,
+    "dateCreated": "1580785124",
+    "dateModified": "1588391866"
+  },
+  {
+    "id": 6,
+    "bookId": 3,
+    "amount": 74278.8,
+    "description": "ut volutpat sapien arcu",
+    "categoryId": 3,
+    "dateCreated": "1578057300",
+    "dateModified": "1579612614"
+  },
+  {
+    "id": 7,
+    "bookId": 1,
+    "amount": 24807.28,
+    "description": null,
+    "categoryId": 9,
+    "dateCreated": "1587298724",
+    "dateModified": "1593520183"
+  },
+  {
+    "id": 8,
+    "bookId": 1,
+    "amount": 16662.91,
+    "description": "lobortis convallis tortor risus dapibus augue vel accumsan",
+    "categoryId": 6,
+    "dateCreated": "1582112987",
+    "dateModified": "1587038680"
+  },
+  {
+    "id": 9,
+    "bookId": 2,
+    "amount": 73841.5,
+    "description": "ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo",
+    "categoryId": 4,
+    "dateCreated": "1582043646",
+    "dateModified": "1586193406"
+  },
+  {
+    "id": 10,
+    "bookId": 2,
+    "amount": 5772.58,
+    "description": "tellus nisi eu",
+    "categoryId": 1,
+    "dateCreated": "1582108123",
+    "dateModified": "1586343822"
+  },
+  {
+    "id": 11,
+    "bookId": 3,
+    "amount": 4642.89,
+    "description": "mattis nibh ligula",
+    "categoryId": 9,
+    "dateCreated": "1586408497",
+    "dateModified": "1586408566"
+  },
+  {
+    "id": 12,
+    "bookId": 1,
+    "amount": 11896.66,
+    "description": "in purus eu magna",
+    "categoryId": 5,
+    "dateCreated": "1577907276",
+    "dateModified": "1579549726"
+  },
+  {
+    "id": 13,
+    "bookId": 3,
+    "amount": 10983.61,
+    "description": "justo morbi ut odio",
+    "categoryId": 6,
+    "dateCreated": "1583648805",
+    "dateModified": "1584687887"
+  },
+  {
+    "id": 14,
+    "bookId": 2,
+    "amount": 9006.85,
+    "description": "ultrices",
+    "categoryId": 9,
+    "dateCreated": "1581687663",
+    "dateModified": "1587910024"
+  },
+  {
+    "id": 15,
+    "bookId": 2,
+    "amount": 93732.06,
+    "description": "in porttitor pede justo eu massa donec dapibus duis at velit eu est",
+    "categoryId": 7,
+    "dateCreated": "1580148871",
+    "dateModified": "1584470718"
+  },
+  {
+    "id": 16,
+    "bookId": 2,
+    "amount": 52965.94,
+    "description": null,
+    "categoryId": 10,
+    "dateCreated": "1578291213",
+    "dateModified": "1581835079"
+  },
+  {
+    "id": 17,
+    "bookId": 2,
+    "amount": 60965.88,
+    "description": "donec quis orci eget orci vehicula condimentum curabitur in libero ut",
+    "categoryId": 3,
+    "dateCreated": "1581001519",
+    "dateModified": "1585497814"
+  },
+  {
+    "id": 18,
+    "bookId": 3,
+    "amount": 19220.49,
+    "description": "sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia",
+    "categoryId": 8,
+    "dateCreated": "1583203331",
+    "dateModified": "1589512946"
+  },
+  {
+    "id": 19,
+    "bookId": 2,
+    "amount": 49940.29,
+    "description": null,
+    "categoryId": 4,
+    "dateCreated": "1583618866",
+    "dateModified": "1588543966"
+  },
+  {
+    "id": 20,
+    "bookId": 2,
+    "amount": 64520.15,
+    "description": "gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi",
+    "categoryId": 9,
+    "dateCreated": "1580951774",
+    "dateModified": "1585100862"
+  },
+  {
+    "id": 21,
+    "bookId": 3,
+    "amount": 1225.79,
+    "description": "aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et",
+    "categoryId": 2,
+    "dateCreated": "1581788055",
+    "dateModified": "1584468397"
+  },
+  {
+    "id": 22,
+    "bookId": 3,
+    "amount": 21097.05,
+    "description": "iaculis congue vivamus metus arcu adipiscing molestie hendrerit at",
+    "categoryId": 9,
+    "dateCreated": "1586974552",
+    "dateModified": "1588360215"
+  },
+  {
+    "id": 23,
+    "bookId": 3,
+    "amount": 78994.51,
+    "description": "ipsum praesent blandit lacinia erat vestibulum",
+    "categoryId": 9,
+    "dateCreated": "1580833781",
+    "dateModified": "1584119030"
+  },
+  {
+    "id": 24,
+    "bookId": 2,
+    "amount": 75347.52,
+    "description": "nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum",
+    "categoryId": 7,
+    "dateCreated": "1582760786",
+    "dateModified": "1585268749"
+  },
+  {
+    "id": 25,
+    "bookId": 3,
+    "amount": 15496.93,
+    "description": null,
+    "categoryId": 8,
+    "dateCreated": "1588470408",
+    "dateModified": "1589249363"
+  },
+  {
+    "id": 26,
+    "bookId": 3,
+    "amount": 32748.8,
+    "description": null,
+    "categoryId": 6,
+    "dateCreated": "1579782202",
+    "dateModified": "1585832677"
+  },
+  {
+    "id": 27,
+    "bookId": 2,
+    "amount": 62537.78,
+    "description": "hac habitasse platea",
+    "categoryId": 5,
+    "dateCreated": "1582301084",
+    "dateModified": "1585239745"
+  },
+  {
+    "id": 28,
+    "bookId": 3,
+    "amount": 61272.97,
+    "description": null,
+    "categoryId": 1,
+    "dateCreated": "1587889208",
+    "dateModified": "1594371247"
+  },
+  {
+    "id": 29,
+    "bookId": 2,
+    "amount": 55754.87,
+    "description": "sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer",
+    "categoryId": 6,
+    "dateCreated": "1586419274",
+    "dateModified": "1592468371"
+  },
+  {
+    "id": 30,
+    "bookId": 3,
+    "amount": 51713.04,
+    "description": "orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio",
+    "categoryId": 5,
+    "dateCreated": "1581174989",
+    "dateModified": "1584460445"
+  },
+  {
+    "id": 31,
+    "bookId": 3,
+    "amount": 77319.16,
+    "description": null,
+    "categoryId": 9,
+    "dateCreated": "1586440024",
+    "dateModified": "1588514410"
+  },
+  {
+    "id": 32,
+    "bookId": 3,
+    "amount": 44430.21,
+    "description": "eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id",
+    "categoryId": 4,
+    "dateCreated": "1584436315",
+    "dateModified": "1585473822"
+  },
+  {
+    "id": 33,
+    "bookId": 2,
+    "amount": 54910.08,
+    "description": "rutrum nulla nunc",
+    "categoryId": 6,
+    "dateCreated": "1585959251",
+    "dateModified": "1587775358"
+  },
+  {
+    "id": 34,
+    "bookId": 3,
+    "amount": 69752.49,
+    "description": "at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus",
+    "categoryId": 6,
+    "dateCreated": "1582812857",
+    "dateModified": "1585578827"
+  },
+  {
+    "id": 35,
+    "bookId": 1,
+    "amount": 63869.95,
+    "description": "hac habitasse platea dictumst aliquam augue quam sollicitudin vitae",
+    "categoryId": 3,
+    "dateCreated": "1583014772",
+    "dateModified": "1588459869"
+  },
+  {
+    "id": 36,
+    "bookId": 3,
+    "amount": 67429.48,
+    "description": "vivamus in felis eu sapien cursus",
+    "categoryId": 3,
+    "dateCreated": "1588470837",
+    "dateModified": "1594693633"
+  },
+  {
+    "id": 37,
+    "bookId": 1,
+    "amount": 73378.54,
+    "description": null,
+    "categoryId": 9,
+    "dateCreated": "1579282307",
+    "dateModified": "1583086634"
+  },
+  {
+    "id": 38,
+    "bookId": 2,
+    "amount": 28052.73,
+    "description": null,
+    "categoryId": 7,
+    "dateCreated": "1579231610",
+    "dateModified": "1580271127"
+  },
+  {
+    "id": 39,
+    "bookId": 3,
+    "amount": 84182.53,
+    "description": null,
+    "categoryId": 1,
+    "dateCreated": "1577958638",
+    "dateModified": "1583318221"
+  },
+  {
+    "id": 40,
+    "bookId": 3,
+    "amount": 22171.07,
+    "description": null,
+    "categoryId": 2,
+    "dateCreated": "1583799424",
+    "dateModified": "1585182368"
+  },
+  {
+    "id": 41,
+    "bookId": 3,
+    "amount": 33941.61,
+    "description": "mauris enim leo rhoncus sed",
+    "categoryId": 1,
+    "dateCreated": "1586843436",
+    "dateModified": "1587623748"
+  },
+  {
+    "id": 42,
+    "bookId": 3,
+    "amount": 2536.48,
+    "description": "porta volutpat quam pede",
+    "categoryId": 10,
+    "dateCreated": "1585102889",
+    "dateModified": "1588647055"
+  },
+  {
+    "id": 43,
+    "bookId": 3,
+    "amount": 33425.81,
+    "description": "suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis",
+    "categoryId": 7,
+    "dateCreated": "1587889047",
+    "dateModified": "1595146774"
+  },
+  {
+    "id": 44,
+    "bookId": 3,
+    "amount": 48032.51,
+    "description": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor",
+    "categoryId": 4,
+    "dateCreated": "1583077499",
+    "dateModified": "1585153912"
+  },
+  {
+    "id": 45,
+    "bookId": 1,
+    "amount": 42130.1,
+    "description": null,
+    "categoryId": 8,
+    "dateCreated": "1581419276",
+    "dateModified": "1583666464"
+  },
+  {
+    "id": 46,
+    "bookId": 3,
+    "amount": 64651.13,
+    "description": "convallis morbi",
+    "categoryId": 6,
+    "dateCreated": "1581844168",
+    "dateModified": "1587981925"
+  },
+  {
+    "id": 47,
+    "bookId": 3,
+    "amount": 7125.07,
+    "description": "potenti",
+    "categoryId": 5,
+    "dateCreated": "1584134441",
+    "dateModified": "1591308737"
+  },
+  {
+    "id": 48,
+    "bookId": 3,
+    "amount": 12820.63,
+    "description": "in eleifend quam a odio in hac habitasse platea",
+    "categoryId": 8,
+    "dateCreated": "1586400852",
+    "dateModified": "1594178537"
+  },
+  {
+    "id": 49,
+    "bookId": 1,
+    "amount": 18760.43,
+    "description": null,
+    "categoryId": 7,
+    "dateCreated": "1581660914",
+    "dateModified": "1589265990"
+  },
+  {
+    "id": 50,
+    "bookId": 2,
+    "amount": 49807.16,
+    "description": "libero quis orci",
+    "categoryId": 5,
+    "dateCreated": "1586631935",
+    "dateModified": "1589484885"
+  },
+  {
+    "id": 51,
+    "bookId": 2,
+    "amount": 36762.77,
+    "description": "semper est quam pharetra magna ac consequat metus sapien",
+    "categoryId": 4,
+    "dateCreated": "1587286664",
+    "dateModified": "1593078597"
+  },
+  {
+    "id": 52,
+    "bookId": 1,
+    "amount": 88190.42,
+    "description": "consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce",
+    "categoryId": 4,
+    "dateCreated": "1578900755",
+    "dateModified": "1581495632"
+  },
+  {
+    "id": 53,
+    "bookId": 2,
+    "amount": 28912.77,
+    "description": "nulla tellus in sagittis dui vel nisl duis ac nibh fusce",
+    "categoryId": 3,
+    "dateCreated": "1580285303",
+    "dateModified": "1581323974"
+  },
+  {
+    "id": 54,
+    "bookId": 2,
+    "amount": 60195.91,
+    "description": "id massa id nisl venenatis lacinia aenean sit amet justo",
+    "categoryId": 9,
+    "dateCreated": "1580721651",
+    "dateModified": "1585303090"
+  },
+  {
+    "id": 55,
+    "bookId": 1,
+    "amount": 829.93,
+    "description": null,
+    "categoryId": 5,
+    "dateCreated": "1586569569",
+    "dateModified": "1586742517"
+  },
+  {
+    "id": 56,
+    "bookId": 2,
+    "amount": 53017.59,
+    "description": "sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi",
+    "categoryId": 8,
+    "dateCreated": "1578345614",
+    "dateModified": "1584049699"
+  },
+  {
+    "id": 57,
+    "bookId": 2,
+    "amount": 92723.35,
+    "description": null,
+    "categoryId": 6,
+    "dateCreated": "1579699960",
+    "dateModified": "1584627072"
+  },
+  {
+    "id": 58,
+    "bookId": 3,
+    "amount": 12718.06,
+    "description": "ipsum primis in",
+    "categoryId": 10,
+    "dateCreated": "1579923493",
+    "dateModified": "1584936144"
+  },
+  {
+    "id": 59,
+    "bookId": 1,
+    "amount": 1733.7,
+    "description": null,
+    "categoryId": 2,
+    "dateCreated": "1582870449",
+    "dateModified": "1582957228"
+  },
+  {
+    "id": 60,
+    "bookId": 1,
+    "amount": 32987.63,
+    "description": null,
+    "categoryId": 9,
+    "dateCreated": "1584302676",
+    "dateModified": "1590180224"
+  },
+  {
+    "id": 61,
+    "bookId": 2,
+    "amount": 74559.71,
+    "description": "volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus",
+    "categoryId": 1,
+    "dateCreated": "1581881550",
+    "dateModified": "1584907215"
+  },
+  {
+    "id": 62,
+    "bookId": 1,
+    "amount": 69089.94,
+    "description": "curabitur convallis duis consequat dui nec nisi",
+    "categoryId": 10,
+    "dateCreated": "1582051114",
+    "dateModified": "1583436673"
+  },
+  {
+    "id": 63,
+    "bookId": 1,
+    "amount": 28970.67,
+    "description": "integer non",
+    "categoryId": 10,
+    "dateCreated": "1584659267",
+    "dateModified": "1587598793"
+  },
+  {
+    "id": 64,
+    "bookId": 1,
+    "amount": 6101.82,
+    "description": null,
+    "categoryId": 1,
+    "dateCreated": "1584903971",
+    "dateModified": "1586116096"
+  },
+  {
+    "id": 65,
+    "bookId": 2,
+    "amount": 30959.1,
+    "description": null,
+    "categoryId": 1,
+    "dateCreated": "1584010264",
+    "dateModified": "1591700345"
+  },
+  {
+    "id": 66,
+    "bookId": 3,
+    "amount": 32184.61,
+    "description": null,
+    "categoryId": 6,
+    "dateCreated": "1588331308",
+    "dateModified": "1588764739"
+  },
+  {
+    "id": 67,
+    "bookId": 3,
+    "amount": 57890.73,
+    "description": "rutrum ac lobortis vel dapibus at",
+    "categoryId": 3,
+    "dateCreated": "1586343997",
+    "dateModified": "1592307324"
+  },
+  {
+    "id": 68,
+    "bookId": 3,
+    "amount": 11441.1,
+    "description": null,
+    "categoryId": 4,
+    "dateCreated": "1585634214",
+    "dateModified": "1589176641"
+  },
+  {
+    "id": 69,
+    "bookId": 3,
+    "amount": 34068.88,
+    "description": null,
+    "categoryId": 6,
+    "dateCreated": "1579972490",
+    "dateModified": "1586628181"
+  },
+  {
+    "id": 70,
+    "bookId": 3,
+    "amount": 2951.66,
+    "description": null,
+    "categoryId": 3,
+    "dateCreated": "1579647071",
+    "dateModified": "1584399117"
+  },
+  {
+    "id": 71,
+    "bookId": 3,
+    "amount": 61468.44,
+    "description": null,
+    "categoryId": 10,
+    "dateCreated": "1588009614",
+    "dateModified": "1591641847"
+  },
+  {
+    "id": 72,
+    "bookId": 2,
+    "amount": 7580.17,
+    "description": null,
+    "categoryId": 3,
+    "dateCreated": "1583795418",
+    "dateModified": "1591140136"
+  },
+  {
+    "id": 73,
+    "bookId": 3,
+    "amount": 9448.16,
+    "description": "felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis",
+    "categoryId": 4,
+    "dateCreated": "1578198774",
+    "dateModified": "1583556453"
+  },
+  {
+    "id": 74,
+    "bookId": 1,
+    "amount": 21836.11,
+    "description": null,
+    "categoryId": 8,
+    "dateCreated": "1585165233",
+    "dateModified": "1591647348"
+  },
+  {
+    "id": 75,
+    "bookId": 3,
+    "amount": 39649.23,
+    "description": "convallis duis consequat dui nec nisi volutpat eleifend donec",
+    "categoryId": 3,
+    "dateCreated": "1580562207",
+    "dateModified": "1582897926"
+  },
+  {
+    "id": 76,
+    "bookId": 2,
+    "amount": 84367.94,
+    "description": "lobortis convallis tortor risus dapibus",
+    "categoryId": 6,
+    "dateCreated": "1581491876",
+    "dateModified": "1582875053"
+  },
+  {
+    "id": 77,
+    "bookId": 1,
+    "amount": 28058.44,
+    "description": "suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris",
+    "categoryId": 7,
+    "dateCreated": "1584784095",
+    "dateModified": "1587117301"
+  },
+  {
+    "id": 78,
+    "bookId": 2,
+    "amount": 9076.42,
+    "description": "nunc proin at turpis a pede posuere nonummy integer non velit donec diam",
+    "categoryId": 3,
+    "dateCreated": "1588274758",
+    "dateModified": "1592337701"
+  },
+  {
+    "id": 79,
+    "bookId": 3,
+    "amount": 18675.57,
+    "description": null,
+    "categoryId": 3,
+    "dateCreated": "1586897439",
+    "dateModified": "1594414711"
+  },
+  {
+    "id": 80,
+    "bookId": 3,
+    "amount": 13876.43,
+    "description": null,
+    "categoryId": 9,
+    "dateCreated": "1579378895",
+    "dateModified": "1582057678"
+  },
+  {
+    "id": 81,
+    "bookId": 2,
+    "amount": 50730.27,
+    "description": null,
+    "categoryId": 3,
+    "dateCreated": "1579589121",
+    "dateModified": "1585810868"
+  },
+  {
+    "id": 82,
+    "bookId": 3,
+    "amount": 13276.16,
+    "description": null,
+    "categoryId": 8,
+    "dateCreated": "1580762033",
+    "dateModified": "1586035475"
+  },
+  {
+    "id": 83,
+    "bookId": 3,
+    "amount": 61186.37,
+    "description": "proin leo odio porttitor id consequat in consequat ut nulla",
+    "categoryId": 10,
+    "dateCreated": "1578172857",
+    "dateModified": "1579296655"
+  },
+  {
+    "id": 84,
+    "bookId": 1,
+    "amount": 34848.84,
+    "description": "molestie lorem quisque ut erat curabitur",
+    "categoryId": 8,
+    "dateCreated": "1579291892",
+    "dateModified": "1581192889"
+  },
+  {
+    "id": 85,
+    "bookId": 1,
+    "amount": 6287.57,
+    "description": "vestibulum",
+    "categoryId": 4,
+    "dateCreated": "1587529797",
+    "dateModified": "1592802170"
+  },
+  {
+    "id": 86,
+    "bookId": 3,
+    "amount": 36740.03,
+    "description": null,
+    "categoryId": 4,
+    "dateCreated": "1582984696",
+    "dateModified": "1585750940"
+  },
+  {
+    "id": 87,
+    "bookId": 3,
+    "amount": 74453.93,
+    "description": "non pretium quis lectus suspendisse potenti in eleifend quam a odio",
+    "categoryId": 4,
+    "dateCreated": "1585431823",
+    "dateModified": "1587076359"
+  },
+  {
+    "id": 88,
+    "bookId": 2,
+    "amount": 173.34,
+    "description": null,
+    "categoryId": 4,
+    "dateCreated": "1578302755",
+    "dateModified": "1578303282"
+  },
+  {
+    "id": 89,
+    "bookId": 2,
+    "amount": 5660.72,
+    "description": null,
+    "categoryId": 10,
+    "dateCreated": "1584789140",
+    "dateModified": "1587297388"
+  },
+  {
+    "id": 90,
+    "bookId": 3,
+    "amount": 85545.99,
+    "description": null,
+    "categoryId": 10,
+    "dateCreated": "1579160185",
+    "dateModified": "1583221256"
+  },
+  {
+    "id": 91,
+    "bookId": 1,
+    "amount": 54176.38,
+    "description": "duis faucibus accumsan",
+    "categoryId": 10,
+    "dateCreated": "1577912692",
+    "dateModified": "1583272115"
+  },
+  {
+    "id": 92,
+    "bookId": 1,
+    "amount": 26530.38,
+    "description": "libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien",
+    "categoryId": 7,
+    "dateCreated": "1578990115",
+    "dateModified": "1579422527"
+  },
+  {
+    "id": 93,
+    "bookId": 1,
+    "amount": 5469.68,
+    "description": "luctus cum sociis natoque penatibus et magnis dis parturient montes",
+    "categoryId": 9,
+    "dateCreated": "1582996275",
+    "dateModified": "1586541754"
+  },
+  {
+    "id": 94,
+    "bookId": 1,
+    "amount": 15204.64,
+    "description": null,
+    "categoryId": 3,
+    "dateCreated": "1586275270",
+    "dateModified": "1591720963"
+  },
+  {
+    "id": 95,
+    "bookId": 2,
+    "amount": 6890.22,
+    "description": "luctus tincidunt nulla",
+    "categoryId": 4,
+    "dateCreated": "1585133769",
+    "dateModified": "1592997322"
+  },
+  {
+    "id": 96,
+    "bookId": 1,
+    "amount": 76273.07,
+    "description": null,
+    "categoryId": 1,
+    "dateCreated": "1584403233",
+    "dateModified": "1591144803"
+  },
+  {
+    "id": 97,
+    "bookId": 2,
+    "amount": 70013.65,
+    "description": "justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus",
+    "categoryId": 6,
+    "dateCreated": "1585448565",
+    "dateModified": "1591064685"
+  },
+  {
+    "id": 98,
+    "bookId": 1,
+    "amount": 6217.12,
+    "description": "luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in",
+    "categoryId": 7,
+    "dateCreated": "1580095971",
+    "dateModified": "1582171345"
+  },
+  {
+    "id": 99,
+    "bookId": 1,
+    "amount": 33553.26,
+    "description": null,
+    "categoryId": 1,
+    "dateCreated": "1583471888",
+    "dateModified": "1591077180"
+  },
+  {
+    "id": 100,
+    "bookId": 2,
+    "amount": 51950.64,
+    "description": null,
+    "categoryId": 6,
+    "dateCreated": "1585530258",
+    "dateModified": "1588986324"
+  }
+]

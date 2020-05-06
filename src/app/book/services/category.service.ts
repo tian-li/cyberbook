@@ -2,16 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../model/category';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CategoryService {
-  readonly categoryRoute = 'category';
+  readonly categoryRoute = `${environment.server}/category`;
 
   constructor(private http: HttpClient) {
   }
 
   loadCategoriesByBook(bookId: number): Observable<Category[]> {
-    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}/book/${bookId}`);
+    // return <Observable<Category[]>>this.http.get(`${this.categoryRoute}/book/${bookId}`);
+    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { bookId: bookId + '' } });
   }
 
   addCategory(category: Partial<Category>): Observable<Category> {

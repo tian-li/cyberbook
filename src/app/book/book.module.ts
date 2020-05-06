@@ -12,10 +12,12 @@ import { reducers, spendBookFeatureKey } from './store';
 import { BookEffects } from './store/book/book.effects';
 import { CategoryEffects } from './store/category/category.effects';
 import { TransactionEffects } from './store/transaction/transaction.effects';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
+import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 
 
 @NgModule({
-  declarations: [BookHomeComponent],
+  declarations: [BookHomeComponent, TransactionListComponent, TransactionItemComponent],
   imports: [
     CommonModule,
     BookRoutingModule,

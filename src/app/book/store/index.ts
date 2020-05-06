@@ -1,25 +1,27 @@
-import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
+import { Dictionary } from '@ngrx/entity';
+import { Action, combineReducers, createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
+import { Category } from '../model/category';
+import { Transaction } from '../model/transaction';
+import { TransactionVO } from '../model/transactionVO';
 import * as fromBook from './book/book.reducers';
-import { adapter as categoryAdapter } from './category/category.reducers';
 import * as fromCategory from './category/category.reducers';
-import { adapter as transactionAdapter } from './transaction/transaction.reducers';
 import * as fromTransaction from './transaction/transaction.reducers';
 
 export const spendBookFeatureKey = 'spend-book';
 
 export interface BooksState {
-  book: fromBook.State;
-  category: fromCategory.State;
-  transaction: fromTransaction.State;
+  [fromBook.bookFeatureKey]: fromBook.State;
+  [fromCategory.categoryFeatureKey]: fromCategory.State;
+  [fromTransaction.transactionFeatureKey]: fromTransaction.State;
 }
 
 /** Provide reducer in AoT-compilation happy way */
 export function reducers(state: BooksState | undefined, action: Action) {
   return combineReducers({
-    book: fromBook.bookReducer,
-    category: fromCategory.categoryReducer,
-    transaction: fromTransaction.transactionReducer,
+    [fromBook.bookFeatureKey]: fromBook.bookReducer,
+    [fromCategory.categoryFeatureKey]: fromCategory.categoryReducer,
+    [fromTransaction.transactionFeatureKey]: fromTransaction.transactionReducer,
   })(state, action);
 }
 
@@ -56,7 +58,7 @@ export const {
   selectEntities: selectCategoryEntities,
   selectAll: selectAllCategories,
   selectTotal: selectCategoryTotal,
-} = categoryAdapter.getSelectors();
+} = fromCategory.adapter.getSelectors(selectCategoryEntitiesState);
 
 // transaction
 export const selectTransactionEntitiesState = createSelector(
@@ -74,4 +76,22 @@ export const {
   selectEntities: selectTransactionEntities,
   selectAll: selectAllTransactions,
   selectTotal: selectTransactionTotal,
-} = transactionAdapter.getSelectors();
+} = fromTransaction.adapter.getSelectors(selectTransactionEntitiesState);
+
+
+export const selectAllTransactionsVO = createSelector(
+  selectCategoryEntities,
+  selectAllTransactions,
+  (categories: Dictionary<Category>, transactions: Transaction[]) => {
+    if (Object.keys(categories).length <= 0 || transactions.length <= 0) {
+      return [];
+    }
+    return transactions.map(transaction => {
+      return {
+        ...transaction,
+        description: transaction.description ? transaction.description : categories[transaction.categoryId].name,
+        icon: categories[transaction.categoryId].icon
+      }
+    })
+  }
+)

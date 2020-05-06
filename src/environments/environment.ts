@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   test: true,
-  appName: "Cost Book"
+  appName: "Spend Book",
+  server: "http://localhost:3000"
 };
 
 /*

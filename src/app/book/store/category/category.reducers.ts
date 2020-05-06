@@ -4,11 +4,16 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { Category } from '../../model/category';
 import { addCategorySuccess, loadCategoriesByBookSuccess, removeCategory, updateCategorySuccess } from './category.actions';
 
+export const categoryFeatureKey = 'category';
+
 export interface State extends EntityState<Category> {
   selectedCategoryId: number;
 }
 
-export const adapter: EntityAdapter<Category> = createEntityAdapter<Category>();
+export const adapter: EntityAdapter<Category> = createEntityAdapter<Category>({
+  selectId: (category: Category) => category.id,
+  sortComparer: false,
+});
 
 export const initialState: State = adapter.getInitialState({
   selectedCategoryId: null,
