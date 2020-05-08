@@ -25,7 +25,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     // ngrx
     StoreModule.forRoot(ROOT_REDUCERS, {
-        metaReducers,
+        // metaReducers,
         runtimeChecks: {
           // strictStateImmutability and strictActionImmutability are enabled by default
           strictStateSerializability: true,

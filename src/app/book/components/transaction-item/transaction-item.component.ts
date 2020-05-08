@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Transaction } from '../../model/transaction';
+import { TransactionVO } from '../../model/transactionVO';
 
 @Component({
   selector: 'app-transaction-item',
@@ -8,7 +9,7 @@ import { Transaction } from '../../model/transaction';
 })
 export class TransactionItemComponent implements OnInit {
 
-  @Input() transaction: Transaction;
+  @Input() transaction: TransactionVO;
 
   constructor() { }
 

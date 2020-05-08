@@ -11,7 +11,8 @@
     "material": "ng add @angular/material",
     "ngrx-store": "ng add @ngrx/store",
     "ngrx-effects": "ng add @ngrx/effects",
-    "ngrx-entity": "ng add @ngrx/entity"
+    "ngrx-entity": "ng add @ngrx/entity",
+    "mock-server": "json-server --watch mock-data/db.json"
   },
   "private": true,
   "dependencies": {
