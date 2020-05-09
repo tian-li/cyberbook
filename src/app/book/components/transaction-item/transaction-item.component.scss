@@ -1,0 +1,45 @@
+div {
+  display: flex;
+}
+
+.item {
+  color: #353535;
+  padding-left: 1rem;
+  justify-content: space-between;
+}
+
+.icon {
+  align-items: center;
+  padding: 0.5rem;
+
+  img {
+    border-radius: 50%;
+    background: gray;
+    height: 2.8rem;
+  }
+}
+
+.details {
+  flex-grow: 1;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.divide-line {
+  border-top: #e1e1e1 solid 1px;
+}
+
+.description {
+  flex-grow: 1;
+
+  span {
+    white-space: nowrap;
+    width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.amount {
+  padding-right: 1rem;
+}

@@ -14,10 +14,11 @@ import { CategoryEffects } from './store/category/category.effects';
 import { TransactionEffects } from './store/transaction/transaction.effects';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
+import { DateDividerComponent } from './components/date-divider/date-divider.component';
 
 
 @NgModule({
-  declarations: [BookHomeComponent, TransactionListComponent, TransactionItemComponent],
+  declarations: [BookHomeComponent, TransactionListComponent, TransactionItemComponent, DateDividerComponent],
   imports: [
     CommonModule,
     BookRoutingModule,

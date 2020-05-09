@@ -1,5 +1,5 @@
 import { Dictionary } from '@ngrx/entity';
-import { Action, combineReducers, createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
+import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import { Category } from '../model/category';
 import { Transaction } from '../model/transaction';
@@ -86,12 +86,15 @@ export const selectAllTransactionsVO = createSelector(
     if (Object.keys(categories).length <= 0 || transactions.length <= 0) {
       return [];
     }
-    return transactions.map(transaction => {
-      return {
+    return transactions
+    .map(transaction => {
+      return new TransactionVO({
         ...transaction,
         description: transaction.description ? transaction.description : categories[transaction.categoryId].name,
         icon: categories[transaction.categoryId].icon
-      }
+      })
     })
+    .sort((a, b) => a.transactionDate.valueOf() - b.transactionDate.valueOf())
+
   }
 )

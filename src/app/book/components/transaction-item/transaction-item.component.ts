@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Transaction } from '../../model/transaction';
 import { TransactionVO } from '../../model/transactionVO';
 
 @Component({
@@ -10,8 +9,10 @@ import { TransactionVO } from '../../model/transactionVO';
 export class TransactionItemComponent implements OnInit {
 
   @Input() transaction: TransactionVO;
+  @Input() firstOfDate: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

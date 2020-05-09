@@ -1,0 +1,9 @@
+<div class="date-divider">
+  <div class="date">
+    {{getDateDisplay()}}
+  </div>
+  <div class="amount">
+    <div class="income" *ngIf="daySummary.income !== 0">收入：{{daySummary.income}}</div>
+    <div class="spend" *ngIf="daySummary.spend !== 0">支出：{{0 - daySummary.spend}}</div>
+  </div>
+</div>

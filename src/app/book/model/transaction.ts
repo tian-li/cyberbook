@@ -4,6 +4,7 @@ export interface Transaction {
   amount: number;
   description: string;
   categoryId: number;
+  transactionDate: string;
   dateCreated: string;
   dateModified: string;
 }

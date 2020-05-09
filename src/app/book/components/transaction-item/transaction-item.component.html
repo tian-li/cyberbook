@@ -1,4 +1,13 @@
-<div>
-  <img src="{{transaction.icon}}" alt="">
-  <span>{{transaction.description}}</span>, <span>{{transaction.amount}}</span>
+<div class="item">
+  <div class="icon">
+    <img src="{{transaction.icon}}" alt="">
+  </div>
+  <div class="details" [ngClass]="{'divide-line': !firstOfDate}">
+    <div class="description">
+      <span>
+        {{transaction.description}}
+      </span>
+    </div>
+    <div class="amount">{{transaction.amount}}</div>
+  </div>
 </div>
