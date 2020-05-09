@@ -27,12 +27,18 @@ export class TransactionListComponent implements OnInit {
   }
 
   isFirstOfDate(transaction: TransactionVO, index: number): boolean {
-    return index < this.transactions.length - 1 &&
-      transaction.transactionDate.getDate() !== this.transactions[index + 1].transactionDate.getDate();
+    return index > 0 && index < this.transactions.length - 1 &&
+      transaction.transactionDate.getDate() !== this.transactions[index - 1].transactionDate.getDate();
   }
 
+  /**
+   * TODO
+   * This isn't a good approach, time complexity is O(n^2)
+   * It is possible to have a O(n) approach
+   * @param date
+   */
   daySummary(date: Date): { income: number, spend: number } {
-    const summary = {
+    const summary: { income: number, spend: number } = {
       income: 0,
       spend: 0
     };
