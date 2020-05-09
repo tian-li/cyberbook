@@ -2,7 +2,7 @@
   {
     "id": 1,
     "bookId": 1,
-    "amount": 83404.6,
+    "amount": -83404.6,
     "description": "arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor",
     "categoryId": 10,
     "transactionDate": "2020-04-13T05:30:06Z",
@@ -12,7 +12,7 @@
   {
     "id": 2,
     "bookId": 2,
-    "amount": 13581.03,
+    "amount": -13581.03,
     "description": "non",
     "categoryId": 5,
     "transactionDate": "2020-05-02T07:05:51Z",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "bookId": 1,
-    "amount": 76509.45,
+    "amount": -76509.45,
     "description": null,
     "categoryId": 6,
     "transactionDate": "2020-04-13T05:30:06Z",
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "bookId": 1,
-    "amount": 15921.26,
+    "amount": -15921.26,
     "description": "房租",
     "categoryId": 2,
     "transactionDate": "2020-04-13T05:30:06Z",
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "bookId": 2,
-    "amount": 34788.51,
+    "amount": -34788.51,
     "description": "pellentesque viverra pede ac",
     "categoryId": 7,
     "transactionDate": "2020-03-08T00:19:21Z",
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "bookId": 1,
-    "amount": 35633.86,
+    "amount": -35633.86,
     "description": "电话费",
     "categoryId": 1,
     "transactionDate": "2020-04-13T05:30:06Z",
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "bookId": 2,
-    "amount": 47228.3,
+    "amount": -47228.3,
     "description": "pede libero",
     "categoryId": 5,
     "transactionDate": "2020-01-28T01:41:24Z",
@@ -72,7 +72,7 @@
   {
     "id": 8,
     "bookId": 1,
-    "amount": 16921.36,
+    "amount": -16921.36,
     "description": "买了好多菜",
     "categoryId": 4,
     "transactionDate": "2020-04-13T05:30:06Z",
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "bookId": 2,
-    "amount": 54568.21,
+    "amount": -54568.21,
     "description": null,
     "categoryId": 2,
     "transactionDate": "2020-04-29T19:04:32Z",
@@ -92,7 +92,7 @@
   {
     "id": 10,
     "bookId": 1,
-    "amount": 62290.67,
+    "amount": -62290.67,
     "description": "买了10台iPhoneX",
     "categoryId": 5,
     "transactionDate": "2020-02-07T18:08:06Z",
@@ -102,7 +102,7 @@
   {
     "id": 11,
     "bookId": 3,
-    "amount": 97270.85,
+    "amount": -97270.85,
     "description": "aliquet at",
     "categoryId": 2,
     "transactionDate": "2020-03-19T14:31:39Z",
@@ -112,7 +112,7 @@
   {
     "id": 12,
     "bookId": 3,
-    "amount": 57617.07,
+    "amount": -57617.07,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-05-01T23:46:05Z",
@@ -122,7 +122,7 @@
   {
     "id": 13,
     "bookId": 3,
-    "amount": 22519.57,
+    "amount": -22519.57,
     "description": "donec diam neque vestibulum eget vulputate ut ultrices",
     "categoryId": 8,
     "transactionDate": "2020-04-02T02:21:33Z",
@@ -132,7 +132,7 @@
   {
     "id": 14,
     "bookId": 2,
-    "amount": 33970.56,
+    "amount": -33970.56,
     "description": "aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer",
     "categoryId": 7,
     "transactionDate": "2020-03-13T21:04:54Z",
@@ -142,7 +142,7 @@
   {
     "id": 15,
     "bookId": 3,
-    "amount": 6679.19,
+    "amount": -6679.19,
     "description": "consequat lectus in est risus auctor sed tristique",
     "categoryId": 7,
     "transactionDate": "2020-03-01T00:46:42Z",
@@ -152,7 +152,7 @@
   {
     "id": 16,
     "bookId": 3,
-    "amount": 58365.13,
+    "amount": -58365.13,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-03-28T06:07:25Z",
@@ -162,7 +162,7 @@
   {
     "id": 17,
     "bookId": 1,
-    "amount": 72647.28,
+    "amount": -72647.28,
     "description": "praesent",
     "categoryId": 5,
     "transactionDate": "2020-04-08T04:00:30Z",
@@ -172,7 +172,7 @@
   {
     "id": 18,
     "bookId": 3,
-    "amount": 59446.81,
+    "amount": -59446.81,
     "description": null,
     "categoryId": 5,
     "transactionDate": "2020-01-20T23:27:42Z",
@@ -182,7 +182,7 @@
   {
     "id": 19,
     "bookId": 1,
-    "amount": 52800.95,
+    "amount": -52800.95,
     "description": "parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum",
     "categoryId": 4,
     "transactionDate": "2020-04-21T23:36:18Z",
@@ -192,7 +192,7 @@
   {
     "id": 20,
     "bookId": 1,
-    "amount": 787.78,
+    "amount": -787.78,
     "description": "ac leo pellentesque ultrices mattis odio",
     "categoryId": 8,
     "transactionDate": "2020-05-03T07:28:25Z",
@@ -202,7 +202,7 @@
   {
     "id": 21,
     "bookId": 1,
-    "amount": 43282.37,
+    "amount": -43282.37,
     "description": "non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla",
     "categoryId": 3,
     "transactionDate": "2020-04-07T08:50:36Z",
@@ -212,7 +212,7 @@
   {
     "id": 22,
     "bookId": 3,
-    "amount": 10071.11,
+    "amount": -10071.11,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-01-18T16:29:45Z",
@@ -222,7 +222,7 @@
   {
     "id": 23,
     "bookId": 3,
-    "amount": 4807.18,
+    "amount": -4807.18,
     "description": "amet lobortis sapien sapien non mi",
     "categoryId": 6,
     "transactionDate": "2020-02-13T15:31:15Z",
@@ -232,7 +232,7 @@
   {
     "id": 24,
     "bookId": 1,
-    "amount": 73798.0,
+    "amount": -73798.0,
     "description": "ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus",
     "categoryId": 4,
     "transactionDate": "2020-04-11T18:23:41Z",
@@ -242,7 +242,7 @@
   {
     "id": 25,
     "bookId": 1,
-    "amount": 67642.38,
+    "amount": -67642.38,
     "description": "vitae nisl aenean lectus pellentesque eget nunc donec",
     "categoryId": 9,
     "transactionDate": "2020-01-30T05:18:06Z",
@@ -252,7 +252,7 @@
   {
     "id": 26,
     "bookId": 2,
-    "amount": 68459.3,
+    "amount": -68459.3,
     "description": "tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo",
     "categoryId": 4,
     "transactionDate": "2020-04-27T15:13:40Z",
@@ -262,7 +262,7 @@
   {
     "id": 27,
     "bookId": 1,
-    "amount": 65672.7,
+    "amount": -65672.7,
     "description": "sed magna",
     "categoryId": 3,
     "transactionDate": "2020-01-17T03:52:31Z",
@@ -272,7 +272,7 @@
   {
     "id": 28,
     "bookId": 1,
-    "amount": 43535.55,
+    "amount": -43535.55,
     "description": null,
     "categoryId": 2,
     "transactionDate": "2020-04-22T07:12:04Z",
@@ -282,7 +282,7 @@
   {
     "id": 29,
     "bookId": 3,
-    "amount": 56257.58,
+    "amount": -56257.58,
     "description": "ligula sit",
     "categoryId": 9,
     "transactionDate": "2020-04-17T17:18:50Z",
@@ -292,7 +292,7 @@
   {
     "id": 30,
     "bookId": 1,
-    "amount": 36757.25,
+    "amount": -36757.25,
     "description": "etiam faucibus cursus urna ut tellus",
     "categoryId": 10,
     "transactionDate": "2020-03-11T01:18:51Z",
@@ -302,7 +302,7 @@
   {
     "id": 31,
     "bookId": 3,
-    "amount": 95186.86,
+    "amount": -95186.86,
     "description": null,
     "categoryId": 8,
     "transactionDate": "2020-04-06T22:44:48Z",
@@ -312,7 +312,7 @@
   {
     "id": 32,
     "bookId": 3,
-    "amount": 99382.66,
+    "amount": -99382.66,
     "description": null,
     "categoryId": 8,
     "transactionDate": "2020-04-12T10:55:25Z",
@@ -322,7 +322,7 @@
   {
     "id": 33,
     "bookId": 2,
-    "amount": 69235.72,
+    "amount": -69235.72,
     "description": null,
     "categoryId": 5,
     "transactionDate": "2020-01-10T22:31:03Z",
@@ -332,7 +332,7 @@
   {
     "id": 34,
     "bookId": 1,
-    "amount": 24416.9,
+    "amount": -24416.9,
     "description": "这个月的电话费真的好多好多啊",
     "categoryId": 10,
     "transactionDate": "2020-01-01T02:25:03Z",
@@ -342,7 +342,7 @@
   {
     "id": 35,
     "bookId": 1,
-    "amount": 46016.04,
+    "amount": -46016.04,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-01-23T02:17:06Z",
@@ -352,7 +352,7 @@
   {
     "id": 36,
     "bookId": 2,
-    "amount": 32322.25,
+    "amount": -32322.25,
     "description": "varius ut blandit non interdum in ante vestibulum ante ipsum",
     "categoryId": 1,
     "transactionDate": "2020-01-28T09:49:32Z",
@@ -362,7 +362,7 @@
   {
     "id": 37,
     "bookId": 1,
-    "amount": 24280.32,
+    "amount": -24280.32,
     "description": "in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices",
     "categoryId": 5,
     "transactionDate": "2020-02-09T05:08:25Z",
@@ -372,7 +372,7 @@
   {
     "id": 38,
     "bookId": 2,
-    "amount": 74617.26,
+    "amount": -74617.26,
     "description": "in tempus",
     "categoryId": 5,
     "transactionDate": "2020-04-22T16:45:31Z",
@@ -382,7 +382,7 @@
   {
     "id": 39,
     "bookId": 2,
-    "amount": 53309.27,
+    "amount": -53309.27,
     "description": "amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla",
     "categoryId": 4,
     "transactionDate": "2020-05-02T22:25:09Z",
@@ -392,7 +392,7 @@
   {
     "id": 40,
     "bookId": 3,
-    "amount": 92283.91,
+    "amount": -92283.91,
     "description": "quisque id justo sit amet sapien dignissim",
     "categoryId": 10,
     "transactionDate": "2020-04-24T21:56:03Z",
@@ -402,7 +402,7 @@
   {
     "id": 41,
     "bookId": 1,
-    "amount": 78083.23,
+    "amount": -78083.23,
     "description": null,
     "categoryId": 8,
     "transactionDate": "2020-02-25T03:36:33Z",
@@ -412,7 +412,7 @@
   {
     "id": 42,
     "bookId": 3,
-    "amount": 1566.93,
+    "amount": -1566.93,
     "description": "metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean",
     "categoryId": 8,
     "transactionDate": "2020-04-09T23:02:57Z",
@@ -422,7 +422,7 @@
   {
     "id": 43,
     "bookId": 2,
-    "amount": 41840.25,
+    "amount": -41840.25,
     "description": null,
     "categoryId": 3,
     "transactionDate": "2020-04-28T10:54:43Z",
@@ -432,7 +432,7 @@
   {
     "id": 44,
     "bookId": 2,
-    "amount": 17498.39,
+    "amount": -17498.39,
     "description": "viverra",
     "categoryId": 1,
     "transactionDate": "2020-01-04T11:32:58Z",
@@ -442,7 +442,7 @@
   {
     "id": 45,
     "bookId": 3,
-    "amount": 85936.85,
+    "amount": -85936.85,
     "description": null,
     "categoryId": 1,
     "transactionDate": "2020-04-23T02:59:12Z",
@@ -452,7 +452,7 @@
   {
     "id": 46,
     "bookId": 1,
-    "amount": 20361.0,
+    "amount": -20361.0,
     "description": "consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum",
     "categoryId": 4,
     "transactionDate": "2020-04-28T14:22:18Z",
@@ -463,7 +463,7 @@
     "id": 47,
     "bookId": 1,
     "amount": 2017.85,
-    "description": null,
+    "description": "工资",
     "categoryId": 5,
     "transactionDate": "2020-01-04T20:53:24Z",
     "dateCreated": "2020-01-04T20:53:24Z",
@@ -472,7 +472,7 @@
   {
     "id": 48,
     "bookId": 1,
-    "amount": 69011.95,
+    "amount": -69011.95,
     "description": "at",
     "categoryId": 7,
     "transactionDate": "2020-01-06T20:41:50Z",
@@ -482,7 +482,7 @@
   {
     "id": 49,
     "bookId": 1,
-    "amount": 2474.94,
+    "amount": -2474.94,
     "description": "sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed",
     "categoryId": 2,
     "transactionDate": "2020-04-13T21:18:17Z",
@@ -492,7 +492,7 @@
   {
     "id": 50,
     "bookId": 1,
-    "amount": 86895.07,
+    "amount": -86895.07,
     "description": "curabitur convallis duis consequat",
     "categoryId": 9,
     "transactionDate": "2020-01-15T23:19:28Z",
@@ -502,7 +502,7 @@
   {
     "id": 51,
     "bookId": 2,
-    "amount": 46208.38,
+    "amount": -46208.38,
     "description": "mattis odio donec vitae nisi nam ultrices",
     "categoryId": 3,
     "transactionDate": "2020-04-14T19:08:47Z",
@@ -512,7 +512,7 @@
   {
     "id": 52,
     "bookId": 1,
-    "amount": 64211.96,
+    "amount": -64211.96,
     "description": null,
     "categoryId": 4,
     "transactionDate": "2020-01-18T00:36:55Z",
@@ -522,7 +522,7 @@
   {
     "id": 53,
     "bookId": 3,
-    "amount": 75438.75,
+    "amount": -75438.75,
     "description": "et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien",
     "categoryId": 9,
     "transactionDate": "2020-04-07T15:51:04Z",
@@ -532,7 +532,7 @@
   {
     "id": 54,
     "bookId": 3,
-    "amount": 68376.77,
+    "amount": -68376.77,
     "description": "pellentesque at nulla suspendisse potenti cras in purus",
     "categoryId": 3,
     "transactionDate": "2020-02-01T01:51:06Z",
@@ -542,7 +542,7 @@
   {
     "id": 55,
     "bookId": 2,
-    "amount": 58996.07,
+    "amount": -58996.07,
     "description": null,
     "categoryId": 7,
     "transactionDate": "2020-04-20T23:14:31Z",
@@ -552,7 +552,7 @@
   {
     "id": 56,
     "bookId": 1,
-    "amount": 2609.01,
+    "amount": -2609.01,
     "description": "午饭",
     "categoryId": 1,
     "transactionDate": "2020-01-04T18:00:37Z",
@@ -562,7 +562,7 @@
   {
     "id": 57,
     "bookId": 2,
-    "amount": 1364.61,
+    "amount": -1364.61,
     "description": "nulla ac enim in tempor",
     "categoryId": 6,
     "transactionDate": "2020-02-14T09:35:28Z",
@@ -572,7 +572,7 @@
   {
     "id": 58,
     "bookId": 1,
-    "amount": 74012.18,
+    "amount": -74012.18,
     "description": null,
     "categoryId": 1,
     "transactionDate": "2020-03-07T13:27:18Z",
@@ -582,7 +582,7 @@
   {
     "id": 59,
     "bookId": 1,
-    "amount": 85697.3,
+    "amount": -85697.3,
     "description": "libero convallis",
     "categoryId": 7,
     "transactionDate": "2020-02-20T18:50:56Z",
@@ -592,7 +592,7 @@
   {
     "id": 60,
     "bookId": 1,
-    "amount": 17852.39,
+    "amount": -17852.39,
     "description": null,
     "categoryId": 1,
     "transactionDate": "2020-03-22T20:37:16Z",
@@ -602,7 +602,7 @@
   {
     "id": 61,
     "bookId": 3,
-    "amount": 2258.11,
+    "amount": -2258.11,
     "description": null,
     "categoryId": 8,
     "transactionDate": "2020-02-21T12:47:11Z",
@@ -612,7 +612,7 @@
   {
     "id": 62,
     "bookId": 1,
-    "amount": 96108.29,
+    "amount": -96108.29,
     "description": null,
     "categoryId": 1,
     "transactionDate": "2020-02-24T05:11:22Z",
@@ -622,7 +622,7 @@
   {
     "id": 63,
     "bookId": 1,
-    "amount": 73088.83,
+    "amount": -73088.83,
     "description": null,
     "categoryId": 1,
     "transactionDate": "2020-03-20T16:37:28Z",
@@ -632,7 +632,7 @@
   {
     "id": 64,
     "bookId": 3,
-    "amount": 82995.62,
+    "amount": -82995.62,
     "description": "quam turpis adipiscing lorem vitae mattis nibh ligula",
     "categoryId": 8,
     "transactionDate": "2020-03-28T15:27:25Z",
@@ -642,7 +642,7 @@
   {
     "id": 65,
     "bookId": 1,
-    "amount": 17295.08,
+    "amount": -17295.08,
     "description": null,
     "categoryId": 8,
     "transactionDate": "2020-01-22T19:13:53Z",
@@ -652,7 +652,7 @@
   {
     "id": 66,
     "bookId": 1,
-    "amount": 24214.94,
+    "amount": -24214.94,
     "description": null,
     "categoryId": 6,
     "transactionDate": "2020-01-06T20:41:50Z",
@@ -662,7 +662,7 @@
   {
     "id": 67,
     "bookId": 2,
-    "amount": 19825.33,
+    "amount": -19825.33,
     "description": "luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus",
     "categoryId": 2,
     "transactionDate": "2020-01-16T14:07:42Z",
@@ -672,7 +672,7 @@
   {
     "id": 68,
     "bookId": 3,
-    "amount": 60903.56,
+    "amount": -60903.56,
     "description": "nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium",
     "categoryId": 9,
     "transactionDate": "2020-01-08T15:01:01Z",
@@ -682,7 +682,7 @@
   {
     "id": 69,
     "bookId": 2,
-    "amount": 90803.61,
+    "amount": -90803.61,
     "description": null,
     "categoryId": 7,
     "transactionDate": "2020-02-07T13:33:07Z",
@@ -692,7 +692,7 @@
   {
     "id": 70,
     "bookId": 3,
-    "amount": 16073.77,
+    "amount": -16073.77,
     "description": null,
     "categoryId": 7,
     "transactionDate": "2020-05-02T17:47:03Z",
@@ -702,7 +702,7 @@
   {
     "id": 71,
     "bookId": 3,
-    "amount": 49792.5,
+    "amount": -49792.5,
     "description": "fusce lacus purus aliquet at",
     "categoryId": 10,
     "transactionDate": "2020-03-06T05:32:48Z",
@@ -712,7 +712,7 @@
   {
     "id": 72,
     "bookId": 1,
-    "amount": 74277.8,
+    "amount": -74277.8,
     "description": "sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus",
     "categoryId": 7,
     "transactionDate": "2020-01-10T15:17:15Z",
@@ -722,7 +722,7 @@
   {
     "id": 73,
     "bookId": 1,
-    "amount": 31013.99,
+    "amount": -31013.99,
     "description": null,
     "categoryId": 1,
     "transactionDate": "2020-03-21T22:40:13Z",
@@ -732,7 +732,7 @@
   {
     "id": 74,
     "bookId": 1,
-    "amount": 43021.1,
+    "amount": -43021.1,
     "description": "erat volutpat in congue etiam justo etiam pretium iaculis justo",
     "categoryId": 2,
     "transactionDate": "2020-01-30T23:44:27Z",
@@ -742,7 +742,7 @@
   {
     "id": 75,
     "bookId": 2,
-    "amount": 85940.48,
+    "amount": -85940.48,
     "description": null,
     "categoryId": 7,
     "transactionDate": "2020-03-07T19:07:23Z",
@@ -752,7 +752,7 @@
   {
     "id": 76,
     "bookId": 1,
-    "amount": 53718.36,
+    "amount": -53718.36,
     "description": "in eleifend quam a odio in hac",
     "categoryId": 3,
     "transactionDate": "2020-02-21T03:06:11Z",
@@ -762,7 +762,7 @@
   {
     "id": 77,
     "bookId": 3,
-    "amount": 3479.04,
+    "amount": -3479.04,
     "description": "venenatis non sodales sed tincidunt eu felis fusce posuere felis",
     "categoryId": 4,
     "transactionDate": "2020-03-11T17:06:30Z",
@@ -772,7 +772,7 @@
   {
     "id": 78,
     "bookId": 2,
-    "amount": 21908.01,
+    "amount": -21908.01,
     "description": null,
     "categoryId": 4,
     "transactionDate": "2020-04-28T01:44:46Z",
@@ -782,7 +782,7 @@
   {
     "id": 79,
     "bookId": 3,
-    "amount": 43810.08,
+    "amount": -43810.08,
     "description": "ac",
     "categoryId": 6,
     "transactionDate": "2020-03-17T18:21:04Z",
@@ -792,7 +792,7 @@
   {
     "id": 80,
     "bookId": 3,
-    "amount": 90152.3,
+    "amount": -90152.3,
     "description": null,
     "categoryId": 4,
     "transactionDate": "2020-01-01T14:44:16Z",
@@ -802,7 +802,7 @@
   {
     "id": 81,
     "bookId": 2,
-    "amount": 19162.32,
+    "amount": -19162.32,
     "description": null,
     "categoryId": 10,
     "transactionDate": "2020-03-22T12:04:48Z",
@@ -813,7 +813,7 @@
     "id": 82,
     "bookId": 1,
     "amount": 99040.12,
-    "description": "justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus",
+    "description": "彩票！！",
     "categoryId": 3,
     "transactionDate": "2020-01-06T10:22:06Z",
     "dateCreated": "2020-01-06T10:22:06Z",
@@ -822,7 +822,7 @@
   {
     "id": 83,
     "bookId": 2,
-    "amount": 32392.1,
+    "amount": -32392.1,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-01-28T08:56:13Z",
@@ -832,7 +832,7 @@
   {
     "id": 84,
     "bookId": 3,
-    "amount": 54265.87,
+    "amount": -54265.87,
     "description": "vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl",
     "categoryId": 2,
     "transactionDate": "2020-05-01T13:58:20Z",
@@ -842,7 +842,7 @@
   {
     "id": 85,
     "bookId": 3,
-    "amount": 78699.86,
+    "amount": -78699.86,
     "description": "in faucibus orci",
     "categoryId": 5,
     "transactionDate": "2020-01-28T10:51:35Z",
@@ -852,7 +852,7 @@
   {
     "id": 86,
     "bookId": 3,
-    "amount": 30322.48,
+    "amount": -30322.48,
     "description": "leo maecenas",
     "categoryId": 4,
     "transactionDate": "2020-04-22T06:41:06Z",
@@ -862,7 +862,7 @@
   {
     "id": 87,
     "bookId": 1,
-    "amount": 13034.96,
+    "amount": -13034.96,
     "description": "nunc nisl duis bibendum felis sed interdum venenatis turpis enim",
     "categoryId": 2,
     "transactionDate": "2020-05-02T19:05:56Z",
@@ -872,7 +872,7 @@
   {
     "id": 88,
     "bookId": 3,
-    "amount": 67109.63,
+    "amount": -67109.63,
     "description": "vitae nisi nam ultrices libero non mattis",
     "categoryId": 6,
     "transactionDate": "2020-02-05T20:42:01Z",
@@ -882,7 +882,7 @@
   {
     "id": 89,
     "bookId": 2,
-    "amount": 2843.36,
+    "amount": -2843.36,
     "description": "eget vulputate ut ultrices vel augue",
     "categoryId": 9,
     "transactionDate": "2020-03-26T05:14:20Z",
@@ -892,7 +892,7 @@
   {
     "id": 90,
     "bookId": 3,
-    "amount": 3041.81,
+    "amount": -3041.81,
     "description": "sit amet diam in magna bibendum",
     "categoryId": 5,
     "transactionDate": "2020-02-28T05:37:44Z",
@@ -902,7 +902,7 @@
   {
     "id": 91,
     "bookId": 3,
-    "amount": 15370.83,
+    "amount": -15370.83,
     "description": "quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat",
     "categoryId": 6,
     "transactionDate": "2020-01-29T04:49:19Z",
@@ -912,7 +912,7 @@
   {
     "id": 92,
     "bookId": 3,
-    "amount": 48485.17,
+    "amount": -48485.17,
     "description": null,
     "categoryId": 10,
     "transactionDate": "2020-04-27T01:17:06Z",
@@ -922,7 +922,7 @@
   {
     "id": 93,
     "bookId": 2,
-    "amount": 66345.81,
+    "amount": -66345.81,
     "description": "quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a",
     "categoryId": 10,
     "transactionDate": "2020-04-14T11:39:12Z",
@@ -932,7 +932,7 @@
   {
     "id": 94,
     "bookId": 3,
-    "amount": 95636.15,
+    "amount": -95636.15,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-01-27T08:40:37Z",
@@ -942,7 +942,7 @@
   {
     "id": 95,
     "bookId": 2,
-    "amount": 76363.66,
+    "amount": -76363.66,
     "description": "sapien varius ut blandit non interdum in ante",
     "categoryId": 8,
     "transactionDate": "2020-02-29T11:48:35Z",
@@ -952,7 +952,7 @@
   {
     "id": 96,
     "bookId": 2,
-    "amount": 24715.05,
+    "amount": -24715.05,
     "description": null,
     "categoryId": 2,
     "transactionDate": "2020-02-08T15:52:27Z",
@@ -962,7 +962,7 @@
   {
     "id": 97,
     "bookId": 3,
-    "amount": 96228.43,
+    "amount": -96228.43,
     "description": null,
     "categoryId": 7,
     "transactionDate": "2020-03-30T18:07:01Z",
@@ -972,7 +972,7 @@
   {
     "id": 98,
     "bookId": 2,
-    "amount": 19182.3,
+    "amount": -19182.3,
     "description": null,
     "categoryId": 4,
     "transactionDate": "2020-04-30T00:19:49Z",
@@ -982,7 +982,7 @@
   {
     "id": 99,
     "bookId": 2,
-    "amount": 11912.45,
+    "amount": -11912.45,
     "description": "nulla ultrices aliquet maecenas leo",
     "categoryId": 5,
     "transactionDate": "2020-04-11T21:36:43Z",
@@ -992,7 +992,7 @@
   {
     "id": 100,
     "bookId": 2,
-    "amount": 9182.7,
+    "amount": -9182.7,
     "description": null,
     "categoryId": 9,
     "transactionDate": "2020-04-02T10:19:39Z",
