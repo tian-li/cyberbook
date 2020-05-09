@@ -1,0 +1,111 @@
+div {
+  display: flex;
+}
+
+.book-header {
+  padding-top: 1.5rem;
+  background: #ffda43;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  flex-direction: column;
+}
+
+.title-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+
+  .logo, .title, .quick-tools {
+    flex-grow: 1;
+  }
+
+  .logo {
+    justify-content: flex-start;
+    padding-left: 1rem;
+    width: 20%;
+
+    img {
+      height: 45px;
+    }
+  }
+
+  .title {
+    justify-content: center;
+    width: 60%;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: "Yuanti SC", sans-serif;
+  }
+
+  .quick-tools {
+    padding-right: 1rem;
+    justify-content: flex-end;
+    width: 20%;
+
+    mat-icon {
+      font-size: 2rem;
+      width: unset;
+      height: unset;
+    }
+  }
+}
+
+.monthly-overview {
+  justify-content: space-between;
+  align-items: stretch;
+  padding-bottom: 1rem;
+  color: #333;
+
+  .year-month, .income, .spend {
+    flex-direction: column;
+  }
+
+
+  .income, .spend {
+    flex-grow: 4;
+    justify-content: space-between;
+  }
+
+
+  .label {
+    color: #706438;
+    margin-bottom: 0.5rem;
+  }
+
+  .year-month {
+    flex-grow: 1;
+    padding-left: 1rem;
+    margin-right: 2rem;
+    justify-content: space-between;
+
+    .month-group {
+      flex-direction: row;
+      align-items: baseline;
+      border-right: 1px black solid;
+    }
+
+    .month-number {
+      font-size: 2.5rem;
+    }
+
+    .month {
+      font-size: 1.2rem;
+    }
+
+    mat-icon {
+      width: unset;
+      height: unset;
+      font-size: 2rem;
+      align-self: flex-end;
+    }
+  }
+
+  .amount {
+    font-size: 2rem;
+  }
+
+  .income {
+    padding-left: 2rem;
+  }
+}
