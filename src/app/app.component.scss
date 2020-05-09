@@ -1,4 +1,4 @@
-.wraper {
+.wrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -8,6 +8,12 @@
   flex-direction: column;
 
   .content {
-    margin-top: 60px;
+    margin-bottom: 4rem;
   }
+}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

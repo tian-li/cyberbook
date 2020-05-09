@@ -975,9 +975,9 @@
       "amount": 24214.94,
       "description": null,
       "categoryId": 6,
-      "transactionDate": "2020-01-08T03:58:14Z",
-      "dateCreated": "2020-01-08T03:58:14Z",
-      "dateModified": "2020-01-08T03:58:14Z"
+      "transactionDate": "2020-01-06T20:41:50Z",
+      "dateCreated": "2020-01-06T20:41:50Z",
+      "dateModified": "2020-01-06T20:41:50Z"
     },
     {
       "id": 67,
@@ -1320,6 +1320,4 @@
       "dateModified": "2020-04-02T10:19:39Z"
     }
   ]
-
-
 }

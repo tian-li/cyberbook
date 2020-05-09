@@ -7,7 +7,7 @@
       收入：{{ daySummary.income.toFixed(2) }}
     </div>
     <div class="spend" *ngIf="daySummary.spend !== 0">
-      支出：{{ 0 - daySummary.spend.toFixed(2) }}
+      支出：{{ (0 - daySummary.spend).toFixed(2) }}
     </div>
   </div>
 </div>
