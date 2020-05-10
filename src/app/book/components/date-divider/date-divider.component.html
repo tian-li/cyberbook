@@ -4,10 +4,10 @@
   </div>
   <div class="amount">
     <div class="income" *ngIf="daySummary.income !== 0">
-      收入：{{ daySummary.income.toFixed(2) }}
+      收入：<span>{{ daySummary.income.toFixed(2) }}</span>
     </div>
     <div class="spend" *ngIf="daySummary.spend !== 0">
-      支出：{{ daySummary.spend.toFixed(2) }}
+      支出：<span>{{ daySummary.spend.toFixed(2) }}</span>
     </div>
   </div>
 </div>

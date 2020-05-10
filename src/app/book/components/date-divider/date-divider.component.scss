@@ -12,6 +12,16 @@ div {
   border-bottom: #e1e1e1 solid 1px;
 }
 
+.income {
+  span {
+    color: green;
+  }
+}
+
 .spend {
   margin-left: 10px;
+
+  span {
+    color: red;
+  }
 }
