@@ -102,7 +102,11 @@ div {
   }
 
   .amount {
+    align-items: baseline;
     font-size: 2rem;
+    .decimal {
+      font-size: 1rem;
+    }
   }
 
   .income {
