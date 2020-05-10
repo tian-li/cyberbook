@@ -1,24 +1,33 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import * as fromSpendBook from '../../store';
 
 @Component({
   selector: 'app-date-divider',
   templateUrl: './date-divider.component.html',
   styleUrls: ['./date-divider.component.scss']
 })
-export class DateDividerComponent implements OnInit {
-  readonly weekDays = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-
+export class DateDividerComponent implements OnInit, OnDestroy {
   @Input() date: Date;
-  @Input() daySummary: { income: number, spend: number };
+  daySummary: { income: number, spend: number };
 
-  constructor() {
+  private unsubscribe$: Subject<void> = new Subject();
+
+  constructor(private store: Store) {
   }
 
   ngOnInit(): void {
+    this.store.pipe(
+      select(fromSpendBook.getTransactionIdsByDate, { date: this.date.toISOString().substring(0, 10) }),
+      takeUntil(this.unsubscribe$)
+    ).subscribe(daySummary => this.daySummary = daySummary);
   }
 
-  getDateDisplay(): string {
-    return `${this.date.getMonth() + 1}月${this.date.getDate()}日 ${this.weekDays[this.date.getDay()]}`;
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
 }

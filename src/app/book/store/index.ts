@@ -71,6 +71,11 @@ export const selectSelectedTransactionId = createSelector(
   fromTransaction.getSelectedTransactionId
 );
 
+export const selectTransactionIdsByDate = createSelector(
+  selectTransactionEntitiesState,
+  fromTransaction.getTransactionIdsByDate,
+)
+
 export const {
   selectIds: selectTransactionIds,
   selectEntities: selectTransactionEntities,
@@ -78,8 +83,7 @@ export const {
   selectTotal: selectTransactionTotal,
 } = fromTransaction.adapter.getSelectors(selectTransactionEntitiesState);
 
-
-export const selectAllTransactionsVO = createSelector(
+export const selectAllTransactionVOs = createSelector(
   selectCategoryEntities,
   selectAllTransactions,
   (categories: Dictionary<Category>, transactions: Transaction[]) => {
@@ -87,14 +91,45 @@ export const selectAllTransactionsVO = createSelector(
       return [];
     }
     return transactions
-    .map(transaction => {
-      return new TransactionVO({
+    .map((transaction: Transaction) =>
+      new TransactionVO({
         ...transaction,
         description: transaction.description ? transaction.description : categories[transaction.categoryId].name,
         icon: categories[transaction.categoryId].icon
       })
-    })
-    .sort((a, b) => a.transactionDate.valueOf() - b.transactionDate.valueOf())
+    )
+    .sort((a: TransactionVO, b: TransactionVO) => a.transactionDate.valueOf() - b.transactionDate.valueOf())
+  }
+);
 
+export const selectAllTransactionVOsByYearMonth = createSelector(
+  selectAllTransactionVOs,
+  (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
+    const year: number = props.displayMonth.getFullYear();
+    const month: number = props.displayMonth.getMonth();
+    return transactionVOs.filter(
+      (transactionVO: TransactionVO) => transactionVO.transactionDate.getFullYear() === year &&
+        transactionVO.transactionDate.getMonth() === month
+    );
+  }
+);
+
+export const getTransactionIdsByDate = createSelector(
+  selectTransactionEntities,
+  selectTransactionIdsByDate,
+  (transactionEntities: Dictionary<Transaction>, transactionIdsByDate, props: { date: string }) => {
+    const summary = {
+      income: 0,
+      spend: 0
+    };
+    transactionIdsByDate[props.date].forEach(id => {
+      const transaction = transactionEntities[id];
+      if (transaction.amount > 0) {
+        summary.income += transaction.amount;
+      } else {
+        summary.spend -= transaction.amount;
+      }
+    })
+    return summary;
   }
 )

@@ -1,11 +1,10 @@
 <div class="list-container"
-     *ngFor="let transaction of (transactions$ | async);
+     *ngFor="let transaction of transactions;
      index as i; first as first">
 
   <app-date-divider
     *ngIf="first || isFirstOfDate(transaction, i)"
     [date]="transaction.transactionDate"
-    [daySummary]="daySummary(transaction.transactionDate)"
   ></app-date-divider>
 
   <app-transaction-item

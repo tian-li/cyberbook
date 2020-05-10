@@ -8,6 +8,7 @@ export const transactionFeatureKey = 'transaction';
 
 export interface State extends EntityState<Transaction> {
   selectedTransactionId: number;
+  transactionIdsByDate: { [date: string]: number[] }
 }
 
 export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transaction>({
@@ -17,22 +18,61 @@ export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transacti
 
 export const initialState: State = adapter.getInitialState({
   selectedTransactionId: null,
+  transactionIdsByDate: null,
 });
 
 const reducer = createReducer(
   initialState,
-  on(loadTransactionsByBookSuccess, (state, { transactions }) =>
-    adapter.addMany(transactions, { ...state, selectedTransactionId: null })
-  ),
-  on(addTransactionSuccess, (state, { transaction }) =>
-    adapter.addOne(transaction, { ...state, selectedTransactionId: transaction.id })
-  ),
-  on(updateTransactionSuccess, (state, { update }) =>
-    adapter.updateOne(update, { ...state, selectedTransactionId: update.id })
-  ),
-  on(removeTransaction, (state, { id }) =>
-    adapter.removeOne(id, { ...state, selectedTransactionId: null })
-  ),
+  on(loadTransactionsByBookSuccess, (state, { transactions }) => {
+    let transactionIdsByDate = {};
+    transactions.forEach((transaction: Transaction) => {
+      const date = transaction.transactionDate.substring(0, 10);
+      transactionIdsByDate = {
+        ...transactionIdsByDate,
+        [date]: transactionIdsByDate[date] ? [...transactionIdsByDate[date], transaction.id] : [transaction.id]
+      }
+    });
+    return adapter.addMany(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate })
+  }),
+  on(addTransactionSuccess, (state, { transaction }) => {
+    const date = transaction.transactionDate.substring(0, 10);
+    const updatedTransactionIdsByDate = {
+      ...state.transactionIdsByDate,
+      [date]: state.transactionIdsByDate[date] ? [...state.transactionIdsByDate[date], transaction.id] : [transaction.id]
+    }
+    return adapter.addOne(transaction, {
+      ...state,
+      selectedTransactionId: transaction.id,
+      transactionIdsByDate: updatedTransactionIdsByDate
+    })
+  }),
+  on(updateTransactionSuccess, (state, { update }) => {
+    const updatedTransaction = update.changes;
+    const oldTransaction = state.entities[update.id];
+
+    if (updatedTransaction.transactionDate !== oldTransaction.transactionDate) {
+      const newDate = updatedTransaction.transactionDate.substring(0, 10);
+      const oldDate = oldTransaction.transactionDate.substring(0, 10);
+
+      const updatedTransactionIdsByDate = {
+        ...state.transactionIdsByDate,
+        [oldDate]: state.transactionIdsByDate[oldDate].filter(id => id !== update.id),
+        [newDate]: state.transactionIdsByDate[newDate] ? [...state.transactionIdsByDate[newDate], update.id] : [update.id]
+      }
+
+      return adapter.updateOne(update, { ...state, selectedTransactionId: update.id, transactionIdsByDate: updatedTransactionIdsByDate });
+    }
+    return adapter.updateOne(update, { ...state, selectedTransactionId: update.id });
+  }),
+  on(removeTransaction, (state, { id }) => {
+    const date = state.entities[id].transactionDate.substring(0, 10);
+
+    const updatedTransactionIdsByDate = {
+      ...state.transactionIdsByDate,
+      [date]: state.transactionIdsByDate[date].filter(transactionId => transactionId !== id),
+    }
+    return adapter.removeOne(id, { ...state, selectedTransactionId: null, transactionIdsByDate: updatedTransactionIdsByDate })
+  }),
 );
 
 export function transactionReducer(
@@ -43,10 +83,4 @@ export function transactionReducer(
 }
 
 export const getSelectedTransactionId = (state: State) => state.selectedTransactionId;
-//
-// export const {
-//   selectIds: selectTransactionIds,
-//   selectEntities: selectTransactionEntities,
-//   selectAll: selectAllTransactions,
-//   selectTotal: selectTransactionTotal,
-// } = adapter.getSelectors();
+export const getTransactionIdsByDate = (state: State) => state.transactionIdsByDate;

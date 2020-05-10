@@ -1,6 +1,6 @@
 <div class="date-divider">
   <div class="date">
-    {{getDateDisplay()}}
+    {{ date | date: 'MM月dd日 E' }}
   </div>
   <div class="amount">
     <div class="income" *ngIf="daySummary.income !== 0">

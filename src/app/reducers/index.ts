@@ -17,6 +17,7 @@ import * as fromRouter from '@ngrx/router-store';
  */
 
 import * as fromAuth from '../core/store/auth/auth.reducer';
+import * as fromUI from '../core/store/ui/ui.reducer';
 import { InjectionToken } from '@angular/core';
 
 /**
@@ -25,6 +26,7 @@ import { InjectionToken } from '@angular/core';
  */
 export interface State {
   auth: fromAuth.State;
+  ui: fromUI.State
   // router: fromRouter.RouterReducerState<any>;
 }
 
@@ -38,6 +40,7 @@ export const ROOT_REDUCERS = new InjectionToken<
   >('Root reducers token', {
   factory: () => ({
     auth: fromAuth.authReducer,
+    ui: fromUI.uiReducer
     // router: fromRouter.routerReducer,
   }),
 });
@@ -75,4 +78,17 @@ export const selectAuthState = createFeatureSelector<State, fromAuth.State>(
 export const selectIsAuthenticated = createSelector(
   selectAuthState,
   fromAuth.selectIsAuthenticated
+);
+
+export const selectUIState = createFeatureSelector<State, fromUI.State>(
+  'ui'
+);
+
+/**
+ * UI Reducers
+ */
+
+export const selectDisplayMonth = createSelector(
+  selectUIState,
+  fromUI.selectDisplayMonth
 );
