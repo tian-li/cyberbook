@@ -15,16 +15,15 @@ export class TransactionListComponent implements OnInit, OnDestroy {
   transactions: TransactionVO[];
   private unsubscribe$: Subject<void> = new Subject();
 
-
   constructor(private store: Store) {
   }
 
   ngOnInit(): void {
     this.store.pipe(
       select(fromRoot.selectDisplayMonth),
-      switchMap((displayMonth: string) => {
-        return this.store.pipe(select(fromSpendBook.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) }))
-      }),
+      switchMap((displayMonth: string) =>
+        this.store.pipe(select(fromSpendBook.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) }))
+      ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
       this.transactions = transactions;

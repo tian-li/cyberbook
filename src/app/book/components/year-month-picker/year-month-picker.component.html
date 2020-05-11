@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="title">
+    <h1 mat-dialog-title>选择月份</h1>
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="formGroup">
+      <mat-form-field class="year-picker">
+        <mat-label>年</mat-label>
+        <mat-select formControlName="year">
+          <mat-option *ngFor="let year of years" [value]="year">
+            {{year}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="month-picker">
+        <mat-label>月</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of months; index as index" [value]="index">
+            {{month}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+
+  <mat-dialog-actions class="actions">
+    <button mat-raised-button (click)="cancel()">取消</button>
+    <button mat-raised-button color="primary" (click)="submit()">确定</button>
+  </mat-dialog-actions>
+
+
+</div>

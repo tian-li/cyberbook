@@ -16,7 +16,7 @@
       <div class="label">
         {{displayMonth | date:'yyyy年'}}
       </div>
-      <div class="month-group">
+      <div class="month-group" (click)="changeMonth()">
         <div class="month-number">{{displayMonth | date:'MM'}}</div>
         <div class="month">月</div>
         <mat-icon>arrow_drop_down</mat-icon>
@@ -44,3 +44,4 @@
     </div>
   </div>
 </div>
+

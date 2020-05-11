@@ -17,6 +17,7 @@ import { reducers, spendBookFeatureKey } from './store';
 import { BookEffects } from './store/book/book.effects';
 import { CategoryEffects } from './store/category/category.effects';
 import { TransactionEffects } from './store/transaction/transaction.effects';
+import { YearMonthPickerComponent } from './components/year-month-picker/year-month-picker.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { TransactionEffects } from './store/transaction/transaction.effects';
     TransactionListComponent,
     TransactionItemComponent,
     DateDividerComponent,
-    BookHeaderComponent
+    BookHeaderComponent,
+    YearMonthPickerComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,9 @@ import { TransactionEffects } from './store/transaction/transaction.effects';
     BookService,
     CategoryService,
     TransactionService
+  ],
+  entryComponents: [
+    YearMonthPickerComponent
   ]
 })
 export class BookModule {
