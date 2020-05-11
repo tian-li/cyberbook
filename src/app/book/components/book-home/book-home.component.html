@@ -1,5 +1,9 @@
-<app-book-header></app-book-header>
+<app-book-header
+  [displayMonth]="displayMonth"
+  [monthSummary]="monthSummary"
+></app-book-header>
+
 <div class="list">
   <div class="spacer"></div>
-  <app-transaction-list ></app-transaction-list>
+  <app-transaction-list [transactions]="transactions"></app-transaction-list>
 </div>

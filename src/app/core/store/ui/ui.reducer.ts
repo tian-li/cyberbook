@@ -1,11 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { YearMonth } from '../../../shared/model/year-month';
+import { ISOString } from '../../../shared/model/helper-models';
 import { setDisplayMonth } from './ui.actions';
 
 const today = new Date();
 
 export interface State {
-  displayMonth: string;
+  displayMonth: ISOString;
 }
 
 export const initialState: State = {

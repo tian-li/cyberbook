@@ -22,7 +22,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
-
 const material = [
   MatButtonModule,
   MatToolbarModule,
@@ -47,7 +46,7 @@ const material = [
 
 const components = [
   NavBarComponent
-]
+];
 
 @NgModule({
   declarations: [...components],

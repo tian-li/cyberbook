@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthEffects } from './core/store/auth/auth.effects';
 import { NotificationEffects } from './core/store/notification/notification.effects';
-import { metaReducers, ROOT_REDUCERS } from './reducers';
+import { ROOT_REDUCERS } from './reducers';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({

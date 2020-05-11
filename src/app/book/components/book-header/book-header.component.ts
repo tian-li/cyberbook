@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { setDisplayMonth } from '../../../core/store/ui/ui.actions';
-import * as fromRoot from '../../../reducers';
+import { ISOString, SpendSummary } from '../../../shared/model/helper-models';
 import { YearMonthPickerComponent } from '../year-month-picker/year-month-picker.component';
 
 @Component({
@@ -12,23 +12,17 @@ import { YearMonthPickerComponent } from '../year-month-picker/year-month-picker
   templateUrl: './book-header.component.html',
   styleUrls: ['./book-header.component.scss']
 })
-export class BookHeaderComponent implements OnInit, OnDestroy {
-  displayMonth: string;
+export class BookHeaderComponent implements OnDestroy {
+  @Input() displayMonth: ISOString;
+  @Input() monthSummary: SpendSummary;
   dialogRef: MatDialogRef<any>;
+
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store,
               private dialog: MatDialog) {
   }
 
-  ngOnInit(): void {
-    this.store.pipe(
-      select(fromRoot.selectDisplayMonth),
-      takeUntil(this.unsubscribe$)
-    ).subscribe(displayMonth => {
-      this.displayMonth = displayMonth;
-    })
-  }
 
   ngOnDestroy() {
     this.unsubscribe$.next();
@@ -43,13 +37,12 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
       data: new Date(this.displayMonth)
     });
 
-    this.dialogRef.afterClosed().subscribe(result => {
-      // console.log('result', result);
+    this.dialogRef.afterClosed().pipe(takeUntil(this.unsubscribe$))
+    .subscribe(result => {
       if (!!result) {
         const yearMonth = new Date();
         yearMonth.setFullYear(result.year, result.month);
-        // console.log('yearMonth', yearMonth)
-        this.store.dispatch(setDisplayMonth({displayMonth: yearMonth.toISOString()}));
+        this.store.dispatch(setDisplayMonth({ displayMonth: yearMonth.toISOString() }));
       }
     })
   }

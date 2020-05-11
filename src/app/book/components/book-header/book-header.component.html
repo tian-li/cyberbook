@@ -28,8 +28,8 @@
         收入
       </div>
       <div class="amount">
-        <span>1234</span>
-        <span class="decimal">.56</span>
+        <span>{{monthSummary?.income.toFixed(0)}}</span>
+        <span class="decimal">.{{monthSummary?.income.toFixed(2).slice(-2)}}</span>
       </div>
     </div>
 
@@ -38,8 +38,8 @@
         支出
       </div>
       <div class="amount">
-        <span>1234</span>
-        <span class="decimal">.56</span>
+        <span>{{monthSummary?.spend.toFixed(0)}}</span>
+        <span class="decimal">.{{monthSummary?.spend.toFixed(2).slice(-2)}}</span>
       </div>
     </div>
   </div>

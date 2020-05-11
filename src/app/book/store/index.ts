@@ -98,7 +98,8 @@ export const selectAllTransactionVOs = createSelector(
         icon: categories[transaction.categoryId].icon
       })
     )
-    .sort((a: TransactionVO, b: TransactionVO) => a.transactionDate.valueOf() - b.transactionDate.valueOf())
+    // 最新的放最前面
+    .sort((a: TransactionVO, b: TransactionVO) => b.transactionDate.valueOf() - a.transactionDate.valueOf())
   }
 );
 
