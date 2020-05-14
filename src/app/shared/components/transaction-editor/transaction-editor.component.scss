@@ -1,0 +1,39 @@
+div, form {
+  display: flex;
+}
+
+.container {
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.title {
+  justify-content: center;
+}
+
+form {
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .amount-category {
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .amount, .category {
+    width: 45%;
+  }
+}
+
+.actions {
+  justify-content: flex-end;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  button {
+    margin-left: 2rem;
+  }
+}

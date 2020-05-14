@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { notifyWithSnackBar } from '@spend-book/core/store/notification/notification.actions';
+import { transactionEditorDialogId } from '@spend-book/shared/constants';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { notifyWithSnackBar } from '../../../core/store/notification/notification.actions';
-
 import { Transaction } from '../../model/transaction';
 import { TransactionService } from '../../services/transaction.service';
 import {
@@ -36,7 +37,10 @@ export class TransactionEffects {
       ofType(addTransaction),
       mergeMap(action =>
         this.transactionService.addTransaction(action.transaction).pipe(
-          map((transaction: Transaction) => addTransactionSuccess({ transaction })),
+          map((transaction: Transaction) => {
+            this.closeTransactionEditor();
+            return addTransactionSuccess({ transaction });
+          }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '记账失败，请稍后重试' } })))
         ))
     )
@@ -47,7 +51,10 @@ export class TransactionEffects {
       ofType(updateTransaction),
       mergeMap(action =>
         this.transactionService.updateTransaction(action.transaction).pipe(
-          map((transaction: Transaction) => updateTransactionSuccess({ update: { id: transaction.id, changes: transaction } })),
+          map((transaction: Transaction) => {
+            this.closeTransactionEditor();
+            return updateTransactionSuccess({ update: { id: transaction.id, changes: transaction } });
+          }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '编辑失败，请稍后重试' } })))
         ))
     )
@@ -64,9 +71,17 @@ export class TransactionEffects {
     )
   );
 
+  closeTransactionEditor() {
+    const transactionEditor = this.matDialog.getDialogById(transactionEditorDialogId);
+    if (!!transactionEditor) {
+      transactionEditor.close();
+    }
+  }
+
   constructor(
     private actions$: Actions,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private matDialog: MatDialog
   ) {
   }
 }

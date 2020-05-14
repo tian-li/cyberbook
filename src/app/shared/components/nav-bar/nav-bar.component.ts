@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { TransactionEditorComponent } from '@spend-book/shared/components/transaction-editor/transaction-editor.component';
+import { defaultTransactionEditorDialogConfig } from '@spend-book/shared/constants';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
+  dialogRef: MatDialogRef<any>;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
+  }
+
+  addTransaction() {
+    this.dialogRef = this.dialog.open(TransactionEditorComponent, defaultTransactionEditorDialogConfig);
   }
 }

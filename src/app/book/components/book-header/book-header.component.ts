@@ -19,8 +19,7 @@ export class BookHeaderComponent implements OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject();
 
-  constructor(private store: Store,
-              private dialog: MatDialog) {
+  constructor(private store: Store, private dialog: MatDialog) {
   }
 
 
@@ -44,7 +43,7 @@ export class BookHeaderComponent implements OnDestroy {
         yearMonth.setFullYear(result.year, result.month);
         this.store.dispatch(setDisplayMonth({ displayMonth: yearMonth.toISOString() }));
       }
-    })
+    });
   }
 
 }

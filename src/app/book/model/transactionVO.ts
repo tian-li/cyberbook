@@ -5,6 +5,7 @@ export class TransactionVO {
   amount: number;
   description: string;
   categoryId: number;
+  categoryName: string;
   transactionDate: Date;
   dateCreated: Date;
   dateModified: Date;
@@ -16,6 +17,7 @@ export class TransactionVO {
     this.amount = props.amount;
     this.description = props.description;
     this.categoryId = props.categoryId;
+    this.categoryName = props.categoryName;
     this.transactionDate = new Date(props.transactionDate);
     this.dateCreated = new Date(props.dateCreated);
     this.dateModified = new Date(props.dateModified);

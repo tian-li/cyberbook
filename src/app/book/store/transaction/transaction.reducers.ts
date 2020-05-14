@@ -39,7 +39,7 @@ const reducer = createReducer(
     const updatedTransactionIdsByDate = {
       ...state.transactionIdsByDate,
       [date]: state.transactionIdsByDate[date] ? [...state.transactionIdsByDate[date], transaction.id] : [transaction.id]
-    }
+    };
     return adapter.addOne(transaction, {
       ...state,
       selectedTransactionId: transaction.id,

@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -21,7 +23,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-
+import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 const material = [
   MatButtonModule,
   MatToolbarModule,
@@ -41,11 +44,15 @@ const material = [
   MatSlideToggleModule,
   MatDividerModule,
   MatDatepickerModule,
-  MatDialogModule
+  MatNativeDateModule,
+  MatDialogModule,
+  MatAutocompleteModule,
+  MatProgressBarModule
 ];
 
 const components = [
-  NavBarComponent
+  NavBarComponent,
+  TransactionEditorComponent
 ];
 
 @NgModule({
@@ -56,6 +63,9 @@ const components = [
     ReactiveFormsModule,
     ...material,
     ...components
+  ],
+  entryComponents: [
+    TransactionEditorComponent
   ]
 })
 export class SharedModule {

@@ -1,16 +1,16 @@
-<div class="item">
+<div class="item" (click)="editTransaction()">
   <div class="icon">
-    <img src="{{transaction.icon}}" alt="">
+    <img src="{{transactionVO.icon}}" alt="">
   </div>
   <div class="details" [ngClass]="{'divide-line': !firstOfDate}">
     <div class="description">
       <span>
-        {{transaction.description}}
+        {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}
       </span>
     </div>
     <div class="amount"
-         [ngStyle]="{ 'color': transaction.amount > 0 ? 'green' : 'red' }">
-      {{transaction.amount.toFixed(2)}}
+         [ngStyle]="{ 'color': transactionVO.amount > 0 ? 'green' : 'red' }">
+      {{transactionVO.amount.toFixed(2)}}
     </div>
   </div>
 </div>

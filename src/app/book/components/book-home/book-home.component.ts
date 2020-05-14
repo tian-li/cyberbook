@@ -15,7 +15,7 @@ import { loadTransactionsByBook } from '../../store/transaction/transaction.acti
   styleUrls: ['./book-home.component.scss']
 })
 export class BookHomeComponent implements OnInit, OnDestroy {
-  transactions: TransactionVO[];
+  transactionVOs: TransactionVO[];
   displayMonth: ISOString;
   monthSummary: SpendSummary = {
     income: 0,
@@ -38,8 +38,8 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
-      this.transactions = transactions;
-      this.transactions.forEach((transaction) => {
+      this.transactionVOs = transactions;
+      this.transactionVOs.forEach((transaction) => {
         if (transaction.amount > 0) {
           this.monthSummary.income += transaction.amount
         } else {

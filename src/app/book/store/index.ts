@@ -60,7 +60,7 @@ export const {
   selectTotal: selectCategoryTotal,
 } = fromCategory.adapter.getSelectors(selectCategoryEntitiesState);
 
-// transaction
+// transactionVO
 export const selectTransactionEntitiesState = createSelector(
   selectSpendBookState,
   state => state.transaction
@@ -94,12 +94,16 @@ export const selectAllTransactionVOs = createSelector(
     .map((transaction: Transaction) =>
       new TransactionVO({
         ...transaction,
-        description: transaction.description ? transaction.description : categories[transaction.categoryId].name,
+        categoryName: categories[transaction.categoryId].name,
+        description: transaction.description,
         icon: categories[transaction.categoryId].icon
       })
     )
-    // 最新的放最前面
-    .sort((a: TransactionVO, b: TransactionVO) => b.transactionDate.valueOf() - a.transactionDate.valueOf())
+    // 先按 transactionDate，再按 dateModified，较新的放前面
+    .sort((a: TransactionVO, b: TransactionVO) =>
+      b.transactionDate.valueOf() - a.transactionDate.valueOf() ||
+      b.dateModified.valueOf() - a.dateModified.valueOf()
+    )
   }
 );
 
@@ -133,4 +137,4 @@ export const getTransactionIdsByDate = createSelector(
     })
     return summary;
   }
-)
+);

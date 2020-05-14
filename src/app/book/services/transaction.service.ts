@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { Transaction } from '../model/transaction';
@@ -22,6 +21,14 @@ export class TransactionService {
   }
 
   addTransaction(transaction: Partial<Transaction>): Observable<Transaction> {
+    // TODO: remove after server can do this
+    transaction = {
+      ...transaction,
+      dateCreated: transaction.transactionDate,
+      dateModified: transaction.transactionDate,
+      bookId: 1
+    }
+
     return <Observable<Transaction>>this.http.post(`${this.transactionRoute}`, transaction)
     // .pipe(
     //   map(this.convertDate)

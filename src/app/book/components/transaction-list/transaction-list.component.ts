@@ -7,13 +7,13 @@ import { TransactionVO } from '../../model/transactionVO';
   styleUrls: ['./transaction-list.component.scss']
 })
 export class TransactionListComponent {
-  @Input() transactions: TransactionVO[];
+  @Input() transactionVOs: TransactionVO[];
 
   constructor() {
   }
 
   isFirstOfDate(transaction: TransactionVO, index: number): boolean {
-    return index > 0 && index < this.transactions.length - 1 &&
-      transaction.transactionDate.getDate() !== this.transactions[index - 1].transactionDate.getDate();
+    return index > 0 && index < this.transactionVOs.length - 1 &&
+      transaction.transactionDate.getDate() !== this.transactionVOs[index - 1].transactionDate.getDate();
   }
 }

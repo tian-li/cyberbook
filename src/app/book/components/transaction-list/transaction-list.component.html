@@ -1,15 +1,15 @@
 <div class="list-container"
-     *ngFor="let transaction of transactions;
+     *ngFor="let transactionVO of transactionVOs;
      index as i; first as first">
 
   <app-date-divider
-    *ngIf="first || isFirstOfDate(transaction, i)"
-    [date]="transaction.transactionDate"
+    *ngIf="first || isFirstOfDate(transactionVO, i)"
+    [date]="transactionVO.transactionDate"
   ></app-date-divider>
 
   <app-transaction-item
-    [firstOfDate]="first || isFirstOfDate(transaction, i)"
-    [transaction]="transaction"
+    [firstOfDate]="first || isFirstOfDate(transactionVO, i)"
+    [transactionVO]="transactionVO"
   ></app-transaction-item>
 
 </div>

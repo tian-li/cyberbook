@@ -1,10 +1,14 @@
+import { ISOString } from '@spend-book/shared/model/helper-models';
+
 export interface Transaction {
   id: number;
   bookId: number;
   amount: number;
   description: string;
   categoryId: number;
-  transactionDate: string;
-  dateCreated: string;
-  dateModified: string;
+  transactionDate: ISOString;
+  dateCreated: ISOString;
+  dateModified: ISOString;
 }
+
+export const transactionDescriptionMaxLength: number = 10;

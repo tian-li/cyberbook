@@ -190,14 +190,13 @@
       "transactionDate": "2020-04-23T03:25:59Z"
     },
     {
+      "amount": -80070.71,
+      "description": "从4月到5月",
+      "categoryId": 8,
+      "transactionDate": "2020-05-30T04:00:00.000Z",
       "id": 12,
       "bookId": 1,
-      "amount": -80070.71,
-      "description": "a feugiat et eros vestibulum ac est",
-      "categoryId": 8,
-      "dateCreated": "2020-04-30T17:15:24Z",
-      "dateModified": "2020-04-30T17:15:24Z",
-      "transactionDate": "2020-04-30T17:15:24Z"
+      "dateModified": "2020-05-13T04:00:00.000Z"
     },
     {
       "id": 13,
@@ -842,7 +841,7 @@
     {
       "id": 77,
       "bookId": 1,
-      "amount": -67569.0,
+      "amount": -67569,
       "description": null,
       "categoryId": 8,
       "dateCreated": "2020-05-18T02:04:53Z",
@@ -1078,6 +1077,85 @@
       "dateCreated": "2020-04-12T20:56:09Z",
       "dateModified": "2020-04-12T20:56:09Z",
       "transactionDate": "2020-04-12T20:56:09Z"
+    },
+    {
+      "amount": 123,
+      "description": "哈哈哈",
+      "categoryId": 1,
+      "transactionDate": "2020-05-13T20:36:33.828Z",
+      "dateCreated": "2020-05-13T20:36:33.828Z",
+      "dateModified": "2020-05-13T20:36:33.828Z",
+      "bookId": 1,
+      "id": 101
+    },
+    {
+      "amount": 1,
+      "description": "测试更新",
+      "categoryId": 2,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-14T00:24:39.345Z",
+      "id": 102,
+      "bookId": 1,
+      "dateCreated": "2020-05-13T04:00:00.000Z"
+    },
+    {
+      "amount": 45,
+      "description": "更新",
+      "categoryId": 3,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-14T00:22:43.756Z",
+      "id": 103,
+      "bookId": 1,
+      "dateCreated": "2020-05-13T04:00:00.000Z"
+    },
+    {
+      "amount": 12,
+      "description": "上去",
+      "categoryId": 3,
+      "transactionDate": "2020-05-30T04:00:00.000Z",
+      "dateModified": "2020-05-14T00:25:10.960Z",
+      "id": 104,
+      "bookId": 1,
+      "dateCreated": "2020-05-13T04:00:00.000Z"
+    },
+    {
+      "amount": 123,
+      "description": "是",
+      "categoryId": 4,
+      "transactionDate": "2020-05-30T04:00:00.000Z",
+      "dateModified": "2020-05-14T00:25:01.295Z",
+      "id": 105,
+      "bookId": 1,
+      "dateCreated": "2020-05-30T04:00:00.000Z"
+    },
+    {
+      "amount": 123,
+      "description": null,
+      "categoryId": 2,
+      "transactionDate": "2020-05-13T04:00:00.000Z",
+      "dateCreated": "2020-05-13T04:00:00.000Z",
+      "dateModified": "2020-05-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 106
+    },
+    {
+      "amount": 123,
+      "description": null,
+      "categoryId": 2,
+      "transactionDate": "2020-05-13T04:00:00.000Z",
+      "dateCreated": "2020-05-13T04:00:00.000Z",
+      "dateModified": "2020-05-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 107
+    },
+    {
+      "amount": 34,
+      "description": "亚马逊d",
+      "categoryId": 4,
+      "transactionDate": "2020-05-29T04:00:00.000Z",
+      "id": 108,
+      "bookId": 1,
+      "dateModified": "2020-05-13T04:00:00.000Z"
     }
   ]
 }

@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div class="title">
+    <h1 mat-dialog-title>添加记账</h1>
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="formGroup">
+
+      <div class="amount-category">
+        <mat-form-field class="amount">
+          <mat-label>金额</mat-label>
+          <input matInput formControlName="amount" placeholder="金额" type="number" step="0.01">
+          <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="category">
+          <mat-label>类别</mat-label>
+          <mat-select formControlName="categoryId">
+            <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
+              <img aria-hidden="true" [src]="category.icon" height="25" alt="icon">
+              <span>{{category.name}}</span>
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formGroup.controls['categoryId'].hasError('required')">必填</mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput readonly [min]="minDate" [max]="maxDate" formControlName="transactionDate"
+               [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>备注</mat-label>
+        <input matInput formControlName="description" placeholder="备注" [maxlength]="transactionDescriptionMaxLength">
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="actions">
+    <button mat-raised-button (click)="cancel()" [disabled]="loading">取消</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="formGroup.pristine || formGroup.invalid || loading"
+    >
+      确定
+    </button>
+  </mat-dialog-actions>
+</div>
