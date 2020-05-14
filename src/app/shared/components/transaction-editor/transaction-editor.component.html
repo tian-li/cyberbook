@@ -1,20 +1,19 @@
 <div class="container">
 
   <div class="title">
-    <h1 mat-dialog-title>添加记账</h1>
+    <h1 mat-dialog-title>
+      {{title}}
+    </h1>
   </div>
 
   <mat-dialog-content>
     <form [formGroup]="formGroup">
-
       <div class="amount-category">
         <mat-form-field class="amount">
           <mat-label>金额</mat-label>
           <input matInput formControlName="amount" placeholder="金额" type="number" step="0.01">
           <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
         </mat-form-field>
-
-
         <mat-form-field class="category">
           <mat-label>类别</mat-label>
           <mat-select formControlName="categoryId">

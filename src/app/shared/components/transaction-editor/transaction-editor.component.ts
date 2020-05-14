@@ -23,6 +23,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
 
   loading: boolean;
+  title: string;
   formGroup: FormGroup;
   categories$: Observable<Category[]>;
 
@@ -37,8 +38,9 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.buildForm();
     this.categories$ = this.store.pipe(select(selectAllCategories), takeUntil(this.unsubscribe$))
+    this.title = this.data.editMode ? '编辑账目' : '添加账目';
+    this.buildForm();
   }
 
   ngOnDestroy() {
