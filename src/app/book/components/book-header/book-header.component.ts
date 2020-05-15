@@ -3,8 +3,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { setDisplayMonth } from '../../../core/store/ui/ui.actions';
-import { ISOString, SpendSummary } from '../../../shared/model/helper-models';
+import { setDisplayMonth } from '@spend-book/core/store/ui/ui.actions';
+import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
 import { YearMonthPickerComponent } from '../year-month-picker/year-month-picker.component';
 
 @Component({

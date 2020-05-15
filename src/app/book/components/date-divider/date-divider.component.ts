@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import * as fromSpendBook from '../../store';
+import * as fromSpendBook from '@spend-book/book/store';
 
 @Component({
   selector: 'app-date-divider',

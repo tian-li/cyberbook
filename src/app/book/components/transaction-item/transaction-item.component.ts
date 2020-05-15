@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TransactionEditorComponent } from '@spend-book/shared/components/transaction-editor/transaction-editor.component';
 import { defaultTransactionEditorDialogConfig } from '@spend-book/shared/constants';
-import { TransactionVO } from '../../model/transactionVO';
+import { TransactionVO } from '@spend-book/book/model/transactionVO';
 
 @Component({
   selector: 'app-transaction-item',

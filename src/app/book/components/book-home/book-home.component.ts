@@ -2,12 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import * as fromRoot from '../../../reducers';
-import { ISOString, SpendSummary } from '../../../shared/model/helper-models';
-import { TransactionVO } from '../../model/transactionVO';
-import * as fromSpendBook from '../../store';
-import { loadCategoriesByBook } from '../../store/category/category.actions';
-import { loadTransactionsByBook } from '../../store/transaction/transaction.actions';
+import * as fromRoot from '@spend-book/reducers';
+import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { TransactionVO } from '@spend-book/book/model/transactionVO';
+import * as fromSpendBook from '@spend-book/book/store';
+import { loadCategoriesByBook } from '@spend-book/book/store/category/category.actions';
+import { loadTransactionsByBook } from '@spend-book/book/store/transaction/transaction.actions';
 
 @Component({
   selector: 'app-book-home',

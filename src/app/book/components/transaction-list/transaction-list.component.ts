@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TransactionVO } from '../../model/transactionVO';
+import { TransactionVO } from '@spend-book/book/model/transactionVO';
 
 @Component({
   selector: 'app-transaction-list',
