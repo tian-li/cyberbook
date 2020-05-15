@@ -1,8 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
+import { fromTransaction } from '@spend-book/core/store'
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import * as fromSpendBook from '@spend-book/book/store';
 
 @Component({
   selector: 'app-date-divider',
@@ -20,7 +21,7 @@ export class DateDividerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.pipe(
-      select(fromSpendBook.getTransactionIdsByDate, { date: this.date.toISOString().substring(0, 10) }),
+      select(fromTransaction.getTransactionIdsByDate, { date: this.date.toISOString().substring(0, 10) }),
       takeUntil(this.unsubscribe$)
     ).subscribe(daySummary => this.daySummary = daySummary);
   }

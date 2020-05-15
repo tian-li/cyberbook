@@ -1,13 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { TransactionVO } from '@spend-book/core/model/transactionVO';
+import { fromTransaction, fromUI } from '@spend-book/core/store';
+import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import * as fromRoot from '@spend-book/reducers';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
-import { TransactionVO } from '@spend-book/book/model/transactionVO';
-import * as fromSpendBook from '@spend-book/book/store';
-import { loadCategoriesByBook } from '@spend-book/book/store/category/category.actions';
-import { loadTransactionsByBook } from '@spend-book/book/store/transaction/transaction.actions';
 
 @Component({
   selector: 'app-book-home',
@@ -27,14 +24,11 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.dispatch(loadTransactionsByBook({ bookId: 1 }));
-    this.store.dispatch(loadCategoriesByBook({ bookId: 1 }));
-
     this.store.pipe(
-      select(fromRoot.selectDisplayMonth),
+      select(fromUI.selectDisplayMonth),
       tap(displayMonth => this.displayMonth = displayMonth),
       switchMap((displayMonth: ISOString) =>
-        this.store.pipe(select(fromSpendBook.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) }))
+        this.store.pipe(select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) }))
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {

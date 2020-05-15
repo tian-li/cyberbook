@@ -4,6 +4,8 @@ import { setDisplayMonth } from './ui.actions';
 
 const today = new Date();
 
+export const uiFeatureKey = 'ui';
+
 export interface State {
   displayMonth: ISOString;
 }
@@ -24,4 +26,4 @@ export function uiReducer(
   return reducer(state, action);
 }
 
-export const selectDisplayMonth = (state: State) => state.displayMonth;
+// export const selectDisplayMonth = (state: State) => state.displayMonth;

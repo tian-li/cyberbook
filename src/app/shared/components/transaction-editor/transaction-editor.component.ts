@@ -2,10 +2,10 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { Category } from '@spend-book/book/model/category';
-import { Transaction, transactionDescriptionMaxLength } from '@spend-book/book/model/transaction';
-import { selectAllCategories } from '@spend-book/book/store';
-import { addTransaction, updateTransaction } from '@spend-book/book/store/transaction/transaction.actions';
+import { Category } from '@spend-book/core/model/category';
+import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
+import { fromCategory } from '@spend-book/core/store';
+import { addTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { years } from '../../constants';
@@ -38,7 +38,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.store.pipe(select(selectAllCategories), takeUntil(this.unsubscribe$))
+    this.categories$ = this.store.pipe(select(fromCategory.selectAllCategories), takeUntil(this.unsubscribe$))
     this.title = this.data.editMode ? '编辑账目' : '添加账目';
     this.buildForm();
   }
@@ -97,7 +97,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   private buildForm() {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
-      amount: new FormControl(initialFormData.amount, [Validators.required,Validators.pattern(/^(-?)\d*(\.\d{0,2})?$/)]),
+      amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^(-?)\d*(\.\d{0,2})?$/)]),
       description: new FormControl(initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)),
       categoryId: new FormControl(initialFormData.categoryId, Validators.required),
       transactionDate: new FormControl(initialFormData.transactionDate),

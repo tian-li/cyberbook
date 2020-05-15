@@ -1,6 +1,8 @@
 import { authLogin, authLogout } from './auth.actions';
 import { createReducer, on, Action } from '@ngrx/store';
 
+export const authFeatureKey = 'auth';
+
 export interface State {
   isAuthenticated: boolean;
 }
@@ -22,4 +24,4 @@ export function authReducer(
   return reducer(state, action);
 }
 
-export const selectIsAuthenticated = (state: State) => state.isAuthenticated;
+// export const getIsAuthenticated = (state: State) => state.isAuthenticated;

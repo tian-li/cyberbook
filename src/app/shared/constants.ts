@@ -1,5 +1,5 @@
 import { MatDialogConfig } from '@angular/material/dialog/dialog-config';
-import { Transaction } from '@spend-book/book/model/transaction';
+import { Transaction } from '@spend-book/core/model/transaction';
 
 export const years: number[] = (() => {
   const today = new Date();

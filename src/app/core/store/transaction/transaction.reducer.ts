@@ -82,5 +82,5 @@ export function transactionReducer(
   return reducer(state, action);
 }
 
-export const getSelectedTransactionId = (state: State) => state.selectedTransactionId;
-export const getTransactionIdsByDate = (state: State) => state.transactionIdsByDate;
+// export const getSelectedTransactionId = (state: State) => state.selectedTransactionId;
+// export const getTransactionIdsByDate = (state: State) => state.transactionIdsByDate;

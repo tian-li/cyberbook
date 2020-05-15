@@ -1,14 +1,26 @@
-import { createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { RootState } from '@spend-book/core/store';
+import * as fromAuth from './auth.reducer';
 
-import { selectAuthState } from '../index';
-import { AuthState } from './auth.reducer';
+// const selectAuth = createSelector(
+//   selectAuthState,
+//   (state: AuthState) => state
+// );
+//
+// const selectIsAuthenticated = createSelector(
+//   selectAuthState,
+//   (state: AuthState) => state.isAuthenticated
+// );
+//
 
-export const selectAuth = createSelector(
-  selectAuthState,
-  (state: AuthState) => state
+/**
+ * Auth Reducers
+ */
+export const selectAuthState = createFeatureSelector<RootState, fromAuth.State>(
+  fromAuth.authFeatureKey
 );
 
 export const selectIsAuthenticated = createSelector(
   selectAuthState,
-  (state: AuthState) => state.isAuthenticated
+  (state: fromAuth.State) => state.isAuthenticated
 );
