@@ -13,15 +13,18 @@ div {
 }
 
 .income {
-  span {
+  align-items: baseline;
+
+  .income-number {
     color: green;
   }
 }
 
 .spend {
   margin-left: 10px;
+  align-items: baseline;
 
-  span {
+  .spend-number {
     color: red;
   }
 }

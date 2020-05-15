@@ -2,7 +2,7 @@
   <div class="icon">
     <img src="{{transactionVO.icon}}" alt="">
   </div>
-  <div class="details" [ngClass]="{'divide-line': !firstOfDate}">
+  <div matRipple class="details" [ngClass]="{'divide-line': !firstOfDate}">
     <div class="description">
       <span>
         {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}

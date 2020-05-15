@@ -7,19 +7,21 @@
   </div>
 
   <mat-dialog-content>
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" autocomplete="off">
       <div class="amount-category">
         <mat-form-field class="amount">
           <mat-label>金额</mat-label>
-          <input matInput formControlName="amount" placeholder="金额" type="number" step="0.01">
+          <input matInput formControlName="amount" placeholder="0.00" type="number" step="0.01">
           <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
+          <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">格式错误: 0.00</mat-error>
         </mat-form-field>
         <mat-form-field class="category">
           <mat-label>类别</mat-label>
           <mat-select formControlName="categoryId">
             <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
-              <img aria-hidden="true" [src]="category.icon" height="25" alt="icon">
-              <span>{{category.name}}</span>
+                <!-- TODO: Style category options after category icon is done -->
+                <img aria-hidden="true" [src]="category.icon" height="25" alt="icon">
+                <span>{{category.name}}</span>
             </mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.controls['categoryId'].hasError('required')">必填</mat-error>
@@ -48,8 +50,8 @@
       mat-raised-button
       color="primary"
       (click)="submit()"
-      [disabled]="formGroup.pristine || formGroup.invalid || loading"
     >
+<!--      [disabled]="formGroup.pristine || formGroup.invalid || loading"-->
       确定
     </button>
   </mat-dialog-actions>

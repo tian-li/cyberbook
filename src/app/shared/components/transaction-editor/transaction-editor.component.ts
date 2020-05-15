@@ -53,6 +53,8 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   submit() {
+    console.log('form', this.formGroup.controls['amount']);
+
     this.loading = true;
 
     const action = this.data.editMode ?
@@ -63,9 +65,9 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   private get editedTransaction(): Partial<Transaction> {
-    let formValue = this.formGroup.value;
+    const formValue = this.formGroup.value;
     let transaction: Partial<Transaction> = {
-      amount: formValue.amount,
+      amount: Number.parseInt(formValue.amount.toFixed(2), 10),
       description: formValue.description,
       categoryId: formValue.categoryId,
       transactionDate: typeof formValue.transactionDate === 'string' ?
@@ -95,7 +97,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   private buildForm() {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
-      amount: new FormControl(initialFormData.amount, Validators.required),
+      amount: new FormControl(initialFormData.amount, [Validators.required,Validators.pattern(/^(-?)\d*(\.\d{0,2})?$/)]),
       description: new FormControl(initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)),
       categoryId: new FormControl(initialFormData.categoryId, Validators.required),
       transactionDate: new FormControl(initialFormData.transactionDate),
