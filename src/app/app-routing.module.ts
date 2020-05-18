@@ -18,6 +18,11 @@ const routes: Routes = [
       import('./book/book.module').then(m => m.BookModule)
   },
   {
+    path: 'graph',
+    loadChildren: () =>
+      import('./graph/graph.module').then(m => m.GraphModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -27,7 +32,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
-      preloadingStrategy: PreloadAllModules
+      // preloadingStrategy: PreloadAllModules
     })
   ],
   exports: [RouterModule]

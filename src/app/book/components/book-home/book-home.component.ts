@@ -14,10 +14,7 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
 export class BookHomeComponent implements OnInit, OnDestroy {
   transactionVOs: TransactionVO[];
   displayMonth: ISOString;
-  monthSummary: SpendSummary = {
-    income: 0,
-    spend: 0
-  };
+
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store) {
@@ -33,13 +30,6 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
       this.transactionVOs = transactions;
-      this.transactionVOs.forEach((transaction) => {
-        if (transaction.amount > 0) {
-          this.monthSummary.income += transaction.amount
-        } else {
-          this.monthSummary.spend -= transaction.amount
-        }
-      });
     });
   }
 

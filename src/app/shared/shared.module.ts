@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
@@ -23,6 +24,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from '@spend-book/shared/components/header/header.component';
+import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 
@@ -49,17 +53,21 @@ const material = [
   MatDialogModule,
   MatAutocompleteModule,
   MatProgressBarModule,
-  MatRippleModule
+  MatRippleModule,
+  MatButtonToggleModule
 ];
 
 const components = [
   NavBarComponent,
-  TransactionEditorComponent
+  TransactionEditorComponent,
+  HeaderComponent,
+  YearMonthPickerComponent
 ];
+
 
 @NgModule({
   declarations: [...components],
-  imports: [CommonModule, ReactiveFormsModule, ...material],
+  imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
   exports: [
     CommonModule,
     ReactiveFormsModule,
@@ -67,7 +75,8 @@ const components = [
     ...components
   ],
   entryComponents: [
-    TransactionEditorComponent
+    TransactionEditorComponent,
+    YearMonthPickerComponent
   ]
 })
 export class SharedModule {

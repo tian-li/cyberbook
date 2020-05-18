@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="title">
+    {{displayMonth|date:'MM'}} 月分类饼形图
+  </div>
+  <div class="income-spend-switcher">
+
+    <mat-button-toggle-group [(ngModel)]="transactionType" (ngModelChange)="changeTransactionType($event)" name="transactionType">
+      <mat-button-toggle value="spend">花费</mat-button-toggle>
+      <mat-button-toggle value="income">收入</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    {{transactionType}}
+
+  </div>
+  <div class="chart">
+    <div class="charts-container">
+      <canvas #myChart width="400" height="400"></canvas>
+    </div>
+  </div>
+
+  <div class="transactions-list">
+
+  </div>
+</div>
+
+

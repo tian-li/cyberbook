@@ -1,22 +1,21 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { fromTransaction } from '@spend-book/core/store';
-import { setDisplayMonth } from '@spend-book/core/store/ui/ui.actions';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { fromUI } from '@spend-book/core/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { YearMonthPickerComponent } from '../../../shared/components/year-month-picker/year-month-picker.component';
+import { setDisplayMonth } from '@spend-book/core/store/ui/ui.actions';
+import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { YearMonthPickerComponent } from '../year-month-picker/year-month-picker.component';
 
 @Component({
-  selector: 'app-book-header',
-  templateUrl: './book-header.component.html',
-  styleUrls: ['./book-header.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class BookHeaderComponent implements OnInit, OnDestroy {
-  @Input() displayMonth: ISOString;
-
-  monthSummary: SpendSummary;
+export class HeaderComponent implements OnInit,  OnDestroy {
+  displayMonth: ISOString;
+  @Input() monthSummary: SpendSummary;
   dialogRef: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -25,13 +24,9 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.pipe(
-      select(fromTransaction.getTransactionSummaryByMonth, { displayMonth: new Date(this.displayMonth) }),
-      takeUntil(this.unsubscribe$)
-    ).subscribe(monthSummary => {
-      this.monthSummary = monthSummary;
-    });
+    this.store.pipe(select(fromUI.selectDisplayMonth)).subscribe(displayMonth => this.displayMonth = displayMonth);
   }
+
 
   ngOnDestroy() {
     this.unsubscribe$.next();

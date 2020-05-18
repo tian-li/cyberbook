@@ -7,7 +7,6 @@ import { BookHomeComponent } from './components/book-home/book-home.component';
 import { DateDividerComponent } from './components/date-divider/date-divider.component';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
-import { YearMonthPickerComponent } from './components/year-month-picker/year-month-picker.component';
 
 @NgModule({
   declarations: [
@@ -16,17 +15,12 @@ import { YearMonthPickerComponent } from './components/year-month-picker/year-mo
     TransactionItemComponent,
     DateDividerComponent,
     BookHeaderComponent,
-    YearMonthPickerComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     BookRoutingModule,
   ],
-
-  entryComponents: [
-    YearMonthPickerComponent,
-  ]
 })
 export class BookModule {
 }

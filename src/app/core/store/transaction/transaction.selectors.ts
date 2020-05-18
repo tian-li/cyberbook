@@ -3,23 +3,16 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { Transaction } from '@spend-book/core/model/transaction';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
-import * as fromTransaction from '@spend-book/core/store/transaction/transaction.reducer';
 import { RootState } from '@spend-book/core/store';
+import * as fromTransaction from '@spend-book/core/store/transaction/transaction.reducer';
+import { SpendSummary } from '@spend-book/shared/model/helper-models';
 import { selectCategoryEntities } from '../category';
 
-
- const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;
- // const getTransactionIdsByDate = (state: fromTransaction.State) => state.transactionIdsByDate;
-
+const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;
 
 export const selectTransactionState = createFeatureSelector<RootState, fromTransaction.State>(
   fromTransaction.transactionFeatureKey
 );
-
-//  const selectTransactionEntitiesState = createSelector(
-//   selectSpendBookState,
-//   state => state.transaction
-// );
 
 export const selectSelectedTransactionId = createSelector(
   selectTransactionState,
@@ -28,7 +21,6 @@ export const selectSelectedTransactionId = createSelector(
 
 export const selectTransactionIdsByDate = createSelector(
   selectTransactionState,
-  // getTransactionIdsByDate,
   (state: fromTransaction.State) => state.transactionIdsByDate
 )
 
@@ -74,7 +66,7 @@ export const selectAllTransactionVOsByYearMonth = createSelector(
   }
 );
 
-export const getTransactionIdsByDate = createSelector(
+export const getTransactionSummaryByDate = createSelector(
   selectTransactionEntities,
   selectTransactionIdsByDate,
   (transactionEntities: Dictionary<Transaction>, transactionIdsByDate, props: { date: string }) => {
@@ -93,3 +85,25 @@ export const getTransactionIdsByDate = createSelector(
     return summary;
   }
 );
+
+
+export const getTransactionSummaryByMonth = createSelector(
+  selectAllTransactionVOsByYearMonth,
+  (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
+    console.log('transactionVOs', transactionVOs);
+    console.log('props', props);
+    const monthSummary: SpendSummary = {
+      income: 0,
+      spend: 0
+    };
+
+    transactionVOs.forEach((transaction) => {
+      if (transaction.amount > 0) {
+        monthSummary.income += transaction.amount
+      } else {
+        monthSummary.spend -= transaction.amount
+      }
+    });
+    return monthSummary;
+  }
+)
