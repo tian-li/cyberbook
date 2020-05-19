@@ -1,25 +1,47 @@
 <div class="container">
   <div class="title">
-    {{displayMonth|date:'MM'}} 月分类饼形图
+    {{displayMonth|date:'MM月yyyy年'}}
   </div>
+
   <div class="income-spend-switcher">
-
-    <mat-button-toggle-group [(ngModel)]="transactionType" (ngModelChange)="changeTransactionType($event)" name="transactionType">
-      <mat-button-toggle value="spend">花费</mat-button-toggle>
-      <mat-button-toggle value="income">收入</mat-button-toggle>
-    </mat-button-toggle-group>
-
-    {{transactionType}}
+    <div class="spend"
+         (click)="changeTransactionType(TransactionType.spend)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.spend }">
+      <div class="label">花费</div>
+    </div>
+    <div class="income"
+         (click)="changeTransactionType(TransactionType.income)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.income }">
+      <div class="label">收入</div>
+    </div>
 
   </div>
+
   <div class="chart">
-    <div class="charts-container">
-      <canvas #myChart width="400" height="400"></canvas>
+    <div class="charts-container" style="position: relative; height:60vh; width:90vw">
+      <canvas class="chart" #myChart ></canvas>
     </div>
   </div>
 
   <div class="transactions-list">
-
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        {{node.name}}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'toggle ' + node.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{node.name}}
+      </mat-tree-node>
+    </mat-tree>
   </div>
 </div>
 

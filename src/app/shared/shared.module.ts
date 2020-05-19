@@ -24,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '@spend-book/shared/components/header/header.component';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
@@ -54,7 +55,8 @@ const material = [
   MatAutocompleteModule,
   MatProgressBarModule,
   MatRippleModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatTreeModule
 ];
 
 const components = [

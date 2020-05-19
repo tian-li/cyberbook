@@ -2,10 +2,12 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
+import { TransactionType } from '@spend-book/shared/constants';
 import { ISOString } from '@spend-book/shared/model/helper-models';
-import { Chart } from 'chart.js'
+import { Chart, ChartData } from 'chart.js'
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-graph-chart-pie',
@@ -13,12 +15,18 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
   styleUrls: ['./graph-chart-pie.component.scss']
 })
 export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy {
+  readonly TransactionType = TransactionType;
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
-  // @ViewChild('transactionType', { static: false }) transactionType: ElementRef;
-
   transactionVOs: TransactionVO[];
   displayMonth: ISOString;
-  transactionType = 'spend';
+  selectedTransactionType = this.TransactionType.spend;
+  pieChartData: ChartData = {
+    datasets: [],
+    labels: []
+  }
+  pieChart: Chart;
+  spendTransactionVOs: TransactionVO[];
+  incomeTransactionVOs: TransactionVO[];
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -34,66 +42,93 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
-      console.log('subs', transactions)
       this.transactionVOs = transactions;
+
+      this.spendTransactionVOs = this.transactionVOs.filter(t => t.amount < 0);
+      this.incomeTransactionVOs = this.transactionVOs.filter(t => t.amount > 0);
+
+      this.updateChart(this.createChartData(TransactionType.spend));
     });
   }
 
-  changeTransactionType(event) {
-    console.log('event', event);
-    this.drawChart(event === 'spend');
+  ngAfterViewInit() {
+    this.pieChartData = this.createChartData(TransactionType.spend);
+    this.drawChart();
   }
 
-  createChartData(spend: boolean): {
-    amount: number[],
-    label: string[]
-  } {
-    const amountByCategory = {};
-    const chartData: {
-      amount: number[],
-      label: string[]
-    } = { amount: [], label: [] }
+  changeTransactionType(type: TransactionType) {
+    this.selectedTransactionType = type;
 
-    this.transactionVOs.filter(t => spend ? t.amount < 0 : t.amount > 0).forEach(transactionVO => {
+    this.updateChart(this.createChartData(type))
+  }
+
+  createChartData(transactionType: TransactionType): ChartData {
+    const amountByCategory: { [categoryName: string]: number } = {};
+    const amount: number[] = [];
+    const labels: string[] = [];
+    const transactionVOs = transactionType === TransactionType.spend ? this.spendTransactionVOs : this.incomeTransactionVOs;
+
+    transactionVOs.forEach(transactionVO => {
       amountByCategory[transactionVO.categoryName] ?
         amountByCategory[transactionVO.categoryName] += transactionVO.amount :
         amountByCategory[transactionVO.categoryName] = transactionVO.amount;
     });
 
-    Object.keys(amountByCategory).forEach(category => {
-      chartData.amount.push(amountByCategory[category]);
-      chartData.label.push(category);
+    Object.keys(amountByCategory)
+    .map(categoryName => ({
+      amount: Math.abs(Number.parseFloat(amountByCategory[categoryName].toFixed(2))),
+      label: categoryName
+    }))
+    .sort((a, b) => b.amount - a.amount)
+    .forEach((d) => {
+      amount.push(d.amount);
+      labels.push(d.label);
     });
-    return chartData;
+
+    return {
+      datasets: [{
+        data: amount,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(153, 102, 255, 0.6)',
+          'rgba(255, 159, 64, 0.6)',
+          'rgba(99, 255, 64, 0.6)',
+          'rgba(223,195,110,0.6)'
+        ],
+      }],
+      labels: labels
+    };
   }
 
-  drawChart(spend: boolean) {
-    const chartData = this.createChartData(spend);
-    console.log('chartData', chartData);
-    const ctx = this.myChart.nativeElement.getContext('2d');
-    const data2 = {
-      datasets: [{
-        data: chartData.amount
-      }],
-      labels: chartData.label
-    };
+  updateChart(chartData: ChartData) {
+    this.pieChart.data.labels = [...chartData.labels];
+    this.pieChart.data.datasets.forEach((dataset) => {
+      dataset.data = chartData.datasets[0].data
+    });
+    this.pieChart.update();
+  }
 
-    // console.log('daata', this.chartData)
-    new Chart(ctx, {
+  drawChart() {
+    const ctx = this.myChart.nativeElement.getContext('2d');
+
+    this.pieChart = new Chart(ctx, {
       type: 'pie',
-      data: data2,
-      // options: options
+      data: this.pieChartData,
       options: {
-        responsive: false,
-        display: true
+        responsive: true,
+        aspectRatio: 1,
+        legend: {
+          display: true,
+          position: 'right',
+        }
       }
     },);
+
   }
 
-
-  ngAfterViewInit() {
-    this.drawChart(true);
-  }
 
   ngOnDestroy() {
     this.unsubscribe$.next();

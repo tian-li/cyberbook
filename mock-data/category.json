@@ -13,13 +13,13 @@
   },
   {
     "id": 3,
-    "name": "汽车",
+    "name": "交通",
     "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
     "parentId": null
   },
   {
     "id": 4,
-    "name": "买菜",
+    "name": "娱乐",
     "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
     "parentId": null
   },
@@ -43,13 +43,13 @@
   },
   {
     "id": 8,
-    "name": "金融",
+    "name": "其他",
     "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
     "parentId": null
   },
   {
     "id": 9,
-    "name": "订阅",
+    "name": "投资",
     "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
     "parentId": null
   },

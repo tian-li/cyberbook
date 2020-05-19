@@ -4,16 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { GraphHeaderComponent } from '@spend-book/graph/components/graph-header/graph-header.component';
 import { GraphRoutingModule } from '@spend-book/graph/graph-routing.module';
 import { SharedModule } from '@spend-book/shared/shared.module';
-import { GraphHomeComponent } from './components/graph-home/graph-home.component';
-import { GraphChartsComponent } from './components/graph-charts/graph-charts.component';
+import { GraphChartLineComponent } from './components/graph-chart-line/graph-chart-line.component';
 import { GraphChartPieComponent } from './components/graph-chart-pie/graph-chart-pie.component';
+import { GraphHomeComponent } from './components/graph-home/graph-home.component';
 
 
 @NgModule({
   declarations: [
     GraphHomeComponent,
     GraphHeaderComponent,
-    GraphChartsComponent,
+    GraphChartLineComponent,
     GraphChartPieComponent
   ],
   imports: [

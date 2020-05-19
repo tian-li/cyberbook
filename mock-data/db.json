@@ -31,13 +31,13 @@
     },
     {
       "id": 3,
-      "name": "汽车",
+      "name": "交通",
       "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
       "parentId": null
     },
     {
       "id": 4,
-      "name": "买菜",
+      "name": "娱乐",
       "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
       "parentId": null
     },
@@ -61,13 +61,13 @@
     },
     {
       "id": 8,
-      "name": "金融",
+      "name": "其他",
       "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
       "parentId": null
     },
     {
       "id": 9,
-      "name": "订阅",
+      "name": "投资",
       "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
       "parentId": null
     },
@@ -82,7 +82,7 @@
     {
       "id": 1,
       "bookId": 1,
-      "amount": 92276.99,
+      "amount": -92276.99,
       "description": "justo aliquam quis turpis eget",
       "categoryId": 1,
       "dateCreated": "2020-04-16T14:35:07Z",
@@ -92,7 +92,7 @@
     {
       "id": 2,
       "bookId": 1,
-      "amount": 74641.26,
+      "amount": -74641.26,
       "description": "donec odio justo sollicitudin ut suscipit a",
       "categoryId": 8,
       "dateCreated": "2020-04-22T08:26:22Z",
@@ -102,7 +102,7 @@
     {
       "id": 3,
       "bookId": 1,
-      "amount": 188.12,
+      "amount": -188.12,
       "description": null,
       "categoryId": 6,
       "dateCreated": "2020-04-07T16:54:40Z",
@@ -122,7 +122,7 @@
     {
       "id": 5,
       "bookId": 1,
-      "amount": -13029.5,
+      "amount": 13029.5,
       "description": "pede ullamcorper",
       "categoryId": 10,
       "dateCreated": "2020-04-05T18:23:03Z",
@@ -132,7 +132,7 @@
     {
       "id": 6,
       "bookId": 1,
-      "amount": 77982.86,
+      "amount": -77982.86,
       "description": "justo in hac habitasse",
       "categoryId": 2,
       "dateCreated": "2020-04-27T14:27:29Z",
@@ -142,7 +142,7 @@
     {
       "id": 7,
       "bookId": 1,
-      "amount": 32147.6,
+      "amount": -32147.6,
       "description": "luctus cum sociis natoque penatibus et",
       "categoryId": 6,
       "dateCreated": "2020-04-18T19:28:30Z",
@@ -152,7 +152,7 @@
     {
       "id": 8,
       "bookId": 1,
-      "amount": -30281.21,
+      "amount": 30281.21,
       "description": "id nisl venenatis lacinia aenean sit amet",
       "categoryId": 9,
       "dateCreated": "2020-05-28T23:13:12Z",
@@ -162,7 +162,7 @@
     {
       "id": 9,
       "bookId": 1,
-      "amount": -53462.24,
+      "amount": 53462.24,
       "description": null,
       "categoryId": 10,
       "dateCreated": "2020-05-19T16:41:04Z",
@@ -182,7 +182,7 @@
     {
       "id": 11,
       "bookId": 1,
-      "amount": 5376.47,
+      "amount": -5376.47,
       "description": null,
       "categoryId": 8,
       "dateCreated": "2020-04-23T03:25:59Z",
@@ -222,7 +222,7 @@
     {
       "id": 15,
       "bookId": 1,
-      "amount": 91051.73,
+      "amount": -91051.73,
       "description": "dui luctus rutrum nulla tellus in sagittis dui vel nisl",
       "categoryId": 1,
       "dateCreated": "2020-04-15T01:10:03Z",
@@ -232,7 +232,7 @@
     {
       "id": 16,
       "bookId": 1,
-      "amount": 83636.85,
+      "amount": -83636.85,
       "description": null,
       "categoryId": 6,
       "dateCreated": "2020-04-27T11:49:42Z",
@@ -262,7 +262,7 @@
     {
       "id": 19,
       "bookId": 1,
-      "amount": 26964.99,
+      "amount": -26964.99,
       "description": "accumsan tellus nisi eu orci mauris lacinia sapien",
       "categoryId": 7,
       "dateCreated": "2020-04-11T03:16:35Z",
@@ -272,7 +272,7 @@
     {
       "id": 20,
       "bookId": 1,
-      "amount": -25120.64,
+      "amount": 25120.64,
       "description": "duis aliquam convallis",
       "categoryId": 10,
       "dateCreated": "2020-04-07T06:21:44Z",
@@ -292,7 +292,7 @@
     {
       "id": 22,
       "bookId": 1,
-      "amount": -46457.39,
+      "amount": 46457.39,
       "description": "venenatis non sodales sed tincidunt eu felis",
       "categoryId": 9,
       "dateCreated": "2020-05-04T19:46:07Z",
@@ -302,7 +302,7 @@
     {
       "id": 23,
       "bookId": 1,
-      "amount": 28088.61,
+      "amount": -28088.61,
       "description": "semper est quam pharetra magna ac",
       "categoryId": 3,
       "dateCreated": "2020-04-26T19:01:35Z",
@@ -352,7 +352,7 @@
     {
       "id": 28,
       "bookId": 1,
-      "amount": 46546.63,
+      "amount": -46546.63,
       "description": null,
       "categoryId": 2,
       "dateCreated": "2020-05-28T06:10:41Z",
@@ -362,7 +362,7 @@
     {
       "id": 29,
       "bookId": 1,
-      "amount": 9836.56,
+      "amount": -9836.56,
       "description": "non sodales sed tincidunt",
       "categoryId": 4,
       "dateCreated": "2020-05-26T04:21:59Z",
@@ -382,7 +382,7 @@
     {
       "id": 31,
       "bookId": 1,
-      "amount": -71839.88,
+      "amount": 71839.88,
       "description": null,
       "categoryId": 9,
       "dateCreated": "2020-05-15T23:57:34Z",
@@ -422,7 +422,7 @@
     {
       "id": 35,
       "bookId": 1,
-      "amount": 89512.04,
+      "amount": -89512.04,
       "description": "ultricies eu nibh quisque",
       "categoryId": 8,
       "dateCreated": "2020-05-10T14:26:34Z",
@@ -432,7 +432,7 @@
     {
       "id": 36,
       "bookId": 1,
-      "amount": 78701.81,
+      "amount": -78701.81,
       "description": "lacus morbi sem mauris laoreet ut",
       "categoryId": 4,
       "dateCreated": "2020-04-15T05:39:31Z",
@@ -442,7 +442,7 @@
     {
       "id": 37,
       "bookId": 1,
-      "amount": 92592.32,
+      "amount": -92592.32,
       "description": "suscipit a feugiat et eros vestibulum",
       "categoryId": 6,
       "dateCreated": "2020-05-06T06:51:58Z",
@@ -482,7 +482,7 @@
     {
       "id": 41,
       "bookId": 1,
-      "amount": -50669.54,
+      "amount": 50669.54,
       "description": "vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor",
       "categoryId": 9,
       "dateCreated": "2020-04-24T11:35:56Z",
@@ -492,7 +492,7 @@
     {
       "id": 42,
       "bookId": 1,
-      "amount": 73904.35,
+      "amount": -73904.35,
       "description": null,
       "categoryId": 4,
       "dateCreated": "2020-04-15T08:26:38Z",
@@ -512,7 +512,7 @@
     {
       "id": 44,
       "bookId": 1,
-      "amount": 56483.39,
+      "amount": -56483.39,
       "description": null,
       "categoryId": 2,
       "dateCreated": "2020-04-28T14:21:15Z",
@@ -552,7 +552,7 @@
     {
       "id": 48,
       "bookId": 1,
-      "amount": 13942.97,
+      "amount": -13942.97,
       "description": null,
       "categoryId": 3,
       "dateCreated": "2020-05-07T21:42:28Z",
@@ -572,7 +572,7 @@
     {
       "id": 50,
       "bookId": 1,
-      "amount": 79210.48,
+      "amount": -79210.48,
       "description": "neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum",
       "categoryId": 8,
       "dateCreated": "2020-04-03T19:04:54Z",
@@ -592,7 +592,7 @@
     {
       "id": 52,
       "bookId": 1,
-      "amount": -96780.12,
+      "amount": 96780.12,
       "description": null,
       "categoryId": 9,
       "dateCreated": "2020-05-17T02:48:39Z",
@@ -602,7 +602,7 @@
     {
       "id": 53,
       "bookId": 1,
-      "amount": 55495.99,
+      "amount": -55495.99,
       "description": "egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis",
       "categoryId": 1,
       "dateCreated": "2020-05-16T03:34:07Z",
@@ -612,7 +612,7 @@
     {
       "id": 54,
       "bookId": 1,
-      "amount": 2591.75,
+      "amount": -2591.75,
       "description": null,
       "categoryId": 7,
       "dateCreated": "2020-05-13T19:50:10Z",
@@ -622,7 +622,7 @@
     {
       "id": 55,
       "bookId": 1,
-      "amount": -76783.57,
+      "amount": 76783.57,
       "description": "interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis",
       "categoryId": 10,
       "dateCreated": "2020-04-10T18:56:58Z",
@@ -632,7 +632,7 @@
     {
       "id": 56,
       "bookId": 1,
-      "amount": 64154.77,
+      "amount": -64154.77,
       "description": "luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse",
       "categoryId": 6,
       "dateCreated": "2020-04-11T07:23:49Z",
@@ -672,7 +672,7 @@
     {
       "id": 60,
       "bookId": 1,
-      "amount": 94838.98,
+      "amount": -94838.98,
       "description": "libero",
       "categoryId": 4,
       "dateCreated": "2020-04-18T02:17:13Z",
@@ -712,7 +712,7 @@
     {
       "id": 64,
       "bookId": 1,
-      "amount": -19117.45,
+      "amount": 19117.45,
       "description": "id consequat in consequat ut",
       "categoryId": 9,
       "dateCreated": "2020-04-20T05:57:07Z",
@@ -732,7 +732,7 @@
     {
       "id": 66,
       "bookId": 1,
-      "amount": 40486.24,
+      "amount": -40486.24,
       "description": null,
       "categoryId": 3,
       "dateCreated": "2020-04-18T15:55:13Z",
@@ -742,7 +742,7 @@
     {
       "id": 67,
       "bookId": 1,
-      "amount": 20915.96,
+      "amount": -20915.96,
       "description": null,
       "categoryId": 8,
       "dateCreated": "2020-04-07T07:48:16Z",
@@ -752,7 +752,7 @@
     {
       "id": 68,
       "bookId": 1,
-      "amount": 86472.83,
+      "amount": -86472.83,
       "description": null,
       "categoryId": 6,
       "dateCreated": "2020-04-19T23:21:40Z",
@@ -772,7 +772,7 @@
     {
       "id": 70,
       "bookId": 1,
-      "amount": 25378.47,
+      "amount": -25378.47,
       "description": null,
       "categoryId": 4,
       "dateCreated": "2020-04-14T14:46:08Z",
@@ -782,7 +782,7 @@
     {
       "id": 71,
       "bookId": 1,
-      "amount": -42522.87,
+      "amount": 42522.87,
       "description": null,
       "categoryId": 10,
       "dateCreated": "2020-04-16T17:36:32Z",
@@ -802,7 +802,7 @@
     {
       "id": 73,
       "bookId": 1,
-      "amount": 25726.43,
+      "amount": -25726.43,
       "description": "lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum",
       "categoryId": 5,
       "dateCreated": "2020-04-04T01:39:14Z",
@@ -822,7 +822,7 @@
     {
       "id": 75,
       "bookId": 1,
-      "amount": -40302.7,
+      "amount": 40302.7,
       "description": null,
       "categoryId": 9,
       "dateCreated": "2020-04-12T19:18:40Z",
@@ -852,7 +852,7 @@
     {
       "id": 78,
       "bookId": 1,
-      "amount": -96306.97,
+      "amount": 96306.97,
       "description": "nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede",
       "categoryId": 9,
       "dateCreated": "2020-04-07T18:35:21Z",
@@ -872,7 +872,7 @@
     {
       "id": 80,
       "bookId": 1,
-      "amount": -19741.96,
+      "amount": 19741.96,
       "description": null,
       "categoryId": 10,
       "dateCreated": "2020-04-16T19:36:24Z",
@@ -882,7 +882,7 @@
     {
       "id": 81,
       "bookId": 1,
-      "amount": 98365.63,
+      "amount": -98365.63,
       "description": "turpis",
       "categoryId": 1,
       "dateCreated": "2020-04-24T10:45:08Z",
@@ -902,7 +902,7 @@
     {
       "id": 83,
       "bookId": 1,
-      "amount": 93470.17,
+      "amount": -93470.17,
       "description": "orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio",
       "categoryId": 2,
       "dateCreated": "2020-05-01T15:45:02Z",
@@ -922,7 +922,7 @@
     {
       "id": 85,
       "bookId": 1,
-      "amount": 79273.53,
+      "amount": -79273.53,
       "description": "lectus pellentesque eget nunc",
       "categoryId": 7,
       "dateCreated": "2020-05-25T19:45:02Z",
@@ -962,7 +962,7 @@
     {
       "id": 89,
       "bookId": 1,
-      "amount": 96852.02,
+      "amount": -96852.02,
       "description": null,
       "categoryId": 4,
       "dateCreated": "2020-04-11T00:28:10Z",
@@ -972,7 +972,7 @@
     {
       "id": 90,
       "bookId": 1,
-      "amount": 26207.56,
+      "amount": -26207.56,
       "description": "et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices",
       "categoryId": 6,
       "dateCreated": "2020-05-28T11:08:32Z",
@@ -1002,7 +1002,7 @@
     {
       "id": 93,
       "bookId": 1,
-      "amount": 38473.23,
+      "amount": -38473.23,
       "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices",
       "categoryId": 8,
       "dateCreated": "2020-04-04T09:44:34Z",
@@ -1022,7 +1022,7 @@
     {
       "id": 95,
       "bookId": 1,
-      "amount": 71252.48,
+      "amount": -71252.48,
       "description": "lobortis vel dapibus at diam nam tristique tortor",
       "categoryId": 7,
       "dateCreated": "2020-05-08T08:13:19Z",
@@ -1042,7 +1042,7 @@
     {
       "id": 97,
       "bookId": 1,
-      "amount": -21330.94,
+      "amount": 21330.94,
       "description": "cubilia curae donec pharetra",
       "categoryId": 9,
       "dateCreated": "2020-05-14T17:18:00Z",
@@ -1052,7 +1052,7 @@
     {
       "id": 98,
       "bookId": 1,
-      "amount": 13643.8,
+      "amount": -13643.8,
       "description": "cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin",
       "categoryId": 7,
       "dateCreated": "2020-05-13T17:10:50Z",
@@ -1062,7 +1062,7 @@
     {
       "id": 99,
       "bookId": 1,
-      "amount": 2186.23,
+      "amount": -2186.23,
       "description": null,
       "categoryId": 5,
       "dateCreated": "2020-04-02T23:03:10Z",
@@ -1072,7 +1072,7 @@
     {
       "id": 100,
       "bookId": 1,
-      "amount": -64116.47,
+      "amount": 64116.47,
       "description": "sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod",
       "categoryId": 10,
       "dateCreated": "2020-04-12T20:56:09Z",
@@ -1080,7 +1080,7 @@
       "transactionDate": "2020-04-12T20:56:09Z"
     },
     {
-      "amount": 123,
+      "amount": -123,
       "description": "哈哈哈",
       "categoryId": 1,
       "transactionDate": "2020-05-13T20:36:33.828Z",
@@ -1090,7 +1090,7 @@
       "id": 101
     },
     {
-      "amount": 1,
+      "amount": -1,
       "description": "测试更新",
       "categoryId": 2,
       "transactionDate": "2020-05-31T04:00:00.000Z",
@@ -1100,7 +1100,7 @@
       "dateCreated": "2020-05-13T04:00:00.000Z"
     },
     {
-      "amount": 45,
+      "amount": -45,
       "description": "更新",
       "categoryId": 3,
       "transactionDate": "2020-05-31T04:00:00.000Z",
@@ -1110,7 +1110,7 @@
       "dateCreated": "2020-05-13T04:00:00.000Z"
     },
     {
-      "amount": 12,
+      "amount": -12,
       "description": "上去",
       "categoryId": 3,
       "transactionDate": "2020-05-30T04:00:00.000Z",
@@ -1120,7 +1120,7 @@
       "dateCreated": "2020-05-13T04:00:00.000Z"
     },
     {
-      "amount": 123,
+      "amount": -123,
       "description": "是",
       "categoryId": 4,
       "transactionDate": "2020-05-30T04:00:00.000Z",
@@ -1130,7 +1130,7 @@
       "dateCreated": "2020-05-30T04:00:00.000Z"
     },
     {
-      "amount": 123,
+      "amount": -123,
       "description": null,
       "categoryId": 2,
       "transactionDate": "2020-05-13T04:00:00.000Z",
@@ -1140,7 +1140,7 @@
       "id": 106
     },
     {
-      "amount": 123,
+      "amount": -123,
       "description": null,
       "categoryId": 2,
       "transactionDate": "2020-05-13T04:00:00.000Z",
@@ -1150,7 +1150,7 @@
       "id": 107
     },
     {
-      "amount": 34,
+      "amount": -34,
       "description": "亚马逊d",
       "categoryId": 4,
       "transactionDate": "2020-05-29T04:00:00.000Z",
@@ -1158,16 +1158,7 @@
       "bookId": 1,
       "dateModified": "2020-05-13T04:00:00.000Z",
       "dateCreated": "2020-05-13T04:00:00.000Z"
-    },
-    {
-      "amount": -20,
-      "description": null,
-      "categoryId": 3,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-31T04:00:00.000Z",
-      "dateCreated": "2020-05-31T04:00:00.000Z",
-      "bookId": 1,
-      "id": 109
     }
   ]
+
 }

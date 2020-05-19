@@ -36,3 +36,8 @@ export const defaultTransactionEditorDialogConfig: MatDialogConfig<{ editMode: b
   disableClose: true,
   data: { editMode: false }
 }
+
+export enum TransactionType {
+  spend,
+  income,
+}
