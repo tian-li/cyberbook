@@ -10,6 +10,13 @@ div {
 .title {
   padding: 20px;
   font-size: 2rem;
+  align-items: center;
+
+  .month-picker {
+    font-size: 2rem;
+    height: unset;
+    width: unset;
+  }
 }
 
 .income-spend-switcher {

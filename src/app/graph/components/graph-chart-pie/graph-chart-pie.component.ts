@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
+import { setDisplayMonth } from '@spend-book/core/store/ui';
+import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { TransactionType } from '@spend-book/shared/constants';
-import { ISOString } from '@spend-book/shared/model/helper-models';
+import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
 import { Chart, ChartData } from 'chart.js'
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -27,10 +30,12 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   pieChart: Chart;
   spendTransactionVOs: TransactionVO[];
   incomeTransactionVOs: TransactionVO[];
+  monthSummary: SpendSummary;
+  dialogRef: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -42,18 +47,40 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
+      // console.log('trans', transactions);
       this.transactionVOs = transactions;
 
       this.spendTransactionVOs = this.transactionVOs.filter(t => t.amount < 0);
       this.incomeTransactionVOs = this.transactionVOs.filter(t => t.amount > 0);
 
-      this.updateChart(this.createChartData(TransactionType.spend));
+      if(!!this.pieChart) {
+        this.updateChart(this.createChartData(TransactionType.spend));
+      }
+
     });
   }
 
   ngAfterViewInit() {
     this.pieChartData = this.createChartData(TransactionType.spend);
     this.drawChart();
+  }
+
+  changeMonth() {
+    this.dialogRef = this.dialog.open(YearMonthPickerComponent, {
+      width: '400px',
+      height: '300px',
+      disableClose: true,
+      data: new Date(this.displayMonth)
+    });
+
+    this.dialogRef.afterClosed().pipe(takeUntil(this.unsubscribe$))
+    .subscribe(result => {
+      if (!!result) {
+        const yearMonth = new Date();
+        yearMonth.setFullYear(result.year, result.month);
+        this.store.dispatch(setDisplayMonth({ displayMonth: yearMonth.toISOString() }));
+      }
+    });
   }
 
   changeTransactionType(type: TransactionType) {
@@ -63,41 +90,40 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   createChartData(transactionType: TransactionType): ChartData {
-    const amountByCategory: { [categoryName: string]: number } = {};
+    const categorySummary: { [categoryName: string]: { amount: number, color: string } } = {};
     const amount: number[] = [];
     const labels: string[] = [];
+    const colors: string[] = [];
     const transactionVOs = transactionType === TransactionType.spend ? this.spendTransactionVOs : this.incomeTransactionVOs;
 
     transactionVOs.forEach(transactionVO => {
-      amountByCategory[transactionVO.categoryName] ?
-        amountByCategory[transactionVO.categoryName] += transactionVO.amount :
-        amountByCategory[transactionVO.categoryName] = transactionVO.amount;
+      if(!!categorySummary[transactionVO.categoryName]) {
+        categorySummary[transactionVO.categoryName].amount += transactionVO.amount
+      } else {
+        categorySummary[transactionVO.categoryName]= {
+          amount: transactionVO.amount,
+          color: transactionVO.categoryColor
+        };
+      }
     });
 
-    Object.keys(amountByCategory)
+    Object.keys(categorySummary)
     .map(categoryName => ({
-      amount: Math.abs(Number.parseFloat(amountByCategory[categoryName].toFixed(2))),
-      label: categoryName
+      amount: Math.abs(Number.parseFloat(categorySummary[categoryName].amount.toFixed(2))),
+      label: categoryName,
+      color: categorySummary[categoryName].color
     }))
     .sort((a, b) => b.amount - a.amount)
     .forEach((d) => {
       amount.push(d.amount);
       labels.push(d.label);
+      colors.push(d.color);
     });
 
     return {
       datasets: [{
         data: amount,
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-          'rgba(255, 159, 64, 0.6)',
-          'rgba(99, 255, 64, 0.6)',
-          'rgba(223,195,110,0.6)'
-        ],
+        backgroundColor:colors,
       }],
       labels: labels
     };

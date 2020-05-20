@@ -6,6 +6,7 @@ export class TransactionVO {
   description: string;
   categoryId: number;
   categoryName: string;
+  categoryColor: string;
   transactionDate: Date;
   dateCreated: Date;
   dateModified: Date;
@@ -18,6 +19,7 @@ export class TransactionVO {
     this.description = props.description;
     this.categoryId = props.categoryId;
     this.categoryName = props.categoryName;
+    this.categoryColor = props.categoryColor;
     this.transactionDate = new Date(props.transactionDate);
     this.dateCreated = new Date(props.dateCreated);
     this.dateModified = new Date(props.dateModified);

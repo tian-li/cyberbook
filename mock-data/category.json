@@ -3,60 +3,70 @@
     "id": 1,
     "name": "购物",
     "icon": "https://robohash.org/estvoluptasquia.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#4D4D4D"
   },
   {
     "id": 2,
     "name": "餐饮",
     "icon": "https://robohash.org/quiofficiisfugiat.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#5DA5DA"
   },
   {
     "id": 3,
     "name": "交通",
     "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#FAA43A"
   },
   {
     "id": 4,
     "name": "娱乐",
     "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#60BD68"
   },
   {
     "id": 5,
     "name": "住房",
     "icon": "https://robohash.org/voluptascorruptiquaerat.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#F17CB0"
   },
   {
     "id": 6,
     "name": "宠物",
     "icon": "https://robohash.org/eumquaeratut.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#B2912F"
   },
   {
     "id": 7,
     "name": "学习",
     "icon": "https://robohash.org/itaqueetdoloremque.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#B276B2"
   },
   {
     "id": 8,
     "name": "其他",
     "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#DECF3F"
   },
   {
     "id": 9,
     "name": "投资",
     "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#4D4D4D"
   },
   {
     "id": 10,
     "name": "工资",
     "icon": "https://robohash.org/facilisnonnatus.jpg?size=50x50&set=set1",
-    "parentId": null
+    "parentId": null,
+    "color": "#5DA5DA"
   }
 ]

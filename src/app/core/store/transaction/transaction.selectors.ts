@@ -42,6 +42,7 @@ export const selectAllTransactionVOs = createSelector(selectCategoryEntities,
       new TransactionVO({
         ...transaction,
         categoryName: categories[transaction.categoryId].name,
+        categoryColor: categories[transaction.categoryId].color,
         description: transaction.description,
         icon: categories[transaction.categoryId].icon
       })
