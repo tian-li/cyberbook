@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="title">
+  <div class="title" (click)="changeMonthRange()">
     <div>{{startDate.format(dateAxisFormat)}} ~ {{endDate.format(dateAxisFormat)}}</div>
-    <div (click)="changeMonthRange()"><mat-icon class="month-picker">today</mat-icon></div>
+    <!--    <div (click)="changeMonthRange()"><mat-icon class="month-picker">today</mat-icon></div>-->
   </div>
 
   <div class="transaction-type-switcher">
@@ -24,7 +24,7 @@
 
   <div class="chart">
     <div class="charts-container" style="position: relative; height:60vh; width:90vw">
-      <canvas class="chart" #myChart ></canvas>
+      <canvas class="chart" #myChart></canvas>
     </div>
   </div>
 

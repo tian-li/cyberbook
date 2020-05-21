@@ -9,11 +9,10 @@ import { PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { getMonthSummary } from '@spend-book/shared/utils/get-month-summary';
 import { Chart, ChartData, ChartDataSets } from 'chart.js';
 import * as dayjs from 'dayjs';
-import 'dayjs/plugin/isSameOrBefore';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
-const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
+import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 dayjs.extend(isSameOrBefore);
 
 enum DateAxisScales {

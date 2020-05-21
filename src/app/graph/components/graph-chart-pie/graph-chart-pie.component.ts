@@ -10,7 +10,7 @@ import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models
 import { Chart, ChartData } from 'chart.js'
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-graph-chart-pie',
@@ -63,6 +63,14 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   ngAfterViewInit() {
     this.pieChartData = this.createChartData(TransactionType.spend);
     this.drawChart();
+  }
+
+  previousMonth() {
+    this.store.dispatch(setDisplayMonth({ displayMonth: dayjs(this.displayMonth).subtract(1, 'month').toISOString() }));
+  }
+
+  nextMonth() {
+    this.store.dispatch(setDisplayMonth({ displayMonth: dayjs(this.displayMonth).add(1, 'month').toISOString() }));
   }
 
   changeMonth() {
@@ -148,13 +156,12 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
         aspectRatio: 1,
         legend: {
           display: true,
-          position: 'right',
+          position: 'left',
         }
       }
     },);
 
   }
-
 
   ngOnDestroy() {
     this.unsubscribe$.next();
