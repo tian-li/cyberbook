@@ -260,14 +260,14 @@
       "transactionDate": "2020-05-03T05:02:50Z"
     },
     {
+      "amount": -574,
+      "description": "可促进发挥好",
+      "categoryId": 3,
+      "transactionDate": "2020-05-12T04:33:57.000Z",
+      "dateModified": "2020-05-21T14:48:40.174Z",
       "id": 18,
       "bookId": 1,
-      "amount": -574.49,
-      "description": "in felis donec semper sapien a libero nam dui proin leo odio porttitor id",
-      "categoryId": 3,
-      "dateCreated": "2020-05-12T04:33:57Z",
-      "dateModified": "2020-05-12T04:33:57Z",
-      "transactionDate": "2020-05-12T04:33:57Z"
+      "dateCreated": "2020-05-12T04:33:57.000Z"
     },
     {
       "id": 19,
@@ -1228,6 +1228,46 @@
       "dateCreated": "2020-05-31T04:00:00.000Z",
       "bookId": 1,
       "id": 114
+    },
+    {
+      "amount": -100,
+      "description": "午饭",
+      "categoryId": 2,
+      "transactionDate": "2020-05-21T04:00:00.000Z",
+      "dateModified": "2020-05-21T04:00:00.000Z",
+      "dateCreated": "2020-05-21T04:00:00.000Z",
+      "bookId": 1,
+      "id": 115
+    },
+    {
+      "amount": 1000,
+      "description": "结果感觉",
+      "categoryId": 10,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-21T15:13:52.899Z",
+      "id": 116,
+      "bookId": 1,
+      "dateCreated": "2020-05-31T04:00:00.000Z"
+    },
+    {
+      "amount": -98,
+      "description": "公司聚餐",
+      "categoryId": 2,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-21T15:18:57.938Z",
+      "id": 117,
+      "bookId": 1,
+      "dateCreated": "2020-05-31T04:00:00.000Z"
+    },
+    {
+      "amount": 50,
+      "description": "股票",
+      "categoryId": 9,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-31T04:00:00.000Z",
+      "dateCreated": "2020-05-31T04:00:00.000Z",
+      "bookId": 1,
+      "id": 118
     }
   ]
 }

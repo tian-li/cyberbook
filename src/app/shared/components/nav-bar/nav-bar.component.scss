@@ -20,10 +20,7 @@ div {
   color: #747474;
 
   mat-icon {
-    font-size: 30px;
     margin-bottom: 5px;
-    height: 30px;
-    width: 30px;
   }
 
   .hide {
@@ -41,7 +38,7 @@ div {
 
 .add-button {
   position: absolute;
-  bottom: 6.5rem;
+  bottom: 5rem;
   height: 0;
   justify-content: center;
   align-items: flex-start;
@@ -49,7 +46,7 @@ div {
   display: flex;
 
   mat-icon {
-    font-size: 5rem;
+    font-size: 3rem;
     color: #ffda43;
     height: unset;
     width: unset;
