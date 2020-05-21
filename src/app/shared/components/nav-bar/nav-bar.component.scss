@@ -19,6 +19,10 @@ div {
   height: 100%;
   color: #747474;
 
+  &:focus {
+    outline: none;
+  }
+
   mat-icon {
     margin-bottom: 5px;
   }

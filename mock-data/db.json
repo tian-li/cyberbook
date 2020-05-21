@@ -22,70 +22,80 @@
       "name": "购物",
       "icon": "https://robohash.org/estvoluptasquia.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#4D4D4D"
+      "color": "#4D4D4D",
+      "type": "spend"
     },
     {
       "id": 2,
       "name": "餐饮",
       "icon": "https://robohash.org/quiofficiisfugiat.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#5DA5DA"
+      "color": "#5DA5DA",
+      "type": "spend"
     },
     {
       "id": 3,
       "name": "交通",
       "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#FAA43A"
+      "color": "#FAA43A",
+      "type": "spend"
     },
     {
       "id": 4,
       "name": "娱乐",
       "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#60BD68"
+      "color": "#60BD68",
+      "type": "spend"
     },
     {
       "id": 5,
       "name": "住房",
       "icon": "https://robohash.org/voluptascorruptiquaerat.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#F17CB0"
+      "color": "#F17CB0",
+      "type": "spend"
     },
     {
       "id": 6,
       "name": "宠物",
       "icon": "https://robohash.org/eumquaeratut.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#B2912F"
+      "color": "#B2912F",
+      "type": "spend"
     },
     {
       "id": 7,
       "name": "学习",
       "icon": "https://robohash.org/itaqueetdoloremque.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#B276B2"
+      "color": "#B276B2",
+      "type": "spend"
     },
     {
       "id": 8,
       "name": "其他",
       "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#DECF3F"
+      "color": "#DECF3F",
+      "type": "spend"
     },
     {
       "id": 9,
       "name": "投资",
       "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#4D4D4D"
+      "color": "#4D4D4D",
+      "type": "income"
     },
     {
       "id": 10,
       "name": "工资",
       "icon": "https://robohash.org/facilisnonnatus.jpg?size=50x50&set=set1",
       "parentId": null,
-      "color": "#5DA5DA"
+      "color": "#5DA5DA",
+      "type": "income"
     }
   ],
   "transaction": [
@@ -1163,10 +1173,10 @@
       "amount": -34,
       "description": "亚马逊d",
       "categoryId": 4,
-      "transactionDate": "2020-05-29T04:00:00.000Z",
+      "transactionDate": "2020-05-20T04:00:00.000Z",
+      "dateModified": "2020-05-21T18:23:20.982Z",
       "id": 108,
       "bookId": 1,
-      "dateModified": "2020-05-13T04:00:00.000Z",
       "dateCreated": "2020-05-13T04:00:00.000Z"
     },
     {
@@ -1220,14 +1230,14 @@
       "id": 113
     },
     {
-      "amount": -1000,
-      "description": null,
-      "categoryId": 5,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-31T04:00:00.000Z",
-      "dateCreated": "2020-05-31T04:00:00.000Z",
+      "amount": -2500,
+      "description": "游戏机",
+      "categoryId": 4,
+      "transactionDate": "2020-05-28T04:00:00.000Z",
+      "dateModified": "2020-05-21T18:36:39.163Z",
+      "id": 114,
       "bookId": 1,
-      "id": 114
+      "dateCreated": "2020-05-31T04:00:00.000Z"
     },
     {
       "amount": -100,
@@ -1268,6 +1278,46 @@
       "dateCreated": "2020-05-31T04:00:00.000Z",
       "bookId": 1,
       "id": 118
+    },
+    {
+      "amount": -123,
+      "description": null,
+      "categoryId": 1,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-21T18:08:22.157Z",
+      "id": 119,
+      "bookId": 1,
+      "dateCreated": "2020-05-31T04:00:00.000Z"
+    },
+    {
+      "amount": 1234,
+      "description": "另一个工资",
+      "categoryId": 10,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-31T04:00:00.000Z",
+      "dateCreated": "2020-05-31T04:00:00.000Z",
+      "bookId": 1,
+      "id": 120
+    },
+    {
+      "amount": 2508,
+      "description": "哈哈哈工资",
+      "categoryId": 10,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-31T04:00:00.000Z",
+      "dateCreated": "2020-05-31T04:00:00.000Z",
+      "bookId": 1,
+      "id": 121
+    },
+    {
+      "amount": -1000,
+      "description": null,
+      "categoryId": 5,
+      "transactionDate": "2020-05-31T04:00:00.000Z",
+      "dateModified": "2020-05-31T04:00:00.000Z",
+      "dateCreated": "2020-05-31T04:00:00.000Z",
+      "bookId": 1,
+      "id": 122
     }
   ]
 }

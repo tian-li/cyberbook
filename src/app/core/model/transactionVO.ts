@@ -7,6 +7,7 @@ export class TransactionVO {
   categoryId: number;
   categoryName: string;
   categoryColor: string;
+  categoryType: 'income'|'spend';
   transactionDate: Date;
   dateCreated: Date;
   dateModified: Date;
@@ -20,6 +21,7 @@ export class TransactionVO {
     this.categoryId = props.categoryId;
     this.categoryName = props.categoryName;
     this.categoryColor = props.categoryColor;
+    this.categoryType = props.categoryType;
     this.transactionDate = new Date(props.transactionDate);
     this.dateCreated = new Date(props.dateCreated);
     this.dateModified = new Date(props.dateModified);

@@ -4,69 +4,79 @@
     "name": "购物",
     "icon": "https://robohash.org/estvoluptasquia.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#4D4D4D"
+    "color": "#4D4D4D",
+    "type": "spend"
   },
   {
     "id": 2,
     "name": "餐饮",
     "icon": "https://robohash.org/quiofficiisfugiat.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#5DA5DA"
+    "color": "#5DA5DA",
+    "type": "spend"
   },
   {
     "id": 3,
     "name": "交通",
     "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#FAA43A"
+    "color": "#FAA43A",
+    "type": "spend"
   },
   {
     "id": 4,
     "name": "娱乐",
     "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#60BD68"
+    "color": "#60BD68",
+    "type": "spend"
   },
   {
     "id": 5,
     "name": "住房",
     "icon": "https://robohash.org/voluptascorruptiquaerat.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#F17CB0"
+    "color": "#F17CB0",
+    "type": "spend"
   },
   {
     "id": 6,
     "name": "宠物",
     "icon": "https://robohash.org/eumquaeratut.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#B2912F"
+    "color": "#B2912F",
+    "type": "spend"
   },
   {
     "id": 7,
     "name": "学习",
     "icon": "https://robohash.org/itaqueetdoloremque.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#B276B2"
+    "color": "#B276B2",
+    "type": "spend"
   },
   {
     "id": 8,
     "name": "其他",
     "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#DECF3F"
+    "color": "#DECF3F",
+    "type": "spend"
   },
   {
     "id": 9,
     "name": "投资",
     "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#4D4D4D"
+    "color": "#4D4D4D",
+    "type": "income"
   },
   {
     "id": 10,
     "name": "工资",
     "icon": "https://robohash.org/facilisnonnatus.jpg?size=50x50&set=set1",
     "parentId": null,
-    "color": "#5DA5DA"
+    "color": "#5DA5DA",
+    "type": "income"
   }
 ]

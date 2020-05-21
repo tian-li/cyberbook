@@ -1,10 +1,10 @@
 <div class="container">
   <div class="title" >
-    <div (click)="previousMonth()">
+    <div matRipple class="month-nav-arrow" (click)="previousMonth()">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </div>
-    <div (click)="changeMonth()">{{displayMonth|date:'yyyy/MM'}}</div>
-    <div (click)="nextMonth()">
+    <div class="month-title" (click)="changeMonth()" >{{displayMonth|date:'yyyy/MM'}}</div>
+    <div matRipple class="month-nav-arrow" (click)="nextMonth()">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </div>
 <!--    <div (click)="changeMonth()"><mat-icon class="month-picker">today</mat-icon></div>-->

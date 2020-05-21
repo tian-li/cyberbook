@@ -1,12 +1,13 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
 import { fromCategory } from '@spend-book/core/store';
 import { addTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { years } from '../../constants';
 
@@ -25,7 +26,8 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   loading: boolean;
   title: string;
   formGroup: FormGroup;
-  categories$: Observable<Category[]>;
+  categories: Category[];
+  categoryEntities: Dictionary<Category>;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -38,7 +40,13 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.store.pipe(select(fromCategory.selectAllCategories), takeUntil(this.unsubscribe$))
+    this.store.pipe(
+      select(fromCategory.selectCategoryEntities),
+      takeUntil(this.unsubscribe$)
+    ).subscribe(categoryEntities => {
+      this.categoryEntities = categoryEntities;
+      this.categories = Object.values(categoryEntities);
+    })
     this.title = this.data.editMode ? '编辑账目' : '添加账目';
     this.buildForm();
   }
@@ -66,8 +74,14 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
 
   private get editedTransaction(): Partial<Transaction> {
     const formValue = this.formGroup.value;
+    let amount = Number.parseInt(formValue.amount.toFixed(2), 10);
+
+    if (this.categoryEntities[formValue.categoryId].type === 'spend') {
+      amount = 0 - amount;
+    }
+
     let transaction: Partial<Transaction> = {
-      amount: Number.parseInt(formValue.amount.toFixed(2), 10),
+      amount,
       description: formValue.description,
       categoryId: formValue.categoryId,
       transactionDate: typeof formValue.transactionDate === 'string' ?
@@ -97,7 +111,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   private buildForm() {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
-      amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^(-?)\d*(\.\d{0,2})?$/)]),
+      amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^\d*(\.\d{0,2})?$/)]),
       description: new FormControl(initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)),
       categoryId: new FormControl(initialFormData.categoryId, Validators.required),
       transactionDate: new FormControl(initialFormData.transactionDate),
@@ -107,7 +121,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   private getInitialFormData(): Partial<Transaction> {
     return this.data.editMode ?
       {
-        amount: this.data.transaction.amount,
+        amount: Math.abs(this.data.transaction.amount),
         description: this.data.transaction.description,
         categoryId: this.data.transaction.categoryId,
         transactionDate: this.data.transaction.transactionDate,

@@ -9,11 +9,20 @@ div {
 
 .title {
   padding: 20px;
-  font-size: 2rem;
+  font-size: 1rem;
   align-items: center;
 
+  .month-nav-arrow {
+    border-radius: 50%;
+    background: whitesmoke;
+  }
+
+  .month-title {
+    margin: 0 1rem;
+  }
+
   .month-picker {
-    font-size: 2rem;
+    font-size: 0.7rem;
     height: unset;
     width: unset;
   }
