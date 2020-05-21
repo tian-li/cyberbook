@@ -32,13 +32,13 @@ A mobile-first web app that can record daily costs.
 # How to run
 
 1. Edit `http://192.168.50.17:3000` to `http://localhost:3000` in `src/environments/environment.ts`.
-2. Run `npm install` 
+2. Run `npm install` and `npm install -g json-server` 
 3. Run `npm run mock-server` to start mock-server with `json-server`
 4. Run `ng serve` in another terminal window, open `localhost:1234` in browser
 
 If you want to see on a mobile device:
 
-1. `npm install` of course
+1. Run `npm install` and `npm install -g json-server` if you haven't done
 2. Connect your computer and mobile device to the same router
 3. Find the local network ip of your computer, usually something like `192.168.XX.XX`.
 4. Edit `http://192.168.50.17:3000` to `http://{your computer local ip}:3000` in `src/environments/environment.ts`.
