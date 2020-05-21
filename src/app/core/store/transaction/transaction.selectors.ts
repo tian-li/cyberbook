@@ -5,7 +5,7 @@ import { Transaction } from '@spend-book/core/model/transaction';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { RootState } from '@spend-book/core/store';
 import * as fromTransaction from '@spend-book/core/store/transaction/transaction.reducer';
-import { SpendSummary } from '@spend-book/shared/model/helper-models';
+import { PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { selectCategoryEntities } from '../category';
 
 const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;
@@ -58,6 +58,7 @@ export const selectAllTransactionVOs = createSelector(selectCategoryEntities,
 export const selectAllTransactionVOsByYearMonth = createSelector(
   selectAllTransactionVOs,
   (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
+    console.log('selectAllTransactionVOsByYearMonth', props);
     const year: number = props.displayMonth.getFullYear();
     const month: number = props.displayMonth.getMonth();
     return transactionVOs.filter(
@@ -91,9 +92,9 @@ export const getTransactionSummaryByDate = createSelector(
 export const getTransactionSummaryByMonth = createSelector(
   selectAllTransactionVOsByYearMonth,
   (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
-    console.log('transactionVOs', transactionVOs);
-    console.log('props', props);
-    const monthSummary: SpendSummary = {
+    console.log('getTransactionSummaryByMonth', props);
+
+    const monthSummary: PeriodSummary = {
       income: 0,
       spend: 0
     };

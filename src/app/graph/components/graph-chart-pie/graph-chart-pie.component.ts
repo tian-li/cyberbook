@@ -6,7 +6,7 @@ import { fromTransaction, fromUI } from '@spend-book/core/store';
 import { setDisplayMonth } from '@spend-book/core/store/ui';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { TransactionType } from '@spend-book/shared/constants';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { Chart, ChartData } from 'chart.js'
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -30,7 +30,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   pieChart: Chart;
   spendTransactionVOs: TransactionVO[];
   incomeTransactionVOs: TransactionVO[];
-  monthSummary: SpendSummary;
+  monthSummary: PeriodSummary;
   dialogRef: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();

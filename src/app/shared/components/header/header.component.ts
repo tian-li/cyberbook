@@ -5,7 +5,7 @@ import { fromUI } from '@spend-book/core/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { setDisplayMonth } from '@spend-book/core/store/ui/ui.actions';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { YearMonthPickerComponent } from '../year-month-picker/year-month-picker.component';
 
 @Component({
@@ -15,7 +15,7 @@ import { YearMonthPickerComponent } from '../year-month-picker/year-month-picker
 })
 export class HeaderComponent implements OnInit,  OnDestroy {
   displayMonth: ISOString;
-  @Input() monthSummary: SpendSummary;
+  @Input() monthSummary: PeriodSummary;
   dialogRef: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();

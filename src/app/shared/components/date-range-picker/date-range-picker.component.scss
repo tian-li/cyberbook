@@ -1,0 +1,33 @@
+div, form {
+  display: flex;
+}
+
+.container {
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.title {
+  justify-content: center;
+}
+
+form {
+  justify-content: space-between;
+  padding-left:  1rem;
+  padding-right:  1rem;
+
+  .start-date, .end-date {
+    width: 150px;
+  }
+}
+
+.actions {
+  justify-content: flex-end;
+  padding-left:  1rem;
+  padding-right:  1rem;
+
+  button {
+    margin-left: 2rem;
+  }
+}

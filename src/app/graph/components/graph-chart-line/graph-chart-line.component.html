@@ -1,1 +1,35 @@
-<p>line works</p>
+<div class="container">
+  <div class="title">
+    <div>{{startDate.format(dateAxisFormat)}} ~ {{endDate.format(dateAxisFormat)}}</div>
+    <div (click)="changeMonthRange()"><mat-icon class="month-picker">today</mat-icon></div>
+  </div>
+
+  <div class="transaction-type-switcher">
+    <div class="spend"
+         (click)="changeTransactionType(TransactionType.spend)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.spend }">
+      <div class="label">花费</div>
+    </div>
+    <div class="income"
+         (click)="changeTransactionType(TransactionType.income)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.income }">
+      <div class="label">收入</div>
+    </div>
+    <div class="both"
+         (click)="changeTransactionType(TransactionType.both)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.both }">
+      <div class="label">合并</div>
+    </div>
+  </div>
+
+  <div class="chart">
+    <div class="charts-container" style="position: relative; height:60vh; width:90vw">
+      <canvas class="chart" #myChart ></canvas>
+    </div>
+  </div>
+
+  <div class="transactions-list">
+  </div>
+</div>
+
+

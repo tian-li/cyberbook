@@ -33,6 +33,7 @@
     "@ngrx/store-devtools": "^9.1.0",
     "@types/chart.js": "^2.9.20",
     "chart.js": "^2.9.3",
+    "dayjs": "^1.8.27",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3"

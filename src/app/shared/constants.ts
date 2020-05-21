@@ -40,4 +40,5 @@ export const defaultTransactionEditorDialogConfig: MatDialogConfig<{ editMode: b
 export enum TransactionType {
   spend,
   income,
+  both
 }

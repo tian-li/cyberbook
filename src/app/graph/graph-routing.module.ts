@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'pie',
+        redirectTo: 'line',
         pathMatch: 'full'
       },
       {

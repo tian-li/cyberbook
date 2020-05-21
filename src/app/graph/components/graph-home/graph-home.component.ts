@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { Chart } from 'chart.js'
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -21,7 +21,7 @@ export class GraphHomeComponent {
   //   label: string[]
   // } = { amount: [], label: [] }
   // displayMonth: ISOString;
-  // getTransactionSummaryByMonth: SpendSummary = {
+  // getTransactionSummaryByMonth: PeriodSummary = {
   //   income: 0,
   //   spend: 0
   // };

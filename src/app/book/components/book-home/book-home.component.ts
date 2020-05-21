@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
@@ -13,7 +13,6 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
 })
 export class BookHomeComponent implements OnInit, OnDestroy {
   transactionVOs: TransactionVO[];
-  displayMonth: ISOString;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -23,7 +22,6 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.store.pipe(
       select(fromUI.selectDisplayMonth),
-      tap(displayMonth => this.displayMonth = displayMonth),
       switchMap((displayMonth: ISOString) =>
         this.store.pipe(select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) }))
       ),

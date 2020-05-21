@@ -1,11 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { fromTransaction } from '@spend-book/core/store';
+import { fromTransaction, fromUI } from '@spend-book/core/store';
 import { setDisplayMonth } from '@spend-book/core/store/ui/ui.actions';
-import { ISOString, SpendSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { YearMonthPickerComponent } from '../../../shared/components/year-month-picker/year-month-picker.component';
 
 @Component({
@@ -14,9 +14,8 @@ import { YearMonthPickerComponent } from '../../../shared/components/year-month-
   styleUrls: ['./book-header.component.scss']
 })
 export class BookHeaderComponent implements OnInit, OnDestroy {
-  @Input() displayMonth: ISOString;
-
-  monthSummary: SpendSummary;
+  displayMonth: ISOString;
+  monthSummary: PeriodSummary;
   dialogRef: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -26,7 +25,11 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.pipe(
-      select(fromTransaction.getTransactionSummaryByMonth, { displayMonth: new Date(this.displayMonth) }),
+      select(fromUI.selectDisplayMonth),
+      tap(displayMonth => this.displayMonth = displayMonth),
+      switchMap((displayMonth: ISOString) =>
+        this.store.pipe(select(fromTransaction.getTransactionSummaryByMonth, { displayMonth: new Date(displayMonth) }))
+      ),
       takeUntil(this.unsubscribe$)
     ).subscribe(monthSummary => {
       this.monthSummary = monthSummary;

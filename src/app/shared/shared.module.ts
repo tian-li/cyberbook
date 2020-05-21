@@ -30,6 +30,7 @@ import { HeaderComponent } from '@spend-book/shared/components/header/header.com
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
+import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 
 const material = [
   MatButtonModule,
@@ -68,7 +69,7 @@ const components = [
 
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, DateRangePickerComponent],
   imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
   exports: [
     CommonModule,
@@ -78,7 +79,8 @@ const components = [
   ],
   entryComponents: [
     TransactionEditorComponent,
-    YearMonthPickerComponent
+    YearMonthPickerComponent,
+    DateRangePickerComponent
   ]
 })
 export class SharedModule {
