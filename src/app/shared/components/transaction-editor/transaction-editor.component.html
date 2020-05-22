@@ -11,7 +11,7 @@
       <div class="amount-category">
         <mat-form-field class="amount">
           <mat-label>金额</mat-label>
-          <input matInput formControlName="amount" inputmode="decimal" placeholder="0.00" type="number" step="0.01">
+          <input matInput autofocus formControlName="amount" inputmode="decimal" placeholder="0.00" type="number" step="0.01">
           <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
           <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">格式错误: 0.00</mat-error>
         </mat-form-field>
@@ -19,9 +19,9 @@
           <mat-label>类别</mat-label>
           <mat-select formControlName="categoryId">
             <mat-option *ngFor="let category of categories" [value]="category.id">
-                <!-- TODO: Style category options after category icon is done -->
-                <img aria-hidden="true" [src]="category.icon" height="25" alt="icon">
-                <span>{{category.name}}</span>
+              <!-- TODO: Style category options after category icon is done -->
+              <img aria-hidden="true" [src]="category.icon" height="25" alt="icon">
+              <span>{{category.name}}</span>
             </mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.controls['categoryId'].hasError('required')">必填</mat-error>
@@ -45,13 +45,24 @@
   </mat-dialog-content>
 
   <mat-dialog-actions class="actions">
-    <button mat-raised-button (click)="cancel()" [disabled]="loading">取消</button>
+    <button *ngIf="data.editMode"
+            mat-raised-button
+            class="delete-button"
+            color="warn"
+            (click)="delete()"
+            [disabled]="loading"
+    >
+      删除
+    </button>
+
+    <button class="cancel-button" mat-raised-button (click)="cancel()" [disabled]="loading">取消</button>
+
     <button
       mat-raised-button
       color="primary"
       (click)="submit()"
+      [disabled]="formGroup.pristine || formGroup.invalid || loading"
     >
-<!--      [disabled]="formGroup.pristine || formGroup.invalid || loading"-->
       确定
     </button>
   </mat-dialog-actions>

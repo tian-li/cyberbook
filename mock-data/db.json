@@ -310,16 +310,6 @@
       "transactionDate": "2020-03-15T12:51:39Z"
     },
     {
-      "id": 22,
-      "bookId": 1,
-      "amount": 7.39,
-      "description": "venenatis non sodales sed tincidunt eu felis",
-      "categoryId": 9,
-      "dateCreated": "2020-05-04T19:46:07Z",
-      "dateModified": "2020-05-04T19:46:07Z",
-      "transactionDate": "2020-05-04T19:46:07Z"
-    },
-    {
       "id": 23,
       "bookId": 1,
       "amount": -288.61,
@@ -1040,16 +1030,6 @@
       "transactionDate": "2020-04-28T11:10:00Z"
     },
     {
-      "id": 95,
-      "bookId": 1,
-      "amount": -712.48,
-      "description": "lobortis vel dapibus at diam nam tristique tortor",
-      "categoryId": 7,
-      "dateCreated": "2020-05-08T08:13:19Z",
-      "dateModified": "2020-05-08T08:13:19Z",
-      "transactionDate": "2020-05-08T08:13:19Z"
-    },
-    {
       "id": 96,
       "bookId": 1,
       "amount": -254.25,
@@ -1230,11 +1210,11 @@
       "id": 113
     },
     {
-      "amount": -2500,
-      "description": "游戏机",
-      "categoryId": 4,
-      "transactionDate": "2020-05-28T04:00:00.000Z",
-      "dateModified": "2020-05-21T18:36:39.163Z",
+      "amount": -1000,
+      "description": null,
+      "categoryId": 5,
+      "transactionDate": "2020-05-06T04:00:00.000Z",
+      "dateModified": "2020-05-21T19:13:02.598Z",
       "id": 114,
       "bookId": 1,
       "dateCreated": "2020-05-31T04:00:00.000Z"
@@ -1258,66 +1238,6 @@
       "id": 116,
       "bookId": 1,
       "dateCreated": "2020-05-31T04:00:00.000Z"
-    },
-    {
-      "amount": -98,
-      "description": "公司聚餐",
-      "categoryId": 2,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-21T15:18:57.938Z",
-      "id": 117,
-      "bookId": 1,
-      "dateCreated": "2020-05-31T04:00:00.000Z"
-    },
-    {
-      "amount": 50,
-      "description": "股票",
-      "categoryId": 9,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-31T04:00:00.000Z",
-      "dateCreated": "2020-05-31T04:00:00.000Z",
-      "bookId": 1,
-      "id": 118
-    },
-    {
-      "amount": -123,
-      "description": null,
-      "categoryId": 1,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-21T18:08:22.157Z",
-      "id": 119,
-      "bookId": 1,
-      "dateCreated": "2020-05-31T04:00:00.000Z"
-    },
-    {
-      "amount": 1234,
-      "description": "另一个工资",
-      "categoryId": 10,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-31T04:00:00.000Z",
-      "dateCreated": "2020-05-31T04:00:00.000Z",
-      "bookId": 1,
-      "id": 120
-    },
-    {
-      "amount": 2508,
-      "description": "哈哈哈工资",
-      "categoryId": 10,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-31T04:00:00.000Z",
-      "dateCreated": "2020-05-31T04:00:00.000Z",
-      "bookId": 1,
-      "id": 121
-    },
-    {
-      "amount": -1000,
-      "description": null,
-      "categoryId": 5,
-      "transactionDate": "2020-05-31T04:00:00.000Z",
-      "dateModified": "2020-05-31T04:00:00.000Z",
-      "dateCreated": "2020-05-31T04:00:00.000Z",
-      "bookId": 1,
-      "id": 122
     }
   ]
 }

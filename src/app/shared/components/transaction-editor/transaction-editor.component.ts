@@ -6,7 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
 import { fromCategory } from '@spend-book/core/store';
-import { addTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
+import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { years } from '../../constants';
@@ -33,7 +33,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialogRef: MatDialogRef<TransactionEditorComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: { editMode: boolean, transaction: Transaction },
+    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, transaction: Transaction },
     private fb: FormBuilder,
     private store: Store,
   ) {
@@ -61,8 +61,6 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    console.log('form', this.formGroup.controls['amount']);
-
     this.loading = true;
 
     const action = this.data.editMode ?
@@ -70,6 +68,10 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
       addTransaction({ transaction: this.editedTransaction });
 
     this.store.dispatch(action);
+  }
+
+  delete() {
+    this.store.dispatch(removeTransaction({id: this.data.transaction.id}));
   }
 
   private get editedTransaction(): Partial<Transaction> {

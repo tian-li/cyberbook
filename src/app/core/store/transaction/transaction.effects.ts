@@ -65,7 +65,10 @@ export class TransactionEffects {
       ofType(removeTransaction),
       mergeMap(action =>
         this.transactionService.removeTransaction(action.id).pipe(
-          map(() => removeTransactionSuccess()),
+          map(() => {
+            this.closeTransactionEditor();
+            return removeTransactionSuccess();
+          }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '删除失败，请稍后重试' } })))
         ))
     )

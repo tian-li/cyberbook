@@ -33,7 +33,10 @@ form {
   padding-left: 1rem;
   padding-right: 1rem;
 
-  button {
-    margin-left: 2rem;
+  .cancel-button {
+    //margin: 0 1rem;
+  }
+  .delete-button {
+    justify-self: flex-start;
   }
 }
