@@ -9,22 +9,20 @@ import { PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { getMonthSummary } from '@spend-book/shared/utils/get-month-summary';
 import { Chart, ChartData, ChartDataSets } from 'chart.js';
 import * as dayjs from 'dayjs';
+import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
-import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 dayjs.extend(isSameOrBefore);
 
 enum DateAxisScales {
   day = 'day',
   month = 'month',
-  // month = 'day',
 }
 
 enum DateFormats {
   day = 'MM/DD',
   month = 'YYYY/MM',
-  // month = 'MM/DD',
 }
 
 @Component({
@@ -130,7 +128,6 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   updateChartData(chartData: ChartData) {
-    console.log('update chartData', chartData)
     this.lineChart.data.labels = [...chartData.labels];
     this.lineChart.data.datasets = [...chartData.datasets];
     this.lineChart.update();
@@ -141,22 +138,20 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
       ...this.defaultLineOption,
       data: [],
       borderColor: this.spendColor,
-      pointBackgroundColor: this.spendColor,
+      pointBackgroundColor: transactionType === TransactionType.spend || transactionType === TransactionType.both ? this.spendColor : 'transparent',
       label: '花费',
     };
     const incomeSet: ChartDataSets = {
       ...this.defaultLineOption,
       data: [],
       borderColor: this.incomeColor,
-      pointBackgroundColor: this.incomeColor,
+      pointBackgroundColor: transactionType === TransactionType.income || transactionType === TransactionType.both ? this.incomeColor : 'transparent',
       label: '收入',
     };
     const labels: string[] = [];
 
     let datasets: ChartDataSets[];
     let periodSummaries: { [yearMonth: string]: PeriodSummary } = {};
-console.log('this.startDate', this.startDate)
-console.log('this.endDate', this.endDate)
     let tempDate = this.startDate;
     while (tempDate.isSameOrBefore(this.endDate)) {
       periodSummaries[tempDate.format(this.dateAxisFormat)] = getMonthSummary(this.transactionVOs, tempDate, this.dateAxisScale);

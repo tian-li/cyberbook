@@ -6,7 +6,7 @@ import { fromTransaction, fromUI } from '@spend-book/core/store';
 import { setDisplayMonth } from '@spend-book/core/store/ui';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { TransactionType } from '@spend-book/shared/constants';
-import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString } from '@spend-book/shared/model/helper-models';
 import { Chart, ChartData } from 'chart.js'
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -30,7 +30,6 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   pieChart: Chart;
   spendTransactionVOs: TransactionVO[];
   incomeTransactionVOs: TransactionVO[];
-  monthSummary: PeriodSummary;
   dialogRef: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -47,14 +46,13 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
-      // console.log('trans', transactions);
       this.transactionVOs = transactions;
 
       this.spendTransactionVOs = this.transactionVOs.filter(t => t.amount < 0);
       this.incomeTransactionVOs = this.transactionVOs.filter(t => t.amount > 0);
 
       if(!!this.pieChart) {
-        this.updateChart(this.createChartData(TransactionType.spend));
+        this.updateChart(this.createChartData(this.selectedTransactionType));
       }
 
     });
@@ -63,6 +61,11 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   ngAfterViewInit() {
     this.pieChartData = this.createChartData(TransactionType.spend);
     this.drawChart();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   previousMonth() {
@@ -97,7 +100,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     this.updateChart(this.createChartData(type))
   }
 
-  createChartData(transactionType: TransactionType): ChartData {
+  private createChartData(transactionType: TransactionType): ChartData {
     const categorySummary: { [categoryName: string]: { amount: number, color: string } } = {};
     const amount: number[] = [];
     const labels: string[] = [];
@@ -137,7 +140,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     };
   }
 
-  updateChart(chartData: ChartData) {
+  private updateChart(chartData: ChartData) {
     this.pieChart.data.labels = [...chartData.labels];
     this.pieChart.data.datasets.forEach((dataset) => {
       dataset.data = chartData.datasets[0].data
@@ -145,7 +148,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     this.pieChart.update();
   }
 
-  drawChart() {
+  private drawChart() {
     const ctx = this.myChart.nativeElement.getContext('2d');
 
     this.pieChart = new Chart(ctx, {
@@ -159,14 +162,6 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
           position: 'left',
         }
       }
-    },);
-
+    });
   }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
-
-
 }

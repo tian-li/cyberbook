@@ -26,7 +26,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '@spend-book/shared/components/header/header.component';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
@@ -63,7 +62,6 @@ const material = [
 const components = [
   NavBarComponent,
   TransactionEditorComponent,
-  HeaderComponent,
   YearMonthPickerComponent
 ];
 
