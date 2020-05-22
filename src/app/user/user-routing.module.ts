@@ -1,23 +1,21 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { UserHomeComponent } from '@spend-book/user/components/user-home/user-home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    component: UserHomeComponent,
   },
   {
-    path: "login",
+    path: 'login',
     component: LoginComponent,
-    data: { title: "anms.menu.features" }
   },
   {
-    path: "register",
+    path: 'register',
     component: RegisterComponent,
-    data: { title: "anms.menu.features" }
   }
 ];
 
@@ -25,4 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule {}
+export class UserRoutingModule {
+}
