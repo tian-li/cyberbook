@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Action, ActionReducer, ActionReducerMap, MetaReducer, } from '@ngrx/store';
-import * as  fromAuth from '@spend-book/core/store/auth'
+import * as  fromUser from '@spend-book/core/store/user'
 import * as  fromBook from '@spend-book/core/store/book'
 import * as  fromCategory from '@spend-book/core/store/category'
 import * as  fromTransaction from '@spend-book/core/store/transaction'
@@ -8,7 +8,7 @@ import * as  fromUI from '@spend-book/core/store/ui'
 import { environment } from '../../../environments/environment';
 
 export {
-  fromAuth,
+  fromUser,
   fromBook,
   fromCategory,
   fromTransaction,
@@ -16,7 +16,7 @@ export {
 };
 
 export interface RootState {
-  [fromAuth.authFeatureKey]: fromAuth.State;
+  [fromUser.userFeatureKey]: fromUser.State;
   [fromBook.bookFeatureKey]: fromBook.State;
   [fromCategory.categoryFeatureKey]: fromCategory.State;
   [fromTransaction.transactionFeatureKey]: fromTransaction.State;
@@ -25,7 +25,7 @@ export interface RootState {
 
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<RootState, Action>>('Root reducers token', {
   factory: () => ({
-    [fromAuth.authFeatureKey]: fromAuth.authReducer,
+    [fromUser.userFeatureKey]: fromUser.userReducer,
     [fromUI.uiFeatureKey]: fromUI.uiReducer,
     [fromBook.bookFeatureKey]: fromBook.bookReducer,
     [fromCategory.categoryFeatureKey]: fromCategory.categoryReducer,

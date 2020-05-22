@@ -8,7 +8,7 @@ import { BookService } from '@spend-book/core/services/book.service';
 import { CategoryService } from '@spend-book/core/services/category.service';
 import { TransactionService } from '@spend-book/core/services/transaction.service';
 import { ROOT_REDUCERS } from '@spend-book/core/store';
-import { AuthEffects } from '@spend-book/core/store/auth/auth.effects';
+import { UserEffects } from '@spend-book/core/store/user/user.effects';
 import { BookEffects } from '@spend-book/core/store/book/book.effects';
 import { CategoryEffects } from '@spend-book/core/store/category/category.effects';
 import { NotificationEffects } from '@spend-book/core/store/notification/notification.effects';
@@ -30,7 +30,7 @@ import { environment } from '../../environments/environment';
       }
     ),
     EffectsModule.forRoot([
-      AuthEffects,
+      UserEffects,
       NotificationEffects,
       BookEffects,
       CategoryEffects,

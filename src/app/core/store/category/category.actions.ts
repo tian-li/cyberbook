@@ -2,9 +2,9 @@ import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { Category } from '../../model/category';
 
-export const loadCategoriesByBook = createAction('[Category] Load Categories By Book', props<{ bookId: number }>());
+export const loadCategoriesByUser = createAction('[Category] Load Categories By User', props<{ userId: string }>());
 
-export const loadCategoriesByBookSuccess = createAction('[Category] Load Categories By Book Success', props<{ categories: Category[] }>());
+export const loadCategoriesByUserSuccess = createAction('[Category] Load Categories By User Success', props<{ categories: Category[] }>());
 
 export const addCategory = createAction('[Category] Add Category', props<{ category: Partial<Category> }>());
 

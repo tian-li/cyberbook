@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -9.99,
     "description": "justo aliquam quis turpis eget",
@@ -11,6 +12,7 @@
   },
   {
     "id": 2,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -741.26,
     "description": "donec odio justo sollicitudin ut suscipit a",
@@ -21,6 +23,7 @@
   },
   {
     "id": 3,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -188.12,
     "description": null,
@@ -31,6 +34,7 @@
   },
   {
     "id": 4,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -71.19,
     "description": null,
@@ -41,6 +45,7 @@
   },
   {
     "id": 5,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 139.5,
     "description": "pede ullamcorper",
@@ -51,6 +56,7 @@
   },
   {
     "id": 6,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -72.86,
     "description": "justo in hac habitasse",
@@ -61,6 +67,7 @@
   },
   {
     "id": 7,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -37.6,
     "description": "luctus cum sociis natoque penatibus et",
@@ -71,6 +78,7 @@
   },
   {
     "id": 8,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 31.21,
     "description": "id nisl venenatis lacinia aenean sit amet",
@@ -81,6 +89,7 @@
   },
   {
     "id": 9,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 52.24,
     "description": null,
@@ -91,6 +100,7 @@
   },
   {
     "id": 10,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -41.45,
     "description": null,
@@ -101,6 +111,7 @@
   },
   {
     "id": 11,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -536.47,
     "description": null,
@@ -115,12 +126,14 @@
     "categoryId": 8,
     "transactionDate": "2020-05-30T04:00:00.000Z",
     "id": 12,
+    "userId": "qwerty",
     "bookId": 1,
     "dateModified": "2020-05-13T04:00:00.000Z",
     "dateCreated": "2020-05-13T04:00:00.000Z"
   },
   {
     "id": 13,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 68.66,
     "description": "sit amet lobortis sapien sapien non",
@@ -131,6 +144,7 @@
   },
   {
     "id": 14,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -880.78,
     "description": null,
@@ -141,6 +155,7 @@
   },
   {
     "id": 15,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -11.73,
     "description": "dui luctus rutrum nulla tellus in sagittis dui vel nisl",
@@ -151,6 +166,7 @@
   },
   {
     "id": 16,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -86.85,
     "description": null,
@@ -161,6 +177,7 @@
   },
   {
     "id": 17,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -413.31,
     "description": "odio odio elementum eu",
@@ -171,6 +188,7 @@
   },
   {
     "id": 18,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -574.49,
     "description": "in felis donec semper sapien a libero nam dui proin leo odio porttitor id",
@@ -181,6 +199,7 @@
   },
   {
     "id": 19,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -264.99,
     "description": "accumsan tellus nisi eu orci mauris lacinia sapien",
@@ -191,6 +210,7 @@
   },
   {
     "id": 20,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 250.64,
     "description": "duis aliquam convallis",
@@ -201,6 +221,7 @@
   },
   {
     "id": 21,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -769.8,
     "description": null,
@@ -211,6 +232,7 @@
   },
   {
     "id": 22,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 7.39,
     "description": "venenatis non sodales sed tincidunt eu felis",
@@ -221,6 +243,7 @@
   },
   {
     "id": 23,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -288.61,
     "description": "semper est quam pharetra magna ac",
@@ -231,6 +254,7 @@
   },
   {
     "id": 24,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -327.91,
     "description": null,
@@ -241,6 +265,7 @@
   },
   {
     "id": 25,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -265.18,
     "description": "leo rhoncus sed vestibulum sit",
@@ -251,6 +276,7 @@
   },
   {
     "id": 26,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -81.27,
     "description": "vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra",
@@ -261,6 +287,7 @@
   },
   {
     "id": 27,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -77.62,
     "description": "ultricies eu",
@@ -271,6 +298,7 @@
   },
   {
     "id": 28,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -46.63,
     "description": null,
@@ -281,6 +309,7 @@
   },
   {
     "id": 29,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -6.56,
     "description": "non sodales sed tincidunt",
@@ -291,6 +320,7 @@
   },
   {
     "id": 30,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 610.17,
     "description": "magna bibendum imperdiet nullam orci pede venenatis non sodales",
@@ -301,6 +331,7 @@
   },
   {
     "id": 31,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 739.88,
     "description": null,
@@ -311,6 +342,7 @@
   },
   {
     "id": 32,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 153.1,
     "description": null,
@@ -321,6 +353,7 @@
   },
   {
     "id": 33,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -88.27,
     "description": "adipiscing",
@@ -331,6 +364,7 @@
   },
   {
     "id": 34,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -182.96,
     "description": null,
@@ -341,6 +375,7 @@
   },
   {
     "id": 35,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -12.04,
     "description": "ultricies eu nibh quisque",
@@ -351,6 +386,7 @@
   },
   {
     "id": 36,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -781.81,
     "description": "lacus morbi sem mauris laoreet ut",
@@ -361,6 +397,7 @@
   },
   {
     "id": 37,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -92.32,
     "description": "suscipit a feugiat et eros vestibulum",
@@ -371,6 +408,7 @@
   },
   {
     "id": 38,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 248.96,
     "description": null,
@@ -381,6 +419,7 @@
   },
   {
     "id": 39,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -81.54,
     "description": null,
@@ -391,6 +430,7 @@
   },
   {
     "id": 40,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -454.06,
     "description": null,
@@ -401,6 +441,7 @@
   },
   {
     "id": 41,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 509.54,
     "description": "vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor",
@@ -411,6 +452,7 @@
   },
   {
     "id": 42,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -73.35,
     "description": null,
@@ -421,6 +463,7 @@
   },
   {
     "id": 43,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -306.23,
     "description": null,
@@ -431,6 +474,7 @@
   },
   {
     "id": 44,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -53.39,
     "description": null,
@@ -441,6 +485,7 @@
   },
   {
     "id": 45,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -67.01,
     "description": null,
@@ -451,6 +496,7 @@
   },
   {
     "id": 46,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 739.77,
     "description": null,
@@ -461,6 +507,7 @@
   },
   {
     "id": 47,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 33.56,
     "description": null,
@@ -471,6 +518,7 @@
   },
   {
     "id": 48,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -132.97,
     "description": null,
@@ -481,6 +529,7 @@
   },
   {
     "id": 49,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -746.96,
     "description": null,
@@ -491,6 +540,7 @@
   },
   {
     "id": 50,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -710.48,
     "description": "neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum",
@@ -501,6 +551,7 @@
   },
   {
     "id": 51,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -76.63,
     "description": "rhoncus aliquam lacus morbi quis tortor",
@@ -511,6 +562,7 @@
   },
   {
     "id": 52,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 90.12,
     "description": null,
@@ -521,6 +573,7 @@
   },
   {
     "id": 53,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -595.99,
     "description": "egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis",
@@ -531,6 +584,7 @@
   },
   {
     "id": 54,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -21.75,
     "description": null,
@@ -541,6 +595,7 @@
   },
   {
     "id": 55,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 767.57,
     "description": "interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis",
@@ -551,6 +606,7 @@
   },
   {
     "id": 56,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -64.77,
     "description": "luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse",
@@ -561,6 +617,7 @@
   },
   {
     "id": 57,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -23.5,
     "description": null,
@@ -571,6 +628,7 @@
   },
   {
     "id": 58,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -58.05,
     "description": "vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus",
@@ -581,6 +639,7 @@
   },
   {
     "id": 59,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -422.09,
     "description": "ac nibh fusce lacus purus aliquet",
@@ -591,6 +650,7 @@
   },
   {
     "id": 60,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -948.98,
     "description": "libero",
@@ -601,6 +661,7 @@
   },
   {
     "id": 61,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 219.7,
     "description": null,
@@ -611,6 +672,7 @@
   },
   {
     "id": 62,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -46.13,
     "description": "aliquam",
@@ -621,6 +683,7 @@
   },
   {
     "id": 63,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -869.87,
     "description": "orci nullam molestie nibh in lectus pellentesque",
@@ -631,6 +694,7 @@
   },
   {
     "id": 64,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 197.45,
     "description": "id consequat in consequat ut",
@@ -641,6 +705,7 @@
   },
   {
     "id": 65,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -91.75,
     "description": "in porttitor pede justo eu massa donec dapibus duis at velit eu est congue",
@@ -651,6 +716,7 @@
   },
   {
     "id": 66,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -406.24,
     "description": null,
@@ -661,6 +727,7 @@
   },
   {
     "id": 67,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -25.96,
     "description": null,
@@ -671,6 +738,7 @@
   },
   {
     "id": 68,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -8.83,
     "description": null,
@@ -681,6 +749,7 @@
   },
   {
     "id": 69,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 1.36,
     "description": "aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante",
@@ -691,6 +760,7 @@
   },
   {
     "id": 70,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -78.47,
     "description": null,
@@ -701,6 +771,7 @@
   },
   {
     "id": 71,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 422.87,
     "description": null,
@@ -711,6 +782,7 @@
   },
   {
     "id": 72,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -47.97,
     "description": null,
@@ -721,6 +793,7 @@
   },
   {
     "id": 73,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -256.43,
     "description": "lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum",
@@ -731,6 +804,7 @@
   },
   {
     "id": 74,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 675.69,
     "description": null,
@@ -741,6 +815,7 @@
   },
   {
     "id": 75,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 402.7,
     "description": null,
@@ -751,6 +826,7 @@
   },
   {
     "id": 76,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 928.25,
     "description": "vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient",
@@ -761,6 +837,7 @@
   },
   {
     "id": 77,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -67,
     "description": null,
@@ -771,6 +848,7 @@
   },
   {
     "id": 78,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 96.97,
     "description": "nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede",
@@ -781,6 +859,7 @@
   },
   {
     "id": 79,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -8.13,
     "description": "turpis adipiscing lorem vitae mattis nibh ligula nec",
@@ -791,6 +870,7 @@
   },
   {
     "id": 80,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 141.96,
     "description": null,
@@ -801,6 +881,7 @@
   },
   {
     "id": 81,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -985.63,
     "description": "turpis",
@@ -811,6 +892,7 @@
   },
   {
     "id": 82,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -73.92,
     "description": "nisl ut volutpat sapien arcu sed augue aliquam erat",
@@ -821,6 +903,7 @@
   },
   {
     "id": 83,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -90.17,
     "description": "orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio",
@@ -831,6 +914,7 @@
   },
   {
     "id": 84,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -94.77,
     "description": null,
@@ -841,6 +925,7 @@
   },
   {
     "id": 85,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -73.53,
     "description": "lectus pellentesque eget nunc",
@@ -851,6 +936,7 @@
   },
   {
     "id": 86,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -93.55,
     "description": "ante nulla",
@@ -861,6 +947,7 @@
   },
   {
     "id": 87,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -22.44,
     "description": "donec dapibus duis at velit eu est",
@@ -871,6 +958,7 @@
   },
   {
     "id": 88,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -308.55,
     "description": "eros suspendisse accumsan tortor quis",
@@ -881,6 +969,7 @@
   },
   {
     "id": 89,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -962.02,
     "description": null,
@@ -891,6 +980,7 @@
   },
   {
     "id": 90,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -207.56,
     "description": "et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices",
@@ -901,6 +991,7 @@
   },
   {
     "id": 91,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -568.93,
     "description": null,
@@ -911,6 +1002,7 @@
   },
   {
     "id": 92,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -967.22,
     "description": "risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero",
@@ -921,6 +1013,7 @@
   },
   {
     "id": 93,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -383.23,
     "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices",
@@ -931,6 +1024,7 @@
   },
   {
     "id": 94,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -732.2,
     "description": null,
@@ -941,6 +1035,7 @@
   },
   {
     "id": 95,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -712.48,
     "description": "lobortis vel dapibus at diam nam tristique tortor",
@@ -951,6 +1046,7 @@
   },
   {
     "id": 96,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -254.25,
     "description": "tellus",
@@ -961,6 +1057,7 @@
   },
   {
     "id": 97,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 210.94,
     "description": "cubilia curae donec pharetra",
@@ -971,6 +1068,7 @@
   },
   {
     "id": 98,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -133.8,
     "description": "cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin",
@@ -981,6 +1079,7 @@
   },
   {
     "id": 99,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": -216.23,
     "description": null,
@@ -991,6 +1090,7 @@
   },
   {
     "id": 100,
+    "userId": "qwerty",
     "bookId": 1,
     "amount": 616.47,
     "description": "sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis nec euismod",
@@ -1006,6 +1106,7 @@
     "transactionDate": "2020-05-13T20:36:33.828Z",
     "dateCreated": "2020-05-13T20:36:33.828Z",
     "dateModified": "2020-05-13T20:36:33.828Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 101
   },
@@ -1016,6 +1117,7 @@
     "transactionDate": "2020-05-31T04:00:00.000Z",
     "dateModified": "2020-05-14T00:24:39.345Z",
     "id": 102,
+    "userId": "qwerty",
     "bookId": 1,
     "dateCreated": "2020-05-13T04:00:00.000Z"
   },
@@ -1026,6 +1128,7 @@
     "transactionDate": "2020-05-31T04:00:00.000Z",
     "dateModified": "2020-05-14T00:22:43.756Z",
     "id": 103,
+    "userId": "qwerty",
     "bookId": 1,
     "dateCreated": "2020-05-13T04:00:00.000Z"
   },
@@ -1036,6 +1139,7 @@
     "transactionDate": "2020-05-30T04:00:00.000Z",
     "dateModified": "2020-05-14T00:25:10.960Z",
     "id": 104,
+    "userId": "qwerty",
     "bookId": 1,
     "dateCreated": "2020-05-13T04:00:00.000Z"
   },
@@ -1046,6 +1150,7 @@
     "transactionDate": "2020-05-30T04:00:00.000Z",
     "dateModified": "2020-05-14T00:25:01.295Z",
     "id": 105,
+    "userId": "qwerty",
     "bookId": 1,
     "dateCreated": "2020-05-30T04:00:00.000Z"
   },
@@ -1056,6 +1161,7 @@
     "transactionDate": "2020-05-13T04:00:00.000Z",
     "dateCreated": "2020-05-13T04:00:00.000Z",
     "dateModified": "2020-05-13T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 106
   },
@@ -1066,6 +1172,7 @@
     "transactionDate": "2020-05-13T04:00:00.000Z",
     "dateCreated": "2020-05-13T04:00:00.000Z",
     "dateModified": "2020-05-13T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 107
   },
@@ -1075,6 +1182,7 @@
     "categoryId": 4,
     "transactionDate": "2020-05-29T04:00:00.000Z",
     "id": 108,
+    "userId": "qwerty",
     "bookId": 1,
     "dateModified": "2020-05-13T04:00:00.000Z",
     "dateCreated": "2020-05-13T04:00:00.000Z"
@@ -1086,6 +1194,7 @@
     "transactionDate": "2020-05-19T04:00:00.000Z",
     "dateModified": "2020-05-19T22:18:12.305Z",
     "id": 109,
+    "userId": "qwerty",
     "bookId": 1,
     "dateCreated": "2020-05-19T04:00:00.000Z"
   },
@@ -1096,6 +1205,7 @@
     "transactionDate": "2020-05-19T04:00:00.000Z",
     "dateModified": "2020-05-19T04:00:00.000Z",
     "dateCreated": "2020-05-19T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 110
   },
@@ -1106,6 +1216,7 @@
     "transactionDate": "2020-05-19T04:00:00.000Z",
     "dateModified": "2020-05-19T04:00:00.000Z",
     "dateCreated": "2020-05-19T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 111
   },
@@ -1116,6 +1227,7 @@
     "transactionDate": "2020-05-19T04:00:00.000Z",
     "dateModified": "2020-05-19T04:00:00.000Z",
     "dateCreated": "2020-05-19T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 112
   },
@@ -1126,6 +1238,7 @@
     "transactionDate": "2020-05-19T04:00:00.000Z",
     "dateModified": "2020-05-19T04:00:00.000Z",
     "dateCreated": "2020-05-19T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 113
   },
@@ -1136,6 +1249,7 @@
     "transactionDate": "2020-05-31T04:00:00.000Z",
     "dateModified": "2020-05-31T04:00:00.000Z",
     "dateCreated": "2020-05-31T04:00:00.000Z",
+    "userId": "qwerty",
     "bookId": 1,
     "id": 114
   }

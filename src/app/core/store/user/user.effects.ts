@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { ofType, createEffect, Actions } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 
-import { authLogin, authLogout } from './auth.actions';
+import { login, logout } from './user.actions';
 
 export const AUTH_KEY = 'AUTH';
 
 @Injectable()
-export class AuthEffects {
+export class UserEffects {
   constructor(
     private actions$: Actions,
     private router: Router
@@ -17,7 +17,7 @@ export class AuthEffects {
   login = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(authLogin),
+        ofType(login),
       ),
     { dispatch: false }
   );
@@ -25,7 +25,7 @@ export class AuthEffects {
   logout = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(authLogout),
+        ofType(logout),
         tap(() => {
           this.router.navigate(['']);
         })

@@ -12,9 +12,9 @@ export class TransactionService {
   constructor(private http: HttpClient) {
   }
 
-  loadTransactionsByBook(bookId: number): Observable<Transaction[]> {
+  loadTransactionsByUser(userId: string): Observable<Transaction[]> {
     // return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}/book/${bookId}`);
-    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}`, { params: { bookId: bookId + '' } })
+    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}`, { params: { userId } })
     // .pipe(
     //   map((transactions: any[]) => transactions.map(this.convertDate))
     // );
@@ -24,6 +24,7 @@ export class TransactionService {
     // TODO: remove after server can do this
     transaction = {
       ...transaction,
+      userId: 'qwerty',
       dateCreated: transaction.transactionDate,
       dateModified: transaction.transactionDate,
       bookId: 1

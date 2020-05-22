@@ -1,6 +1,7 @@
 export interface Category {
   id: number;
   bookId: number;
+  userId: string;
   name: string;
   icon: string;
   color: string;

@@ -3,13 +3,13 @@ import { createAction, props } from '@ngrx/store';
 
 import { Transaction } from '../../model/transaction';
 
-export const loadTransactionsByBook = createAction(
-  '[Transaction] Load Transactions by Book',
-  props<{ bookId: number }>()
+export const loadTransactionsByUser = createAction(
+  '[Transaction] Load Transactions by User',
+  props<{ userId: string }>()
 );
 
-export const loadTransactionsByBookSuccess = createAction(
-  '[Transaction] Load Transactions by Book Success',
+export const loadTransactionsByUserSuccess = createAction(
+  '[Transaction] Load Transactions by User Success',
   props<{ transactions: Transaction[] }>()
 );
 

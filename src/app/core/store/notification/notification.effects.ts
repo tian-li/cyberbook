@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 
-import { defaultSnackBarAction, defaultSnackBarDuration } from '../../model/snack-bar';
+import { defaultSnackBarAction, defaultSnackBarDuration } from '../../../shared/model/snack-bar';
 import { notifyWithSnackBar } from './notification.actions';
 
 @Injectable()

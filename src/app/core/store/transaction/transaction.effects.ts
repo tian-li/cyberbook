@@ -10,8 +10,8 @@ import { TransactionService } from '../../services/transaction.service';
 import {
   addTransaction,
   addTransactionSuccess,
-  loadTransactionsByBook,
-  loadTransactionsByBookSuccess,
+  loadTransactionsByUser,
+  loadTransactionsByUserSuccess,
   removeTransaction,
   removeTransactionSuccess,
   updateTransaction,
@@ -23,10 +23,10 @@ export class TransactionEffects {
 
   loadTransactionsByBook$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadTransactionsByBook),
+      ofType(loadTransactionsByUser),
       switchMap(action =>
-        this.transactionService.loadTransactionsByBook(action.bookId).pipe(
-          map((transactions: Transaction[]) => loadTransactionsByBookSuccess({ transactions })),
+        this.transactionService.loadTransactionsByUser(action.userId).pipe(
+          map((transactions: Transaction[]) => loadTransactionsByUserSuccess({ transactions })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '账本记录载入失败，请稍后重试' } })))
         ))
     )

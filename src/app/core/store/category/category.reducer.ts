@@ -2,7 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { Category } from '../../model/category';
-import { addCategorySuccess, loadCategoriesByBookSuccess, removeCategory, updateCategorySuccess } from './category.actions';
+import { addCategorySuccess, loadCategoriesByUserSuccess, removeCategory, updateCategorySuccess } from './category.actions';
 
 export const categoryFeatureKey = 'category';
 
@@ -21,7 +21,7 @@ export const initialState: State = adapter.getInitialState({
 
 const reducer = createReducer(
   initialState,
-  on(loadCategoriesByBookSuccess, (state, { categories }) =>
+  on(loadCategoriesByUserSuccess, (state, { categories }) =>
     adapter.addMany(categories, { ...state, selectedCategoryId: null })
   ),
   on(addCategorySuccess, (state, { category }) =>

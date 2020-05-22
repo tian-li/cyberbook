@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "userId": "qwerty",
     "name": "购物",
     "icon": "https://robohash.org/estvoluptasquia.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -9,6 +10,7 @@
   },
   {
     "id": 2,
+    "userId": "qwerty",
     "name": "餐饮",
     "icon": "https://robohash.org/quiofficiisfugiat.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -17,6 +19,7 @@
   },
   {
     "id": 3,
+    "userId": "qwerty",
     "name": "交通",
     "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -25,6 +28,7 @@
   },
   {
     "id": 4,
+    "userId": "qwerty",
     "name": "娱乐",
     "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -33,6 +37,7 @@
   },
   {
     "id": 5,
+    "userId": "qwerty",
     "name": "住房",
     "icon": "https://robohash.org/voluptascorruptiquaerat.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -41,6 +46,7 @@
   },
   {
     "id": 6,
+    "userId": "qwerty",
     "name": "宠物",
     "icon": "https://robohash.org/eumquaeratut.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -49,6 +55,7 @@
   },
   {
     "id": 7,
+    "userId": "qwerty",
     "name": "学习",
     "icon": "https://robohash.org/itaqueetdoloremque.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -57,6 +64,7 @@
   },
   {
     "id": 8,
+    "userId": "qwerty",
     "name": "其他",
     "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -65,6 +73,7 @@
   },
   {
     "id": 9,
+    "userId": "qwerty",
     "name": "投资",
     "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
     "parentId": null,
@@ -73,6 +82,7 @@
   },
   {
     "id": 10,
+    "userId": "qwerty",
     "name": "工资",
     "icon": "https://robohash.org/facilisnonnatus.jpg?size=50x50&set=set1",
     "parentId": null,

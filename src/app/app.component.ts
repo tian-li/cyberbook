@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadCategoriesByBook } from '@spend-book/core/store/category';
-import { loadTransactionsByBook } from '@spend-book/core/store/transaction';
+import { loadCategoriesByUser } from '@spend-book/core/store/category';
+import { loadTransactionsByUser } from '@spend-book/core/store/transaction';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { loadTransactionsByBook } from '@spend-book/core/store/transaction';
 })
 export class AppComponent {
   constructor(private store: Store) {
-    this.store.dispatch(loadTransactionsByBook({ bookId: 1 }));
-    this.store.dispatch(loadCategoriesByBook({ bookId: 1 }));
+    this.store.dispatch(loadTransactionsByUser({ userId: 'qwerty' }));
+    this.store.dispatch(loadCategoriesByUser({ userId: 'qwerty' }));
   }
 }

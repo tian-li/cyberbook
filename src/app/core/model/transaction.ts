@@ -2,6 +2,7 @@ import { ISOString } from '@spend-book/shared/model/helper-models';
 
 export interface Transaction {
   id: number;
+  userId: string;
   bookId: number;
   amount: number;
   description: string;

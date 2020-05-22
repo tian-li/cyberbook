@@ -9,8 +9,8 @@ import { CategoryService } from '../../services/category.service';
 import {
   addCategory,
   addCategorySuccess,
-  loadCategoriesByBook,
-  loadCategoriesByBookSuccess,
+  loadCategoriesByUser,
+  loadCategoriesByUserSuccess,
   removeCategory,
   removeCategorySuccess,
   updateCategory,
@@ -22,10 +22,10 @@ export class CategoryEffects {
 
   loadCategories$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadCategoriesByBook),
+      ofType(loadCategoriesByUser),
       switchMap(action =>
-        this.categoryService.loadCategoriesByBook(action.bookId).pipe(
-          map((categories: Category[]) => loadCategoriesByBookSuccess({ categories })),
+        this.categoryService.loadCategoriesByUser(action.userId).pipe(
+          map((categories: Category[]) => loadCategoriesByUserSuccess({ categories })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '类别载入失败，请稍后重试' } })))
         ))
     )

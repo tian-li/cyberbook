@@ -1,32 +1,28 @@
 <div class="user-home-container">
-  <div class="user-info">
+  <div class="user">
     <div class="profile-photo">
       <img src="https://picsum.photos/70" alt="profile photo">
     </div>
 
-    <div class="user-info">
+    <div class="user-info" (click)="gotoAccountDetail()">
       <div class="user-name">
-        <div>
-          快速狐狸
-        </div>
-        <mat-icon>create</mat-icon>
+        <div>{{user.username}}</div>
+        <mat-icon class="edit-icon" *ngIf="!user.registered">create</mat-icon>
+        <mat-icon class="proceed-icon" *ngIf="user.registered">keyboard_arrow_right</mat-icon>
       </div>
 
       <div class="statistics">
-        <div>
-          已记账 1234 天，连续记账 105 天，共 984 笔
-        </div>
+        <div>已记账 {{1234}} 天，共 {{984}} 笔</div>
       </div>
     </div>
   </div>
-
 
   <div class="features">
     <div class="feature">
       <mat-icon class="feature-icon">star_half</mat-icon>
       <div class="feature-content">
-        <div class="feature-text">黑暗模式（开发中...）</div>
-        <mat-slide-toggle class="open-feature-arrow"></mat-slide-toggle>
+        <div class="feature-text">黑暗模式</div>
+        <mat-slide-toggle class="feature-proceeding-action"></mat-slide-toggle>
       </div>
     </div>
 
@@ -36,7 +32,7 @@
         <div class="feature-text">
           选择主题
         </div>
-        <mat-icon class="open-feature-arrow">keyboard_arrow_right</mat-icon>
+        <mat-icon class="feature-proceeding-action">keyboard_arrow_right</mat-icon>
 
       </div>
     </div>
@@ -49,17 +45,15 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <div matRipple class="feature">
-      <mat-icon class="feature-icon">info</mat-icon>
-      <div class="feature-content">
-        <div class="feature-text">
-          关于
-        </div>
-        <mat-icon class="open-feature-arrow">keyboard_arrow_right</mat-icon>
-      </div>
+  <div class="about">
+    <div class="version">
+      Version: 1.0.0
     </div>
-
+    <a class="github-link" href="https://github.com/tian-li/spend-book" target="_blank">
+      <img class="github-img" src="../../../../assets/images/GitHub-Mark-32px.png" alt="github link"/>
+    </a>
   </div>
 
 </div>

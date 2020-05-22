@@ -11,9 +11,9 @@ export class CategoryService {
   constructor(private http: HttpClient) {
   }
 
-  loadCategoriesByBook(bookId: number): Observable<Category[]> {
+  loadCategoriesByUser(userId: string): Observable<Category[]> {
     // return <Observable<Category[]>>this.http.get(`${this.categoryRoute}/book/${bookId}`);
-    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { bookId: bookId + '' } });
+    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } });
   }
 
   addCategory(category: Partial<Category>): Observable<Category> {

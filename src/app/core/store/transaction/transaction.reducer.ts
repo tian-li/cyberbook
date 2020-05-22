@@ -2,7 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { Transaction } from '../../model/transaction';
-import { addTransactionSuccess, loadTransactionsByBookSuccess, removeTransaction, updateTransactionSuccess } from './transaction.actions';
+import { addTransactionSuccess, loadTransactionsByUserSuccess, removeTransaction, updateTransactionSuccess } from './transaction.actions';
 
 export const transactionFeatureKey = 'transaction';
 
@@ -23,7 +23,7 @@ export const initialState: State = adapter.getInitialState({
 
 const reducer = createReducer(
   initialState,
-  on(loadTransactionsByBookSuccess, (state, { transactions }) => {
+  on(loadTransactionsByUserSuccess, (state, { transactions }) => {
     let transactionIdsByDate = {};
     transactions.forEach((transaction: Transaction) => {
       const date = transaction.transactionDate.substring(0, 10);

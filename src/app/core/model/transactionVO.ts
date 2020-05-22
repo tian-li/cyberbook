@@ -1,13 +1,14 @@
 export class TransactionVO {
   icon: string;
   id: number;
+  userId: string;
   bookId: number;
   amount: number;
   description: string;
   categoryId: number;
   categoryName: string;
   categoryColor: string;
-  categoryType: 'income'|'spend';
+  categoryType: 'income' | 'spend';
   transactionDate: Date;
   dateCreated: Date;
   dateModified: Date;
@@ -15,6 +16,7 @@ export class TransactionVO {
   constructor(props) {
     this.icon = props.icon;
     this.id = props.id;
+    this.userId = props.userId;
     this.bookId = props.bookId;
     this.amount = props.amount;
     this.description = props.description;

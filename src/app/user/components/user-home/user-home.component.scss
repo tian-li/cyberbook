@@ -6,7 +6,7 @@ div {
   flex-direction: column;
 }
 
-.user-info {
+.user {
   justify-content: flex-start;
   align-items: center;
   background: #ffda43;
@@ -30,10 +30,18 @@ div {
       font-size: 1.5rem;
       align-items: baseline;
 
-      mat-icon {
+      mat-icon.edit-icon {
         margin-left: 0.5rem;
         font-size: 1rem;
         text-decoration: underline;
+      }
+
+      mat-icon.proceed-icon {
+        margin-left: 0.5rem;
+        font-size: 2rem;
+        height: unset;
+        width: unset;
+        align-self: center;
       }
     }
 
@@ -60,7 +68,6 @@ div {
   .feature {
     align-items: center;
 
-
     .feature-icon {
       margin: 0 0.5rem 0 0.5rem;
     }
@@ -71,6 +78,8 @@ div {
 
       .feature-text {
         flex-grow: 1;
+        align-items: center;
+        height: 28px;
       }
     }
 
@@ -81,7 +90,7 @@ div {
       }
     }
 
-    .open-feature-arrow {
+    .feature-proceeding-action {
       justify-self: flex-end;
       margin-right: 0.5rem;
       font-size: 1.8rem;
@@ -89,8 +98,33 @@ div {
       width: unset;
     }
 
-    mat-slide-toggle.open-feature-arrow {
+    mat-slide-toggle.feature-proceeding-action {
       margin-right: 1rem;
+    }
+  }
+
+
+}
+
+.about {
+  margin-top: 2rem;
+  justify-content: center;
+
+  align-items: center;
+
+  .version {
+    font-size: 0.8rem;
+    color: #999;
+  }
+
+  .github-link {
+    display: flex;
+
+    .github-img {
+      margin-left: 5px;
+      height: 16px;
+      width: 16px;
+      opacity: 50%;
     }
   }
 
