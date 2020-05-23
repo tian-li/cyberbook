@@ -1,6 +1,13 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
-import { login, loginSuccess, logout, register, registerSuccess, updateProfile, updateProfileSuccess } from './user.actions';
+import {
+  loadUserFromLocalStorageSuccess,
+  loginSuccess,
+  logout,
+  registerSuccess,
+  registerTempUserSuccess,
+  updateProfileSuccess
+} from './user.actions';
 
 export const userFeatureKey = 'user';
 
@@ -17,7 +24,11 @@ export const initialState: State = {
 const reducer = createReducer(
   initialState,
   on(updateProfileSuccess, (state, { user }) => ({ ...state, user: { ...state.user, ...user }, isAuthenticated: true })),
-  on(loginSuccess, registerSuccess, (state, { user }) => ({ ...state, user, isAuthenticated: true })),
+  on(loginSuccess, registerSuccess, loadUserFromLocalStorageSuccess, registerTempUserSuccess, (state, { user }) => ({
+    ...state,
+    user,
+    isAuthenticated: true
+  })),
   on(logout, (state, { id }) => ({ ...state, user: null, isAuthenticated: false }))
 );
 

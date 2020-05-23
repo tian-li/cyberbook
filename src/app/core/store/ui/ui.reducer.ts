@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { ISOString } from '../../../shared/model/helper-models';
-import { setDisplayMonth } from './ui.actions';
+import { hideToolbar, setDisplayMonth, showToolbar } from './ui.actions';
 
 const today = new Date();
 
@@ -8,15 +8,19 @@ export const uiFeatureKey = 'ui';
 
 export interface State {
   displayMonth: ISOString;
+  showToolbar: boolean;
 }
 
 export const initialState: State = {
-  displayMonth: today.toISOString()
+  displayMonth: today.toISOString(),
+  showToolbar: true,
 };
 
 const reducer = createReducer(
   initialState,
   on(setDisplayMonth, (state, { displayMonth }) => ({ ...state, displayMonth })),
+  on(showToolbar, (state) => ({ ...state, showToolbar: true })),
+  on(hideToolbar, (state) => ({ ...state, showToolbar: false })),
 );
 
 export function uiReducer(

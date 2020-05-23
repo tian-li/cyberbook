@@ -27,6 +27,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
+      console.log('transactions', transactions)
       this.transactionVOs = transactions;
     });
   }

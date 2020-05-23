@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
-import { fromUser } from '@spend-book/core/store';
+import { fromUI, fromUser } from '@spend-book/core/store';
+import { hideToolbar } from '@spend-book/core/store/ui';
 
 @Component({
   selector: 'app-user-home',
@@ -31,7 +32,7 @@ export class UserHomeComponent implements OnInit {
     if (this.user.registered) {
       this.router.navigate(['./profile']);
     } else {
-      this.router.navigate(['./register'], {relativeTo: this.route});
+      this.router.navigate(['./login'], {relativeTo: this.route, state:{data: {hideNavBar: true}}});
     }
   }
 

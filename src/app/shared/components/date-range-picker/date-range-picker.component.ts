@@ -24,7 +24,6 @@ export class DateRangePickerComponent implements OnInit {
     },
     private fb: FormBuilder
   ) {
-    console.log('data', data);
   }
 
   ngOnInit(): void {

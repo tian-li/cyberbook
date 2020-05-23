@@ -1,33 +1,58 @@
-<div class="grid container">
-  <div class="grid"></div>
-
-  <div class="grid">
-    <img class="mat-elevation-z4" src="https://picsum.photos/150" alt="logo" />
+<div class="login-container">
+  <div class="return-button">
+    <mat-icon matRipple (click)="back()">keyboard_arrow_left</mat-icon>
   </div>
 
-  <div class="grid"></div>
+  <div class="logo">
+    <img src="../../../../assets/images/tarantula.png" height="80" width="80" alt="logo"/>
+    <div class="title">狼蛛记账</div>
+  </div>
 
-  <form class="grid" [formGroup]="form">
+  <form [formGroup]="form">
+    <div [ngClass]="{'hidden':!registerMode}">
+      <mat-form-field class="username">
+        <input matInput type="text" placeholder="用户名" formControlName="username" required/>
+        <mat-error *ngIf="form.controls.username.hasError('pattern')">无效的用户名</mat-error>
+      </mat-form-field>
+    </div>
+
+
     <mat-form-field>
-      <input
-        matInput
-        type="email"
-        placeholder="Email"
-        formControlName="email"
-      />
+      <input matInput placeholder="Email" formControlName="email" required/>
+      <mat-error *ngIf="form.controls.email.hasError('email')">无效的 Email</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input
-        matInput
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-      />
+      <input matInput type="password" placeholder="Password" formControlName="password" required/>
+      <mat-error *ngIf="form.controls.password.hasError('pattern')">无效的密码：至少包含一个</mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary">
-      Login
-    </button>
+    <div [ngClass]="{'hidden':!registerMode}">
+      <mat-form-field class="username">
+        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" required
+               [errorStateMatcher]="matcher"/>
+        <mat-error *ngIf="form.hasError('passwordNotMatch')">密码不一致</mat-error>
+      </mat-form-field>
+    </div>
+
   </form>
+
+  <div class="actions">
+    <div>
+      <button class="button-register" mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">
+        {{registerMode ? '注册' : '登录'}}
+      </button>
+    </div>
+
+    <div class="sub-actions">
+      <div (click)="toggleRegisterMode()">
+        {{registerMode ? '返回登录' : '快速注册'}}
+      </div>
+
+      <div *ngIf="!registerMode">
+        忘记密码
+      </div>
+    </div>
+  </div>
+
 </div>

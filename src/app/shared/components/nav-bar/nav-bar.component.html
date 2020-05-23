@@ -1,4 +1,6 @@
-<div class="nav-container">
+<ng-container *ngIf="showToolbar$|async">
+
+<div class="nav-container" >
   <div class="nav-item" routerLink="/home">
     <mat-icon routerLinkActive="activated-route">receipt</mat-icon>
     <span>明细</span>
@@ -35,3 +37,4 @@
         (click)="addTransaction()"
       >add_circle_outline</mat-icon>
 </div>
+</ng-container>

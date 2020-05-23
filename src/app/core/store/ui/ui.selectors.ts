@@ -10,3 +10,8 @@ export const selectDisplayMonth = createSelector(
   selectUIState,
   (state: fromUI.State) => state.displayMonth
 );
+
+export const selectShowToolbar = createSelector(
+  selectUIState,
+  (state: fromUI.State) => state.showToolbar
+);

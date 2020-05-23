@@ -15,16 +15,18 @@ const routes: Routes = [
         pathMatch: 'full',
         component: UserHomeComponent,
       },
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      }
+
     ]
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+    // data: {hideNavBar: true}
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  }
 
 ];
 

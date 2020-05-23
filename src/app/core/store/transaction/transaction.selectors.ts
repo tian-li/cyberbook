@@ -59,7 +59,7 @@ export const selectAllTransactionVOs = createSelector(selectCategoryEntities,
 export const selectAllTransactionVOsByYearMonth = createSelector(
   selectAllTransactionVOs,
   (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
-    console.log('selectAllTransactionVOsByYearMonth', props);
+    // console.log('selectAllTransactionVOsByYearMonth', props);
     const year: number = props.displayMonth.getFullYear();
     const month: number = props.displayMonth.getMonth();
     return transactionVOs.filter(
@@ -93,7 +93,7 @@ export const getTransactionSummaryByDate = createSelector(
 export const getTransactionSummaryByMonth = createSelector(
   selectAllTransactionVOsByYearMonth,
   (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
-    console.log('getTransactionSummaryByMonth', props);
+    // console.log('getTransactionSummaryByMonth', props);
 
     const monthSummary: PeriodSummary = {
       income: 0,

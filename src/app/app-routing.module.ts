@@ -1,31 +1,44 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthResolver } from '@spend-book/core/guards/auth.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    resolve: {
+      user: AuthResolver
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'home',
+        resolve: {
+          user: AuthResolver
+        },
+        loadChildren: () =>
+          import('./book/book.module').then(m => m.BookModule)
+      },
+      {
+        path: 'graph',
+        loadChildren: () =>
+          import('./graph/graph.module').then(m => m.GraphModule)
+      },
+      {
+        path: '**',
+        redirectTo: 'home'
+      }
+    ]
   },
-  {
-    path: 'user',
-    loadChildren: () =>
-      import('./user/user.module').then(m => m.UserModule)
-  },
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./book/book.module').then(m => m.BookModule)
-  },
-  {
-    path: 'graph',
-    loadChildren: () =>
-      import('./graph/graph.module').then(m => m.GraphModule)
-  },
-  {
-    path: '**',
-    redirectTo: 'home'
-  }
+
 ];
 
 @NgModule({

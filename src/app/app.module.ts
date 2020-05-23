@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AuthResolver } from '@spend-book/core/guards/auth.resolver';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +20,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     CoreModule
   ],
-  providers: [],
+  providers: [AuthResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {

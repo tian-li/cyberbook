@@ -7,6 +7,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BookService } from '@spend-book/core/services/book.service';
 import { CategoryService } from '@spend-book/core/services/category.service';
 import { TransactionService } from '@spend-book/core/services/transaction.service';
+import { UserService } from '@spend-book/core/services/user.service';
 import { ROOT_REDUCERS } from '@spend-book/core/store';
 import { UserEffects } from '@spend-book/core/store/user/user.effects';
 import { BookEffects } from '@spend-book/core/store/book/book.effects';
@@ -46,6 +47,7 @@ import { environment } from '../../environments/environment';
     BookService,
     CategoryService,
     TransactionService,
+    UserService
   ],
   declarations: []
 })

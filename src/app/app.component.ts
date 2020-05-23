@@ -9,8 +9,9 @@ import { loadTransactionsByUser } from '@spend-book/core/store/transaction';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
   constructor(private store: Store) {
-    this.store.dispatch(loadTransactionsByUser({ userId: 'qwerty' }));
-    this.store.dispatch(loadCategoriesByUser({ userId: 'qwerty' }));
+    // this.store.dispatch(loadTransactionsByUser({ userId: 'qwerty' }));
+    // this.store.dispatch(loadCategoriesByUser({ userId: 'qwerty' }));
   }
 }
