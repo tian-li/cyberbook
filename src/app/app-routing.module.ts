@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { AuthResolver } from '@spend-book/core/guards/auth.resolver';
+import { RouterModule, Routes } from '@angular/router';
+import { AutoLoginGuard } from '@spend-book/core/guards/auto-login.guard';
 
 const routes: Routes = [
   {
     path: '',
-    resolve: {
-      user: AuthResolver
-    },
+    canActivate: [AutoLoginGuard],
     children: [
       {
         path: '',
@@ -21,9 +19,6 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        resolve: {
-          user: AuthResolver
-        },
         loadChildren: () =>
           import('./book/book.module').then(m => m.BookModule)
       },
@@ -51,4 +46,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

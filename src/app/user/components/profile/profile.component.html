@@ -1,1 +1,50 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <div class="header">
+    <div class="return-button">
+      <mat-icon matRipple (click)="back()">keyboard_arrow_left</mat-icon>
+    </div>
+    <div class="title">
+      用户信息
+    </div>
+  </div>
+
+  <form class="user-info" [formGroup]="form">
+    <mat-form-field>
+      <input matInput type="text" placeholder="用户名" formControlName="username" required/>
+      <mat-error *ngIf="form.controls.username.hasError('pattern') && !form.controls.username.hasError('required')">无效的用户名</mat-error>
+      <mat-error *ngIf="!form.controls.username.hasError('pattern') && form.controls.username.hasError('required')">必填</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Email" formControlName="email" required/>
+      <mat-error *ngIf="form.controls.email.hasError('pattern') && !form.controls.email.hasError('required')">无效的Email</mat-error>
+      <mat-error *ngIf="!form.controls.email.hasError('pattern') && form.controls.email.hasError('required')">必填</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+
+      <mat-label>性别</mat-label>
+      <select matNativeControl formControlName="gender" required>
+        <option value="保密">保密</option>
+        <option value="男">男</option>
+        <option value="女">女</option>
+      </select>
+      <mat-error *ngIf="form.controls.gender.hasError('required')">必填</mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>生日</mat-label>
+      <input matInput [matDatepicker]="birthdayPicker" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthdayPicker></mat-datepicker>
+      <mat-error *ngIf="form.controls.birthday.hasError('required')">必填</mat-error>
+    </mat-form-field>
+
+  </form>
+
+  <button class="button-save" mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+    保存
+  </button>
+
+</div>

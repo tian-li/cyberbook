@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@spend-book/user/guards/auth.guard';
+import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
@@ -16,7 +16,6 @@ const routes: Routes = [
         pathMatch: 'full',
         component: UserHomeComponent,
       },
-
     ]
   },
   {
@@ -26,7 +25,7 @@ const routes: Routes = [
   {
     path: 'authenticate',
     component: AuthenticateComponent,
-    canActivate: [AuthGuard]
+    canActivate: [CanRegisterGuard]
   }
 
 ];

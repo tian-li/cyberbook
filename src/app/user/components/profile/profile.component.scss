@@ -1,0 +1,40 @@
+div, form {
+  display: flex;
+}
+
+.profile-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    background: #ffda43;
+    align-items: center;
+
+    .return-button {
+      position: absolute;
+      left: 0;
+    }
+
+    .title {
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+  }
+}
+
+
+form.user-info {
+  flex-direction: column;
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.button-save {
+  margin-top: 2rem;
+  width: 80%;
+}

@@ -7,12 +7,16 @@
     <div class="user-info" (click)="gotoAccountDetail()">
       <div class="user-name">
         <div>{{user.username}}</div>
-        <mat-icon class="edit-icon" *ngIf="!user.registered">create</mat-icon>
-        <mat-icon class="proceed-icon" *ngIf="user.registered">keyboard_arrow_right</mat-icon>
+        <mat-icon class="edit-icon" *ngIf="user.registered">create</mat-icon>
+        <div class="proceed-register" *ngIf="!user.registered">
+          <div class="proceed-register-text">立即注册</div>
+          <mat-icon class="proceed-icon">keyboard_arrow_right</mat-icon>
+        </div>
+
       </div>
 
       <div class="statistics">
-        <div>已记账 {{1234}} 天，共 {{984}} 笔</div>
+        <div>开始记账第 {{registeredLength}} 天，共 {{numberOfAllTransactions$|async}} 笔</div>
       </div>
     </div>
   </div>

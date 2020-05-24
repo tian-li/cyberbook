@@ -12,19 +12,23 @@
     <div [ngClass]="{'hidden':!registerMode}">
       <mat-form-field class="username">
         <input matInput type="text" placeholder="用户名" formControlName="username" required/>
-        <mat-error *ngIf="form.controls.username.hasError('pattern')">无效的用户名</mat-error>
+        <mat-error *ngIf="form.controls.username.hasError('pattern') && !form.controls.username.hasError('required')">无效的用户名</mat-error>
+        <mat-error *ngIf="!form.controls.username.hasError('pattern') && form.controls.username.hasError('required')">必填</mat-error>
       </mat-form-field>
     </div>
 
 
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email" required/>
-      <mat-error *ngIf="form.controls.email.hasError('email')">无效的 Email</mat-error>
+      <mat-error *ngIf="form.controls.email.hasError('pattern') && !form.controls.email.hasError('required')">无效的Email</mat-error>
+      <mat-error *ngIf="!form.controls.email.hasError('pattern') && form.controls.email.hasError('required')">必填</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput type="password" placeholder="Password" formControlName="password" required/>
-      <mat-error *ngIf="form.controls.password.hasError('pattern')">无效的密码：至少包含一个</mat-error>
+      <mat-error *ngIf="form.controls.password.hasError('pattern') && !form.controls.password.hasError('required')">无效的密码</mat-error>
+      <mat-error *ngIf="!form.controls.password.hasError('pattern') && form.controls.password.hasError('required')">必填</mat-error>
+
     </mat-form-field>
 
     <div [ngClass]="{'hidden':!registerMode}">

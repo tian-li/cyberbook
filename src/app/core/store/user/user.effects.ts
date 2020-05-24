@@ -13,7 +13,9 @@ import {
   login,
   loginSuccess,
   register,
-  registerSuccess, registerTempUser, registerTempUserSuccess,
+  registerSuccess,
+  registerTempUser,
+  registerTempUserSuccess,
   updateProfile,
   updateProfileSuccess
 } from './user.actions';
@@ -61,7 +63,6 @@ export class UserEffects {
         this.userService.register(action.user, action.password).pipe(
           map((user: User) => {
             this.saveUserToLocalstorage(user);
-            console.log('register success', user)
             if (user.registered) {
               this.router.navigate(['/user']);
             }
@@ -96,15 +97,22 @@ export class UserEffects {
       ofType(updateProfile),
       switchMap(action =>
         this.userService.updateProfile(action.user).pipe(
-          map((user: User) => updateProfileSuccess({ user })),
+          switchMap((user: User) => {
+            this.saveUserToLocalstorage(user);
+
+            return [updateProfileSuccess({ user }),
+            notifyWithSnackBar({ snackBar: { message: '更新成功' } })]
+
+          }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '更新账户信息失败' } })))
         )
       )
     )
   );
 
-  private saveUserToLocalstorage(user) {
+  private saveUserToLocalstorage(user: User) {
     localStorage.setItem('userId', user.id);
+    localStorage.setItem('registered', String(user.registered));
   }
 
   constructor(

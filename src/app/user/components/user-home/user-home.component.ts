@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
-import { fromUser } from '@spend-book/core/store';
+import { fromTransaction, fromUser } from '@spend-book/core/store';
+import * as dayjs from 'dayjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-home',
   templateUrl: './user-home.component.html',
   styleUrls: ['./user-home.component.scss']
 })
-export class UserHomeComponent implements OnInit {
+export class UserHomeComponent implements OnInit, OnDestroy {
   user: User;
+  registeredLength = 1;
+
+  numberOfAllTransactions$: Observable<number>;
+
+  private unsubscribe$: Subject<void> = new Subject();
 
   constructor(
     private store: Store,
@@ -20,11 +28,20 @@ export class UserHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.numberOfAllTransactions$ = this.store.pipe(select(fromTransaction.selectTransactionTotal))
+
     this.store.pipe(
-      select(fromUser.selectUser)
+      select(fromUser.selectUser),
+      takeUntil(this.unsubscribe$)
     ).subscribe((user: User) => {
       this.user = user;
+      this.registeredLength = dayjs(user.registeredDate).diff(dayjs(), 'day') + 1;
     })
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   gotoAccountDetail() {

@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AuthResolver } from '@spend-book/core/guards/auth.resolver';
-import { environment } from '../environments/environment';
+import { AutoLoginGuard } from '@spend-book/core/guards/auto-login.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -20,7 +18,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     CoreModule
   ],
-  providers: [AuthResolver],
+  providers: [AutoLoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

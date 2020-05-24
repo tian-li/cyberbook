@@ -17,18 +17,26 @@ export interface State {
 }
 
 export const initialState: State = {
-  user: <User>{ username: '立即注册', registered: false },
+  user: <User>{ registered: false },
   isAuthenticated: false
 };
 
 const reducer = createReducer(
   initialState,
   on(updateProfileSuccess, (state, { user }) => ({ ...state, user: { ...state.user, ...user }, isAuthenticated: true })),
-  on(loginSuccess, registerSuccess, loadUserFromLocalStorageSuccess, registerTempUserSuccess, (state, { user }) => ({
+  on(loginSuccess, registerSuccess, registerTempUserSuccess, (state, { user }) => ({
     ...state,
     user,
     isAuthenticated: true
   })),
+
+  on(loadUserFromLocalStorageSuccess, (state, { user }) => {
+    return {
+      ...state,
+      user,
+      isAuthenticated: true
+    }
+  }),
   on(logout, (state, { id }) => ({ ...state, user: null, isAuthenticated: false }))
 );
 

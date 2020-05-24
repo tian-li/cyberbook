@@ -1,15 +1,74 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { fromUI, fromUser } from '@spend-book/core/store';
+import { updateProfile } from '@spend-book/core/store/user';
+import { FullDate } from '@spend-book/shared/model/helper-models';
+import * as dayjs from 'dayjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
+  readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
+  // readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
 
-  constructor() { }
+  userId;
+  form: FormGroup;
 
-  ngOnInit() {
+  private unsubscribe$: Subject<void> = new Subject();
+
+  constructor(
+    private store: Store,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
   }
 
+  ngOnInit() {
+    this.store.dispatch(fromUI.hideToolbar());
+
+    this.store.pipe(
+      select(fromUser.selectUser),
+      takeUntil(this.unsubscribe$)
+    ).subscribe((user) => {
+      this.userId = user.id;
+
+      this.form = this.fb.group({
+        username: new FormControl(user.username, Validators.required),
+        email: new FormControl(user.email, [Validators.email, Validators.required]),
+        gender: new FormControl(user.gender ? user.gender : '保密', Validators.required),
+        birthday: new FormControl(user.birthday, Validators.required),
+      });
+    });
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(fromUI.showToolbar());
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  save() {
+    const formValue = this.form.value;
+    const birthday = dayjs(formValue.birthday).startOf('day').format(FullDate);
+
+    this.store.dispatch(updateProfile({
+      user: {
+        ...formValue,
+        id: this.userId,
+        birthday
+      }
+    }));
+  }
+
+  back() {
+    this.router.navigate(['..'], { relativeTo: this.route });
+  }
 }

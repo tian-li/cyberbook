@@ -36,13 +36,21 @@ div {
         text-decoration: underline;
       }
 
-      mat-icon.proceed-icon {
-        margin-left: 0.5rem;
-        font-size: 2rem;
-        height: unset;
-        width: unset;
-        align-self: center;
+      .proceed-register {
+        align-items: center;
+
+        .proceed-register-text {
+          font-size: 0.8rem;
+          margin-left: 2rem;
+        }
+
+        //mat-icon.proceed-icon {
+        //  height: unset;
+        //  width: unset;
+        //}
       }
+
+
     }
 
     .statistics {

@@ -1,11 +1,34 @@
 {
   "user": [
     {
-      "id": "9d738db3-3127-40bb-843a-6c14697eb3fb",
-      "username": "注册9d73",
+      "id": "015853f7-deae-4e8c-942d-01f5893437cf",
+      "username": "新用户0158",
+      "registered": true,
       "email": "litiansq89@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "4d720c38-777f-4c87-bcec-fd820b207310",
+      "username": "快速狐狸123",
+      "registered": true,
+      "email": "a@a.com",
       "password": "123",
-      "registered": true
+      "gender": "男",
+      "birthday": "05/15/2020"
+    },
+    {
+      "id": "efee7dc1-d4ab-4e4b-9fba-4c91cecd58ee",
+      "username": "新用户efee",
+      "registered": false,
+      "registeredDate": "05/24/2020"
+    },
+    {
+      "id": "65c38f54-13a0-4816-b60f-f00c49ecdbab",
+      "username": "手机用户",
+      "registered": true,
+      "registeredDate": "05/24/2020",
+      "email": "litiansq89@gmail.com",
+      "password": "123"
     }
   ],
   "book": [],

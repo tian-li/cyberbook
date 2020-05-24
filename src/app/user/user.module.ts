@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthGuard } from '@spend-book/user/guards/auth.guard';
+import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
 import { SharedModule } from '../shared/shared.module';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -19,7 +19,7 @@ import { UserRoutingModule } from './user-routing.module';
     UserRoutingModule
   ],
   providers: [
-    AuthGuard
+    CanRegisterGuard
   ]
 })
 export class UserModule {

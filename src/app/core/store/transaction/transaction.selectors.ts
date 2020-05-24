@@ -24,7 +24,7 @@ export const selectTransactionIdsByDate = createSelector(
   (state: fromTransaction.State) => state.transactionIdsByDate
 )
 
-const {
+export const {
   selectIds: selectTransactionIds,
   selectEntities: selectTransactionEntities,
   selectAll: selectAllTransactions,

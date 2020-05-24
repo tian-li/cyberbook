@@ -5,7 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { fromUI, fromUser } from '@spend-book/core/store';
 import { login, register } from '@spend-book/core/store/user';
-import {v4 as uuid} from 'uuid';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { v4 as uuid } from 'uuid';
 
 const passwordNotMatch = 'passwordNotMatch';
 
@@ -16,11 +18,13 @@ const passwordNotMatch = 'passwordNotMatch';
 })
 export class AuthenticateComponent implements OnInit, OnDestroy {
   readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
-  // readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
+  // TODO: readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
   matcher = new MyErrorStateMatcher();
   userId;
   form: FormGroup;
   registerMode = true;
+
+  private unsubscribe$: Subject<void> = new Subject();
 
   constructor(
     private store: Store,
@@ -34,7 +38,8 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     this.store.dispatch(fromUI.hideToolbar());
 
     this.store.pipe(
-      select(fromUser.selectUser)
+      select(fromUser.selectUser),
+      takeUntil(this.unsubscribe$)
     ).subscribe((user) => {
       this.userId = user.id;
 
@@ -48,28 +53,24 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.store.dispatch(fromUI.showToolbar())
-  }
-
-  isPasswordMatch: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-    if (!this.registerMode) {
-      return null;
-    }
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
-
-    return password && confirmPassword && password.value === confirmPassword.value ?
-      null : { [passwordNotMatch]: true };
+    this.store.dispatch(fromUI.showToolbar());
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   submit() {
     const formValue = this.form.value;
+
     if (this.registerMode) {
-      if(!this.userId) {
+      if (!this.userId) {
         this.userId = uuid();
       }
 
-      this.store.dispatch(register({ user: { id: this.userId, username: formValue.username, email: formValue.email }, password: formValue.password }));
+      this.store.dispatch(register({
+        user: { id: this.userId, username: formValue.username, email: formValue.email },
+        // TODO: encrypt
+        password: formValue.password
+      }));
     } else {
       this.store.dispatch(login({ email: formValue.email, password: formValue.password }))
     }
@@ -88,6 +89,17 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
 
   back() {
     this.router.navigate(['..'], { relativeTo: this.route });
+  }
+
+  private isPasswordMatch: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+    if (!this.registerMode) {
+      return null;
+    }
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    return password && confirmPassword && password.value === confirmPassword.value ?
+      null : { [passwordNotMatch]: true };
   }
 }
 
