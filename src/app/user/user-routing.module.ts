@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from '@spend-book/user/guards/auth.guard';
+import { AuthenticateComponent } from './components/authenticate/authenticate.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
 
@@ -19,13 +20,13 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    // data: {hideNavBar: true}
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: 'authenticate',
+    component: AuthenticateComponent,
+    canActivate: [AuthGuard]
   }
 
 ];

@@ -44,9 +44,6 @@ export class UserEffects {
       switchMap(action =>
         this.userService.getUserById(action.userId).pipe(
           map((user: User) => {
-            // this.router.navigate(['/user']);
-            console.log('user get user by id',user);
-
             this.saveUserToLocalstorage(user);
             return loadUserFromLocalStorageSuccess({ user });
 
@@ -64,6 +61,7 @@ export class UserEffects {
         this.userService.register(action.user, action.password).pipe(
           map((user: User) => {
             this.saveUserToLocalstorage(user);
+            console.log('register success', user)
             if (user.registered) {
               this.router.navigate(['/user']);
             }

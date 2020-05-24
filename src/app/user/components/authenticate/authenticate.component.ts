@@ -11,15 +11,13 @@ const passwordNotMatch = 'passwordNotMatch';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './authenticate.component.html',
+  styleUrls: ['./authenticate.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class AuthenticateComponent implements OnInit, OnDestroy {
   readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
   // readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
   matcher = new MyErrorStateMatcher();
-
-
   userId;
   form: FormGroup;
   registerMode = true;
@@ -66,9 +64,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   submit() {
     const formValue = this.form.value;
-
-    console.log('form value', formValue);
-
     if (this.registerMode) {
       if(!this.userId) {
         this.userId = uuid();

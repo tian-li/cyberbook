@@ -13,7 +13,8 @@ export class CategoryService {
 
   loadCategoriesByUser(userId: string): Observable<Category[]> {
     // return <Observable<Category[]>>this.http.get(`${this.categoryRoute}/book/${bookId}`);
-    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } });
+    // return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } });
+    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`);
   }
 
   addCategory(category: Partial<Category>): Observable<Category> {

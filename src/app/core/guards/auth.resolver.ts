@@ -21,8 +21,6 @@ export class AuthResolver implements Resolve<User> {
   ): Observable<any> | Promise<any> | any {
     const localUserId = this.userService.getUserIdFromLocalStorage();
 
-    console.log('userId in resolver', localUserId)
-
     if (!!localUserId) {
       this.loadUserData(localUserId);
     } else {
@@ -43,7 +41,6 @@ export class AuthResolver implements Resolve<User> {
   }
 
   loadUserData(localUserId) {
-    // console.log('localUserId in resolver', localUserId)
     this.store.dispatch(loadUserFromLocalStorage({ userId: localUserId }));
     this.store.dispatch(loadTransactionsByUser({ userId: localUserId }));
     this.store.dispatch(loadCategoriesByUser({ userId: localUserId }));

@@ -1,45 +1,105 @@
 {
   "user": [
     {
-      "id": "b17e8eca-c887-4478-bfe2-9163c3c340f7",
-      "username": "新用户b17e",
-      "registered": false
-    },
-    {
-      "id": "c91425df-b4ab-4b7f-aeb0-d9bbf81cd030",
-      "username": "新用户c914",
-      "registered": false
-    },
-    {
-      "id": "52f0c85d-a920-44a5-a421-9f858eff987f",
-      "username": "新用户52f0",
-      "registered": false
-    },
-    {
-      "id": "e8b7cb55-c8be-46b6-b2bf-4fc41742f186",
-      "username": "新用户e8b7",
-      "registered": false
-    },
-    {
-      "id": "e2312460-acbf-4255-99d0-8d74b57ba0be",
-      "username": "注册e231",
+      "id": "9d738db3-3127-40bb-843a-6c14697eb3fb",
+      "username": "注册9d73",
       "email": "litiansq89@gmail.com",
-      "password": "123"
+      "password": "123",
+      "registered": true
     }
   ],
   "book": [],
-  "category": [],
-  "transaction": [
+  "category": [
     {
-      "amount": -456,
-      "description": null,
-      "categoryId": 4,
-      "transactionDate": "2020-05-19T04:00:00.000Z",
-      "dateModified": "2020-05-19T04:00:00.000Z",
-      "dateCreated": "2020-05-19T04:00:00.000Z",
-      "userId": "e2312460-acbf-4255-99d0-8d74b57ba0be",
-      "bookId": 1,
-      "id": 1
+      "id": 1,
+      "userId": "qwerty",
+      "name": "购物",
+      "icon": "https://robohash.org/estvoluptasquia.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#4D4D4D",
+      "type": "spend"
+    },
+    {
+      "id": 2,
+      "userId": "qwerty",
+      "name": "餐饮",
+      "icon": "https://robohash.org/quiofficiisfugiat.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#5DA5DA",
+      "type": "spend"
+    },
+    {
+      "id": 3,
+      "userId": "qwerty",
+      "name": "交通",
+      "icon": "https://robohash.org/voluptasnihildolor.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#FAA43A",
+      "type": "spend"
+    },
+    {
+      "id": 4,
+      "userId": "qwerty",
+      "name": "娱乐",
+      "icon": "https://robohash.org/quasdignissimossunt.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#60BD68",
+      "type": "spend"
+    },
+    {
+      "id": 5,
+      "userId": "qwerty",
+      "name": "住房",
+      "icon": "https://robohash.org/voluptascorruptiquaerat.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#F17CB0",
+      "type": "spend"
+    },
+    {
+      "id": 6,
+      "userId": "qwerty",
+      "name": "宠物",
+      "icon": "https://robohash.org/eumquaeratut.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#B2912F",
+      "type": "spend"
+    },
+    {
+      "id": 7,
+      "userId": "qwerty",
+      "name": "学习",
+      "icon": "https://robohash.org/itaqueetdoloremque.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#B276B2",
+      "type": "spend"
+    },
+    {
+      "id": 8,
+      "userId": "qwerty",
+      "name": "其他",
+      "icon": "https://robohash.org/rerumdignissimosamet.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#DECF3F",
+      "type": "spend"
+    },
+    {
+      "id": 9,
+      "userId": "qwerty",
+      "name": "投资",
+      "icon": "https://robohash.org/ullamfugiatsequi.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#4D4D4D",
+      "type": "income"
+    },
+    {
+      "id": 10,
+      "userId": "qwerty",
+      "name": "工资",
+      "icon": "https://robohash.org/facilisnonnatus.jpg?size=50x50&set=set1",
+      "parentId": null,
+      "color": "#5DA5DA",
+      "type": "income"
     }
-  ]
+  ],
+  "transaction": []
 }

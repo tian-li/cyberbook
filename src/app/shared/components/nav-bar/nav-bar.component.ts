@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { fromUI } from '@spend-book/core/store';
+import { User } from '@spend-book/core/model/user';
+import { fromUI, fromUser } from '@spend-book/core/store';
 import { TransactionEditorComponent } from '@spend-book/shared/components/transaction-editor/transaction-editor.component';
 import { defaultTransactionEditorDialogConfig } from '@spend-book/shared/constants';
 import { Observable } from 'rxjs';
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class NavBarComponent {
   dialogRef: MatDialogRef<any>;
+  user: User;
 
   showToolbar$: Observable<boolean>;
 
@@ -21,9 +23,16 @@ export class NavBarComponent {
 
   ngOnInit() {
     this.showToolbar$ = this.store.pipe(select(fromUI.selectShowToolbar));
+    this.store.pipe(select(fromUser.selectUser)).subscribe(user => this.user = user);
   }
 
   addTransaction() {
-    this.dialogRef = this.dialog.open(TransactionEditorComponent, defaultTransactionEditorDialogConfig);
+    this.dialogRef = this.dialog.open(TransactionEditorComponent, {
+      ...defaultTransactionEditorDialogConfig,
+      data: {
+        ...defaultTransactionEditorDialogConfig.data,
+        userId: this.user.id
+      }
+    });
   }
 }

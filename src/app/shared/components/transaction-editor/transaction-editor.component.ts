@@ -33,7 +33,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialogRef: MatDialogRef<TransactionEditorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, transaction: Transaction },
+    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, transaction: Transaction, userId: string },
     private fb: FormBuilder,
     private store: Store,
   ) {
@@ -76,7 +76,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
 
   private get editedTransaction(): Partial<Transaction> {
     const formValue = this.formGroup.value;
-    let amount = Number.parseInt(formValue.amount.toFixed(2), 10);
+    let amount = Number.parseFloat(Number.parseFloat(formValue.amount).toFixed(2));
 
     if (this.categoryEntities[formValue.categoryId].type === 'spend') {
       amount = 0 - amount;
@@ -103,6 +103,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     } else {
       transaction = {
         ...transaction,
+        userId: this.data.userId,
         dateCreated: this.now.toISOString()
       }
     }

@@ -8,10 +8,6 @@ export function getMonthSummary(transactionVOs: TransactionVO[], date: dayjs.Day
     spend: 0
   };
 
-  // console.log('target year', year);
-  // console.log('target month', month);
-  // console.log('target date', date);
-
   transactionVOs
   .filter(t => {
     return dayjs(t.transactionDate).isSame(date, scale)

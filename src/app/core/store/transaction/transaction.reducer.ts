@@ -32,6 +32,7 @@ const reducer = createReducer(
         [date]: transactionIdsByDate[date] ? [...transactionIdsByDate[date], transaction.id] : [transaction.id]
       }
     });
+
     return adapter.addMany(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate })
   }),
   on(addTransactionSuccess, (state, { transaction }) => {

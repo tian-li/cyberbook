@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
+import { AuthGuard } from '@spend-book/user/guards/auth.guard';
 import { SharedModule } from '../shared/shared.module';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { AuthenticateComponent } from './components/authenticate/authenticate.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    RegisterComponent,
+    AuthenticateComponent,
+    ProfileComponent,
     UserHomeComponent,
     UserComponent
   ],
   imports: [
     SharedModule,
     UserRoutingModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class UserModule {

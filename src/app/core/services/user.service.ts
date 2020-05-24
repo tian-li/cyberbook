@@ -14,8 +14,6 @@ export class UserService {
 
   getUserIdFromLocalStorage() {
     const localUser = localStorage.getItem('userId');
-    console.log('localUser', localUser);
-
     return !!localUser || localUser !== 'undefined' ? localUser : null;
   }
 
@@ -34,14 +32,7 @@ export class UserService {
   }
 
   register(user: Partial<User>, password: string) {
-    const payload: any = { ...user };
-
-    if (!!password) {
-      payload.password = password;
-    }
-
-
-    return <Observable<User>>this.http.put(`${this.userRoute}/${user.id}`, payload)
+    return <Observable<User>>this.http.put(`${this.userRoute}/${user.id}`, { ...user, password, registered: true })
     // .pipe(
     //   map((u: any) => u[0])
     // );

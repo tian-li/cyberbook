@@ -24,7 +24,6 @@ export class TransactionService {
     // TODO: remove after server can do this
     transaction = {
       ...transaction,
-      userId: 'qwerty',
       dateCreated: transaction.transactionDate,
       dateModified: transaction.transactionDate,
       bookId: 1
