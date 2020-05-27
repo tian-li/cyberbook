@@ -1,3 +1,28 @@
-.spacer {
-  padding-top: 118px;
+.list {
+  position: absolute;
+  top: 118px;
+  bottom: 4rem;
+  left: 0;
+  overflow: scroll;
+  right: 0;
+  flex-direction: column;
+  justify-content: center;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+.empty-list {
+  display: flex;
+  height: 100%;
+  color: #ccc;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .empty-list-icon {
+    font-size: 5rem;
+    height: unset;
+    width: unset;
+  }
 }

@@ -39,6 +39,10 @@ body {
   background: #fafafa;
 }
 
+*{
+  overscroll-behavior: none !important;
+}
+
 .grid {
   display: grid;
 }

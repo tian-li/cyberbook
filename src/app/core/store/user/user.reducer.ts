@@ -11,13 +11,18 @@ import {
 
 export const userFeatureKey = 'user';
 
+const defaultTempUser: Partial<User> = {
+  username: '立即注册',
+  registered: false
+}
+
 export interface State {
-  user: User;
+  user: Partial<User>;
   isAuthenticated: boolean;
 }
 
 export const initialState: State = {
-  user: <User>{ registered: false },
+  user: defaultTempUser,
   isAuthenticated: false
 };
 
@@ -37,7 +42,7 @@ const reducer = createReducer(
       isAuthenticated: true
     }
   }),
-  on(logout, (state, { id }) => ({ ...state, user: null, isAuthenticated: false }))
+  on(logout, (state, { id }) => ({ user: defaultTempUser, isAuthenticated: false }))
 );
 
 export function userReducer(

@@ -1,6 +1,13 @@
-<app-book-header></app-book-header>
+<div>
+  <app-book-header class="book-header"></app-book-header>
 
-<div class="list">
-  <div class="spacer"></div>
-  <app-transaction-list [transactionVOs]="transactionVOs"></app-transaction-list>
+  <div class="list">
+    <app-transaction-list [transactionVOs]="transactionVOs"></app-transaction-list>
+
+    <div class="empty-list" *ngIf="transactionVOs.length <= 0">
+      <mat-icon class="empty-list-icon">receipt</mat-icon>
+      <div>暂无记录</div>
+    </div>
+  </div>
 </div>
+

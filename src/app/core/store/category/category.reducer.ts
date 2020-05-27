@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
-
+import { logout } from '@spend-book/core/store/user/user.actions';
 import { Category } from '../../model/category';
 import { addCategorySuccess, loadCategoriesByUserSuccess, removeCategory, updateCategorySuccess } from './category.actions';
 
@@ -33,6 +33,7 @@ const reducer = createReducer(
   on(removeCategory, (state, { id }) =>
     adapter.removeOne(id, { ...state, selectedCategoryId: null })
   ),
+  on(logout, (state) => initialState),
 );
 
 export function categoryReducer(

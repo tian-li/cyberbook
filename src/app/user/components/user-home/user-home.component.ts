@@ -44,6 +44,10 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
+  logout() {
+    this.store.dispatch(fromUser.logout({id: this.user.id}));
+  }
+
   gotoAccountDetail() {
     if (this.user.registered) {
       this.router.navigate(['./profile'], { relativeTo: this.route });

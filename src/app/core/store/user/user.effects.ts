@@ -12,6 +12,7 @@ import {
   loadUserFromLocalStorageSuccess,
   login,
   loginSuccess,
+  logout,
   register,
   registerSuccess,
   registerTempUser,
@@ -101,7 +102,7 @@ export class UserEffects {
             this.saveUserToLocalstorage(user);
 
             return [updateProfileSuccess({ user }),
-            notifyWithSnackBar({ snackBar: { message: '更新成功' } })]
+              notifyWithSnackBar({ snackBar: { message: '更新成功' } })]
 
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '更新账户信息失败' } })))
@@ -109,6 +110,14 @@ export class UserEffects {
       )
     )
   );
+
+  logout$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(logout),
+        map(action => localStorage.clear())
+      ),
+    { dispatch: false }
+  )
 
   private saveUserToLocalstorage(user: User) {
     localStorage.setItem('userId', user.id);

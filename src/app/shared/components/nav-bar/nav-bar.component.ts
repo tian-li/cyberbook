@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class NavBarComponent {
   dialogRef: MatDialogRef<any>;
-  user: User;
+  user: Partial<User>;
 
   showToolbar$: Observable<boolean>;
 
