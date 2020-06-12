@@ -62,12 +62,12 @@ const material = [
 const components = [
   NavBarComponent,
   TransactionEditorComponent,
-  YearMonthPickerComponent
+  YearMonthPickerComponent,
+  DateRangePickerComponent,
 ];
 
-
 @NgModule({
-  declarations: [...components, DateRangePickerComponent],
+  declarations: [...components],
   imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
   exports: [
     CommonModule,

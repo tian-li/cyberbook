@@ -47,10 +47,10 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   endDate = this.today.endOf('month');
   selectedTransactionType = TransactionType.both;
   dateAxisFormat = DateFormats.month;
+  transactionVOs: TransactionVO[];
 
   private lineChart: Chart;
   private dateAxisScale = DateAxisScales.month;
-  private transactionVOs: TransactionVO[];
   private dialogRef: MatDialogRef<DateRangePickerComponent>;
   private unsubscribe$: Subject<void> = new Subject();
 

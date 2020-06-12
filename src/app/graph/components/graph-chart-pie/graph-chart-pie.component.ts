@@ -54,7 +54,6 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       if(!!this.pieChart) {
         this.updateChart(this.createChartData(this.selectedTransactionType));
       }
-
     });
   }
 
@@ -107,6 +106,10 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     const colors: string[] = [];
     const transactionVOs = transactionType === TransactionType.spend ? this.spendTransactionVOs : this.incomeTransactionVOs;
 
+    if (transactionVOs.length <= 0) {
+      return this.defaultChartData;
+    }
+
     transactionVOs.forEach(transactionVO => {
       if(!!categorySummary[transactionVO.categoryName]) {
         categorySummary[transactionVO.categoryName].amount += transactionVO.amount
@@ -134,7 +137,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     return {
       datasets: [{
         data: amount,
-        backgroundColor:colors,
+        backgroundColor: colors,
       }],
       labels: labels
     };
@@ -143,8 +146,10 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   private updateChart(chartData: ChartData) {
     this.pieChart.data.labels = [...chartData.labels];
     this.pieChart.data.datasets.forEach((dataset) => {
-      dataset.data = chartData.datasets[0].data
+      dataset.data = chartData.datasets[0].data;
+      dataset.backgroundColor = chartData.datasets[0].backgroundColor;
     });
+
     this.pieChart.update();
   }
 
@@ -162,6 +167,16 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
           position: 'left',
         }
       }
+    });
+  }
+
+  private get defaultChartData() {
+    return Object.create({
+      datasets: [{
+        data: [100],
+        backgroundColor: ['rgba(0, 0, 0, 0.1)']
+      }],
+      labels: ['暂无']
     });
   }
 }

@@ -24,6 +24,7 @@ export class TransactionItemComponent {
         transaction: {
           id: this.transactionVO.id,
           bookId: this.transactionVO.bookId,
+          userId: this.transactionVO.userId,
           amount: this.transactionVO.amount,
           description: this.transactionVO.description,
           categoryId: this.transactionVO.categoryId,

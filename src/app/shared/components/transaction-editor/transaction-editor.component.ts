@@ -96,6 +96,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
         ...transaction,
         id: this.data.transaction.id,
         bookId: this.data.transaction.bookId,
+        userId: this.data.transaction.userId,
 
         // TODO: remove after server can do this
         dateCreated: this.data.transaction.dateCreated
