@@ -28,18 +28,24 @@ $spend-book-theme: mat-light-theme($spend-book-primary, $spend-book-accent, $spe
 
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: 'Helvetica Neue Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Helvetica Neue Light'), url('./assets/fonts/HelveticaNeue-Light.woff') format('woff');
+}
+
 html, body { height: 100%; }
 body {
   margin: 0;
   padding: 0;
-  //font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", sans-serif;
   overscroll-behavior: none;
   user-select: none;
   background: #fafafa;
 }
 
-*{
+* {
   overscroll-behavior: none !important;
 }
 

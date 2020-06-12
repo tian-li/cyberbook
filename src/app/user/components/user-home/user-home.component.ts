@@ -35,7 +35,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((user: User) => {
       this.user = user;
-      this.registeredLength = dayjs(user.registeredDate).diff(dayjs(), 'day') + 1;
+      this.registeredLength = dayjs().diff(dayjs(user.registeredDate), 'day') + 1;
     })
   }
 
@@ -45,7 +45,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.store.dispatch(fromUser.logout({id: this.user.id}));
+    this.store.dispatch(fromUser.logout({ id: this.user.id }));
   }
 
   gotoAccountDetail() {
