@@ -18,16 +18,21 @@ A mobile-first web app that can record daily costs.
 - [x] Choose a month in pie chart
 - [x] Line chart
 - [x] Choose date range in line chart
+- [x] Auto register temp user
+- [x] Register the temp user account
+- [x] Login with existing account
 
 ## TODOs
 
-- [ ] Better chart
+- [ ] User profile image
+- [ ] Category icon
 - [ ] Add/Edit category
 - [ ] Theme
 - [ ] Dark mode
 - [ ] Search
 - [ ] Offline editing
 - [ ] Deploy
+- [ ] UI design
 
 # How to run
 
