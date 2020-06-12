@@ -6,9 +6,9 @@ import { UserService } from '@spend-book/core/services/user.service';
 import { loadCategoriesByUser } from '@spend-book/core/store/category';
 import { loadTransactionsByUser } from '@spend-book/core/store/transaction';
 import { loadUserFromLocalStorage, registerTempUser } from '@spend-book/core/store/user';
+import { createTempUser } from '@spend-book/shared/utils/create-temp-user';
 import { getUserIdFromLocalStorage } from '@spend-book/shared/utils/get-user-from-localstorage';
 import { Observable, of } from 'rxjs';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class AutoLoginGuard implements CanActivate {
@@ -26,15 +26,7 @@ export class AutoLoginGuard implements CanActivate {
   }
 
   registerTempUser() {
-    const id: string = uuid();
-
-    const tempUser: Partial<User> = {
-      id,
-      username: '新用户' + id.substring(0, 4),
-      registered: false
-    }
-
-    this.store.dispatch(registerTempUser({ user: tempUser }));
+    this.store.dispatch(registerTempUser({ user: createTempUser() }));
   }
 
   loadUserData(localUserId) {

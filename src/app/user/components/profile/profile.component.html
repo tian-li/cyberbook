@@ -17,8 +17,8 @@
 
     <mat-form-field>
       <input matInput type="text" placeholder="Email" formControlName="email" required/>
-      <mat-error *ngIf="form.controls.email.hasError('pattern') && !form.controls.email.hasError('required')">无效的Email</mat-error>
-      <mat-error *ngIf="!form.controls.email.hasError('pattern') && form.controls.email.hasError('required')">必填</mat-error>
+      <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">无效的Email</mat-error>
+      <mat-error *ngIf="!form.controls.email.hasError('email') && form.controls.email.hasError('required')">必填</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -35,7 +35,7 @@
 
     <mat-form-field>
       <mat-label>生日</mat-label>
-      <input matInput [matDatepicker]="birthdayPicker" formControlName="birthday">
+      <input matInput [matDatepicker]="birthdayPicker" formControlName="birthday" required>
       <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
       <mat-datepicker #birthdayPicker></mat-datepicker>
       <mat-error *ngIf="form.controls.birthday.hasError('required')">必填</mat-error>

@@ -35,7 +35,8 @@
       <mat-form-field class="username">
         <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" required
                [errorStateMatcher]="matcher"/>
-        <mat-error *ngIf="form.hasError('passwordNotMatch')">密码不一致</mat-error>
+        <mat-error *ngIf="form.hasError('passwordNotMatch') && !form.controls.confirmPassword.hasError('required')">密码不一致</mat-error>
+        <mat-error *ngIf="!form.hasError('passwordNotMatch') && form.controls.confirmPassword.hasError('required')">必填</mat-error>
       </mat-form-field>
     </div>
 

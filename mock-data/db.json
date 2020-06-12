@@ -1,96 +1,34 @@
 {
   "user": [
     {
-      "id": "015853f7-deae-4e8c-942d-01f5893437cf",
-      "username": "新用户0158",
+      "id": "a7d91876-eeb2-4b0f-8bfd-4108c246547a",
+      "username": "老用户",
       "registered": true,
+      "registeredDate": "06/11/2020",
       "email": "litiansq89@gmail.com",
-      "password": "123"
-    },
-    {
-      "id": "4d720c38-777f-4c87-bcec-fd820b207310",
-      "username": "快速狐狸123",
-      "registered": true,
-      "email": "a@a.com",
       "password": "123",
-      "gender": "男",
+      "gender": "保密",
       "birthday": "05/15/2020"
     },
     {
-      "id": "efee7dc1-d4ab-4e4b-9fba-4c91cecd58ee",
-      "username": "新用户efee",
+      "id": "608f5139-8c72-4229-8b0f-a168f129271f",
+      "username": "新用户608f",
       "registered": false,
-      "registeredDate": "05/24/2020"
+      "registeredDate": "06/11/2020"
     },
     {
-      "id": "65c38f54-13a0-4816-b60f-f00c49ecdbab",
-      "username": "手机用户",
+      "id": "682d29b9-1a4c-4298-9b45-cf8139ef8ed6",
+      "username": "新用户682d",
       "registered": true,
-      "registeredDate": "05/24/2020",
+      "registeredDate": "06/11/2020",
       "email": "litiansq89@gmail.com",
       "password": "123"
     },
     {
-      "id": "194b2a16-b2d4-46c4-8042-0387c604ec9a",
-      "username": "新用户194b",
+      "id": "46babc41-bea4-4966-860b-a961a20617c1",
+      "username": "新用户46ba",
       "registered": false,
-      "registeredDate": "05/25/2020"
-    },
-    {
-      "id": "e6e43a53-5bd3-4ba3-9a1a-2e98f80c4247",
-      "username": "新用户e6e4",
-      "registered": false,
-      "registeredDate": "05/25/2020"
-    },
-    {
-      "id": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "username": "新用户df2c",
-      "registered": true,
-      "registeredDate": "05/26/2020",
-      "email": "b@b",
-      "password": "123"
-    },
-    {
-      "id": "a0dfbe0d-930a-478e-a1b5-dec4b3b3070b",
-      "username": "新用户a0df",
-      "registered": false,
-      "registeredDate": "05/25/2020"
-    },
-    {
-      "id": "f90b0c6b-9ec8-4804-9f3a-1d479213f247",
-      "username": "新用户f90b",
-      "registered": false,
-      "registeredDate": "05/26/2020"
-    },
-    {
-      "id": "21da1a83-e72e-4257-b246-4becd2d182b2",
-      "username": "新用户21da",
-      "registered": false,
-      "registeredDate": "05/26/2020"
-    },
-    {
-      "id": "98184978-041e-4a28-8daa-916b62f77828",
-      "username": "新用户9818",
-      "registered": false,
-      "registeredDate": "05/26/2020"
-    },
-    {
-      "id": "62f0692e-d5ed-411e-a07e-8ffbaa1cde91",
-      "username": "新用户62f0",
-      "registered": false,
-      "registeredDate": "05/26/2020"
-    },
-    {
-      "id": "9ce63aba-c7e1-4d31-9d55-9051501348b4",
-      "username": "新用户9ce6",
-      "registered": false,
-      "registeredDate": "05/26/2020"
-    },
-    {
-      "id": "d017d8cc-1c4b-4f03-afa8-cb39a73dfaef",
-      "username": "新用户d017",
-      "registered": false,
-      "registeredDate": "05/26/2020"
+      "registeredDate": "06/11/2020"
     }
   ],
   "book": [],

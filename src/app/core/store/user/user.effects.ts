@@ -1,9 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { User } from '@spend-book/core/model/user';
 import { UserService } from '@spend-book/core/services/user.service';
 import { notifyWithSnackBar } from '@spend-book/core/store/notification';
+import { createTempUser } from '@spend-book/shared/utils/create-temp-user';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
@@ -51,7 +53,16 @@ export class UserEffects {
             return loadUserFromLocalStorageSuccess({ user });
 
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '载入本地用户失败' } })))
+          catchError((error: HttpErrorResponse) => {
+            if (error.status === 404) {
+              return of(
+                notifyWithSnackBar({ snackBar: { message: '本地用户不存在，创建新临时用户' } }),
+                registerTempUser({ user: createTempUser() })
+              )
+            } else {
+              return of(notifyWithSnackBar({ snackBar: { message: '载入本地用户失败，请清空本地数据后重试' } }))
+            }
+          })
         )
       )
     )
@@ -100,10 +111,11 @@ export class UserEffects {
         this.userService.updateProfile(action.user).pipe(
           switchMap((user: User) => {
             this.saveUserToLocalstorage(user);
-
-            return [updateProfileSuccess({ user }),
-              notifyWithSnackBar({ snackBar: { message: '更新成功' } })]
-
+            this.router.navigate(['/user']);
+            return [
+              updateProfileSuccess({ user }),
+              notifyWithSnackBar({ snackBar: { message: '更新成功' } })
+            ];
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '更新账户信息失败' } })))
         )

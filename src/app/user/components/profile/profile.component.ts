@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
   // readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
 
-  userId;
+  userId: string;
   form: FormGroup;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -39,12 +39,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((user) => {
       this.userId = user.id;
-
       this.form = this.fb.group({
         username: new FormControl(user.username, Validators.required),
         email: new FormControl(user.email, [Validators.email, Validators.required]),
         gender: new FormControl(user.gender ? user.gender : '保密', Validators.required),
-        birthday: new FormControl(user.birthday, Validators.required),
+        birthday: new FormControl(dayjs(user.birthday).toDate(), Validators.required),
       });
     });
   }
