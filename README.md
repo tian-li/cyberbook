@@ -21,6 +21,7 @@ A mobile-first web app that can record daily costs.
 - [x] Auto register temp user
 - [x] Register the temp user account
 - [x] Login with existing account
+- [x] Swipe to delete a transaction
 
 ## TODOs
 
