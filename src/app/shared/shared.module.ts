@@ -27,6 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
+import { PreventScrollDirective } from '@spend-book/shared/directives/prevent-scroll.directive';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
@@ -65,7 +66,8 @@ const components = [
   TransactionEditorComponent,
   YearMonthPickerComponent,
   DateRangePickerComponent,
-  SwipeEventDirective
+  SwipeEventDirective,
+  PreventScrollDirective
 ];
 
 @NgModule({
