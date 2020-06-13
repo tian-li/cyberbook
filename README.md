@@ -51,3 +51,32 @@ If you want to see on a mobile device:
 5. Run `json-server --host {your computer local ip} --watch mock-data/db.json`.
 6. Run `ng serve --host {your computer local ip}` in another terminal window.
 7. On your mobile device, open `http://{your computer local ip}:1234`. Note: at this time, on your computer, `localhost:1234` no longer works, you should also use `http://{your computer local ip}:1234` on your computer.
+
+# Screenshots
+
+## Home - Transactions List
+<img src="./readme-assets/transaction-list.PNG" alt="transaction-list" title="transaction-list"  height="400px"/>
+
+## Edit Transaction
+<img src="./readme-assets/edit.PNG" alt="edit" title="edit"  height="400px"/>
+
+## Add Transaction
+<img src="./readme-assets/add.PNG" alt="add" title="add"  height="400px"/>
+
+## Swipe to Delete A Transaction
+<img src="./readme-assets/swipe-to-delete.gif" alt="swipe-to-delete" title="swipe-to-delete"  height="400px"/>
+
+## Pie Chart
+<img src="./readme-assets/pie-chart.PNG" alt="pie-chart" title="pie-chart"  height="400px"/>
+
+## Line Chart
+<img src="./readme-assets/line-chart.PNG" alt="line-chart" title="line-chart"  height="400px"/>
+
+## Account Overview
+<img src="./readme-assets/account.PNG" alt="account" title="account"  height="400px"/>
+
+## Register
+<img src="./readme-assets/register.PNG" alt="register" title="register"  height="400px"/>
+
+## Login
+<img src="./readme-assets/login.PNG" alt="login" title="login"  height="400px"/>
