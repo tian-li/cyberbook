@@ -173,6 +173,138 @@
       "dateCreated": "2020-06-12T04:00:00.000Z",
       "bookId": 1,
       "id": 18
+    },
+    {
+      "amount": -123,
+      "description": null,
+      "categoryId": 4,
+      "transactionDate": "2020-06-12T04:00:00.000Z",
+      "dateModified": "2020-06-12T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-12T04:00:00.000Z",
+      "bookId": 1,
+      "id": 19
+    },
+    {
+      "amount": -123,
+      "description": null,
+      "categoryId": 3,
+      "transactionDate": "2020-06-12T04:00:00.000Z",
+      "dateModified": "2020-06-12T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-12T04:00:00.000Z",
+      "bookId": 1,
+      "id": 20
+    },
+    {
+      "amount": 55,
+      "description": null,
+      "categoryId": 9,
+      "transactionDate": "2020-06-12T04:00:00.000Z",
+      "dateModified": "2020-06-12T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-12T04:00:00.000Z",
+      "bookId": 1,
+      "id": 22
+    },
+    {
+      "amount": -123,
+      "description": null,
+      "categoryId": 4,
+      "transactionDate": "2020-06-12T04:00:00.000Z",
+      "dateModified": "2020-06-12T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-12T04:00:00.000Z",
+      "bookId": 1,
+      "id": 24
+    },
+    {
+      "amount": -44,
+      "description": null,
+      "categoryId": 3,
+      "transactionDate": "2020-06-09T04:00:00.000Z",
+      "dateModified": "2020-06-09T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-09T04:00:00.000Z",
+      "bookId": 1,
+      "id": 26
+    },
+    {
+      "amount": -45,
+      "description": null,
+      "categoryId": 4,
+      "transactionDate": "2020-06-04T04:00:00.000Z",
+      "dateModified": "2020-06-04T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-04T04:00:00.000Z",
+      "bookId": 1,
+      "id": 27
+    },
+    {
+      "amount": -454,
+      "description": null,
+      "categoryId": 3,
+      "transactionDate": "2020-06-13T04:00:00.000Z",
+      "dateModified": "2020-06-13T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 28
+    },
+    {
+      "amount": -34,
+      "description": null,
+      "categoryId": 8,
+      "transactionDate": "2020-06-13T04:00:00.000Z",
+      "dateModified": "2020-06-13T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 29
+    },
+    {
+      "amount": 154,
+      "description": null,
+      "categoryId": 10,
+      "transactionDate": "2020-06-13T04:00:00.000Z",
+      "dateModified": "2020-06-13T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 30
+    },
+    {
+      "amount": -34,
+      "description": null,
+      "categoryId": 2,
+      "transactionDate": "2020-06-13T04:00:00.000Z",
+      "dateModified": "2020-06-13T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 31
+    },
+    {
+      "amount": -258,
+      "description": null,
+      "categoryId": 1,
+      "transactionDate": "2020-06-13T04:00:00.000Z",
+      "dateModified": "2020-06-13T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 32
+    },
+    {
+      "amount": -360,
+      "description": null,
+      "categoryId": 1,
+      "transactionDate": "2020-06-13T04:00:00.000Z",
+      "dateModified": "2020-06-13T04:00:00.000Z",
+      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "dateCreated": "2020-06-13T04:00:00.000Z",
+      "bookId": 1,
+      "id": 33
     }
   ]
 }

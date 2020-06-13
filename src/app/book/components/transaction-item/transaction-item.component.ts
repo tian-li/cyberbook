@@ -27,11 +27,11 @@ import { SwipeInfo } from '@spend-book/shared/model/helper-models';
   ]
 })
 export class TransactionItemComponent {
+  readonly swipeDeleteThreshold = 0.2;
   @Input() transactionVO: TransactionVO;
   @Input() firstOfDate: boolean;
 
-  readonly swipeDeleteThreshold = 0.2;
-
+  // swipe percentage
   widthPercentage = '0%';
   widthPercentageNumber = 0;
 
@@ -91,9 +91,7 @@ export class TransactionItemComponent {
   }
 
   delete(event) {
-    console.log('event', event);
     if (event.triggerName === 'flyInOut' && event.toState === 'out') {
-      console.log('')
       this.store.dispatch(removeTransaction({ id: this.transactionVO.id }));
       this.flyInOutState = 'in';
       this.swipeDeleteState = 'hideDelete';

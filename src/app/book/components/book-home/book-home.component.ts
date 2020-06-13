@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
-import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
+import { ISOString } from '@spend-book/shared/model/helper-models';
 import { Subject } from 'rxjs';
-import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-home',

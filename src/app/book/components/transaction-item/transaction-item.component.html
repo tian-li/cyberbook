@@ -2,24 +2,21 @@
   <div class="icon">
     <img src="{{transactionVO.icon}}" alt="category-icon">
   </div>
-  <div matRipple class="details"
-       appSwipeEvent (swipe)="onSwipe($event)" (endSwipe)="onEndSwipe($event)"
-       (click)="editTransaction()"
-       [ngClass]="{'divide-line': !firstOfDate}">
+  <div class="details" (click)="editTransaction()" [ngClass]="{'divide-line': !firstOfDate}"
+       appSwipeEvent (swipe)="onSwipe($event)" (endSwipe)="onEndSwipe($event)">
     <div class="description">
       <span>
         {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}
       </span>
     </div>
-    <div class="amount"
-         [ngStyle]="{ 'color': transactionVO.amount > 0 ? 'green' : 'red' }">
+    <div class="amount" [ngStyle]="{ 'color': transactionVO.amount > 0 ? 'green' : 'red' }">
       {{transactionVO.amount.toFixed(2)}}
     </div>
   </div>
 
   <div class="delete-button"
-       [@swipeDelete]="{ value: swipeDeleteState, params:{ widthPercentage: widthPercentage }}"
-  >
+       [ngClass]="{'confirm-delete': widthPercentageNumber > swipeDeleteThreshold}"
+       [@swipeDelete]="{ value: swipeDeleteState, params:{ widthPercentage: widthPercentage }}">
     <mat-icon
       *ngIf="swipeDeleteState === 'showDelete' && widthPercentageNumber > 0.05"
       [ngClass]="{'magnify': widthPercentageNumber > swipeDeleteThreshold}">
