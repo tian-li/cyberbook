@@ -30,7 +30,7 @@ div {
       font-size: 1.5rem;
       align-items: baseline;
 
-      mat-icon.edit-icon {
+      i.edit-icon {
         margin-left: 0.5rem;
         font-size: 1rem;
         text-decoration: underline;
@@ -43,14 +43,7 @@ div {
           font-size: 0.8rem;
           margin-left: 2rem;
         }
-
-        //mat-icon.proceed-icon {
-        //  height: unset;
-        //  width: unset;
-        //}
       }
-
-
     }
 
     .statistics {
@@ -69,7 +62,7 @@ div {
   border-top: solid #cccccc 1px;
   border-bottom: solid #cccccc 1px;
 
-  mat-icon, mat-slide-toggle {
+  i, mat-slide-toggle {
     display: flex;
   }
 

@@ -5,7 +5,8 @@
     <app-transaction-list [transactionVOs]="transactionVOs"></app-transaction-list>
 
     <div class="empty-list" *ngIf="transactionVOs.length <= 0">
-      <mat-icon class="empty-list-icon">receipt</mat-icon>
+      <i class="material-icons md-receipt empty-list-icon"></i>
+
       <div>暂无记录</div>
     </div>
   </div>

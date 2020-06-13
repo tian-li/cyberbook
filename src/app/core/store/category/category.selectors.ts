@@ -6,11 +6,6 @@ const selectCategoryState = createFeatureSelector<RootState, fromCategory.State>
   fromCategory.categoryFeatureKey
 );
 
-// const selectCategoryEntitiesState = createSelector(
-//   selectSpendBookState,
-//   state => state.category
-// );
-
 export const selectSelectedCategoryId = createSelector(
   selectCategoryState,
   fromCategory.getSelectedCategoryId

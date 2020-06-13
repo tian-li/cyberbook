@@ -44,10 +44,3 @@ export function categoryReducer(
 }
 
 export const getSelectedCategoryId = (state: State) => state.selectedCategoryId;
-
-// export const {
-//   selectIds: selectCategoryIds,
-//   selectEntities: selectCategoryEntities,
-//   selectAll: selectAllCategories,
-//   selectTotal: selectCategoryTotal,
-// } = adapter.getSelectors();

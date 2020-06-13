@@ -17,10 +17,10 @@
   <div class="delete-button"
        [ngClass]="{'confirm-delete': widthPercentageNumber > swipeDeleteThreshold}"
        [@swipeDelete]="{ value: swipeDeleteState, params:{ widthPercentage: widthPercentage }}">
-    <mat-icon
-      *ngIf="swipeDeleteState === 'showDelete' && widthPercentageNumber > 0.05"
-      [ngClass]="{'magnify': widthPercentageNumber > swipeDeleteThreshold}">
-      delete_outline
-    </mat-icon>
+    <i class="material-icons md-delete_outline"
+       *ngIf="swipeDeleteState === 'showDelete' && widthPercentageNumber > 0.05"
+       [ngClass]="{'magnify': widthPercentageNumber > swipeDeleteThreshold}">
+    </i>
+
   </div>
 </div>

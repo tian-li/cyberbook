@@ -7,10 +7,10 @@
     <div class="user-info" (click)="gotoAccountDetail()">
       <div class="user-name">
         <div>{{user.username}}</div>
-        <mat-icon class="edit-icon" *ngIf="user.registered">create</mat-icon>
+        <i class="material-icons md-create edit-icon" *ngIf="user.registered"></i>
         <div class="proceed-register" *ngIf="!user.registered">
           <div class="proceed-register-text">立即注册</div>
-          <mat-icon class="proceed-icon">keyboard_arrow_right</mat-icon>
+          <i class="material-icons md-keyboard_arrow_right proceed-icon"></i>
         </div>
 
       </div>
@@ -23,7 +23,7 @@
 
   <div class="features">
     <div class="feature">
-      <mat-icon class="feature-icon">star_half</mat-icon>
+      <i class="material-icons md-star_half feature-icon"></i>
       <div class="feature-content">
         <div class="feature-text">黑暗模式</div>
         <mat-slide-toggle class="feature-proceeding-action"></mat-slide-toggle>
@@ -31,18 +31,18 @@
     </div>
 
     <div matRipple class="feature">
-      <mat-icon class="feature-icon">insert_photo</mat-icon>
+      <i class="material-icons md-insert_photo feature-icon"></i>
       <div class="feature-content">
         <div class="feature-text">
           选择主题
         </div>
-        <mat-icon class="feature-proceeding-action">keyboard_arrow_right</mat-icon>
+        <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
 
       </div>
     </div>
 
     <div matRipple class="feature">
-      <mat-icon class="feature-icon">email</mat-icon>
+      <i class="material-icons md-email feature-icon"></i>
       <div class="feature-content">
         <div class="feature-text">
           反馈意见
@@ -53,7 +53,7 @@
 
   <div class="features">
     <div matRipple class="feature" (click)="logout()">
-      <mat-icon class="feature-icon">exit_to_app</mat-icon>
+      <i class="material-icons md-exit_to_app feature-icon"></i>
       <div class="feature-content">
         <div class="feature-text">
           退出登录

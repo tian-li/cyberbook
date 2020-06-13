@@ -1,40 +1,40 @@
 <ng-container *ngIf="showToolbar$|async">
 
-<div appPreventScroll class="nav-container" >
-  <div class="nav-item" routerLink="/home">
-    <mat-icon routerLinkActive="activated-route">receipt</mat-icon>
-    <span>明细</span>
+  <div appPreventScroll class="nav-container">
+    <div class="nav-item" routerLink="/home">
+      <i class="material-icons md-receipt" routerLinkActive="activated-route"></i>
+      <span>明细</span>
+    </div>
+
+    <div class="nav-item" routerLink="/graph">
+      <i class="material-icons md-timeline" routerLinkActive="activated-route"></i>
+      <span>图表</span>
+    </div>
+
+    <div class="nav-item">
+      <i class="material-icons md-add_circle_outline hide"></i>
+      <span>记账</span>
+    </div>
+
+    <div class="nav-item">
+      <i class="material-icons md-forum" routerLinkActive="activated-route"></i>
+      <span>社区</span>
+    </div>
+
+    <div class="nav-item" routerLink="/user">
+      <i class="material-icons md-account_circle" routerLinkActive="activated-route"></i>
+      <span>我的</span>
+    </div>
   </div>
 
-  <div class="nav-item" routerLink="/graph">
-    <mat-icon routerLinkActive="activated-route">timeline</mat-icon>
-    <span>图表</span>
+  <div class="add-button">
+    <i class="material-icons md-add_circle_outline"
+       matRipple
+       matRippleCentered="true"
+       matRippleRadius="32"
+       matRippleColor="#ffda4373"
+       (click)="addTransaction()"
+    ></i>
+
   </div>
-
-  <div class="nav-item">
-    <mat-icon class="hide">add_circle_outline</mat-icon>
-    <span>记账</span>
-  </div>
-
-  <div class="nav-item">
-    <mat-icon routerLinkActive="activated-route">forum</mat-icon>
-    <span>社区</span>
-  </div>
-
-  <div class="nav-item" routerLink="/user">
-    <mat-icon routerLinkActive="activated-route">account_circle</mat-icon>
-    <span>我的</span>
-  </div>
-
-</div>
-
-<div class="add-button">
-      <mat-icon
-        matRipple
-        matRippleCentered="true"
-        matRippleRadius="32"
-        matRippleColor="#ffda4373"
-        (click)="addTransaction()"
-      >add_circle_outline</mat-icon>
-</div>
 </ng-container>
