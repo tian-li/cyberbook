@@ -30,4 +30,3 @@ export function uiReducer(
   return reducer(state, action);
 }
 
-// export const selectDisplayMonth = (state: State) => state.displayMonth;

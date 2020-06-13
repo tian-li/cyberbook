@@ -6,11 +6,6 @@ const selectBookState = createFeatureSelector<RootState, fromBook.State>(
   fromBook.bookFeatureKey
 );
 
-// export const selectBookState = createSelector(
-//   selectSpendBookState,
-//   state => state.book
-// );
-
 export const selectBook = createSelector(
   selectBookState,
   (state: fromBook.State) => state.book

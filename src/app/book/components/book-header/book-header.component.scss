@@ -69,13 +69,12 @@ div {
 
   .label {
     color: #706438;
-    //margin-bottom: 0.5rem;
+    font-size: 0.8rem;
   }
 
   .year-month {
     flex-grow: 1;
     padding-left: 1rem;
-    //margin-right: 2rem;
     justify-content: space-between;
 
     .month-group {
@@ -86,10 +85,6 @@ div {
 
     .month-number {
       font-size: 1.5rem;
-    }
-
-    .month {
-      font-size: 1.2rem;
     }
 
     mat-icon {
