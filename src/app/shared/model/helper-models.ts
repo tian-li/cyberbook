@@ -11,3 +11,9 @@ export interface YearMonth {
   month: number;
 }
 
+export type SwipeDirection = 'left' | 'right';
+
+export interface SwipeInfo {
+  direction: SwipeDirection;
+  percentage: number;
+}

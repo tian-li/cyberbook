@@ -30,6 +30,7 @@ import { YearMonthPickerComponent } from '@spend-book/shared/components/year-mon
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
+import { SwipeEventDirective } from './directives/swipe-event.directive';
 
 const material = [
   MatButtonModule,
@@ -64,6 +65,7 @@ const components = [
   TransactionEditorComponent,
   YearMonthPickerComponent,
   DateRangePickerComponent,
+  SwipeEventDirective
 ];
 
 @NgModule({
@@ -73,7 +75,8 @@ const components = [
     CommonModule,
     ReactiveFormsModule,
     ...material,
-    ...components
+    ...components,
+
   ],
   entryComponents: [
     TransactionEditorComponent,

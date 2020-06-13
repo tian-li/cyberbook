@@ -30,10 +30,10 @@ div {
 
 .description {
   flex-grow: 1;
+  min-width: 50%;
 
   span {
     white-space: nowrap;
-    width: 10rem;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -41,4 +41,27 @@ div {
 
 .amount {
   padding-right: 1rem;
+}
+
+.delete-button {
+  background: red;
+  width: 4rem;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  z-index: -2;
+
+  mat-icon{
+    z-index: -1;
+    position: absolute;
+    right: 10px;
+    height: unset;
+    width: unset;
+    font-size: 0.8rem;
+
+    &.magnify {
+      font-size: 1.3rem;
+    }
+  }
 }
