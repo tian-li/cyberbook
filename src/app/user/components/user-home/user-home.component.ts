@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
-import { fromTransaction, fromUser } from '@spend-book/core/store';
+import { fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
+import { disableDarkTheme, enableDarkTheme } from '@spend-book/core/store/ui';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -17,7 +19,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   registeredLength = 1;
 
   numberOfAllTransactions$: Observable<number>;
-
+  darkThemeEnabled;
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(
@@ -36,12 +38,27 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     ).subscribe((user: User) => {
       this.user = user;
       this.registeredLength = dayjs().diff(dayjs(user.registeredDate), 'day') + 1;
-    })
+    });
+
+    this.store.pipe(
+      select(fromUI.selectDarkThemeEnabled),
+      takeUntil(this.unsubscribe$)
+    ).subscribe(darkThemeEnabled => this.darkThemeEnabled = darkThemeEnabled);
   }
 
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  toggleDarkTheme(event: MatSlideToggleChange) {
+    console.log('event', event)
+    if(event.checked) {
+      this.store.dispatch(enableDarkTheme());
+    } else {
+      this.store.dispatch(disableDarkTheme());
+
+    }
   }
 
   logout() {
@@ -54,6 +71,10 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     } else {
       this.router.navigate(['./authenticate'], { relativeTo: this.route });
     }
+  }
+
+  selectTheme() {
+    this.router.navigate(['./theme'], { relativeTo: this.route });
   }
 
 }

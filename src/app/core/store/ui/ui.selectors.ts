@@ -15,3 +15,13 @@ export const selectShowToolbar = createSelector(
   selectUIState,
   (state: fromUI.State) => state.showToolbar
 );
+
+export const selectDarkThemeEnabled = createSelector(
+  selectUIState,
+  (state: fromUI.State) => state.darkThemeEnabled
+);
+
+export const selectThemeName = createSelector(
+  selectUIState,
+  (state: fromUI.State) => state.themeName
+);

@@ -1,0 +1,81 @@
+div, form {
+  display: flex;
+}
+
+.theme-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    background: #ffda43;
+    align-items: center;
+
+    .title {
+      justify-content: center;
+      flex-grow: 1;
+    }
+  }
+}
+
+.themes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  margin-top: 2rem;
+
+  .preview {
+    width: 9rem;
+    height: 4rem;
+    position: relative;
+    clip-path: inset(0 0 0 0 round 15px); // round border mask
+
+    .primary-color {
+      width: 0;
+      height: 0;
+      border-top: 4rem solid;
+      border-right: 9rem solid transparent;
+      border-bottom: 4rem solid transparent;
+    }
+
+    .accent-color {
+      width: 0;
+      height: 0;
+      border-bottom: 4rem solid;
+      border-top: 4rem solid transparent;
+      border-left: 9rem solid transparent;
+      transform: translate(-9.01rem, -4.01rem);
+    }
+
+    i {
+      z-index: 2;
+      font-weight: bolder;
+      position: absolute;
+      right: 6px;
+
+      &.theme-selected {
+        color: #00c100;
+        top: 5px;
+      }
+
+      &.theme-type {
+        bottom: 5px;
+      }
+    }
+  }
+}
+
+.button-save {
+  margin-top: 6rem;
+  width: 10rem;
+}
+
+.button-cancel {
+  margin-top: 1rem;
+  width: 10rem;
+}

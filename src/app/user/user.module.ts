@@ -6,13 +6,15 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
 import { UserRoutingModule } from './user-routing.module';
+import { ThemeSelectorComponent } from './components/theme-selector/theme-selector.component';
 
 @NgModule({
   declarations: [
     AuthenticateComponent,
     ProfileComponent,
     UserHomeComponent,
-    UserComponent
+    UserComponent,
+    ThemeSelectorComponent
   ],
   imports: [
     SharedModule,

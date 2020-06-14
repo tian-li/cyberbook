@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+$purple-green-primary: mat-palette($mat-purple);
+$purple-green-accent: mat-palette($mat-green, A200, A100, A400);
+$purple-green-warn: mat-palette($mat-red);
+
+$purple-green-theme: mat-dark-theme(
+    $purple-green-primary,
+    $purple-green-accent,
+    $purple-green-warn
+);

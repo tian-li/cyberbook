@@ -1,0 +1,31 @@
+<div class="theme-container">
+  <div class="header">
+    <div class="title">
+      选择主题
+    </div>
+  </div>
+
+  <div class="themes">
+    <ng-container *ngFor="let theme of themes;">
+      <div matRipple class="preview" (click)="selectTheme(theme.name)">
+        <i class="material-icons md-check_circle theme-selected" *ngIf="selectedTheme === theme.name"></i>
+
+        <i class="material-icons theme-type" [ngClass]="{'md-wb_sunny': !theme.isDark, 'md-brightness_2': theme.isDark}"></i>
+
+        <div class="primary-color" [ngStyle]="{'border-top-color': theme.primary}">
+        </div>
+        <div class="accent-color" [ngStyle]="{'border-bottom-color': theme.accent}">
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <button class="button-save" mat-raised-button color="primary" (click)="save()">
+    保存
+  </button>
+
+  <button class="button-cancel" mat-raised-button color="warn" (click)="cancel()">
+    取消
+  </button>
+
+</div>

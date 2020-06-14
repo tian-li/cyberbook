@@ -25,19 +25,19 @@
     <div class="feature">
       <i class="material-icons md-star_half feature-icon"></i>
       <div class="feature-content">
-        <div class="feature-text">黑暗模式</div>
-        <mat-slide-toggle class="feature-proceeding-action"></mat-slide-toggle>
+        <div class="feature-text">黑暗模式（开发中）</div>
+<!--        <mat-slide-toggle class="feature-proceeding-action" [checked]="darkThemeEnabled" (change)="toggleDarkTheme($event)"></mat-slide-toggle>-->
+        <mat-slide-toggle class="feature-proceeding-action" [checked]="darkThemeEnabled" (change)="toggleDarkTheme($event)"></mat-slide-toggle>
       </div>
     </div>
 
-    <div matRipple class="feature">
+    <div matRipple matRippleColor="primary" class="feature">
       <i class="material-icons md-insert_photo feature-icon"></i>
       <div class="feature-content">
-        <div class="feature-text">
+        <div class="feature-text" (click)="selectTheme()">
           选择主题
         </div>
         <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
-
       </div>
     </div>
 
