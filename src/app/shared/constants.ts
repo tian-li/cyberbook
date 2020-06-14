@@ -4,7 +4,7 @@ import { Transaction } from '@spend-book/core/model/transaction';
 export const years: number[] = (() => {
   const today = new Date();
   const allowedYears: number[] = [];
-  for(let i = today.getFullYear() - 5; i <= today.getFullYear() + 5; i++) {
+  for (let i = today.getFullYear() - 5; i <= today.getFullYear() + 5; i++) {
     allowedYears.push(i);
   }
   return allowedYears;
@@ -42,3 +42,13 @@ export enum TransactionType {
 }
 
 export const defaultThemeName = 'indigo-pink-theme';
+
+export enum AlertLevel {
+  warn,
+  danger,
+}
+
+export const defaultPositiveAction = '好';
+export const defaultNegativeAction = '取消';
+export const defaultAlertLevel = AlertLevel.warn;
+

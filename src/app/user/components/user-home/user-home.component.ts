@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
+import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
+import { AlertLevel } from '@spend-book/shared/constants';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -23,7 +26,8 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {
   }
 
@@ -50,7 +54,21 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.store.dispatch(fromUser.logout({ id: this.user.id }));
+    this.dialog.open(ConfirmationAlertComponent, {
+      width: '400px',
+      height: '200px',
+      disableClose: true,
+      data: {
+        message: '确定退出登录吗？',
+        alertLevel: AlertLevel.warn
+      }
+    }).afterClosed().pipe(
+      takeUntil(this.unsubscribe$)
+    ).subscribe((result) => {
+      if (result === 'positive') {
+        this.store.dispatch(fromUser.logout({ id: this.user.id }));
+      }
+    });
   }
 
   gotoAccountDetail() {

@@ -32,6 +32,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
+import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 
 const material = [
   MatButtonModule,
@@ -62,12 +63,17 @@ const material = [
 ];
 
 const components = [
+
+  // components
   NavBarComponent,
   TransactionEditorComponent,
   YearMonthPickerComponent,
   DateRangePickerComponent,
+  ConfirmationAlertComponent,
+
+  // directives
   SwipeEventDirective,
-  PreventScrollDirective
+  PreventScrollDirective,
 ];
 
 @NgModule({
@@ -83,7 +89,8 @@ const components = [
   entryComponents: [
     TransactionEditorComponent,
     YearMonthPickerComponent,
-    DateRangePickerComponent
+    DateRangePickerComponent,
+    ConfirmationAlertComponent
   ]
 })
 export class SharedModule {

@@ -1,0 +1,30 @@
+div {
+  display: flex;
+}
+
+.confirmation-alert {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  [mat-dialog-content] {
+    justify-content: space-evenly;
+
+    i {
+      font-size: 3rem;
+    }
+
+    .message {
+      align-items: center;
+    }
+  }
+
+  [mat-dialog-actions] {
+    justify-content: space-around;
+
+    button {
+      width: 3rem;
+    }
+  }
+
+}

@@ -1,0 +1,15 @@
+<div class="confirmation-alert">
+  <div mat-dialog-title *ngIf="!!data.title">
+    {{data.title}}
+  </div>
+  <div mat-dialog-content>
+    <i class="material-icons md-error_outline" [ngStyle]="{'color': alertIconColor}"></i>
+    <div class="message">
+      <span>{{data.message}}</span>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNegativeClick()">{{negativeAction}}</button>
+    <button mat-raised-button color="primary" (click)="onPositiveClick()">{{positiveAction}}</button>
+  </div>
+</div>

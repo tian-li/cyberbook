@@ -1,3 +1,5 @@
+import { AlertLevel } from '@spend-book/shared/constants';
+
 export type ISOString = string;
 export const FullDate = 'MM/DD/YYYY';
 
@@ -17,3 +19,12 @@ export interface SwipeInfo {
   direction: SwipeDirection;
   percentage: number;
 }
+
+export interface ConfirmationAlertData {
+  message: string;
+  title?: string;
+  alertLevel?: AlertLevel;
+  positiveAction?: string;
+  negativeAction?: string;
+}
+
