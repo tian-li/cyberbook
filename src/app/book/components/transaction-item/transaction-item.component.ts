@@ -16,13 +16,13 @@ import { SwipeInfo } from '@spend-book/shared/model/helper-models';
     trigger('flyInOut', [
       state('in', style({})),
       state('out', style({})),
-      transition('in => out', animate('0.2s ease-in', style({ transform: 'translateX(-100%)', height: 0 }))),
+      transition('in => out', animate('0.2s ease-out', style({ transform: 'translateX(-100%)', height: 0 }))),
       transition('* => in', style({ transform: 'translateX(0)', height: '100%' })),
     ]),
     trigger('swipeDelete', [
-      state('showDelete', style({ width: '{{widthPercentage}}' }), { params: { widthPercentage: 0 } }),
-      state('hideDelete', style({ width: 0 })),
-      transition('showDelete => hideDelete', animate('0.1s'))
+      state('showDelete', style({})),
+      state('hideDelete', style({ transform: 'translateX(0)' })),
+      transition('showDelete => hideDelete', animate('0.1s ease-out'))
     ])
   ]
 })
@@ -42,24 +42,8 @@ export class TransactionItemComponent {
   constructor(private dialog: MatDialog, private store: Store) {
   }
 
-  editTransaction() {
-    this.dialog.open(TransactionEditorComponent, {
-      ...defaultTransactionEditorDialogConfig,
-      data: {
-        editMode: true,
-        transaction: {
-          id: this.transactionVO.id,
-          bookId: this.transactionVO.bookId,
-          userId: this.transactionVO.userId,
-          amount: this.transactionVO.amount,
-          description: this.transactionVO.description,
-          categoryId: this.transactionVO.categoryId,
-          transactionDate: this.transactionVO.transactionDate.toISOString(),
-          dateCreated: this.transactionVO.dateCreated.toISOString(),
-          dateModified: this.transactionVO.dateModified.toISOString(),
-        }
-      }
-    });
+  getTranslateXValue() {
+    return `translateX(-${this.widthPercentage})`;
   }
 
   onSwipe(swipeInfo: SwipeInfo) {
@@ -96,5 +80,25 @@ export class TransactionItemComponent {
       this.flyInOutState = 'in';
       this.swipeDeleteState = 'hideDelete';
     }
+  }
+
+  editTransaction() {
+    this.dialog.open(TransactionEditorComponent, {
+      ...defaultTransactionEditorDialogConfig,
+      data: {
+        editMode: true,
+        transaction: {
+          id: this.transactionVO.id,
+          bookId: this.transactionVO.bookId,
+          userId: this.transactionVO.userId,
+          amount: this.transactionVO.amount,
+          description: this.transactionVO.description,
+          categoryId: this.transactionVO.categoryId,
+          transactionDate: this.transactionVO.transactionDate.toISOString(),
+          dateCreated: this.transactionVO.dateCreated.toISOString(),
+          dateModified: this.transactionVO.dateModified.toISOString(),
+        }
+      }
+    });
   }
 }

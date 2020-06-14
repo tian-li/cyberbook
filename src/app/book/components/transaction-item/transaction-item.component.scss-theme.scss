@@ -6,8 +6,12 @@
 
   .transaction-item {
     color: mat-color($foreground, secondary-text);
-    .details {
 
+    .item-container {
+      background: mat-color($background, background);
+    }
+
+    .details {
       &:active {
         background: mat-color($background, hover);
       }

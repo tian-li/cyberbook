@@ -3,8 +3,14 @@ div {
 }
 
 .transaction-item {
+  position: relative;
+}
+
+.item-container {
+  z-index: 2;
   padding-left: 1rem;
   justify-content: space-between;
+  width: 100%;
 }
 
 .icon {
@@ -39,21 +45,19 @@ div {
   padding-right: 1rem;
 }
 
-.delete-button {
+.delete-background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
   background: #ff5f5f;
-  width: 4rem;
-  justify-content: center;
-  align-items: center;
-  position: relative;
   z-index: 1;
+  align-items: center;
 
-  // TODO: trash icon when swipe
   i {
-    z-index: 2;
     position: absolute;
     right: 1rem;
-    height: unset;
-    width: unset;
     font-size: 0.8rem;
 
     &.magnify {
