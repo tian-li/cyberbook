@@ -34,6 +34,7 @@ A mobile-first web app that can record daily costs.
 - [ ] Deploy
 - [ ] UI design
 - [ ] Theme color design
+- [ ] Animation (WIP)
 
 # How to run
 
