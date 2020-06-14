@@ -67,6 +67,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     ).subscribe((result) => {
       if (result === 'positive') {
         this.store.dispatch(fromUser.logout({ id: this.user.id }));
+        this.router.navigate(['./authenticate'], { relativeTo: this.route });
       }
     });
   }

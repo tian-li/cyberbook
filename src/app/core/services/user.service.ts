@@ -26,31 +26,31 @@ export class UserService {
   }
 
   register(user: Partial<User>, password: string) {
-    return <Observable<User>>this.http.patch(`${this.userRoute}/${user.id}`, {
+    return <Observable<User>>this.http.post(`${this.userRoute}`, {
       ...user,
       password,
       registered: true,
       registeredDate: dayjs().format(FullDate)
-    })
-    // .pipe(
-    //   map((u: any) => u[0])
-    // );
+    });
   }
 
   registerTempUser(user: Partial<User>) {
     return <Observable<User>>this.http.post(`${this.userRoute}`, {
       ...user,
       registeredDate: dayjs().format(FullDate)
-    })
-    // .pipe(
-    //   map((u: any) => u[0])
-    // );
+    });
+  }
+
+  saveTempUser(user: Partial<User>, password: string) {
+    return <Observable<User>>this.http.patch(`${this.userRoute}/${user.id}`, {
+      ...user,
+      password,
+      registered: true,
+      registeredDate: dayjs().format(FullDate)
+    });
   }
 
   updateProfile(user: Partial<User>) {
-    return <Observable<User>>this.http.patch(`${this.userRoute}/${user.id}`, user)
-    // .pipe(
-    //   map((u: any) => u.user)
-    // );
+    return <Observable<User>>this.http.patch(`${this.userRoute}/${user.id}`, user);
   }
 }

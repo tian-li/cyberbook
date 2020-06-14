@@ -41,6 +41,20 @@
       "username": "新用户e907",
       "registered": false,
       "registeredDate": "06/13/2020"
+    },
+    {
+      "id": "dfabee4f-1bf2-4e7e-943d-59d9e82350be",
+      "username": "新用户dfab",
+      "registered": false,
+      "registeredDate": "06/14/2020"
+    },
+    {
+      "id": "e883720f-4e94-47e9-b91c-1e1ce3125c2e",
+      "username": "立即注册test",
+      "email": "a@a.com",
+      "password": "123",
+      "registered": true,
+      "registeredDate": "06/14/2020"
     }
   ],
   "book": [],

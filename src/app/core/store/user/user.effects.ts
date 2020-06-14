@@ -18,7 +18,7 @@ import {
   register,
   registerSuccess,
   registerTempUser,
-  registerTempUserSuccess,
+  registerTempUserSuccess, saveTempUser,
   updateProfile,
   updateProfileSuccess
 } from './user.actions';
@@ -91,6 +91,25 @@ export class UserEffects {
       ofType(registerTempUser),
       switchMap(action =>
         this.userService.registerTempUser(action.user).pipe(
+          map((user: User) => {
+            this.saveUserToLocalstorage(user);
+            if (user.registered) {
+              this.router.navigate(['/user']);
+            }
+            return registerTempUserSuccess({ user });
+          }),
+          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
+        )
+      )
+    )
+  );
+
+
+  saveTempUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveTempUser),
+      switchMap(action =>
+        this.userService.saveTempUser(action.user, action.password).pipe(
           map((user: User) => {
             this.saveUserToLocalstorage(user);
             if (user.registered) {
