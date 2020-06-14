@@ -22,18 +22,18 @@ A mobile-first web app that can record daily costs.
 - [x] Register the temp user account
 - [x] Login with existing account
 - [x] Swipe to delete a transaction
+- [x] Theme, and dark theme
 
 ## TODOs
 
 - [ ] User profile image
 - [ ] Category icon
 - [ ] Add/Edit category
-- [ ] Theme
-- [ ] Dark mode
 - [ ] Search
 - [ ] Offline editing
 - [ ] Deploy
 - [ ] UI design
+- [ ] Theme color design
 
 # How to run
 
