@@ -2,8 +2,7 @@ div {
   display: flex;
 }
 
-.item {
-  //color: #353535;
+.transaction-item {
   padding-left: 1rem;
   justify-content: space-between;
 }
@@ -22,11 +21,7 @@ div {
 .details {
   flex-grow: 1;
   align-items: center;
-}
-
-.divide-line {
-  border-top-style: solid;
-  border-top-width: 1px;
+  z-index: 3;
 }
 
 .description {
@@ -50,8 +45,11 @@ div {
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 1;
 
+  // TODO: trash icon when swipe
   i {
+    z-index: 2;
     position: absolute;
     right: 1rem;
     height: unset;

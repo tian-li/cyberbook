@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+@mixin app-graph-chart-line-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+
+  .line-chart-container {
+    .transaction-type-switcher {
+      border: 1px solid mat-color($foreground, divider);
+
+      .selected {
+        background: mat-color($primary, 300);
+      }
+
+      .income {
+        border-left: 1px solid mat-color($foreground, divider);
+        border-right: 1px solid mat-color($foreground, divider);
+        background-clip: content-box;
+      }
+    }
+  }
+
+
+}

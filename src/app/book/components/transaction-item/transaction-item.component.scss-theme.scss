@@ -1,29 +1,24 @@
 @import '~@angular/material/theming';
 
 @mixin app-transaction-item-component-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .item {
+  .transaction-item {
     color: mat-color($foreground, secondary-text);
-  }
+    .details {
 
-  .details {
+      &:active {
+        background: mat-color($background, hover);
+      }
+    }
 
-    &:active {
-      background: mat-color($background, hover);
+    .divide-line {
+      border-top: 1px solid mat-color($foreground, divider);
+    }
+
+    .delete-button {
+      color: mat-color($foreground, secondary-text);
     }
   }
-
-  .divide-line {
-    border-top-color: mat-color($foreground, divider);
-  }
-
-  .delete-button {
-    color: mat-color($foreground, secondary-text);
-  }
-
 }

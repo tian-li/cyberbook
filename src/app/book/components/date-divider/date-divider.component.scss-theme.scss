@@ -5,7 +5,7 @@
 
   .date-divider {
     color: mat-color($foreground, secondary-text);;
-    border-bottom-color: mat-color($foreground, divider);
+    border-bottom: 1px solid mat-color($foreground, divider);
   }
 
 }

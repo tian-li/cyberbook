@@ -1,0 +1,38 @@
+@import '~@angular/material/theming';
+
+@mixin app-graph-chart-pie-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+
+  .pie-chart-container {
+    .title {
+      padding: 20px;
+      font-size: 1rem;
+      align-items: center;
+
+      .month-nav-arrow {
+        background: mat-color($foreground, divider);
+      }
+
+      .month-picker {
+        font-size: 0.7rem;
+      }
+    }
+
+    .transaction-type-switcher {
+      border: 1px solid mat-color($foreground, divider);
+
+      .selected {
+        background: mat-color($primary, 300);
+      }
+
+      .income {
+        border-left: 1px solid mat-color($foreground, divider);
+        background-clip: content-box;
+      }
+
+    }
+  }
+
+
+}

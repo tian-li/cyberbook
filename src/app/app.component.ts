@@ -1,5 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { select, Store } from '@ngrx/store';
 import { fromUI } from '@spend-book/core/store';
 
@@ -11,7 +13,15 @@ import { fromUI } from '@spend-book/core/store';
 export class AppComponent implements OnInit {
   themeName: string;
 
-  constructor(private store: Store, private overlayContainer: OverlayContainer) {}
+  constructor(private store: Store, private overlayContainer: OverlayContainer,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+    this.matIconRegistry.addSvgIcon(
+      "github",
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/github.svg')
+    );
+
+  }
 
   ngOnInit() {
     this.store.pipe(

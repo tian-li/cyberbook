@@ -3,8 +3,7 @@ import { TransactionVO } from '@spend-book/core/model/transactionVO';
 
 @Component({
   selector: 'app-transaction-list',
-  templateUrl: './transaction-list.component.html',
-  styleUrls: ['./transaction-list.component.scss']
+  templateUrl: './transaction-list.component.html'
 })
 export class TransactionListComponent {
   @Input() transactionVOs: TransactionVO[];

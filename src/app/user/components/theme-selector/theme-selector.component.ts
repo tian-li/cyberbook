@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
   templateUrl: './theme-selector.component.html',
   styleUrls: ['./theme-selector.component.scss']
 })
-export class ThemeSelectorComponent implements OnInit {
+export class ThemeSelectorComponent implements OnInit, OnDestroy {
 
   readonly themes = [
     {
@@ -51,6 +51,8 @@ export class ThemeSelectorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(fromUI.hideToolbar());
+
     this.store.pipe(
       select(fromUI.selectThemeName),
       take(1)
@@ -58,6 +60,12 @@ export class ThemeSelectorComponent implements OnInit {
       this.previousTheme = themeName;
       this.selectedTheme = themeName;
     });
+
+
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(fromUI.showToolbar());
   }
 
   selectTheme(themeName: string) {

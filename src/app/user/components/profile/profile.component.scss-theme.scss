@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@mixin app-profile-component-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .profile-container {
+    .header {
+      background: mat-color($primary);
+    }
+  }
+}

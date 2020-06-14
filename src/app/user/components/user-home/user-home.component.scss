@@ -9,13 +9,11 @@ div {
 .user {
   justify-content: flex-start;
   align-items: center;
-  background: #ffda43;
 
   .profile-photo {
-    height: 102px;
-    width: 102px;
-
     img {
+      width: 70px;
+      height: 70px;
       margin: 1rem;
       border-radius: 50%;
     }
@@ -57,10 +55,7 @@ div {
 
 .features {
   flex-direction: column;
-  margin-top: 1.5rem;
-  background: white;
-  border-top: solid #cccccc 1px;
-  border-bottom: solid #cccccc 1px;
+  margin-top: 1rem;
 
   i, mat-slide-toggle {
     display: flex;
@@ -84,13 +79,6 @@ div {
       }
     }
 
-    &:not(:last-of-type) {
-      .feature-content {
-        border-bottom: solid #cccccc 1px;
-
-      }
-    }
-
     .feature-proceeding-action {
       justify-self: flex-end;
       margin-right: 0.5rem;
@@ -103,31 +91,24 @@ div {
       margin-right: 1rem;
     }
   }
-
-
 }
 
 .about {
   margin-top: 2rem;
   justify-content: center;
-
   align-items: center;
 
   .version {
     font-size: 0.8rem;
-    color: #999;
   }
 
   .github-link {
     display: flex;
-
-    .github-img {
+    mat-icon {
+      width: 1rem;
+      height: 1rem;
+      font-size: 1rem;
       margin-left: 5px;
-      height: 16px;
-      width: 16px;
-      opacity: 50%;
     }
   }
-
-
 }

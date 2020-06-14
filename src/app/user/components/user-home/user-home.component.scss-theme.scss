@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+
+@mixin app-user-home-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .user-home-container {
+    .user {
+      background: mat-color($primary);
+    }
+
+    .features {
+      border-top: 1px solid mat-color($foreground, divider);
+      border-bottom: 1px solid mat-color($foreground, divider);
+
+      .feature {
+        background: mat-color($background, card);
+
+        &:not(:last-of-type) {
+          .feature-content {
+            border-bottom: 1px solid mat-color($foreground, divider);
+          }
+        }
+      }
+    }
+
+    .about {
+      color: mat-color($foreground, secondary-text);
+
+      .github-link {
+        mat-icon {
+          color: mat-color($foreground, secondary-text);
+        }
+      }
+    }
+  }
+
+}

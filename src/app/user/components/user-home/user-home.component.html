@@ -1,7 +1,7 @@
 <div class="user-home-container">
   <div class="user">
     <div class="profile-photo">
-      <img src="https://picsum.photos/70" alt="profile photo">
+      <img src="./assets/images/profile-photo.jpg" alt="profile photo">
     </div>
 
     <div class="user-info" (click)="gotoAccountDetail()">
@@ -12,7 +12,6 @@
           <div class="proceed-register-text">立即注册</div>
           <i class="material-icons md-keyboard_arrow_right proceed-icon"></i>
         </div>
-
       </div>
 
       <div class="statistics">
@@ -22,15 +21,6 @@
   </div>
 
   <div class="features">
-    <div class="feature">
-      <i class="material-icons md-star_half feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text">黑暗模式（开发中）</div>
-<!--        <mat-slide-toggle class="feature-proceeding-action" [checked]="darkThemeEnabled" (change)="toggleDarkTheme($event)"></mat-slide-toggle>-->
-        <mat-slide-toggle class="feature-proceeding-action" [checked]="darkThemeEnabled" (change)="toggleDarkTheme($event)"></mat-slide-toggle>
-      </div>
-    </div>
-
     <div matRipple matRippleColor="primary" class="feature">
       <i class="material-icons md-insert_photo feature-icon"></i>
       <div class="feature-content">
@@ -64,10 +54,10 @@
 
   <div class="about">
     <div class="version">
-      Version: 1.0.0
+      version: 1.0.0
     </div>
     <a class="github-link" href="https://github.com/tian-li/spend-book" target="_blank">
-      <img class="github-img" src="../../../../assets/images/GitHub-Mark-32px.png" alt="github link"/>
+      <mat-icon svgIcon="github"></mat-icon>
     </a>
   </div>
 

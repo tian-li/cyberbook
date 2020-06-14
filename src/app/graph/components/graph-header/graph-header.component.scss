@@ -6,7 +6,6 @@ div, nav {
   width: 100%;
   align-items: center;
   justify-content: space-evenly;
-  background: #ffda43;
   font-size: 1.2rem;
   padding-top: 0.4rem;
   padding-bottom: 0.3rem;
@@ -25,10 +24,5 @@ div, nav {
 
 a {
   text-decoration: none;
-  color: gray;
   font-size: 0.8rem;
-}
-
-.activated-route {
-  color: black;
 }

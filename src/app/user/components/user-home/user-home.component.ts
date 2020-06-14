@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
-import { disableDarkTheme, enableDarkTheme } from '@spend-book/core/store/ui';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -49,16 +47,6 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  toggleDarkTheme(event: MatSlideToggleChange) {
-    console.log('event', event)
-    if(event.checked) {
-      this.store.dispatch(enableDarkTheme());
-    } else {
-      this.store.dispatch(disableDarkTheme());
-
-    }
   }
 
   logout() {

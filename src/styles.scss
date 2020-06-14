@@ -16,6 +16,11 @@
 @import './src/app/book/components/book-header/book-header.component.scss-theme';
 @import './src/app/book/components/date-divider/date-divider.component.scss-theme';
 @import './src/app/book/components/transaction-item/transaction-item.component.scss-theme';
+@import './src/app/graph/components/graph-chart-line/graph-chart-line.component.scss-theme';
+@import './src/app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
+@import './src/app/graph/components/graph-header/graph-header.component.scss-theme';
+@import './src/app/user/components/user-home/user-home.component.scss-theme';
+@import './src/app/user/components/profile/profile.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -23,6 +28,11 @@
   @include app-book-header-component-theme($theme);
   @include app-date-divider-component-theme($theme);
   @include app-transaction-item-component-theme($theme);
+  @include app-graph-chart-line-component-theme($theme);
+  @include app-graph-chart-pie-component-theme($theme);
+  @include app-graph-header-component-theme($theme);
+  @include app-user-home-component-theme($theme);
+  @include app-profile-component-theme($theme);
 }
 
 .indigo-pink-theme {

@@ -2,24 +2,23 @@
 
 @mixin app-book-header-component-theme($theme) {
   $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
 
   .book-header {
     background: mat-color($primary);
-  }
+    .monthly-overview {
+      .label {
+        color: mat-color($foreground, secondary-text);
+      }
 
-  .monthly-overview {
-    .label {
-      color: mat-color($foreground, secondary-text);
-    }
-
-    .year-month {
-      .month-group {
-        border-right-color: mat-color($foreground, text);;
+      .year-month {
+        .month-group {
+          border-right: 1px solid mat-color($foreground, text);;
+        }
       }
     }
   }
+
+
 
 }
