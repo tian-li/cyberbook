@@ -1,5 +1,6 @@
 @import url('assets/fonts/material-icons/outline.css');
 
+
 // light themes
 @import 'assets/themes/indigo-pink';
 @import 'assets/themes/deeppurple-amber';
@@ -7,23 +8,41 @@
 // dark themes
 @import 'assets/themes/purple-green';
 @import 'assets/themes/pink-bluegrey';
-
 @include mat-core();
+
+
+@import './src/app/user/components/theme-selector/theme-selector.component.scss-theme';
+@import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
+@import './src/app/book/components/book-header/book-header.component.scss-theme';
+@import './src/app/book/components/date-divider/date-divider.component.scss-theme';
+@import './src/app/book/components/transaction-item/transaction-item.component.scss-theme';
+
+@mixin custom-components-theme($theme) {
+  @include app-theme-selector-component-theme($theme);
+  @include app-nav-bar-component-theme($theme);
+  @include app-book-header-component-theme($theme);
+  @include app-date-divider-component-theme($theme);
+  @include app-transaction-item-component-theme($theme);
+}
 
 .indigo-pink-theme {
   @include angular-material-theme($indigo-pink-theme);
+  @include custom-components-theme($indigo-pink-theme);
 }
 
 .pink-bluegrey-theme {
   @include angular-material-theme($pink-bluegrey-theme);
+  @include custom-components-theme($pink-bluegrey-theme);
 }
 
 .purple-green-theme {
   @include angular-material-theme($purple-green-theme);
+  @include custom-components-theme($purple-green-theme);
 }
 
 .deeppurple-amber-theme {
   @include angular-material-theme($deeppurple-amber-theme);
+  @include custom-components-theme($deeppurple-amber-theme);
 }
 
 @font-face {

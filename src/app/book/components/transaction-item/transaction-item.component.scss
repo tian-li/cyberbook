@@ -3,7 +3,7 @@ div {
 }
 
 .item {
-  color: #353535;
+  //color: #353535;
   padding-left: 1rem;
   justify-content: space-between;
 }
@@ -22,14 +22,11 @@ div {
 .details {
   flex-grow: 1;
   align-items: center;
-
-  &:active {
-    background: #e4e4e4;
-  }
 }
 
 .divide-line {
-  border-top: #e1e1e1 solid 1px;
+  border-top-style: solid;
+  border-top-width: 1px;
 }
 
 .description {
@@ -52,12 +49,9 @@ div {
   width: 4rem;
   justify-content: center;
   align-items: center;
-  color: white;
   position: relative;
-  z-index: -2;
 
   i {
-    z-index: -1;
     position: absolute;
     right: 1rem;
     height: unset;

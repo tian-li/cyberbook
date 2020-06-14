@@ -3,12 +3,13 @@ div {
 }
 
 .date-divider {
-  color: #969696;
+  //color: #969696;
   font-size: 0.8rem;
   padding: 0.3rem 1rem;
   align-items: center;
   justify-content: space-between;
-  border-bottom: #e1e1e1 solid 1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .income {

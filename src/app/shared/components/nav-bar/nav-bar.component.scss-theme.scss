@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+@mixin app-nav-bar-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .nav-container {
+    background: mat-color($background, background);
+    border-top-color: mat-color($foreground, divider);
+  }
+
+  .nav-item {
+    color: mat-color($foreground, secondary-text);
+  }
+
+  .activated-route {
+    color: mat-color($primary);
+  }
+
+  .add-button {
+    i {
+      box-shadow: 0px -2px 0px 1px mat-color($foreground, divider);
+      color: mat-color($primary);
+      background: mat-color($background, background);
+    }
+  }
+}

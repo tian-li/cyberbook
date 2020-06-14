@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@mixin app-date-divider-component-theme($theme) {
+  $foreground: map-get($theme, foreground);
+
+  .date-divider {
+    color: mat-color($foreground, secondary-text);;
+    border-bottom-color: mat-color($foreground, divider);
+  }
+
+}
