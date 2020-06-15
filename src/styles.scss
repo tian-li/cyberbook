@@ -1,5 +1,6 @@
+// icons
+@import url('assets/fonts/material-icons/baseline.css');
 @import url('assets/fonts/material-icons/outline.css');
-
 
 // light themes
 @import 'assets/themes/indigo-pink';
@@ -8,19 +9,27 @@
 // dark themes
 @import 'assets/themes/purple-green';
 @import 'assets/themes/pink-bluegrey';
+
 @include mat-core();
 
-
-@import './src/app/user/components/theme-selector/theme-selector.component.scss-theme';
-@import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
+// theme components
+// book
 @import './src/app/book/components/book-header/book-header.component.scss-theme';
 @import './src/app/book/components/date-divider/date-divider.component.scss-theme';
 @import './src/app/book/components/transaction-item/transaction-item.component.scss-theme';
+
+// graph
 @import './src/app/graph/components/graph-chart-line/graph-chart-line.component.scss-theme';
 @import './src/app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
 @import './src/app/graph/components/graph-header/graph-header.component.scss-theme';
+
+// user
+@import './src/app/user/components/theme-selector/theme-selector.component.scss-theme';
 @import './src/app/user/components/user-home/user-home.component.scss-theme';
 @import './src/app/user/components/profile/profile.component.scss-theme';
+
+// shared
+@import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -62,7 +71,10 @@
   src: local('Helvetica Neue Light'), url('./assets/fonts/HelveticaNeue-Light.woff') format('woff');
 }
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -70,6 +82,10 @@ body {
   font-size: 14px; // base font size
   user-select: none;
   background: #fafafa;
+}
+
+input {
+  font-size: 16px !important; // if form field text is less than 16px, mobile browser will zoom in
 }
 
 * {

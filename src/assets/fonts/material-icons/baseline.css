@@ -1,15 +1,15 @@
 @font-face {
-  font-family: "Material Icons Outlined";
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("./MaterialIcons-Outlined.ttf");
+  src: url("./MaterialIcons.ttf");
   /* For IE6-8 */
-  src: url("./MaterialIcons-Outlined.woff2") format("woff2"), url("./MaterialIcons-Outlined.woff") format("woff"), url("./MaterialIcons-Outlined.ttf") format("truetype");
+  src: url("./MaterialIcons.woff2") format("woff2"), url("./MaterialIcons.woff") format("woff"), url("./MaterialIcons.ttf") format("truetype");
 }
 
-.material-icons-outlined {
-  font-family: "Material Icons Outlined";
+.material-icons {
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -27,7 +27,7 @@
   position: relative;
 }
 
-.material-icons-outlined:before {
+.material-icons:before {
   position: absolute;
   left: 0;
   right: 0;
@@ -36,7 +36,7 @@
   opacity: .3;
 }
 
-.material-icons-outlined:after {
+.material-icons:after {
   opacity: 1;
 }
 

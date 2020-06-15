@@ -6,7 +6,7 @@ div {
   position: relative;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: 3rem;
 }
 
 .nav-item {
@@ -21,7 +21,7 @@ div {
   }
 
   i {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
 
   .hide {
@@ -29,7 +29,7 @@ div {
   }
 
   span {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -41,11 +41,4 @@ div {
   align-items: flex-start;
   width: 100%;
   display: flex;
-
-  i {
-    font-size: 3rem;
-    height: unset;
-    width: unset;
-    border-radius: 50%;
-  }
 }

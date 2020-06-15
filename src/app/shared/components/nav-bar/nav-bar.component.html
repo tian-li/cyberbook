@@ -1,5 +1,4 @@
 <ng-container *ngIf="showToolbar$|async">
-
   <div appPreventScroll class="nav-container">
     <div class="nav-item" routerLink="/home">
       <i class="material-icons md-receipt" routerLinkActive="activated-route"></i>
@@ -13,7 +12,7 @@
 
     <div class="nav-item">
       <i class="material-icons md-add_circle_outline hide"></i>
-      <span>记账</span>
+      <span class="hide">记一笔</span>
     </div>
 
     <div class="nav-item">
@@ -28,13 +27,8 @@
   </div>
 
   <div class="add-button">
-    <i class="material-icons md-add_circle_outline"
-       matRipple
-       matRippleCentered="true"
-       matRippleRadius="32"
-       matRippleColor="primary"
-       (click)="addTransaction()"
-    ></i>
-
+    <button mat-fab (click)="addTransaction()">
+      <i class="material-icons md-add"></i>
+    </button>
   </div>
 </ng-container>
