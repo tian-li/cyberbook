@@ -5,7 +5,7 @@
       <img src="{{transactionVO.icon}}" alt="category-icon">
     </div>
     <div class="details" (click)="editTransaction()" [ngClass]="{'divide-line': !firstOfDate}"
-         appSwipeEvent (swipe)="onSwipe($event)" (endSwipe)="onEndSwipe($event)">
+         appSwipeEvent (swipe)="onSwipe($event)" (endSwipe)="onEndSwipe($event)" (cancelSwipe)="cancelSwipe()">
       <div class="description">
       <span>
         {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}

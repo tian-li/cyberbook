@@ -7,31 +7,38 @@ import { SwipeDirection, SwipeInfo } from '@spend-book/shared/model/helper-model
 export class SwipeEventDirective {
   @Output() swipe = new EventEmitter<SwipeInfo>();
   @Output() endSwipe = new EventEmitter<SwipeInfo>();
-
-  private firstMoveX;
-  private firstMoveY;
+  @Output() cancelSwipe = new EventEmitter();
 
   private touchstartTime: number;
+  private isSwiping = false;
   private percentage = 0;
   private direction: SwipeDirection;
 
-  private swipeStarted = false;
-
+  // track moving
   private touchStartX: number;
-  private touchStartY: number;
-
+  private touchStartY: number
+  private firstMoveX: number;
+  private firstMoveY: number;
   private touchEndX: number;
   private touchEndY: number;
 
   @HostListener('touchstart', ['$event'])
   private onTouchStart(event: TouchEvent) {
-    this.touchStartX = event.touches[0].pageX;
-    this.touchStartY = event.touches[0].pageY;
-    this.touchstartTime = event.timeStamp;
+    if (!this.isMultiTouch(event)) {
+      this.touchStartX = event.touches[0].pageX;
+      this.touchStartY = event.touches[0].pageY;
+      this.touchstartTime = event.timeStamp;
+    }
   }
 
   @HostListener('touchmove', ['$event'])
   private onTouchMove(event: TouchEvent) {
+    if (this.isMultiTouch(event)) {
+      this.cancel();
+      event.preventDefault();
+      return;
+    }
+
     if (!this.firstMoveX && !this.firstMoveY) {
       this.firstMoveX = event.touches[0].pageX;
       this.firstMoveY = event.touches[0].pageY;
@@ -40,13 +47,13 @@ export class SwipeEventDirective {
 
       const ratio = yDiff / xDiff;
 
-      this.swipeStarted = ratio <= 0.5;
+      this.isSwiping = ratio <= 0.5;
     }
 
     this.touchEndX = event.touches[0].pageX;
     this.touchEndY = event.touches[0].pageY;
 
-    if (this.swipeStarted) {
+    if (this.isSwiping) {
       event.preventDefault(); // prevent scroll when swipe to delete
       this.calculateSwipe();
       this.triggerWipe();
@@ -55,7 +62,15 @@ export class SwipeEventDirective {
 
   @HostListener('touchend', ['$event'])
   private onTouchEnd(event: TouchEvent) {
-    this.endSwipe.emit({ direction: this.direction, percentage: this.percentage });
+    if (this.isMultiTouch(event)) {
+      event.preventDefault();
+      return;
+    }
+    if (this.isSwiping) {
+      this.endSwipe.emit({ direction: this.direction, percentage: this.percentage });
+    } else {
+      this.cancel();
+    }
     this.resetSwipeStatus();
   }
 
@@ -82,7 +97,17 @@ export class SwipeEventDirective {
     this.swipe.emit({ direction: this.direction, percentage: this.percentage });
   }
 
+  private isMultiTouch(event: TouchEvent): boolean {
+    return event.touches.length > 1;
+  }
+
+  private cancel() {
+    this.isSwiping = false;
+    this.cancelSwipe.emit();
+  }
+
   private resetSwipeStatus() {
+    this.isSwiping = false;
     this.touchstartTime = 0;
     this.percentage = 0;
     this.direction = undefined;
