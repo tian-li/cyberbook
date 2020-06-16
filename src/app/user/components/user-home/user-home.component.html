@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class="features">
+  <div class="features" *ngIf="!!user.id">
     <div matRipple class="feature" (click)="logout()">
       <i class="material-icons md-exit_to_app feature-icon"></i>
       <div class="feature-content">

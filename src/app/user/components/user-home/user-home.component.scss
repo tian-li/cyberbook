@@ -9,6 +9,7 @@ div {
 .user {
   justify-content: flex-start;
   align-items: center;
+  height: 114px; // make it same height as home header
 
   .profile-photo {
     img {

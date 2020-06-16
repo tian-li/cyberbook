@@ -6,7 +6,7 @@ import { SwipeDirection, SwipeInfo } from '@spend-book/shared/model/helper-model
 })
 export class SwipeEventDirective {
   @Output() swipe = new EventEmitter<SwipeInfo>();
-  @Output() endSwipe = new EventEmitter<number>();
+  @Output() endSwipe = new EventEmitter<SwipeInfo>();
 
   private firstMoveX;
   private firstMoveY;
@@ -55,7 +55,7 @@ export class SwipeEventDirective {
 
   @HostListener('touchend', ['$event'])
   private onTouchEnd(event: TouchEvent) {
-    this.endSwipe.emit(this.percentage);
+    this.endSwipe.emit({ direction: this.direction, percentage: this.percentage });
     this.resetSwipeStatus();
   }
 

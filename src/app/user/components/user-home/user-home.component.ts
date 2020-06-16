@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
 import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
-import { AlertLevel } from '@spend-book/shared/constants';
+import { AlertLevel, defaultThemeName } from '@spend-book/shared/constants';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -67,6 +67,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     ).subscribe((result) => {
       if (result === 'positive') {
         this.store.dispatch(fromUser.logout({ id: this.user.id }));
+        this.store.dispatch(fromUI.setTheme({themeName: defaultThemeName}));
         this.router.navigate(['./authenticate'], { relativeTo: this.route });
       }
     });

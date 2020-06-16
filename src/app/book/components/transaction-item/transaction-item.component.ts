@@ -58,8 +58,8 @@ export class TransactionItemComponent {
     this.widthPercentageNumber = swipeInfo.percentage;
   }
 
-  onEndSwipe(percentage) {
-    if (percentage >= this.swipeDeleteThreshold) {
+  onEndSwipe(swipeInfo: SwipeInfo) {
+    if (swipeInfo.direction === 'left' && swipeInfo.percentage >= this.swipeDeleteThreshold) {
       this.removeFromList();
     } else {
       this.cancelSwipe();
