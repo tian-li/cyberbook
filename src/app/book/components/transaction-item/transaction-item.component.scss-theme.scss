@@ -5,10 +5,14 @@
   $background: map-get($theme, background);
 
   .transaction-item {
-    color: mat-color($foreground, secondary-text);
-
     .item-container {
       background: mat-color($background, background);
+
+      .icon {
+        .icon-inner-container {
+          background: mat-color($background, app-bar);
+        }
+      }
     }
 
     .details {
@@ -19,10 +23,6 @@
 
     .divide-line {
       border-top: 1px solid mat-color($foreground, divider);
-    }
-
-    .delete-button {
-      color: mat-color($foreground, secondary-text);
     }
   }
 }

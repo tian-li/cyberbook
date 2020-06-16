@@ -13,15 +13,19 @@
           <mat-label>金额</mat-label>
           <input matInput autofocus formControlName="amount" inputmode="decimal" placeholder="0.00">
           <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
-          <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">格式错误: 0.00</mat-error>
+          <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">最多两位小数</mat-error>
         </mat-form-field>
         <mat-form-field class="category">
           <mat-label>类别</mat-label>
           <mat-select formControlName="categoryId">
             <mat-option *ngFor="let category of categories" [value]="category.id">
-              <!-- TODO: Style category options after category icon is done -->
-              <img aria-hidden="true" [src]="category.icon" height="25" alt="icon">
-              <span>{{category.name}}</span>
+              <div class="category-item">
+                <i class="category-icon material-icons-twotone"
+                   [ngClass]="'md-'+ category.icon"
+                   [ngStyle]="{'color': category.color}"
+                ></i>
+                <div class="category-label">{{category.name}}</div>
+              </div>
             </mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.controls['categoryId'].hasError('required')">必填</mat-error>

@@ -10,7 +10,7 @@
       <div matRipple class="preview" (click)="selectTheme(theme.name)">
         <i class="material-icons md-check_circle theme-selected" *ngIf="selectedTheme === theme.name"></i>
 
-        <i class="material-icons theme-type" [ngClass]="{'md-wb_sunny': !theme.isDark, 'md-brightness_2': theme.isDark}"></i>
+        <i class="material-icons-twotone theme-type" [ngClass]="{'md-wb_sunny': !theme.isDark, 'md-brightness_2': theme.isDark}"></i>
 
         <div class="primary-color" [ngStyle]="{'border-top-color': theme.primary}">
         </div>

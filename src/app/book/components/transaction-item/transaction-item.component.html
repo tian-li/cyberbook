@@ -2,14 +2,19 @@
   <div class="item-container" [ngStyle]="{'transform': getTranslateXValue()}"
        [@swipeDelete]="{ value: swipeDeleteState}">
     <div class="icon">
-      <img src="{{transactionVO.icon}}" alt="category-icon">
+      <div class="icon-inner-container">
+        <i class="material-icons-twotone"
+           [ngClass]="'md-'+transactionVO.icon"
+           [ngStyle]="{'color': transactionVO.categoryColor}"
+        ></i>
+      </div>
     </div>
     <div class="details" (click)="editTransaction()" [ngClass]="{'divide-line': !firstOfDate}"
          appSwipeEvent (swipe)="onSwipe($event)" (endSwipe)="onEndSwipe($event)" (cancelSwipe)="cancelSwipe()">
       <div class="description">
-      <span>
-        {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}
-      </span>
+        <span>
+          {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}
+        </span>
       </div>
       <div class="amount" [ngStyle]="{ 'color': transactionVO.amount > 0 ? 'green' : 'red' }">
         {{transactionVO.amount.toFixed(2)}}

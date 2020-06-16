@@ -1,12 +1,26 @@
 <ng-container *ngIf="showToolbar$|async">
   <div appPreventScroll class="nav-container">
     <div class="nav-item" routerLink="/home">
-      <i class="material-icons md-receipt" routerLinkActive="activated-route"></i>
+      <i class="md-receipt"
+         routerLinkActive="activated-route"
+         #list="routerLinkActive"
+         [ngClass]="{
+           'material-icons-outlined': !list.isActive,
+           'material-icons-twotone': list.isActive
+          }"
+      ></i>
       <span>明细</span>
     </div>
 
     <div class="nav-item" routerLink="/graph">
-      <i class="material-icons md-timeline" routerLinkActive="activated-route"></i>
+      <i class="md-timeline"
+         routerLinkActive="activated-route"
+         #chart="routerLinkActive"
+         [ngClass]="{
+           'material-icons-outlined': !chart.isActive,
+           'material-icons-twotone': chart.isActive
+          }"
+      ></i>
       <span>图表</span>
     </div>
 
@@ -16,12 +30,25 @@
     </div>
 
     <div class="nav-item">
-      <i class="material-icons md-forum" routerLinkActive="activated-route"></i>
+      <i class="md-forum"
+         routerLinkActive="activated-route"
+         #forum="routerLinkActive"
+         [ngClass]="{
+           'material-icons-outlined': !forum.isActive,
+           'material-icons-twotone': forum.isActive
+          }"
+      ></i>
       <span>社区</span>
     </div>
 
     <div class="nav-item" routerLink="/user">
-      <i class="material-icons md-account_circle" routerLinkActive="activated-route"></i>
+      <i class="md-account_circle"
+         routerLinkActive="activated-route"
+         #account="routerLinkActive"
+         [ngClass]="{
+           'material-icons-outlined': !account.isActive,
+           'material-icons-twotone': account.isActive
+          }"></i>
       <span>我的</span>
     </div>
   </div>

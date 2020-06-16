@@ -17,10 +17,9 @@ div {
   align-items: center;
   padding: 0.6rem 1.2rem 0.6rem 0;
 
-  img {
+  .icon-inner-container {
     border-radius: 50%;
-    background: gray;
-    height: 2rem;
+    padding: 0.3rem;
   }
 }
 

@@ -28,6 +28,15 @@ form {
   }
 }
 
+.category-item {
+  display: flex;
+  align-items: center;
+
+  i.category-icon {
+    width: 50%;
+  }
+}
+
 .actions {
   justify-content: flex-end;
   padding-left: 1rem;
