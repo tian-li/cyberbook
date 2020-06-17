@@ -9,52 +9,6 @@
       "password": "123",
       "gender": "保密",
       "birthday": "05/15/2020"
-    },
-    {
-      "id": "608f5139-8c72-4229-8b0f-a168f129271f",
-      "username": "新用户608f",
-      "registered": false,
-      "registeredDate": "06/11/2020"
-    },
-    {
-      "id": "682d29b9-1a4c-4298-9b45-cf8139ef8ed6",
-      "username": "新用户682d",
-      "registered": true,
-      "registeredDate": "06/11/2020",
-      "email": "litiansq89@gmail.com",
-      "password": "123"
-    },
-    {
-      "id": "46babc41-bea4-4966-860b-a961a20617c1",
-      "username": "新用户46ba",
-      "registered": false,
-      "registeredDate": "06/11/2020"
-    },
-    {
-      "id": "18f8fe8f-0828-498e-9fce-df46e9cd922e",
-      "username": "新用户18f8",
-      "registered": false,
-      "registeredDate": "06/12/2020"
-    },
-    {
-      "id": "e90734e7-75ec-4bc5-be5a-3462cd452363",
-      "username": "新用户e907",
-      "registered": false,
-      "registeredDate": "06/13/2020"
-    },
-    {
-      "id": "dfabee4f-1bf2-4e7e-943d-59d9e82350be",
-      "username": "新用户dfab",
-      "registered": false,
-      "registeredDate": "06/14/2020"
-    },
-    {
-      "id": "e883720f-4e94-47e9-b91c-1e1ce3125c2e",
-      "username": "立即注册test",
-      "email": "a@a.com",
-      "password": "123",
-      "registered": true,
-      "registeredDate": "06/14/2020"
     }
   ],
   "book": [],

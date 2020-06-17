@@ -10,6 +10,7 @@ div {
 }
 
 .nav-item {
+  -webkit-tap-highlight-color: transparent; // https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-tap-highlight-color
   flex-grow: 1;
   flex-direction: column;
   align-items: center;

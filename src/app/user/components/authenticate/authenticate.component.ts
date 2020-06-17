@@ -44,7 +44,10 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
       this.userId = user.id;
 
       this.form = this.fb.group({
-        username: new FormControl({ value: user.username, disabled: !this.registerMode }, Validators.required),
+        username: new FormControl({
+          value: this.userId ? user.username : null,
+          disabled: !this.registerMode
+        }, Validators.required),
         confirmPassword: new FormControl({ value: null, disabled: !this.registerMode }, Validators.required),
         email: new FormControl(user.email, [Validators.email, Validators.required]),
         password: new FormControl(null, Validators.required),

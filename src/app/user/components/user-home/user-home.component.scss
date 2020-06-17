@@ -101,15 +101,16 @@ div {
 
   .version {
     font-size: 0.8rem;
+    margin-right: 5px;
   }
 
   .github-link {
     display: flex;
+    align-self: baseline;
     mat-icon {
       width: 1rem;
       height: 1rem;
       font-size: 1rem;
-      margin-left: 5px;
     }
   }
 }

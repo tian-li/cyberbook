@@ -2,6 +2,7 @@
   <div appPreventScroll class="nav-container">
     <div class="nav-item" routerLink="/home">
       <i class="md-receipt"
+         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
          routerLinkActive="activated-route"
          #list="routerLinkActive"
          [ngClass]="{
@@ -14,6 +15,7 @@
 
     <div class="nav-item" routerLink="/graph">
       <i class="md-timeline"
+         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
          routerLinkActive="activated-route"
          #chart="routerLinkActive"
          [ngClass]="{
@@ -31,6 +33,7 @@
 
     <div class="nav-item">
       <i class="md-forum"
+         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
          routerLinkActive="activated-route"
          #forum="routerLinkActive"
          [ngClass]="{
@@ -43,6 +46,7 @@
 
     <div class="nav-item" routerLink="/user">
       <i class="md-account_circle"
+         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
          routerLinkActive="activated-route"
          #account="routerLinkActive"
          [ngClass]="{
@@ -55,7 +59,7 @@
 
   <div class="add-button">
     <button mat-fab (click)="addTransaction()">
-      <i class="material-icons md-add"></i>
+      <i class="material-icons md-add" [@rotateAddButton]="addButtonAnimateState"></i>
     </button>
   </div>
 </ng-container>

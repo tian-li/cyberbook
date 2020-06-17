@@ -8,6 +8,7 @@ import { filter } from 'rxjs/operators';
 
 @Injectable()
 export class LoadDataResolver implements Resolve<any> {
+
   constructor(private store: Store) {
   }
 
@@ -16,8 +17,8 @@ export class LoadDataResolver implements Resolve<any> {
       select(fromUser.selectUser),
       filter(user => !!user.id),
     ).subscribe((user) => {
-      this.store.dispatch(loadTransactionsByUser({ userId: user.id })),
-        this.store.dispatch(loadCategoriesByUser({ userId: user.id }))
-    })
+      this.store.dispatch(loadTransactionsByUser({ userId: user.id }));
+      this.store.dispatch(loadCategoriesByUser({ userId: user.id }))
+    });
   }
 }

@@ -80,13 +80,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue Light", "Helvetica Neue", sans-serif;
-  font-size: 14px; // base font size
   user-select: none;
   background: #fafafa;
-}
-
-input, select {
-  font-size: 16px !important; // if form field text is less than 16px, mobile browser will zoom in
 }
 
 * {

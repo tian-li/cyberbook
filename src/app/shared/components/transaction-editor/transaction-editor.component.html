@@ -11,7 +11,7 @@
       <div class="amount-category">
         <mat-form-field class="amount">
           <mat-label>金额</mat-label>
-          <input matInput autofocus formControlName="amount" inputmode="decimal" placeholder="0.00">
+          <input matInput formControlName="amount" inputmode="decimal" placeholder="0.00">
           <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
           <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">最多两位小数</mat-error>
         </mat-form-field>
