@@ -13,11 +13,7 @@ export class TransactionService {
   }
 
   loadTransactionsByUser(userId: string): Observable<Transaction[]> {
-    // return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}/book/${bookId}`);
-    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}`, { params: { userId } })
-    // .pipe(
-    //   map((transactions: any[]) => transactions.map(this.convertDate))
-    // );
+    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}`, { params: { userId } });
   }
 
   addTransaction(transaction: Partial<Transaction>): Observable<Transaction> {
@@ -26,32 +22,16 @@ export class TransactionService {
       ...transaction,
       dateCreated: transaction.transactionDate,
       dateModified: transaction.transactionDate,
-      bookId: 1
     }
 
-    return <Observable<Transaction>>this.http.post(`${this.transactionRoute}`, transaction)
-    // .pipe(
-    //   map(this.convertDate)
-    // );
+    return <Observable<Transaction>>this.http.post(`${this.transactionRoute}`, transaction);
   }
 
   updateTransaction(transaction: Partial<Transaction>): Observable<Transaction> {
-    return <Observable<Transaction>>this.http.put(`${this.transactionRoute}/${transaction.id}`, transaction)
-    // .pipe(
-    //   map(this.convertDate)
-    // );
+    return <Observable<Transaction>>this.http.put(`${this.transactionRoute}/${transaction.id}`, transaction);
   }
 
-  removeTransaction(id: number): Observable<any> {
+  removeTransaction(id: string): Observable<any> {
     return this.http.delete(`${this.transactionRoute}/${id}`);
-  }
-
-  convertDate(transaction): Transaction {
-    return {
-      ...transaction,
-      transactionDate: new Date(transaction.transactionDate),
-      dateCreated: new Date(transaction.dateCreated),
-      dateModified: new Date(transaction.dateModified),
-    }
   }
 }

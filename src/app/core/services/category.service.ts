@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Category } from '../model/category';
+import { generateDefaultCategories } from '@spend-book/shared/utils/generate-default-categories';
+import { forkJoin, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { Category } from '../model/category';
 
 @Injectable()
 export class CategoryService {
@@ -12,12 +13,18 @@ export class CategoryService {
   }
 
   loadCategoriesByUser(userId: string): Observable<Category[]> {
-    // return <Observable<Category[]>>this.http.get(`${this.categoryRoute}/book/${bookId}`);
-    // return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } });
-    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`);
+    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } });
   }
 
-  addCategory(category: Partial<Category>): Observable<Category> {
+  // TODO: This should be done by backend
+  // When a new user comes, add application default categories to this user
+  addDefaultCategories(userId: string): Observable<Category[]> {
+    const categories = generateDefaultCategories(userId);
+    const addRequests = categories.map(category => <Observable<Category>>this.http.post(`${this.categoryRoute}`, category));
+    return forkJoin(addRequests);
+  }
+
+  addCategory(userId: string, category: Partial<Category>): Observable<Category> {
     return <Observable<Category>>this.http.post(`${this.categoryRoute}`, category);
   }
 
@@ -25,7 +32,7 @@ export class CategoryService {
     return <Observable<Category>>this.http.put(`${this.categoryRoute}/${category.id}`, category);
   }
 
-  removeCategory(id: number): Observable<any> {
+  removeCategory(id: string): Observable<any> {
     return this.http.delete(`${this.categoryRoute}/${id}`);
   }
 }

@@ -1,262 +1,107 @@
 {
   "user": [
     {
-      "id": "df2c6e92-980c-486f-9837-82681784b8b5",
+      "id": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "username": "老用户",
       "registered": true,
-      "registeredDate": "06/11/2020",
+      "registeredDate": "06/16/2020",
       "email": "litiansq89@gmail.com",
       "password": "123",
-      "gender": "保密",
-      "birthday": "05/15/2020"
+      "gender": "男",
+      "birthday": "08/09/1993"
     }
   ],
-  "book": [],
   "category": [
     {
-      "id": 1,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "287f8dbe-828e-444c-95ce-5aaad35fdbc6",
       "name": "超市",
       "icon": "storefront",
-      "parentId": null,
       "color": "#4D4D4D",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 2,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "6f844948-cf33-4a03-a954-907ecb254da0",
       "name": "餐饮",
       "icon": "restaurant",
-      "parentId": null,
       "color": "#5DA5DA",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 3,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "6a1aa8e4-9da4-4dbc-ab4f-0a5cb2755ae9",
       "name": "交通",
       "icon": "commute",
-      "parentId": null,
       "color": "#FAA43A",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 4,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "d4fb1710-c6a6-4dea-ab0b-88d21dcbe795",
       "name": "娱乐",
       "icon": "live_tv",
-      "parentId": null,
       "color": "#60BD68",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 5,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "a8cba7f7-5bcc-4134-87b0-bd0b8738b9ff",
       "name": "住房",
       "icon": "house",
-      "parentId": null,
       "color": "#F17CB0",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 6,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "251df428-a8ed-40c3-9cf6-e012e41ffec4",
       "name": "宠物",
       "icon": "pets",
-      "parentId": null,
       "color": "#B2912F",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 7,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "e65d27a8-592a-4390-9820-534bf4297a28",
       "name": "学习",
       "icon": "school",
-      "parentId": null,
       "color": "#B276B2",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 8,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "787b27b2-7626-48e2-aa5d-3e13d777c32e",
       "name": "其他",
       "icon": "category",
-      "parentId": null,
       "color": "#DECF3F",
-      "type": "spend"
+      "type": "spend",
+      "addedByUser": false
     },
     {
-      "id": 9,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "098c7df2-5679-4708-aa11-3f055e029774",
       "name": "投资",
       "icon": "account_balance_wallet",
-      "parentId": null,
       "color": "#4D4D4D",
-      "type": "income"
+      "type": "income",
+      "addedByUser": false
     },
     {
-      "id": 10,
-      "userId": "qwerty",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "id": "12b4c0f0-cbb9-4e8e-8cf1-f3f87a4e71af",
       "name": "工资",
       "icon": "local_atm",
-      "parentId": null,
       "color": "#5DA5DA",
-      "type": "income"
+      "type": "income",
+      "addedByUser": false
     }
   ],
-  "transaction": [
-    {
-      "amount": 666,
-      "description": null,
-      "categoryId": 10,
-      "transactionDate": "2020-05-13T04:00:00.000Z",
-      "dateModified": "2020-05-13T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-05-13T04:00:00.000Z",
-      "bookId": 1,
-      "id": 5
-    },
-    {
-      "amount": -123,
-      "description": "鞍山里的含量圣诞节屁",
-      "categoryId": 3,
-      "transactionDate": "2020-05-26T04:00:00.000Z",
-      "dateModified": "2020-05-26T18:22:47.759Z",
-      "id": 14,
-      "bookId": 1,
-      "dateCreated": "2020-05-26T04:00:00.000Z"
-    },
-    {
-      "amount": -123,
-      "description": null,
-      "categoryId": 3,
-      "transactionDate": "2020-06-12T04:00:00.000Z",
-      "dateModified": "2020-06-12T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-12T04:00:00.000Z",
-      "bookId": 1,
-      "id": 15
-    },
-    {
-      "amount": 123,
-      "description": null,
-      "categoryId": 10,
-      "transactionDate": "2020-06-12T04:00:00.000Z",
-      "dateModified": "2020-06-12T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-12T04:00:00.000Z",
-      "bookId": 1,
-      "id": 18
-    },
-    {
-      "amount": -123,
-      "description": null,
-      "categoryId": 4,
-      "transactionDate": "2020-06-12T04:00:00.000Z",
-      "dateModified": "2020-06-12T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-12T04:00:00.000Z",
-      "bookId": 1,
-      "id": 19
-    },
-    {
-      "amount": -123,
-      "description": null,
-      "categoryId": 3,
-      "transactionDate": "2020-06-12T04:00:00.000Z",
-      "dateModified": "2020-06-12T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-12T04:00:00.000Z",
-      "bookId": 1,
-      "id": 20
-    },
-    {
-      "amount": 55,
-      "description": null,
-      "categoryId": 9,
-      "transactionDate": "2020-06-12T04:00:00.000Z",
-      "dateModified": "2020-06-12T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-12T04:00:00.000Z",
-      "bookId": 1,
-      "id": 22
-    },
-    {
-      "amount": -123,
-      "description": null,
-      "categoryId": 4,
-      "transactionDate": "2020-06-12T04:00:00.000Z",
-      "dateModified": "2020-06-12T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-12T04:00:00.000Z",
-      "bookId": 1,
-      "id": 24
-    },
-    {
-      "amount": -44,
-      "description": null,
-      "categoryId": 3,
-      "transactionDate": "2020-06-09T04:00:00.000Z",
-      "dateModified": "2020-06-09T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-09T04:00:00.000Z",
-      "bookId": 1,
-      "id": 26
-    },
-    {
-      "amount": -45,
-      "description": null,
-      "categoryId": 4,
-      "transactionDate": "2020-06-04T04:00:00.000Z",
-      "dateModified": "2020-06-04T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-04T04:00:00.000Z",
-      "bookId": 1,
-      "id": 27
-    },
-    {
-      "amount": -454,
-      "description": null,
-      "categoryId": 3,
-      "transactionDate": "2020-06-13T04:00:00.000Z",
-      "dateModified": "2020-06-13T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-13T04:00:00.000Z",
-      "bookId": 1,
-      "id": 28
-    },
-    {
-      "amount": -360,
-      "description": null,
-      "categoryId": 1,
-      "transactionDate": "2020-06-13T04:00:00.000Z",
-      "dateModified": "2020-06-13T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-13T04:00:00.000Z",
-      "bookId": 1,
-      "id": 33
-    },
-    {
-      "amount": -123,
-      "description": null,
-      "categoryId": 2,
-      "transactionDate": "2020-06-13T04:00:00.000Z",
-      "dateModified": "2020-06-13T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-13T04:00:00.000Z",
-      "bookId": 1,
-      "id": 34
-    },
-    {
-      "amount": -0.8,
-      "description": null,
-      "categoryId": 2,
-      "transactionDate": "2020-06-16T04:00:00.000Z",
-      "dateModified": "2020-06-16T04:00:00.000Z",
-      "userId": "df2c6e92-980c-486f-9837-82681784b8b5",
-      "dateCreated": "2020-06-16T04:00:00.000Z",
-      "bookId": 1,
-      "id": 35
-    }
-  ]
+  "transaction": []
 }

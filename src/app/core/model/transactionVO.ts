@@ -1,11 +1,10 @@
 export class TransactionVO {
   icon: string;
-  id: number;
+  id: string;
   userId: string;
-  bookId: number;
   amount: number;
   description: string;
-  categoryId: number;
+  categoryId: string;
   categoryName: string;
   categoryColor: string;
   categoryType: 'income' | 'spend';
@@ -17,7 +16,6 @@ export class TransactionVO {
     this.icon = props.icon;
     this.id = props.id;
     this.userId = props.userId;
-    this.bookId = props.bookId;
     this.amount = props.amount;
     this.description = props.description;
     this.categoryId = props.categoryId;

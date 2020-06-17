@@ -10,6 +10,7 @@ import { addTransaction, removeTransaction, updateTransaction } from '@spend-boo
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { years } from '../../constants';
+import {v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-transaction-editor',
@@ -95,7 +96,6 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
       transaction = {
         ...transaction,
         id: this.data.transaction.id,
-        bookId: this.data.transaction.bookId,
         userId: this.data.transaction.userId,
 
         // TODO: remove after server can do this
@@ -104,6 +104,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     } else {
       transaction = {
         ...transaction,
+        id: uuid(),
         userId: this.data.userId,
         dateCreated: this.now.toISOString()
       }

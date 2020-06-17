@@ -2,7 +2,13 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { logout } from '@spend-book/core/store/user/user.actions';
 import { Category } from '../../model/category';
-import { addCategorySuccess, loadCategoriesByUserSuccess, removeCategory, updateCategorySuccess } from './category.actions';
+import {
+  addCategorySuccess,
+  addDefaultCategoriesToUserSuccess,
+  loadCategoriesByUserSuccess,
+  removeCategory,
+  updateCategorySuccess
+} from './category.actions';
 
 export const categoryFeatureKey = 'category';
 
@@ -26,6 +32,9 @@ const reducer = createReducer(
   ),
   on(addCategorySuccess, (state, { category }) =>
     adapter.addOne(category, { ...state, selectedCategoryId: category.id })
+  ),
+  on(addDefaultCategoriesToUserSuccess, (state, { categories }) =>
+    adapter.addMany(categories, { ...state, selectedCategoryId: null })
   ),
   on(updateCategorySuccess, (state, { update }) =>
     adapter.updateOne(update, { ...state, selectedCategoryId: update.id })

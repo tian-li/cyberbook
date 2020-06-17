@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { User } from '@spend-book/core/model/user';
 import { UserService } from '@spend-book/core/services/user.service';
+import { addDefaultCategoriesToUser } from '@spend-book/core/store/category';
 import { notifyWithSnackBar } from '@spend-book/core/store/notification';
 import { createTempUser } from '@spend-book/shared/utils/create-temp-user';
 import { of } from 'rxjs';
@@ -18,7 +19,9 @@ import {
   register,
   registerSuccess,
   registerTempUser,
-  registerTempUserSuccess, saveTempUser,
+  registerTempUserSuccess,
+  saveTempUser,
+  saveTempUserSuccess,
   updateProfile,
   updateProfileSuccess
 } from './user.actions';
@@ -91,12 +94,15 @@ export class UserEffects {
       ofType(registerTempUser),
       switchMap(action =>
         this.userService.registerTempUser(action.user).pipe(
-          map((user: User) => {
+          switchMap((user: User) => {
             this.saveUserToLocalstorage(user);
             if (user.registered) {
               this.router.navigate(['/user']);
             }
-            return registerTempUserSuccess({ user });
+            return [
+              registerTempUserSuccess({ user }),
+              addDefaultCategoriesToUser({ userId: user.id })
+            ];
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
         )
@@ -115,7 +121,7 @@ export class UserEffects {
             if (user.registered) {
               this.router.navigate(['/user']);
             }
-            return registerTempUserSuccess({ user });
+            return saveTempUserSuccess({ user });
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
         )

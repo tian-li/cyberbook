@@ -1,12 +1,11 @@
 import { ISOString } from '@spend-book/shared/model/helper-models';
 
 export interface Transaction {
-  id: number;
+  id: string;
   userId: string;
-  bookId: number;
   amount: number;
   description: string;
-  categoryId: number;
+  categoryId: string;
   transactionDate: ISOString;
   dateCreated: ISOString;
   dateModified: ISOString;
