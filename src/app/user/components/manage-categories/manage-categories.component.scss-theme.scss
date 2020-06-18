@@ -6,7 +6,6 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-
   .header {
     background: mat-color($background, app-bar);
 
@@ -28,9 +27,17 @@
     background: mat-color($background, background);
   }
 
+ .delete-button {
+   background: mat-color($background, card);
+ }
+
   .draggable-category-item {
     background: mat-color($background, card);
     color: mat-color($foreground, text);
+
+    .category-icon{
+      background: mat-color($background, app-bar);
+    }
 
     i.md-drag_handle {
       color: mat-color($foreground, secondary-text);
@@ -44,6 +51,6 @@
 
   .placeholder {
     color: transparent;
-    background:  mat-color($background, background);
+    background: mat-color($background, background);
   }
 }

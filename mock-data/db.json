@@ -495,36 +495,6 @@
       "dateCreated": "2020-06-17T04:00:00.000Z"
     },
     {
-      "amount": -123,
-      "description": null,
-      "categoryId": "0d81af4a-59bb-4e2a-8326-2fc11d95fb14",
-      "transactionDate": "2020-06-16T04:00:00.000Z",
-      "dateModified": "2020-06-16T04:00:00.000Z",
-      "id": "ec204424-d95b-4c21-b4df-9f08721dcc6e",
-      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
-      "dateCreated": "2020-06-16T04:00:00.000Z"
-    },
-    {
-      "amount": -65,
-      "description": null,
-      "categoryId": "9cb58808-e1db-4d16-819d-3520d08f61d1",
-      "transactionDate": "2020-06-17T04:00:00.000Z",
-      "dateModified": "2020-06-17T04:00:00.000Z",
-      "id": "08cde5f2-ca84-4670-9490-d488754ec927",
-      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
-      "dateCreated": "2020-06-17T04:00:00.000Z"
-    },
-    {
-      "amount": -34,
-      "description": null,
-      "categoryId": "0d81af4a-59bb-4e2a-8326-2fc11d95fb14",
-      "transactionDate": "2020-06-16T04:00:00.000Z",
-      "dateModified": "2020-06-16T04:00:00.000Z",
-      "id": "90778e29-d655-471b-a287-07e5b38f2589",
-      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
-      "dateCreated": "2020-06-16T04:00:00.000Z"
-    },
-    {
       "amount": 56,
       "description": null,
       "categoryId": "f9e017af-d745-4c3a-9c87-cdd5b80a7165",
@@ -533,16 +503,6 @@
       "id": "5bad79a4-0149-454f-bc6c-4a9d50806e07",
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "dateCreated": "2020-06-16T04:00:00.000Z"
-    },
-    {
-      "amount": 78,
-      "description": null,
-      "categoryId": "60bfea7a-c167-495e-9535-04c29c9cd041",
-      "transactionDate": "2020-06-17T04:00:00.000Z",
-      "dateModified": "2020-06-17T04:00:00.000Z",
-      "id": "2af50499-4a81-4a00-9bc2-cc00addb4e5e",
-      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
-      "dateCreated": "2020-06-17T04:00:00.000Z"
     },
     {
       "amount": -45,

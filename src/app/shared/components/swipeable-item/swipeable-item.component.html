@@ -1,0 +1,14 @@
+<div class="swipeable-item" [@flyInOut]="flyInOutState" (@flyInOut.done)="flyOutFinished($event)">
+  <div class="item-container" [ngStyle]="{'transform': getTranslateXValue()}"
+       appSwipeEvent (swipe)="swipe($event)" (endSwipe)="endSwipe($event)" (cancelSwipe)="cancelSwipe()" [swipeDisabled]="disabled"
+       [@toggleSwipeDelete]="showSwipeDelete">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="delete-background"
+       [ngClass]="{'confirm-delete': widthPercentageNumber > swipeDeleteThreshold}">
+    <i class="material-icons md-delete_outline"
+       [ngClass]="{'magnify': widthPercentageNumber > swipeDeleteThreshold}">
+    </i>
+  </div>
+</div>

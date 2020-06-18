@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -29,9 +30,11 @@ import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { PreventScrollDirective } from '@spend-book/shared/directives/prevent-scroll.directive';
+import { CategoryEditorComponent } from './components/category-editor/category-editor.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { SwipeableItemComponent } from './components/swipeable-item/swipeable-item.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
 
@@ -62,6 +65,7 @@ const material = [
   MatButtonToggleModule,
   MatTreeModule,
   DragDropModule,
+  MatBottomSheetModule,
 ];
 
 const components = [
@@ -72,6 +76,8 @@ const components = [
   YearMonthPickerComponent,
   DateRangePickerComponent,
   ConfirmationAlertComponent,
+  SwipeableItemComponent,
+  CategoryEditorComponent,
 
   // directives
   SwipeEventDirective,
@@ -92,7 +98,8 @@ const components = [
     TransactionEditorComponent,
     YearMonthPickerComponent,
     DateRangePickerComponent,
-    ConfirmationAlertComponent
+    ConfirmationAlertComponent,
+    CategoryEditorComponent,
   ]
 })
 export class SharedModule {

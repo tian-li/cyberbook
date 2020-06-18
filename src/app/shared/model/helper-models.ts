@@ -20,6 +20,11 @@ export interface SwipeInfo {
   percentage: number;
 }
 
+export interface SwipeResult {
+  direction: SwipeDirection;
+  result: boolean;
+}
+
 export interface ConfirmationAlertData {
   message: string;
   title?: string;

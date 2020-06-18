@@ -33,19 +33,23 @@
     <div *ngFor="let category of categories; last as last"
          cdkDrag cdkDragStartDelay="100" cdkDragLockAxis="y"
          [cdkDragDisabled]="!sortingMode"
-         [cdkDragPreviewClass]="themeName$|async">
-      <div class="draggable-category-item">
-        <div class="icon">
-          <i class="material-icons-twotone"
-             [ngClass]="'md-'+category.icon"
-             [ngStyle]="{'color': category.color}"
-          ></i>
+         [cdkDragPreviewClass]="themeName$ | async">
+      <app-swipeable-item (swipeResult)="delete($event)" [swipeableItemDisabled]="sortingMode">
+        <div class="draggable-category-item" (click)="editCategory(category)">
+          <div class="category-icon">
+            <i class="material-icons-twotone"
+               [ngClass]="'md-' + category.icon"
+               [ngStyle]="{'color': category.color}"
+            ></i>
+          </div>
+          <div class="category-name" [ngClass]="{'category-name-border ': !last}">
+            <span>{{category.name}}</span>
+            <i class="material-icons md-drag_handle" cdkDragHandle
+               [@toggleDragHandle]="sortingMode"
+            ></i>
+          </div>
         </div>
-        <div class="category-name" [ngClass]="{'category-name-border ': !last}">
-          <span>{{category.name}}</span>
-          <i class="material-icons md-drag_handle" *ngIf="sortingMode" cdkDragHandle></i>
-        </div>
-      </div>
+      </app-swipeable-item>
     </div>
   </div>
 </div>

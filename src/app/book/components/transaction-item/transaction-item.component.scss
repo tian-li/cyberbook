@@ -4,13 +4,10 @@ div {
 
 .transaction-item {
   position: relative;
-}
-
-.item-container {
+  width: 100%;
   z-index: 2;
   padding-left: 1rem;
   justify-content: space-between;
-  width: 100%;
 }
 
 .icon {
@@ -42,29 +39,4 @@ div {
 
 .amount {
   padding-right: 1rem;
-}
-
-.delete-background {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #ff5f5f;
-  z-index: 1;
-  align-items: center;
-
-  i {
-    position: absolute;
-    right: 1rem;
-    font-size: 0.8rem;
-
-    &.magnify {
-      font-size: 1.3rem;
-    }
-  }
-}
-
-.confirm-delete {
-  background: red;
 }

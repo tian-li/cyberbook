@@ -1,6 +1,5 @@
-<div class="transaction-item" [@flyInOut]="flyInOutState" (@flyInOut.done)="delete($event)">
-  <div class="item-container" [ngStyle]="{'transform': getTranslateXValue()}"
-       [@swipeDelete]="{ value: swipeDeleteState}">
+<app-swipeable-item (swipeResult)="delete($event)">
+  <div class="transaction-item">
     <div class="icon">
       <div class="icon-inner-container">
         <i class="material-icons-twotone"
@@ -9,8 +8,7 @@
         ></i>
       </div>
     </div>
-    <div class="details" (click)="editTransaction()" [ngClass]="{'divide-line': !firstOfDate}"
-         appSwipeEvent (swipe)="onSwipe($event)" (endSwipe)="onEndSwipe($event)" (cancelSwipe)="cancelSwipe()">
+    <div class="details" (click)="editTransaction()" [ngClass]="{'divide-line': !firstOfDate}">
       <div class="description">
         <span>
           {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}
@@ -21,11 +19,4 @@
       </div>
     </div>
   </div>
-
-  <div class="delete-background"
-       [ngClass]="{'confirm-delete': widthPercentageNumber > swipeDeleteThreshold}">
-    <i class="material-icons md-delete_outline"
-       [ngClass]="{'magnify': widthPercentageNumber > swipeDeleteThreshold}">
-    </i>
-  </div>
-</div>
+</app-swipeable-item>

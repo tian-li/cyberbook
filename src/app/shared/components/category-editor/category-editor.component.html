@@ -1,0 +1,42 @@
+<div class="category-editor">
+  <div class="actions">
+    <div>
+      取消
+    </div>
+    <div>
+      编辑/新建 类别
+    </div>
+    <div>
+      保存
+    </div>
+  </div>
+
+  <div class="preview">
+    <i class="material-icons md-email"></i>
+  </div>
+
+  <div class="category-name">
+    <mat-form-field>
+      <input matInput type="text" placeholder="用户名" [formControl]="categoryNameControl" required/>
+    </mat-form-field>
+  </div>
+
+  <div class="appearance-selector">
+    <div class="color-selector">
+      <ng-container *ngFor="let color of colors">
+        <div class="color-outer-border" [ngClass]="{'selected':color === selectedColor}">
+          <div class="color-preview" [ngStyle]="{background: color}"></div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="icon-selector">
+      <ng-container *ngFor="let icon of icons">
+        <div class="color-outer-border" [ngClass]="{'selected':icon === selectedIcon}">
+          <i class="icon-preview material-icons" [ngClass]="'md-'+icon"></i>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+</div>

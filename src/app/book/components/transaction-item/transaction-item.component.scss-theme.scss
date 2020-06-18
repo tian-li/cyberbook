@@ -5,13 +5,11 @@
   $background: map-get($theme, background);
 
   .transaction-item {
-    .item-container {
-      background: mat-color($background, background);
+    background: mat-color($background, background);
 
-      .icon {
-        .icon-inner-container {
-          background: mat-color($background, app-bar);
-        }
+    .icon {
+      .icon-inner-container {
+        background: mat-color($background, app-bar);
       }
     }
 

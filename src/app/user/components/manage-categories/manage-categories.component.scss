@@ -55,23 +55,34 @@ div, form {
   padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  app-swipeable-item {
+
+    width: 100%;
+  }
 }
+
+//.delete-button {
+//  align-items: center;
+//  margin-left: 1rem;
+//  color: red;
+//  i {
+//    font-size: 1.2rem;
+//  }
+//}
 
 // this should put out of .category-list so that it can work when dragging
 .draggable-category-item {
   width: 100%;
-  padding-left: 1rem;
   flex-direction: row;
   justify-content: flex-start;
   cursor: move;
 
-  &:last-child {
-    border: none;
-  }
+  position: relative;
 
-  .icon {
+  .category-icon {
     align-items: center;
-    padding: 0.6rem 1.2rem 0.6rem 0;
+    padding: 0.6rem 1rem 0.6rem 1rem;
     border-radius: 50%;
   }
 

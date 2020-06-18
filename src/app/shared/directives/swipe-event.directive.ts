@@ -1,10 +1,12 @@
-import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { SwipeDirection, SwipeInfo } from '@spend-book/shared/model/helper-models';
 
 @Directive({
   selector: '[appSwipeEvent]'
 })
 export class SwipeEventDirective {
+  @Input('swipeDisabled') disabled: boolean = false;
+
   @Output() swipe = new EventEmitter<SwipeInfo>();
   @Output() endSwipe = new EventEmitter<SwipeInfo>();
   @Output() cancelSwipe = new EventEmitter();
@@ -24,7 +26,7 @@ export class SwipeEventDirective {
 
   @HostListener('touchstart', ['$event'])
   private onTouchStart(event: TouchEvent) {
-    if (!this.isMultiTouch(event)) {
+    if (!this.isMultiTouch(event) && !this.disabled) {
       this.touchStartX = event.touches[0].pageX;
       this.touchStartY = event.touches[0].pageY;
       this.touchstartTime = event.timeStamp;
@@ -33,6 +35,10 @@ export class SwipeEventDirective {
 
   @HostListener('touchmove', ['$event'])
   private onTouchMove(event: TouchEvent) {
+    if (this.disabled) {
+      event.preventDefault();
+      return;
+    }
     if (this.isMultiTouch(event)) {
       this.cancel();
       event.preventDefault();
@@ -62,7 +68,7 @@ export class SwipeEventDirective {
 
   @HostListener('touchend', ['$event'])
   private onTouchEnd(event: TouchEvent) {
-    if (this.isMultiTouch(event)) {
+    if (this.isMultiTouch(event) || this.disabled) {
       event.preventDefault();
       return;
     }
