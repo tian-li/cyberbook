@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { generateDefaultCategories } from '@spend-book/shared/utils/generate-default-categories';
 import { forkJoin, Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Category } from '../model/category';
 
@@ -20,7 +21,7 @@ export class CategoryService {
   // When a new user comes, add application default categories to this user
   addDefaultCategories(userId: string): Observable<Category[]> {
     const categories = generateDefaultCategories(userId);
-    const addRequests = categories.map(category => <Observable<Category>>this.http.post(`${this.categoryRoute}`, category));
+    const addRequests = categories.map(category => <Observable<Category>>this.http.post(`${this.categoryRoute}`, category).pipe(delay(200)));
     return forkJoin(addRequests);
   }
 

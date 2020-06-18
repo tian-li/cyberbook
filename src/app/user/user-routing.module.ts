@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ManageCategoriesComponent } from '@spend-book/user/components/manage-categories/manage-categories.component';
 import { ThemeSelectorComponent } from '@spend-book/user/components/theme-selector/theme-selector.component';
 import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
@@ -31,7 +32,11 @@ const routes: Routes = [
     path: 'authenticate',
     component: AuthenticateComponent,
     canActivate: [CanRegisterGuard]
-  }
+  },
+  {
+    path: 'manage-categories',
+    component: ManageCategoriesComponent,
+  },
 ];
 
 @NgModule({

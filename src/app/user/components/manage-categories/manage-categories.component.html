@@ -1,0 +1,51 @@
+<div class="manage-categories-container">
+  <div class="header">
+    <div class="return-button">
+      <i matRipple *ngIf="!sortingMode" (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
+      <i matRipple *ngIf="sortingMode" (click)="cancelCategoriesSorting()" class="material-icons md-clear"></i>
+    </div>
+    <div class="transaction-type-switcher">
+      <div class="spend"
+           (click)="changeTransactionType(TransactionType.spend)"
+           [ngClass]="{ 'selected': selectedTransactionType === TransactionType.spend }">
+        <div class="label">花费</div>
+      </div>
+      <div class="income"
+           (click)="changeTransactionType(TransactionType.income)"
+           [ngClass]="{ 'selected': selectedTransactionType === TransactionType.income }">
+        <div class="label">收入</div>
+      </div>
+    </div>
+    <div class="sorting">
+      <div *ngIf="!sortingMode" (click)="enableDragging()">
+        排序
+      </div>
+      <div *ngIf="sortingMode" (click)="saveCategoriesSorting()">
+        <i class="material-icons md-done"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-list"
+       cdkDropList
+       [cdkDropListData]="categories"
+       (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let category of categories; last as last"
+         cdkDrag cdkDragStartDelay="100" cdkDragLockAxis="y"
+         [cdkDragDisabled]="!sortingMode"
+         [cdkDragPreviewClass]="themeName$|async">
+      <div class="draggable-category-item">
+        <div class="icon">
+          <i class="material-icons-twotone"
+             [ngClass]="'md-'+category.icon"
+             [ngStyle]="{'color': category.color}"
+          ></i>
+        </div>
+        <div class="category-name" [ngClass]="{'category-name-border ': !last}">
+          <span>{{category.name}}</span>
+          <i class="material-icons md-drag_handle" *ngIf="sortingMode" cdkDragHandle></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

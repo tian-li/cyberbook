@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,11 +29,11 @@ import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { PreventScrollDirective } from '@spend-book/shared/directives/prevent-scroll.directive';
+import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
+import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
-import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
-import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 
 const material = [
   MatButtonModule,
@@ -59,7 +60,8 @@ const material = [
   MatProgressBarModule,
   MatRippleModule,
   MatButtonToggleModule,
-  MatTreeModule
+  MatTreeModule,
+  DragDropModule,
 ];
 
 const components = [

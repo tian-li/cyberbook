@@ -7,6 +7,7 @@ import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { ThemeSelectorComponent } from './components/theme-selector/theme-selector.component';
+import { ManageCategoriesComponent } from './components/manage-categories/manage-categories.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ThemeSelectorComponent } from './components/theme-selector/theme-select
     ProfileComponent,
     UserHomeComponent,
     UserComponent,
-    ThemeSelectorComponent
+    ThemeSelectorComponent,
+    ManageCategoriesComponent
   ],
   imports: [
     SharedModule,

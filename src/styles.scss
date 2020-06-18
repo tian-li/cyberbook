@@ -28,6 +28,7 @@
 @import './src/app/user/components/theme-selector/theme-selector.component.scss-theme';
 @import './src/app/user/components/user-home/user-home.component.scss-theme';
 @import './src/app/user/components/profile/profile.component.scss-theme';
+@import './src/app/user/components/manage-categories/manage-categories.component.scss-theme';
 
 // shared
 @import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
@@ -43,6 +44,7 @@
   @include app-graph-header-component-theme($theme);
   @include app-user-home-component-theme($theme);
   @include app-profile-component-theme($theme);
+  @include app-manage-categories-component-theme($theme);
 }
 
 .indigo-pink-theme {
@@ -81,7 +83,6 @@ body {
   padding: 0;
   font-family: "Helvetica Neue Light", "Helvetica Neue", sans-serif;
   user-select: none;
-  background: #fafafa;
 }
 
 * {

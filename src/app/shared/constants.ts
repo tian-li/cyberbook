@@ -36,9 +36,9 @@ export const defaultTransactionEditorDialogConfig: MatDialogConfig<{ editMode: b
 }
 
 export enum TransactionType {
-  spend,
-  income,
-  both
+  spend = 'spend',
+  income = 'income',
+  both = 'both'
 }
 
 export const defaultThemeName = 'indigo-pink-theme';
