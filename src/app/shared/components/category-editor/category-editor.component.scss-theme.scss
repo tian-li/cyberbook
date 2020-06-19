@@ -6,28 +6,19 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
+  .category-editor {
+    background: mat-color($background, background);
+  }
+  
+  .category-icon-background{
+    background: mat-color($background, app-bar);
+  }
   .appearance-selector {
 
-    //.color-selector {
-    //  .color-preview {
-    //    border: 2px solid transparent;
-    //  }
-    //}
 
-    //.icon-selector {
-
-      .icon-preview {
-        //border: 2px solid transparent;
-        //color: mat-color($foreground, secondary-text)
-      }
-    .icon-preview {
-     background: mat-color($background, app-bar);
-    }
-    //}
 
     .selected {
       border: 2px solid mat-color($foreground, secondary-text);
     }
   }
-
 }

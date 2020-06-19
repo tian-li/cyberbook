@@ -6,7 +6,21 @@ div {
   flex-direction: column;
 
   .actions {
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+
+    .cancel-button {
+      transform: translate(-1rem);
+    }
+
+    .save-button {
+      transform: translate(1rem);
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
   }
 
   .preview {
@@ -21,33 +35,34 @@ div {
   .category-name {
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
+
+    mat-form-field {
+      font-size: 1rem;
+    }
   }
 
   .appearance-selector {
     width: 100%;
-    //height: 300px;
-
     flex-direction: column;
 
     .color-selector {
       display: grid;
       grid-template-columns: repeat(6, auto);;
       grid-template-rows: auto;
+      grid-row-gap: 3px;
       justify-items: center;
+      margin-bottom: 1rem;
 
       .color-preview {
-        height: 1.8rem;
-        width: 1.8rem;
+        height: 2rem;
+        width: 2rem;
         border-radius: 50%;
-        margin: 3px;
+        margin: 4px;
       }
     }
 
     .icon-selector {
-      //display: grid;
-      //grid-template-columns: auto;
-      //grid-template-rows: auto;
-      ////flex-wrap: wrap;
       height: 200px;
       overflow-y: scroll;
 
@@ -55,21 +70,25 @@ div {
       grid-template-columns: repeat(6, auto);;
       grid-template-rows: auto;
       justify-items: center;
+      grid-row-gap: 3px;
+
+
 
       .icon-preview {
         font-size: 2rem;
-        border-radius: 50%;
-        padding: 3px;
       }
     }
 
   }
 
 }
+.category-icon-background {
+  padding: 5px;
+  border-radius: 50%;
+}
+
 .color-outer-border {
   border: 2px solid transparent;
-  //height: 2rem;
-  //width: 2rem;
   border-radius: 50%;
   align-items: center;
   justify-content: center;

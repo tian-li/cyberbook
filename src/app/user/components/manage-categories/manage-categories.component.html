@@ -37,10 +37,13 @@
       <app-swipeable-item (swipeResult)="delete($event)" [swipeableItemDisabled]="sortingMode">
         <div class="draggable-category-item" (click)="editCategory(category)">
           <div class="category-icon">
-            <i class="material-icons-twotone"
-               [ngClass]="'md-' + category.icon"
-               [ngStyle]="{'color': category.color}"
-            ></i>
+            <div class="category-icon-background">
+              <i class="material-icons-twotone"
+                 [ngClass]="'md-' + category.icon"
+                 [ngStyle]="{'color': category.color}"
+              ></i>
+            </div>
+
           </div>
           <div class="category-name" [ngClass]="{'category-name-border ': !last}">
             <span>{{category.name}}</span>

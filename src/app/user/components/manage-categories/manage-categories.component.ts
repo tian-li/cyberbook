@@ -79,6 +79,7 @@ export class ManageCategoriesComponent implements OnInit {
   editCategory(category: Category) {
     this.bottomSheet.open(CategoryEditorComponent, {
       data: { category, editMode: true },
+      disableClose: true
     })
   }
 
