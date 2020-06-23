@@ -37,7 +37,7 @@ export class CategoryEffects {
     this.actions$.pipe(
       ofType(addCategory),
       mergeMap(action =>
-        this.categoryService.addCategory(action.userId, action.category).pipe(
+        this.categoryService.addCategory(action.category).pipe(
           map((category: Category) => addCategorySuccess({ category })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '添加类别失败，请稍后重试' } })))
         ))

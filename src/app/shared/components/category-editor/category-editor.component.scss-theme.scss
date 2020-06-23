@@ -9,13 +9,11 @@
   .category-editor {
     background: mat-color($background, background);
   }
-  
+
   .category-icon-background{
     background: mat-color($background, app-bar);
   }
   .appearance-selector {
-
-
 
     .selected {
       border: 2px solid mat-color($foreground, secondary-text);

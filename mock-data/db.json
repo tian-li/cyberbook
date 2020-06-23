@@ -49,20 +49,24 @@
     {
       "id": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
       "username": "新用户80f8",
-      "registered": false,
-      "registeredDate": "06/19/2020"
+      "registered": true,
+      "registeredDate": "06/16/2020",
+      "email": "litiansq@foxmail.com",
+      "password": "123",
+      "gender": "男",
+      "birthday": "08/09/1993"
     }
   ],
   "category": [
     {
-      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "id": "90cb57d7-a364-419a-a02b-237779a3997e",
-      "addedByUser": false,
-      "name": "超市",
+      "name": "超市2",
+      "color": "#c6f834",
       "icon": "storefront",
-      "color": "#f76464",
       "type": "spend",
-      "sortOrder": 0
+      "addedByUser": true,
+      "sortOrder": 0,
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
     },
     {
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
@@ -335,14 +339,14 @@
       "sortOrder": 1
     },
     {
-      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "id": "5d233172-a3ab-4480-8189-0bec96623281",
-      "addedByUser": false,
-      "name": "超市",
+      "name": "超市1",
+      "color": "#e8682c",
       "icon": "storefront",
-      "color": "#f76464",
       "type": "spend",
-      "sortOrder": 0
+      "addedByUser": true,
+      "sortOrder": 0,
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
     },
     {
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
@@ -673,6 +677,26 @@
       "color": "#f76464",
       "type": "income",
       "sortOrder": 0
+    },
+    {
+      "id": "f289364d-57e3-4cb3-ab87-51f912ec0bd4",
+      "name": "添加",
+      "color": "#f8d339",
+      "icon": "account_balance",
+      "type": "spend",
+      "addedByUser": true,
+      "sortOrder": 26,
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "386d5900-27e0-4448-8e0f-4937b91a468d",
+      "name": "收入添加",
+      "color": "#2ad792",
+      "icon": "book",
+      "type": "income",
+      "addedByUser": true,
+      "sortOrder": 6,
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
     }
   ],
   "transaction": [

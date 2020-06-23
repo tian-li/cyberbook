@@ -42,7 +42,7 @@ div, form {
       }
     }
 
-    .sorting {
+    .sorting-toggle-button {
       position: absolute;
       font-size: 0.8rem;
       right: 1rem;
@@ -56,13 +56,13 @@ div, form {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-
-  app-swipeable-item {
-    width: 100%;
-  }
 }
 
 // this should put out of .category-list so that it can work when dragging
+app-swipeable-item {
+  width: 100%;
+}
+
 .draggable-category-item {
   width: 100%;
   flex-direction: row;
@@ -99,6 +99,13 @@ div, form {
 
 .last-margin {
   margin-bottom: 3rem;
+}
+
+.float-add-button {
+  z-index: 3;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .cdk-drag-preview {

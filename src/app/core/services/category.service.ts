@@ -25,7 +25,7 @@ export class CategoryService {
     return forkJoin(addRequests);
   }
 
-  addCategory(userId: string, category: Partial<Category>): Observable<Category> {
+  addCategory(category: Partial<Category>): Observable<Category> {
     return <Observable<Category>>this.http.post(`${this.categoryRoute}`, category);
   }
 

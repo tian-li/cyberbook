@@ -5,11 +5,11 @@
     <button mat-button color="primary" class="save-button" (click)="save()">保存</button>
   </div>
 
-<!--  <div class="preview">-->
-<!--    <div class="category-icon-background" [ngStyle]="{color:selectedColor}">-->
-<!--      <i class="material-icons-twotone" [ngClass]="'md-'+selectedIcon"></i>-->
-<!--    </div>-->
-<!--  </div>-->
+  <div class="preview">
+    <div class="category-icon-background" [ngStyle]="{color:selectedColor}">
+      <i class="material-icons-twotone" [ngClass]="'md-'+selectedIcon"></i>
+    </div>
+  </div>
 
   <div class="category-name">
     <mat-form-field appearance="outline">
@@ -22,7 +22,7 @@
 
   <div class="appearance-selector">
     <div class="color-selector">
-      <ng-container *ngFor="let color of colors">
+      <ng-container *ngFor="let color of availableCategoryColors">
         <div class="color-outer-border" (click)="selectColor(color)" [ngClass]="{'selected':color === selectedColor}">
           <div class="color-preview" [ngStyle]="{background: color}"></div>
         </div>
@@ -30,10 +30,10 @@
     </div>
 
     <div class="icon-selector">
-      <ng-container *ngFor="let icon of icons">
+      <ng-container *ngFor="let icon of availableCategoryIcons">
         <div class="color-outer-border" [ngClass]="{'selected':icon === selectedIcon}" (click)="selectIcon(icon)">
           <div class="category-icon-background">
-            <i class="icon-preview material-icons-twotone" [ngClass]="'md-'+icon" [ngStyle]="{color: selectedColor}"></i>
+            <i class="icon-preview material-icons-twotone" [ngClass]="'md-'+icon"></i>
           </div>
         </div>
       </ng-container>

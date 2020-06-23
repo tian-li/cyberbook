@@ -52,3 +52,44 @@ export const defaultPositiveAction = '好';
 export const defaultNegativeAction = '取消';
 export const defaultAlertLevel = AlertLevel.warn;
 
+export const availableCategoryIcons = [
+  'account_balance_wallet',
+  'account_balance',
+  'analytics',
+  'book',
+  'language',
+  'verified_user',
+  'brightness_auto',
+  'insert_drive_file',
+  'table_rows',
+  'cloud_done',
+  'computer',
+  'phone_android',
+  'devices_other',
+  'headset_mic',
+  'videogame_asset',
+  'camera_roll',
+  'storefront',
+  'restaurant',
+  'commute',
+  'live_tv',
+  'house',
+  'pets',
+  'school',
+  'category',
+  'account_balance_wallet',
+  'local_atm',
+];
+
+export const availableCategoryColors = [
+  '#f44444',
+  '#e8682c',
+  '#f8d339',
+  '#c6f834',
+  '#6ec232',
+  '#2ad792',
+  '#13b9d4',
+  '#0928be',
+  '#af34ed',
+  '#cc048a',
+];

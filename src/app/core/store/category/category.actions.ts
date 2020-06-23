@@ -8,7 +8,7 @@ export const loadCategoriesByUserSuccess = createAction(
   props<{ categories: Category[] }>()
 );
 
-export const addCategory = createAction('[Category] Add Category', props<{ userId: string, category: Partial<Category> }>());
+export const addCategory = createAction('[Category] Add Category', props<{ category: Category }>());
 export const addCategorySuccess = createAction('[Category] Add Category Success', props<{ category: Category }>());
 
 export const updateCategory = createAction('[Category] Update Category', props<{ category: Partial<Category> }>());

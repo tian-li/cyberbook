@@ -28,7 +28,7 @@ div {
     align-items: center;
 
     i {
-      font-size: 3rem;
+      font-size: 4rem;
     }
   }
 
@@ -63,7 +63,7 @@ div {
     }
 
     .icon-selector {
-      height: 200px;
+      height: 150px;
       overflow-y: scroll;
 
       display: grid;
@@ -72,10 +72,8 @@ div {
       justify-items: center;
       grid-row-gap: 3px;
 
-
-
       .icon-preview {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
     }
 

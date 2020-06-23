@@ -6,11 +6,11 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
-import { fromCategory, fromUI } from '@spend-book/core/store';
+import { fromCategory, fromUI, fromUser } from '@spend-book/core/store';
 import { CategoryEditorComponent } from '@spend-book/shared/components/category-editor/category-editor.component';
 import { TransactionType } from '@spend-book/shared/constants';
-import { Observable, Subject } from 'rxjs';
-import { startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { from, Observable, Subject } from 'rxjs';
+import { filter, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-categories',
@@ -31,7 +31,6 @@ import { startWith, switchMap, takeUntil } from 'rxjs/operators';
           animate('0.2s', style({ transform: 'translateX(100%)' })),
           style({ display: 'none' }),
         ]),
-
       ])
     ])
   ]
@@ -41,24 +40,32 @@ export class ManageCategoriesComponent implements OnInit {
   readonly defaultCategoryType: TransactionType = TransactionType.spend;
 
   categories: Category[];
-  selectedTransactionType = this.defaultCategoryType;
+  selectedCategoryType = this.defaultCategoryType;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
   themeName$: Observable<string>;
 
   sortingMode = false;
+  userId: string;
 
   private unsubscribe$: Subject<void> = new Subject();
+  private _document: Document;
 
   constructor(private store: Store,
               private router: Router,
               private route: ActivatedRoute,
-              private bottomSheet: MatBottomSheet
+              private bottomSheet: MatBottomSheet,
   ) {
+    this._document = document;
   }
-
 
   ngOnInit() {
     this.store.dispatch(fromUI.hideToolbar());
+    this.store.pipe(
+      select(fromUser.selectUser),
+      filter(user => !!user.id),
+      take(1),
+    ).subscribe(user => this.userId = user.id);
+
     this.themeName$ = this.store.pipe(select(fromUI.selectThemeName));
 
     this.categoryTypeControl.valueChanges.pipe(
@@ -77,10 +84,38 @@ export class ManageCategoriesComponent implements OnInit {
   }
 
   editCategory(category: Category) {
+    this.openEditor({ category, editMode: true })
+  }
+
+  addCategory() {
+    this.openEditor({ editMode: false });
+  }
+
+  openEditor(data: { editMode: boolean, category?: Category }) {
     this.bottomSheet.open(CategoryEditorComponent, {
-      data: { category, editMode: true },
-      disableClose: true
-    })
+      data,
+      disableClose: true,
+    }).afterDismissed().pipe(
+      filter(result => !!result),
+      take(1)
+    ).subscribe((result) => {
+      const category: Category = {
+        ...result,
+        type: this.selectedCategoryType,
+        addedByUser: true,
+        userId: this.userId
+      };
+
+      if (data.editMode) {
+        this.store.dispatch(fromCategory.updateCategory({
+          category: { ...category, sortOrder: data.category.sortOrder }
+        }));
+      } else {
+        this.store.dispatch(fromCategory.addCategory({
+          category: { ...category, sortOrder: this.categories.length }
+        }));
+      }
+    });
   }
 
   delete(event) {
@@ -103,15 +138,30 @@ export class ManageCategoriesComponent implements OnInit {
     this.disableDragging();
   }
 
-  changeTransactionType(type: TransactionType) {
+  changeCategoryType(type: TransactionType) {
     console.log('changeTransactionType', type)
-    this.selectedTransactionType = type;
+    this.selectedCategoryType = type;
     this.categoryTypeControl.setValue(type);
   }
 
   drop(event) {
     console.log('ondrop', event)
     moveItemInArray(this.categories, event.previousIndex, event.currentIndex);
+    const updatedCategories = event.container.data;
+    console.log('updatedCategories', updatedCategories);
+    const needUpdate = this.getCategoriesNeedToUpdate(updatedCategories);
+    console.log('needUpdate', needUpdate)
+  }
+
+  getCategoriesNeedToUpdate(updatedCategories: Category[]) {
+    const result = [];
+
+    updatedCategories.forEach(category => {
+      if (this.categories.find(c => c.id === category.id).sortOrder !== category.sortOrder) {
+        result.push(category)
+      }
+    });
+    return result;
   }
 
   back() {
