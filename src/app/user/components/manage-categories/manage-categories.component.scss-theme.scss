@@ -27,15 +27,15 @@
     background: mat-color($background, background);
   }
 
- .delete-button {
-   background: mat-color($background, card);
- }
+  .delete-button {
+    background: mat-color($background, card);
+  }
 
   .draggable-category-item {
     background: mat-color($background, card);
     color: mat-color($foreground, text);
 
-    .category-icon-background{
+    .category-icon-background {
       background: mat-color($background, app-bar);
     }
 

@@ -11,19 +11,18 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./category-editor.component.scss']
 })
 export class CategoryEditorComponent implements OnInit {
-  readonly availableCategoryColors = availableCategoryColors;
-  readonly availableCategoryIcons = availableCategoryIcons;
+  readonly availableCategoryColors: string[] = availableCategoryColors;
+  readonly availableCategoryIcons: string[] = availableCategoryIcons;
 
-  selectedColor = this.availableCategoryColors[0];
-  selectedIcon = this.availableCategoryIcons[0];
+  selectedColor: string = this.availableCategoryColors[0];
+  selectedIcon: string = this.availableCategoryIcons[0];
   categoryNameControl = new FormControl('', [Validators.required, Validators.maxLength(5)]);
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: { editMode: boolean, category?: Category },
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) private data: { editMode: boolean, category?: Category },
               private bottomSheetRef: MatBottomSheetRef<CategoryEditorComponent>) {
   }
 
   ngOnInit(): void {
-    console.log('data', this.data);
     if (this.data.category) {
       this.categoryNameControl.setValue(this.data.category.name);
       this.selectedColor = this.data.category.color;
@@ -31,23 +30,36 @@ export class CategoryEditorComponent implements OnInit {
     }
   }
 
-  selectColor(color) {
+  selectColor(color: string) {
     this.selectedColor = color;
   }
 
-  selectIcon(icon) {
+  selectIcon(icon: string) {
     this.selectedIcon = icon;
   }
 
   save() {
-    const id = this.data.category ? this.data.category.id : uuid();
-
-    const result: Partial<Category> = {
-      id,
+    const changes: Partial<Category> = {
       name: this.categoryNameControl.value,
       color: this.selectedColor,
       icon: this.selectedIcon
     }
+
+    let result: Partial<Category>;
+
+    if (!!this.data.category) {
+      result = {
+        ...this.data.category,
+        ...changes
+      }
+    } else {
+      result = {
+        id: uuid(),
+        ...changes,
+        addedByUser: true,
+      }
+    }
+
     this.bottomSheetRef.dismiss(result);
   }
 

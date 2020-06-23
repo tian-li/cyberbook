@@ -1,3 +1,5 @@
+import { TransactionType } from '@spend-book/shared/constants';
+
 export interface Category {
   id: string;
   userId: string;
@@ -5,6 +7,6 @@ export interface Category {
   name: string;
   icon: string;
   color: string;
-  type: 'income' | 'spend';
+  type: TransactionType;
   addedByUser: boolean;
 }

@@ -5,7 +5,7 @@ import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
 import { setDisplayMonth } from '@spend-book/core/store/ui';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
-import { TransactionType } from '@spend-book/shared/constants';
+import { TransactionTypes, TransactionType } from '@spend-book/shared/constants';
 import { ISOString } from '@spend-book/shared/model/helper-models';
 import { Chart, ChartData } from 'chart.js'
 import { Subject } from 'rxjs';
@@ -18,11 +18,11 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./graph-chart-pie.component.scss']
 })
 export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy {
-  readonly TransactionType = TransactionType;
+  readonly TransactionTypes = TransactionTypes;
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
   transactionVOs: TransactionVO[];
   displayMonth: ISOString;
-  selectedTransactionType = this.TransactionType.spend;
+  selectedTransactionType: TransactionType = this.TransactionTypes.spend;
   pieChartData: ChartData = {
     datasets: [],
     labels: []
@@ -58,7 +58,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngAfterViewInit() {
-    this.pieChartData = this.createChartData(TransactionType.spend);
+    this.pieChartData = this.createChartData(TransactionTypes.spend);
     this.drawChart();
   }
 
@@ -93,7 +93,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     });
   }
 
-  changeTransactionType(type: TransactionType) {
+  changeTransactionType(type: TransactionTypes) {
     this.selectedTransactionType = type;
 
     this.updateChart(this.createChartData(type))
@@ -104,7 +104,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     const amount: number[] = [];
     const labels: string[] = [];
     const colors: string[] = [];
-    const transactionVOs = transactionType === TransactionType.spend ? this.spendTransactionVOs : this.incomeTransactionVOs;
+    const transactionVOs = transactionType === TransactionTypes.spend ? this.spendTransactionVOs : this.incomeTransactionVOs;
 
     if (transactionVOs.length <= 0) {
       return this.defaultChartData;

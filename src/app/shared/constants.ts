@@ -35,11 +35,14 @@ export const defaultTransactionEditorDialogConfig: MatDialogConfig<{ editMode: b
   data: { editMode: false }
 }
 
-export enum TransactionType {
+export enum TransactionTypes {
   spend = 'spend',
   income = 'income',
   both = 'both'
 }
+
+// TODO: needs more restriction
+export type TransactionType = 'spend' | 'income' | 'both';
 
 export const defaultThemeName = 'indigo-pink-theme';
 
@@ -52,7 +55,7 @@ export const defaultPositiveAction = '好';
 export const defaultNegativeAction = '取消';
 export const defaultAlertLevel = AlertLevel.warn;
 
-export const availableCategoryIcons = [
+export const availableCategoryIcons: string[] = [
   'account_balance_wallet',
   'account_balance',
   'analytics',
@@ -81,7 +84,7 @@ export const availableCategoryIcons = [
   'local_atm',
 ];
 
-export const availableCategoryColors = [
+export const availableCategoryColors: string[] = [
   '#f44444',
   '#e8682c',
   '#f8d339',

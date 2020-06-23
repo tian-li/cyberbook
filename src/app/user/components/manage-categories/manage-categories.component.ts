@@ -7,10 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { fromCategory, fromUI, fromUser } from '@spend-book/core/store';
+import { updateCategory } from '@spend-book/core/store/category';
 import { CategoryEditorComponent } from '@spend-book/shared/components/category-editor/category-editor.component';
-import { TransactionType } from '@spend-book/shared/constants';
-import { from, Observable, Subject } from 'rxjs';
-import { filter, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
+import { TransactionType, TransactionTypes } from '@spend-book/shared/constants';
+import { from, Observable, of, Subject } from 'rxjs';
+import { concatMap, debounceTime, delay, filter, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-categories',
@@ -36,44 +37,44 @@ import { filter, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
   ]
 })
 export class ManageCategoriesComponent implements OnInit {
-  readonly TransactionType = TransactionType;
-  readonly defaultCategoryType: TransactionType = TransactionType.spend;
+  readonly TransactionType = TransactionTypes;
+  readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
 
   categories: Category[];
+  sortingContainerData: Category[];
   selectedCategoryType = this.defaultCategoryType;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
   themeName$: Observable<string>;
-
   sortingMode = false;
   userId: string;
 
   private unsubscribe$: Subject<void> = new Subject();
-  private _document: Document;
 
   constructor(private store: Store,
               private router: Router,
               private route: ActivatedRoute,
               private bottomSheet: MatBottomSheet,
   ) {
-    this._document = document;
   }
 
   ngOnInit() {
     this.store.dispatch(fromUI.hideToolbar());
+    this.themeName$ = this.store.pipe(select(fromUI.selectThemeName));
+
     this.store.pipe(
       select(fromUser.selectUser),
       filter(user => !!user.id),
       take(1),
     ).subscribe(user => this.userId = user.id);
 
-    this.themeName$ = this.store.pipe(select(fromUI.selectThemeName));
-
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
       switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))),
+      debounceTime(500),
       takeUntil(this.unsubscribe$)
     ).subscribe(categories => {
-      this.categories = categories;
+      this.categories = [...categories];
+      this.sortingContainerData = [...categories];
     });
   }
 
@@ -91,33 +92,6 @@ export class ManageCategoriesComponent implements OnInit {
     this.openEditor({ editMode: false });
   }
 
-  openEditor(data: { editMode: boolean, category?: Category }) {
-    this.bottomSheet.open(CategoryEditorComponent, {
-      data,
-      disableClose: true,
-    }).afterDismissed().pipe(
-      filter(result => !!result),
-      take(1)
-    ).subscribe((result) => {
-      const category: Category = {
-        ...result,
-        type: this.selectedCategoryType,
-        addedByUser: true,
-        userId: this.userId
-      };
-
-      if (data.editMode) {
-        this.store.dispatch(fromCategory.updateCategory({
-          category: { ...category, sortOrder: data.category.sortOrder }
-        }));
-      } else {
-        this.store.dispatch(fromCategory.addCategory({
-          category: { ...category, sortOrder: this.categories.length }
-        }));
-      }
-    });
-  }
-
   delete(event) {
     console.log('delete', event)
   }
@@ -126,45 +100,77 @@ export class ManageCategoriesComponent implements OnInit {
     this.sortingMode = true;
   }
 
-  disableDragging() {
-    this.sortingMode = false;
-  }
-
   saveCategoriesSorting() {
     this.disableDragging();
+    this.updateSorting(this.getCategoriesNeedToUpdate(this.sortingContainerData))
   }
 
   cancelCategoriesSorting() {
+    this.sortingContainerData = [...this.categories];
     this.disableDragging();
   }
 
   changeCategoryType(type: TransactionType) {
-    console.log('changeTransactionType', type)
     this.selectedCategoryType = type;
     this.categoryTypeControl.setValue(type);
   }
 
   drop(event) {
-    console.log('ondrop', event)
-    moveItemInArray(this.categories, event.previousIndex, event.currentIndex);
-    const updatedCategories = event.container.data;
-    console.log('updatedCategories', updatedCategories);
-    const needUpdate = this.getCategoriesNeedToUpdate(updatedCategories);
-    console.log('needUpdate', needUpdate)
-  }
-
-  getCategoriesNeedToUpdate(updatedCategories: Category[]) {
-    const result = [];
-
-    updatedCategories.forEach(category => {
-      if (this.categories.find(c => c.id === category.id).sortOrder !== category.sortOrder) {
-        result.push(category)
-      }
-    });
-    return result;
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 
   back() {
     this.router.navigate(['..'], { relativeTo: this.route });
   }
+
+  private openEditor(data: { editMode: boolean, category?: Category }) {
+    this.bottomSheet.open(CategoryEditorComponent, {
+      data,
+      disableClose: true,
+    }).afterDismissed().pipe(
+      filter(result => !!result),
+      take(1)
+    ).subscribe((editedCategory) => {
+      this.saveEditedCategory(editedCategory, data.editMode);
+    });
+  }
+
+  private saveEditedCategory(editedCategory: Partial<Category>, editMode: boolean) {
+    if (editMode) {
+      this.store.dispatch(fromCategory.updateCategory({ category: editedCategory }));
+    } else {
+      this.store.dispatch(fromCategory.addCategory({
+        category: <Category>{
+          ...editedCategory,
+          addedByUser: true,
+          sortOrder: this.categories.length,
+          type: this.selectedCategoryType,
+          userId: this.userId
+        }
+      }));
+    }
+  }
+
+  private disableDragging() {
+    this.sortingMode = false;
+  }
+
+  private getCategoriesNeedToUpdate(updatedCategories: Category[]): Category[] {
+    return updatedCategories.reduce((result, category, index) => {
+      if (this.categories[index].name !== category.name) {
+        result.push({ ...category, sortOrder: index })
+      }
+      return result
+    }, []);
+  }
+
+  private updateSorting(categoriesToUpdate: Category[]) {
+    from(categoriesToUpdate).pipe(
+      concatMap(c => of(c).pipe(delay(200))),
+      take(categoriesToUpdate.length)
+    ).subscribe(category => {
+      this.store.dispatch(updateCategory({ category }));
+    });
+  }
+
 }

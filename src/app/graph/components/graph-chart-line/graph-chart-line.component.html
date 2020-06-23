@@ -5,18 +5,18 @@
 
   <div class="transaction-type-switcher">
     <div class="spend"
-         (click)="changeTransactionType(TransactionType.spend)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.spend }">
+         (click)="changeTransactionType(TransactionTypes.spend)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.spend }">
       <div class="label">花费</div>
     </div>
     <div class="income"
-         (click)="changeTransactionType(TransactionType.income)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.income }">
+         (click)="changeTransactionType(TransactionTypes.income)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.income }">
       <div class="label">收入</div>
     </div>
     <div class="both"
-         (click)="changeTransactionType(TransactionType.both)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionType.both }">
+         (click)="changeTransactionType(TransactionTypes.both)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.both }">
       <div class="label">合并</div>
     </div>
   </div>

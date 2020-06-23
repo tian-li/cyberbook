@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction } from '@spend-book/core/store';
 import { DateRangePickerComponent } from '@spend-book/shared/components/date-range-picker/date-range-picker.component';
-import { TransactionType } from '@spend-book/shared/constants';
+import { TransactionTypes, TransactionType } from '@spend-book/shared/constants';
 import { PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { getMonthSummary } from '@spend-book/shared/utils/get-month-summary';
 import { Chart, ChartData, ChartDataSets } from 'chart.js';
@@ -31,7 +31,7 @@ enum DateFormats {
   styleUrls: ['./graph-chart-line.component.scss']
 })
 export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy {
-  readonly TransactionType = TransactionType;
+  readonly TransactionTypes = TransactionTypes;
   readonly today = dayjs();
   readonly defaultLineOption = {
     backgroundColor: 'transparent',
@@ -45,7 +45,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
   startDate = this.today.subtract(4, 'month').date(1);
   endDate = this.today.endOf('month');
-  selectedTransactionType = TransactionType.both;
+  selectedTransactionType: TransactionType = TransactionTypes.both;
   dateAxisFormat = DateFormats.month;
   transactionVOs: TransactionVO[];
 
@@ -104,18 +104,18 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
     });
   }
 
-  changeTransactionType(type: TransactionType) {
+  changeTransactionType(type: TransactionTypes) {
     this.selectedTransactionType = type;
     this.lineChart.data.datasets.forEach((dataset: ChartDataSets) => {
       let lineColor;
       switch (type) {
-        case TransactionType.spend:
+        case TransactionTypes.spend:
           lineColor = dataset.label === '花费' ? this.spendColor : 'transparent';
           break;
-        case TransactionType.income:
+        case TransactionTypes.income:
           lineColor = dataset.label === '收入' ? this.incomeColor : 'transparent';
           break;
-        case TransactionType.both:
+        case TransactionTypes.both:
           lineColor = dataset.label === '收入' ? this.incomeColor : this.spendColor;
           break;
         default:
@@ -138,14 +138,14 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
       ...this.defaultLineOption,
       data: [],
       borderColor: this.spendColor,
-      pointBackgroundColor: transactionType === TransactionType.spend || transactionType === TransactionType.both ? this.spendColor : 'transparent',
+      pointBackgroundColor: transactionType === TransactionTypes.spend || transactionType === TransactionTypes.both ? this.spendColor : 'transparent',
       label: '花费',
     };
     const incomeSet: ChartDataSets = {
       ...this.defaultLineOption,
       data: [],
       borderColor: this.incomeColor,
-      pointBackgroundColor: transactionType === TransactionType.income || transactionType === TransactionType.both ? this.incomeColor : 'transparent',
+      pointBackgroundColor: transactionType === TransactionTypes.income || transactionType === TransactionTypes.both ? this.incomeColor : 'transparent',
       label: '收入',
     };
     const labels: string[] = [];
@@ -166,19 +166,19 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
     });
 
     switch (transactionType) {
-      case TransactionType.both:
+      case TransactionTypes.both:
         datasets = [
           spendSet,
           incomeSet
         ];
         break;
-      case TransactionType.income:
+      case TransactionTypes.income:
         datasets = [
           { ...spendSet, borderColor: 'transparent' },
           incomeSet
         ];
         break;
-      case TransactionType.spend:
+      case TransactionTypes.spend:
         datasets = [
           spendSet,
           { ...incomeSet, borderColor: 'transparent' }
