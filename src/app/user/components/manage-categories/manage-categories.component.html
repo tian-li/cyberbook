@@ -1,4 +1,9 @@
-<div class="manage-categories-container">
+<div class="loading" *ngIf="loading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="manage-categories-container"
+     #list
+>
   <div class="header">
     <div class="return-button">
       <i matRipple *ngIf="!sortingMode" (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
@@ -30,11 +35,11 @@
        cdkDropList
        [cdkDropListData]="sortingContainerData"
        (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let category of sortingContainerData; last as last"
+    <div *ngFor="let category of sortingContainerData; last as last; index as index;"
          cdkDrag cdkDragLockAxis="y"
          [cdkDragDisabled]="!sortingMode"
          [cdkDragPreviewClass]="themeName$ | async">
-      <app-swipeable-item (swipeResult)="delete($event)" [swipeableItemDisabled]="sortingMode">
+      <app-swipeable-item (swipeResult)="delete($event, index)" [swipeableItemDisabled]="sortingMode">
         <div class="draggable-category-item" (click)="editCategory(category)">
           <div class="category-icon">
             <div class="category-icon-background">

@@ -4,7 +4,7 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .category-icon-background {
+  .category-icon-background, .preview-icon-background {
     background: mat-color($background, app-bar);
   }
 

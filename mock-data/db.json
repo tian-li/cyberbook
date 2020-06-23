@@ -608,17 +608,7 @@
       "icon": "commute",
       "color": "#FAA43A",
       "type": "spend",
-      "sortOrder": 2
-    },
-    {
-      "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
-      "id": "0c652dea-c54f-419e-bcbd-2048fbac2a3c",
-      "addedByUser": false,
-      "name": "娱乐",
-      "icon": "live_tv",
-      "color": "#60BD68",
-      "type": "spend",
-      "sortOrder": 5
+      "sortOrder": 3
     },
     {
       "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
@@ -628,7 +618,7 @@
       "icon": "restaurant",
       "color": "#5DA5DA",
       "type": "spend",
-      "sortOrder": 3
+      "sortOrder": 2
     },
     {
       "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
@@ -638,7 +628,7 @@
       "icon": "house",
       "color": "#F17CB0",
       "type": "spend",
-      "sortOrder": 7
+      "sortOrder": 6
     },
     {
       "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
@@ -668,7 +658,7 @@
       "icon": "category",
       "color": "#DECF3F",
       "type": "spend",
-      "sortOrder": 6
+      "sortOrder": 5
     },
     {
       "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
@@ -909,6 +899,36 @@
       "color": "#DECF3F",
       "type": "spend",
       "sortOrder": 7
+    },
+    {
+      "id": "67746e5b-f225-4140-9003-da7958b6a4fb",
+      "name": "可能吧",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 27,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "26d5d402-2369-41ac-8839-9d63c4dd8bc7",
+      "name": "scrol",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 28,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "1363ea4c-ef68-4c14-9e6e-1d7235d6a042",
+      "name": "ds",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 29,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
     }
   ],
   "transaction": [
@@ -961,6 +981,16 @@
       "id": "514653c7-4a97-488c-a18b-21e0193c09d5",
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "dateCreated": "2020-06-17T04:00:00.000Z"
+    },
+    {
+      "amount": -123,
+      "description": null,
+      "categoryId": "9e8db561-db8a-48e6-be85-01987f2e0c8d",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "dd358064-2a8f-4df2-8068-b2c3f7e4c663",
+      "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
     }
   ]
 }

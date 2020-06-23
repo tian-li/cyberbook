@@ -95,4 +95,6 @@ export const availableCategoryColors: string[] = [
   '#0928be',
   '#af34ed',
   '#cc048a',
+  '#7d7d7d',
+  '#afafaf',
 ];

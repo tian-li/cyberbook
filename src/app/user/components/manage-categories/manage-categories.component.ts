@@ -1,17 +1,20 @@
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
-import { fromCategory, fromUI, fromUser } from '@spend-book/core/store';
+import { fromCategory, fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
 import { updateCategory } from '@spend-book/core/store/category';
 import { CategoryEditorComponent } from '@spend-book/shared/components/category-editor/category-editor.component';
-import { TransactionType, TransactionTypes } from '@spend-book/shared/constants';
+import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
+import { AlertLevel, TransactionType, TransactionTypes } from '@spend-book/shared/constants';
+import { SwipeResult } from '@spend-book/shared/model/helper-models';
 import { from, Observable, of, Subject } from 'rxjs';
-import { concatMap, debounceTime, delay, filter, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
+import { concatMap, debounceTime, delay, filter, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-categories',
@@ -39,6 +42,8 @@ import { concatMap, debounceTime, delay, filter, startWith, switchMap, take, tak
 export class ManageCategoriesComponent implements OnInit {
   readonly TransactionType = TransactionTypes;
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
+@ViewChild('list') list: ElementRef;
+  loading: boolean = false;
 
   categories: Category[];
   sortingContainerData: Category[];
@@ -54,6 +59,7 @@ export class ManageCategoriesComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private bottomSheet: MatBottomSheet,
+              private dialog: MatDialog
   ) {
   }
 
@@ -70,9 +76,10 @@ export class ManageCategoriesComponent implements OnInit {
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
       switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))),
-      debounceTime(500),
+      debounceTime(200),
       takeUntil(this.unsubscribe$)
     ).subscribe(categories => {
+      this.loading = false;
       this.categories = [...categories];
       this.sortingContainerData = [...categories];
     });
@@ -84,6 +91,16 @@ export class ManageCategoriesComponent implements OnInit {
     this.unsubscribe$.complete();
   }
 
+  changeCategoryType(type: TransactionType) {
+    this.selectedCategoryType = type;
+    this.categoryTypeControl.setValue(type);
+  }
+
+  back() {
+    this.router.navigate(['..'], { relativeTo: this.route });
+  }
+
+  // add or edit category
   editCategory(category: Category) {
     this.openEditor({ category, editMode: true })
   }
@@ -92,17 +109,14 @@ export class ManageCategoriesComponent implements OnInit {
     this.openEditor({ editMode: false });
   }
 
-  delete(event) {
-    console.log('delete', event)
-  }
-
+  // drag and sort
   enableDragging() {
     this.sortingMode = true;
   }
 
   saveCategoriesSorting() {
     this.disableDragging();
-    this.updateSorting(this.getCategoriesNeedToUpdate(this.sortingContainerData))
+    this.dispatchMultipleActions(this.createUpdateSortingActions(this.getCategoriesNeedToUpdate(this.sortingContainerData)))
   }
 
   cancelCategoriesSorting() {
@@ -110,19 +124,24 @@ export class ManageCategoriesComponent implements OnInit {
     this.disableDragging();
   }
 
-  changeCategoryType(type: TransactionType) {
-    this.selectedCategoryType = type;
-    this.categoryTypeControl.setValue(type);
-  }
-
   drop(event) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 
-  back() {
-    this.router.navigate(['..'], { relativeTo: this.route });
+  // delete category
+  delete(swipeResult: SwipeResult, index) {
+    if (!swipeResult.result) {
+      return;
+    }
+
+    this.canDeleteCategory(this.categories[index]).pipe(take(1)).subscribe(result => {
+      if (result) {
+        this.doDelete(index);
+      }
+    });
   }
 
+  // add or edit category
   private openEditor(data: { editMode: boolean, category?: Category }) {
     this.bottomSheet.open(CategoryEditorComponent, {
       data,
@@ -151,6 +170,7 @@ export class ManageCategoriesComponent implements OnInit {
     }
   }
 
+  // drag and sort
   private disableDragging() {
     this.sortingMode = false;
   }
@@ -164,12 +184,72 @@ export class ManageCategoriesComponent implements OnInit {
     }, []);
   }
 
-  private updateSorting(categoriesToUpdate: Category[]) {
-    from(categoriesToUpdate).pipe(
-      concatMap(c => of(c).pipe(delay(200))),
-      take(categoriesToUpdate.length)
-    ).subscribe(category => {
-      this.store.dispatch(updateCategory({ category }));
+  private createUpdateSortingActions(categoriesToUpdate: Category[]) {
+    return categoriesToUpdate.map(category => updateCategory({ category }))
+  }
+
+  // delete category
+  private canDeleteCategory(category: Category): Observable<boolean> {
+    return this.getTransactionCountOfCategory(category).pipe(
+      switchMap(count => {
+        if (count < 1) {
+          return of(true)
+        } else {
+          return this.openDeleteAlert(category, count);
+        }
+      })
+    );
+  }
+
+  private doDelete(index) {
+    this.sortingContainerData.splice(index, 1);
+    const categoriesToUpdate: Category[] = [];
+
+    for (let i = index + 1; i < this.categories.length; i++) {
+      categoriesToUpdate.push({
+        ...this.categories[i],
+        sortOrder: this.categories[i].sortOrder - 1
+      });
+    }
+    this.createUpdateSortingActions(categoriesToUpdate);
+
+    this.dispatchMultipleActions([
+      fromCategory.removeCategory({ id: this.categories[index].id }),
+      ...this.createUpdateSortingActions(categoriesToUpdate)
+    ]);
+  }
+
+  // TODO: currently, categories associated with transactions can't be deleted. Need to think if should allow this
+  private openDeleteAlert(category: Category, count: number): Observable<boolean> {
+    return this.dialog.open(ConfirmationAlertComponent, {
+      width: '400px',
+      height: '200px',
+      disableClose: true,
+      data: {
+        message: `${category.name} 中有 ${count} 笔账目，暂时无法删除。`,
+        alertLevel: AlertLevel.danger
+      }
+    }).afterClosed().pipe(map(response => false));
+  }
+
+  private getTransactionCountOfCategory(category): Observable<number> {
+    return this.store.pipe(
+      select(fromTransaction.getTransactionCountByCategoryId, { categoryId: category.id }),
+      take(1)
+    );
+  }
+
+  // util
+  private dispatchMultipleActions(actions: any[]) {
+    if (actions.length <= 0) {
+      return;
+    }
+    this.loading = true;
+    from(actions).pipe(
+      concatMap(a => of(a).pipe(delay(100))),
+      take(actions.length)
+    ).subscribe(action => {
+      this.store.dispatch(action);
     });
   }
 

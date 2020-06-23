@@ -88,7 +88,6 @@ export const getTransactionSummaryByDate = createSelector(
   }
 );
 
-
 export const getTransactionSummaryByMonth = createSelector(
   selectAllTransactionVOsByYearMonth,
   (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
@@ -107,3 +106,10 @@ export const getTransactionSummaryByMonth = createSelector(
     return monthSummary;
   }
 )
+
+export const getTransactionCountByCategoryId = createSelector(
+  selectAllTransactions,
+  (transitions: Transaction[], props: { categoryId: string }) => {
+    return transitions.filter(t => t.categoryId === props.categoryId).length;
+  }
+);

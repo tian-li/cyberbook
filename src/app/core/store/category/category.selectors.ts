@@ -19,9 +19,16 @@ export const {
   selectTotal: selectCategoryTotal,
 } = fromCategory.adapter.getSelectors(selectCategoryState);
 
-export const selectAllSortedCategoriesByType = createSelector(
+export const selectAllSortedCategories = createSelector(
   selectAllCategories,
+  (categories: Category[]) => {
+    return categories.sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+);
+
+export const selectAllSortedCategoriesByType = createSelector(
+  selectAllSortedCategories,
   (categories: Category[], props: { type: 'income' | 'spend' }) => {
-    return categories.filter((c) => c.type === props.type).sort((a, b) => a.sortOrder - b.sortOrder);
+    return categories.filter((c) => c.type === props.type);
   }
 );

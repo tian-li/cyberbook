@@ -18,7 +18,7 @@
         <mat-form-field class="category">
           <mat-label>类别</mat-label>
           <mat-select formControlName="categoryId">
-            <mat-option *ngFor="let category of categories" [value]="category.id">
+            <mat-option *ngFor="let category of (categories$ | async)" [value]="category.id">
               <div class="category-item">
                 <i class="category-icon material-icons-twotone"
                    [ngClass]="'md-'+ category.icon"

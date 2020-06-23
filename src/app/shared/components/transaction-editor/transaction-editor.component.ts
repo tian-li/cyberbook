@@ -7,7 +7,7 @@ import { Category } from '@spend-book/core/model/category';
 import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
 import { fromCategory } from '@spend-book/core/store';
 import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { years } from '../../constants';
 import {v4 as uuid} from 'uuid';
@@ -27,7 +27,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   loading: boolean;
   title: string;
   formGroup: FormGroup;
-  categories: Category[];
+  categories$: Observable<Category[]>;
   categoryEntities: Dictionary<Category>;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -46,8 +46,8 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe(categoryEntities => {
       this.categoryEntities = categoryEntities;
-      this.categories = Object.values(categoryEntities);
-    })
+    });
+    this.categories$ = this.store.pipe(select(fromCategory.selectAllSortedCategories));
     this.title = this.data.editMode ? '编辑账目' : '添加账目';
     this.buildForm();
   }

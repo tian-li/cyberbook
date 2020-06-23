@@ -30,6 +30,10 @@ export class CategoryEditorComponent implements OnInit {
     }
   }
 
+  get actionType(): string {
+    return this.data.editMode ? '编辑' : '新建';
+  }
+
   selectColor(color: string) {
     this.selectedColor = color;
   }

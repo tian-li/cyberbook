@@ -26,6 +26,13 @@ div {
   .preview {
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
+
+
+    .preview-icon-background {
+      padding: 10px;
+      border-radius: 50%;
+    }
 
     i {
       font-size: 4rem;
@@ -63,7 +70,7 @@ div {
     }
 
     .icon-selector {
-      height: 150px;
+      height: 130px;
       overflow-y: scroll;
 
       display: grid;

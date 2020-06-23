@@ -2,6 +2,18 @@ div, form {
   display: flex;
 }
 
+.loading {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  background: #a5a5a59e;
+  align-items: center;
+}
+
 .manage-categories-container {
   flex-direction: column;
 
