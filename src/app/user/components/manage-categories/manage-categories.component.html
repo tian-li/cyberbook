@@ -1,9 +1,7 @@
 <div class="loading" *ngIf="loading">
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
-<div class="manage-categories-container"
-     #list
->
+<div class="manage-categories-container" #list>
   <div class="header">
     <div class="return-button">
       <i matRipple *ngIf="!sortingMode" (click)="back()" class="material-icons md-keyboard_arrow_left"></i>

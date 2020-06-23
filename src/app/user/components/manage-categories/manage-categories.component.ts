@@ -1,6 +1,6 @@
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
@@ -39,19 +39,22 @@ import { concatMap, debounceTime, delay, filter, map, startWith, switchMap, take
     ])
   ]
 })
-export class ManageCategoriesComponent implements OnInit {
+export class ManageCategoriesComponent implements OnInit, OnDestroy {
   readonly TransactionType = TransactionTypes;
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
-@ViewChild('list') list: ElementRef;
+
+  @ViewChild('list') list: ElementRef;
+
   loading: boolean = false;
 
   categories: Category[];
   sortingContainerData: Category[];
   selectedCategoryType = this.defaultCategoryType;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
-  themeName$: Observable<string>;
   sortingMode = false;
   userId: string;
+
+  themeName$: Observable<string>;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -102,11 +105,11 @@ export class ManageCategoriesComponent implements OnInit {
 
   // add or edit category
   editCategory(category: Category) {
-    this.openEditor({ category, editMode: true })
+    this.openEditor({ category, editMode: true, allCategories: this.categories })
   }
 
   addCategory() {
-    this.openEditor({ editMode: false });
+    this.openEditor({ editMode: false, allCategories: this.categories });
   }
 
   // drag and sort
@@ -142,7 +145,7 @@ export class ManageCategoriesComponent implements OnInit {
   }
 
   // add or edit category
-  private openEditor(data: { editMode: boolean, category?: Category }) {
+  private openEditor(data: { editMode: boolean, allCategories: Category[], category?: Category }) {
     this.bottomSheet.open(CategoryEditorComponent, {
       data,
       disableClose: true,
@@ -167,6 +170,7 @@ export class ManageCategoriesComponent implements OnInit {
           userId: this.userId
         }
       }));
+      window.scrollTo(0, this.list.nativeElement.scrollHeight);
     }
   }
 

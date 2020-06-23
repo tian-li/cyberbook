@@ -929,6 +929,86 @@
       "sortOrder": 29,
       "type": "spend",
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "011f4976-1f98-42fa-89c3-3b5a8ddf7595",
+      "name": "123",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 30,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "ba109298-316e-4110-9fdc-04ba22f2ea13",
+      "name": "123e",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 31,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "7b649f09-9f75-47ca-becc-0647ffee9e31",
+      "name": "大萨达",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 32,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "5468534f-cd7e-451b-b82e-e626c1f2142a",
+      "name": "ds ",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 33,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "bdf513a5-88b8-4f9b-80fc-e879e50e7363",
+      "name": "dd",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 34,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "2680f824-d89c-46cb-92d7-3c9ca834561b",
+      "name": "ds",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 35,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "c6a5bbc7-5ff6-487a-a645-58132e7d4acd",
+      "name": "ds",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 36,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "id": "9f41fa35-c13c-46ce-ab9f-993e08a9f23e",
+      "name": "餐饮大萨达",
+      "color": "#f44444",
+      "icon": "account_balance_wallet",
+      "addedByUser": true,
+      "sortOrder": 37,
+      "type": "spend",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
     }
   ],
   "transaction": [

@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatDialog } from '@angular/material/dialog';
 import { Category } from '@spend-book/core/model/category';
-import { availableCategoryColors, availableCategoryIcons } from '@spend-book/shared/constants';
+import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
+import { AlertLevel, availableCategoryColors, availableCategoryIcons } from '@spend-book/shared/constants';
 import { v4 as uuid } from 'uuid';
 
 @Component({
@@ -18,8 +20,9 @@ export class CategoryEditorComponent implements OnInit {
   selectedIcon: string = this.availableCategoryIcons[0];
   categoryNameControl = new FormControl('', [Validators.required, Validators.maxLength(5)]);
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) private data: { editMode: boolean, category?: Category },
-              private bottomSheetRef: MatBottomSheetRef<CategoryEditorComponent>) {
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) private data: { editMode: boolean, allCategories: Category[], category?: Category },
+              private bottomSheetRef: MatBottomSheetRef<CategoryEditorComponent>,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -43,8 +46,15 @@ export class CategoryEditorComponent implements OnInit {
   }
 
   save() {
+    const categoryName = this.categoryNameControl.value.trim();
+
+    if (this.data.allCategories.some(c => c.name === categoryName)) {
+      this.alertForDuplication(categoryName);
+      return;
+    }
+
     const changes: Partial<Category> = {
-      name: this.categoryNameControl.value,
+      name: categoryName,
       color: this.selectedColor,
       icon: this.selectedIcon
     }
@@ -71,4 +81,15 @@ export class CategoryEditorComponent implements OnInit {
     this.bottomSheetRef.dismiss();
   }
 
+  private alertForDuplication(categoryName: string) {
+    this.dialog.open(ConfirmationAlertComponent, {
+      width: '400px',
+      height: '200px',
+      disableClose: true,
+      data: {
+        message: `${categoryName} 已存在`,
+        alertLevel: AlertLevel.danger
+      }
+    });
+  }
 }
