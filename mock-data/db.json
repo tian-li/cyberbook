@@ -67,6 +67,12 @@
       "username": "新用户19d5",
       "registered": false,
       "registeredDate": "06/23/2020"
+    },
+    {
+      "id": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "username": "新用户7256",
+      "registered": false,
+      "registeredDate": "06/23/2020"
     }
   ],
   "category": [
@@ -1009,6 +1015,96 @@
       "sortOrder": 37,
       "type": "spend",
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094"
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "253e7726-d80a-4795-b4d4-37d88d9209ff",
+      "addedByUser": false,
+      "name": "餐饮",
+      "icon": "restaurant",
+      "color": "#5DA5DA",
+      "type": "spend",
+      "sortOrder": 2
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "b6c4a29a-e041-4b12-bf11-3aa23830b9d7",
+      "addedByUser": false,
+      "name": "交通",
+      "icon": "commute",
+      "color": "#FAA43A",
+      "type": "spend",
+      "sortOrder": 1
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "e40127c9-6ea6-46f7-8fa1-7f9ae88c8ef8",
+      "addedByUser": false,
+      "name": "娱乐",
+      "icon": "live_tv",
+      "color": "#60BD68",
+      "type": "spend",
+      "sortOrder": 5
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "0dfe97da-b024-46c0-b96a-3bd434b66d40",
+      "addedByUser": false,
+      "name": "住房",
+      "icon": "house",
+      "color": "#F17CB0",
+      "type": "spend",
+      "sortOrder": 0
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "bbcde5f5-6556-431b-94a8-97c38b9305c7",
+      "addedByUser": false,
+      "name": "宠物",
+      "icon": "pets",
+      "color": "#B2912F",
+      "type": "spend",
+      "sortOrder": 3
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "cb7fdd11-d937-40a2-a711-a6519e4a2440",
+      "addedByUser": false,
+      "name": "其他",
+      "icon": "category",
+      "color": "#DECF3F",
+      "type": "spend",
+      "sortOrder": 4
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "caa8a9d5-8e0b-4c6b-9d07-7dec70abf5df",
+      "addedByUser": false,
+      "name": "投资",
+      "icon": "account_balance_wallet",
+      "color": "#f76464",
+      "type": "income",
+      "sortOrder": 0
+    },
+    {
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "id": "85038a55-2eb6-49a5-b58e-d9f3257222de",
+      "addedByUser": false,
+      "name": "工资",
+      "icon": "local_atm",
+      "color": "#5DA5DA",
+      "type": "income",
+      "sortOrder": 1
+    },
+    {
+      "id": "0bb67aca-e3f0-4e01-a16a-8d28a19fb053",
+      "name": "杂项",
+      "color": "#f8d339",
+      "icon": "analytics",
+      "addedByUser": true,
+      "sortOrder": 6,
+      "type": "spend",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086"
     }
   ],
   "transaction": [
@@ -1070,6 +1166,176 @@
       "dateModified": "2020-06-23T04:00:00.000Z",
       "id": "dd358064-2a8f-4df2-8068-b2c3f7e4c663",
       "userId": "80f83974-fd1f-4baf-80d5-e3315c6d9b51",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -34.78,
+      "description": null,
+      "categoryId": "253e7726-d80a-4795-b4d4-37d88d9209ff",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-24T00:34:45.117Z",
+      "id": "e1781e3f-f139-45cc-ad00-2d03d96553e2",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": 123,
+      "description": null,
+      "categoryId": "85038a55-2eb6-49a5-b58e-d9f3257222de",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "56293bdc-a1c9-49fe-8030-3254399b34fa",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -12,
+      "description": null,
+      "categoryId": "b6c4a29a-e041-4b12-bf11-3aa23830b9d7",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "d6e27c63-7ee6-42f0-b1c5-aacc8a1565e1",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": 4567,
+      "description": null,
+      "categoryId": "85038a55-2eb6-49a5-b58e-d9f3257222de",
+      "transactionDate": "2020-06-12T04:00:00.000Z",
+      "dateModified": "2020-06-12T04:00:00.000Z",
+      "id": "52d04f45-ba4d-4c92-8b67-67188538065c",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-12T04:00:00.000Z"
+    },
+    {
+      "amount": -452,
+      "description": null,
+      "categoryId": "b6c4a29a-e041-4b12-bf11-3aa23830b9d7",
+      "transactionDate": "2020-06-17T04:00:00.000Z",
+      "dateModified": "2020-06-24T01:02:24.226Z",
+      "id": "79242cbf-7096-4bdd-b261-1246886bf5ff",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-17T04:00:00.000Z"
+    },
+    {
+      "amount": -54,
+      "description": null,
+      "categoryId": "e40127c9-6ea6-46f7-8fa1-7f9ae88c8ef8",
+      "transactionDate": "2020-06-10T04:00:00.000Z",
+      "dateModified": "2020-06-10T04:00:00.000Z",
+      "id": "b1742ceb-7747-422b-b24e-263046b26824",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-10T04:00:00.000Z"
+    },
+    {
+      "amount": -67,
+      "description": null,
+      "categoryId": "bbcde5f5-6556-431b-94a8-97c38b9305c7",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "b7f9451a-69f2-4e52-8b1b-17c4abf92781",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -231,
+      "description": null,
+      "categoryId": "cb7fdd11-d937-40a2-a711-a6519e4a2440",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "d6aa9232-c4ff-4cfa-afd9-7e1d4b64b329",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -321,
+      "description": null,
+      "categoryId": "0bb67aca-e3f0-4e01-a16a-8d28a19fb053",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "e94f5986-90a9-4f02-9ab4-0bf460069f97",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -342,
+      "description": null,
+      "categoryId": "e40127c9-6ea6-46f7-8fa1-7f9ae88c8ef8",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "8477c3bf-67af-4e13-a083-db9359145b9b",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -231,
+      "description": null,
+      "categoryId": "253e7726-d80a-4795-b4d4-37d88d9209ff",
+      "transactionDate": "2020-06-23T04:00:00.000Z",
+      "dateModified": "2020-06-23T04:00:00.000Z",
+      "id": "ddafc1eb-f57c-4549-8751-416c0591801f",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -345,
+      "description": null,
+      "categoryId": "0dfe97da-b024-46c0-b96a-3bd434b66d40",
+      "transactionDate": "2020-05-05T04:00:00.000Z",
+      "dateModified": "2020-05-05T04:00:00.000Z",
+      "id": "6dede9ef-571c-4f76-b129-6c1fc620910c",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-05-05T04:00:00.000Z"
+    },
+    {
+      "amount": -6578,
+      "description": null,
+      "categoryId": "253e7726-d80a-4795-b4d4-37d88d9209ff",
+      "transactionDate": "2020-04-01T04:00:00.000Z",
+      "dateModified": "2020-04-01T04:00:00.000Z",
+      "id": "956cf890-7d7f-400b-be1c-8ff1e3439731",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-04-01T04:00:00.000Z"
+    },
+    {
+      "amount": -3245,
+      "description": null,
+      "categoryId": "bbcde5f5-6556-431b-94a8-97c38b9305c7",
+      "transactionDate": "2020-05-13T04:00:00.000Z",
+      "dateModified": "2020-05-13T04:00:00.000Z",
+      "id": "a7e41432-d433-4ce5-a2ea-b25bc93e02af",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-05-13T04:00:00.000Z"
+    },
+    {
+      "amount": -1234,
+      "description": null,
+      "categoryId": "b6c4a29a-e041-4b12-bf11-3aa23830b9d7",
+      "transactionDate": "2020-03-05T05:00:00.000Z",
+      "dateModified": "2020-03-05T05:00:00.000Z",
+      "id": "09fcac34-498e-4cfe-adbe-92b60b2862b8",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-03-05T05:00:00.000Z"
+    },
+    {
+      "amount": 3425,
+      "description": null,
+      "categoryId": "85038a55-2eb6-49a5-b58e-d9f3257222de",
+      "transactionDate": "2020-05-14T04:00:00.000Z",
+      "dateModified": "2020-05-14T04:00:00.000Z",
+      "id": "ac7f83d4-9e76-4b52-92f0-b12aa12f048b",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
+      "dateCreated": "2020-05-14T04:00:00.000Z"
+    },
+    {
+      "amount": 5463,
+      "description": null,
+      "categoryId": "85038a55-2eb6-49a5-b58e-d9f3257222de",
+      "transactionDate": "2020-04-09T04:00:00.000Z",
+      "dateModified": "2020-06-24T01:06:02.551Z",
+      "id": "47961482-2de4-4bd8-86b7-558c6592f321",
+      "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
       "dateCreated": "2020-06-23T04:00:00.000Z"
     }
   ]

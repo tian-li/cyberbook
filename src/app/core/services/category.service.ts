@@ -22,7 +22,7 @@ export class CategoryService {
   addDefaultCategories(userId: string): Observable<Category[]> {
     const categories = generateDefaultCategories(userId);
     const addRequests = categories.map(category =>
-      <Observable<Category>>this.http.post(`${this.categoryRoute}`, category).pipe(concatMap(x => of(x).pipe(delay(200)))));
+      <Observable<Category>>this.http.post(`${this.categoryRoute}`, category).pipe(concatMap(x => of(x).pipe(delay(500)))));
     return forkJoin(addRequests);
   }
 

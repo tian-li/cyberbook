@@ -1,13 +1,25 @@
 <div class="container">
 
-  <div class="title">
-    <h1 mat-dialog-title>
-      {{title}}
-    </h1>
-  </div>
+  <div class="title">{{title}}</div>
 
   <mat-dialog-content>
     <form [formGroup]="formGroup" autocomplete="off">
+      <div class="switcher-container">
+        <!-- TODO: make this switcher a reusable component-->
+        <div class="transaction-type-switcher">
+          <div class="spend"
+               (click)="changeCategoryType(TransactionType.spend)"
+               [ngClass]="{ 'selected': selectedCategoryType === TransactionType.spend }">
+            <div class="label">花费</div>
+          </div>
+          <div class="income"
+               (click)="changeCategoryType(TransactionType.income)"
+               [ngClass]="{ 'selected': selectedCategoryType === TransactionType.income }">
+            <div class="label">收入</div>
+          </div>
+        </div>
+      </div>
+
       <div class="amount-category">
         <mat-form-field class="amount">
           <mat-label>金额</mat-label>

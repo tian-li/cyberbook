@@ -21,14 +21,15 @@ A mobile-first web app that can record daily costs.
 - [x] Auto register temp user
 - [x] Register the temp user account
 - [x] Login with existing account
-- [x] Swipe to delete a transaction
+- [x] Swipe to delete a transaction/category
 - [x] Theme, and dark theme
+- [x] Add/Edit category
+- [x] Drag to sort categories
 
 ## TODOs
 
 - [ ] User profile image
 - [ ] Category icon
-- [ ] Add/Edit category
 - [ ] Search
 - [ ] Offline editing
 - [ ] Deploy
@@ -59,10 +60,10 @@ If you want to see on a mobile device:
 <img src="./readme-assets/transaction-list.PNG" alt="transaction-list" title="transaction-list"  height="400px"/>
 
 ## Edit Transaction
-<img src="./readme-assets/edit.PNG" alt="edit" title="edit"  height="400px"/>
+<img src="./readme-assets/edit-transaction.gif" alt="edit" title="edit"  height="400px"/>
 
 ## Add Transaction
-<img src="./readme-assets/add.PNG" alt="add" title="add"  height="400px"/>
+<img src="./readme-assets/add-transaction.gif" alt="add" title="add"  height="400px"/>
 
 ## Swipe to Delete A Transaction
 <img src="./readme-assets/swipe-to-delete.gif" alt="swipe-to-delete" title="swipe-to-delete"  height="400px"/>
@@ -75,6 +76,15 @@ If you want to see on a mobile device:
 
 ## Account Overview
 <img src="./readme-assets/account.PNG" alt="account" title="account"  height="400px"/>
+
+## Select Theme
+<img src="./readme-assets/select-theme.gif" alt="add" title="add"  height="400px"/>
+
+## Add Category
+<img src="./readme-assets/add-category.gif" alt="add" title="add"  height="400px"/>
+
+## Sort Category
+<img src="./readme-assets/sort-category.gif" alt="add" title="add"  height="400px"/>
 
 ## Register
 <img src="./readme-assets/register.PNG" alt="register" title="register"  height="400px"/>

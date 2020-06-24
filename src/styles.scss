@@ -33,6 +33,7 @@
 // shared
 @import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
 @import './src/app/shared/components/category-editor/category-editor.component.scss-theme';
+@import './src/app/shared/components/transaction-editor/transaction-editor.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -47,6 +48,7 @@
   @include app-profile-component-theme($theme);
   @include app-manage-categories-component-theme($theme);
   @include app-category-editor-component-theme($theme);
+  @include app-transaction-editor-component-theme($theme);
 }
 
 .indigo-pink-theme {

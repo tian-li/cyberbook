@@ -8,8 +8,8 @@ import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/m
 import { fromCategory } from '@spend-book/core/store';
 import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { years } from '../../constants';
+import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { TransactionType, TransactionTypes, years } from '../../constants';
 import {v4 as uuid} from 'uuid';
 
 @Component({
@@ -23,12 +23,17 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   readonly minDate = new Date(years[0], 0, 1);
   readonly maxDate = new Date(years[years.length - 1], 11, 31);
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
+  readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
+  readonly TransactionType = TransactionTypes;
 
   loading: boolean;
   title: string;
   formGroup: FormGroup;
   categories$: Observable<Category[]>;
   categoryEntities: Dictionary<Category>;
+
+  selectedCategoryType = this.defaultCategoryType;
+  categoryTypeControl = new FormControl(this.defaultCategoryType);
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -47,7 +52,12 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     ).subscribe(categoryEntities => {
       this.categoryEntities = categoryEntities;
     });
-    this.categories$ = this.store.pipe(select(fromCategory.selectAllSortedCategories));
+
+    this.categories$ = this.categoryTypeControl.valueChanges.pipe(
+      startWith(this.defaultCategoryType),
+      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))),
+    );
+
     this.title = this.data.editMode ? '编辑账目' : '添加账目';
     this.buildForm();
   }
@@ -55,6 +65,12 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  changeCategoryType(type: TransactionType) {
+    this.selectedCategoryType = type;
+    this.categoryTypeControl.setValue(type);
+    this.formGroup.controls['categoryId'].reset(undefined);
   }
 
   cancel() {
