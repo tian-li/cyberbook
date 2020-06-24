@@ -4,6 +4,79 @@
 
 A mobile-first web app that can record daily costs.
 
+# Screenshots
+
+## Transactons
+
+<table>
+  <tr>
+    <td>Transaction List</td>
+     <td>Edit Transaction</td>
+     <td>Add Transaction</td>
+  </tr>
+  <tr>
+    <td><img src="./readme-assets/transaction-list.PNG" width=270 ></td>
+    <td><img src="./readme-assets/edit-transaction.gif" width=270 ></td>
+    <td><img src="./readme-assets/add-transaction.gif" width=270 ></td>
+  </tr>
+ </table>
+
+## Charts
+
+<table>
+  <tr>
+    <td>Line Chart</td>
+     <td>Pie Chart</td>
+  </tr>
+  <tr>
+    <td><img src="./readme-assets/line-chart.PNG" width=270 ></td>
+    <td><img src="./readme-assets/pie-chart.PNG" width=270 ></td>
+  </tr>
+ </table>
+
+## Category
+
+<table>
+  <tr>
+    <td>Add Category</td>
+    <td>Sort Category</td>
+  </tr>
+  <tr>
+    <td><img src="./readme-assets/add-category.gif" width=270 ></td>
+    <td><img src="./readme-assets/sort-category.gif" width=270 ></td>
+  </tr>
+ </table>
+
+## User Home
+
+<table>
+  <tr>
+    <td>Account Overview</td>
+    <td>Register</td>
+    <td>Login</td>
+  </tr>
+  <tr>
+    <td><img src="./readme-assets/account.PNG" width=270 ></td>
+    <td><img src="./readme-assets/register.PNG" width=270 ></td>
+    <td><img src="./readme-assets/login.PNG" width=270 ></td>
+  </tr>
+ </table>
+
+## Other
+
+<table>
+  <tr>
+    <td>Swipe to Delete Transaction</td>
+    <td>Swipe to Delete Category</td>
+    <td>Select Theme</td>
+  </tr>
+  <tr>
+    <td><img src="./readme-assets/swipe-to-delete.gif" width=270 ></td>
+    <td><img src="./readme-assets/swipe-to-delete-category.gif" width=270 ></td>
+    <td><img src="./readme-assets/select-theme.gif" width=270 ></td>
+  </tr>
+ </table>
+
 # Features
 
 ## Existing Features
@@ -40,7 +113,7 @@ A mobile-first web app that can record daily costs.
 # How to run
 
 1. Edit `http://192.168.50.17:3000` to `http://localhost:3000` in `src/environments/environment.ts`.
-2. Run `npm install` and `npm install -g json-server` 
+2. Run `npm install` and `npm install -g json-server`
 3. Run `npm run mock-server` to start mock-server with `json-server`
 4. Run `ng serve` in another terminal window, open `localhost:1234` in browser
 
@@ -54,40 +127,3 @@ If you want to see on a mobile device:
 6. Run `ng serve --host {your computer local ip}` in another terminal window.
 7. On your mobile device, open `http://{your computer local ip}:1234`. Note: at this time, on your computer, `localhost:1234` no longer works, you should also use `http://{your computer local ip}:1234` on your computer.
 
-# Screenshots
-
-## Home - Transactions List
-<img src="./readme-assets/transaction-list.PNG" alt="transaction-list" title="transaction-list"  height="400px"/>
-
-## Edit Transaction
-<img src="./readme-assets/edit-transaction.gif" alt="edit" title="edit"  height="400px"/>
-
-## Add Transaction
-<img src="./readme-assets/add-transaction.gif" alt="add" title="add"  height="400px"/>
-
-## Swipe to Delete A Transaction
-<img src="./readme-assets/swipe-to-delete.gif" alt="swipe-to-delete" title="swipe-to-delete"  height="400px"/>
-
-## Pie Chart
-<img src="./readme-assets/pie-chart.PNG" alt="pie-chart" title="pie-chart"  height="400px"/>
-
-## Line Chart
-<img src="./readme-assets/line-chart.PNG" alt="line-chart" title="line-chart"  height="400px"/>
-
-## Account Overview
-<img src="./readme-assets/account.PNG" alt="account" title="account"  height="400px"/>
-
-## Select Theme
-<img src="./readme-assets/select-theme.gif" alt="add" title="add"  height="400px"/>
-
-## Add Category
-<img src="./readme-assets/add-category.gif" alt="add" title="add"  height="400px"/>
-
-## Sort Category
-<img src="./readme-assets/sort-category.gif" alt="add" title="add"  height="400px"/>
-
-## Register
-<img src="./readme-assets/register.PNG" alt="register" title="register"  height="400px"/>
-
-## Login
-<img src="./readme-assets/login.PNG" alt="login" title="login"  height="400px"/>
