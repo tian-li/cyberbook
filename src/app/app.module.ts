@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutoLoginGuard } from '@spend-book/core/guards/auto-login.guard';
 import { LoadDataResolver } from '@spend-book/core/reslovers/load-data.resolver';
@@ -17,7 +17,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    HammerModule
   ],
   providers: [AutoLoginGuard, LoadDataResolver],
   bootstrap: [AppComponent]
