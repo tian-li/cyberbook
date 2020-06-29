@@ -8,11 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "material": "ng add @angular/material",
-    "ngrx-store": "ng add @ngrx/store",
-    "ngrx-effects": "ng add @ngrx/effects",
-    "ngrx-entity": "ng add @ngrx/entity",
-    "mock-server": "json-server --watch mock-data/db.json"
+    "mock-server": "json-server --watch mock-data/db.json",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
