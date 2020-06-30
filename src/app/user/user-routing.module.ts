@@ -5,6 +5,7 @@ import { ThemeSelectorComponent } from '@spend-book/user/components/theme-select
 import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SubscriptionManagementComponent } from './components/subscription-management/subscription-management.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
 
@@ -34,8 +35,12 @@ const routes: Routes = [
     canActivate: [CanRegisterGuard]
   },
   {
-    path: 'manage-categories',
+    path: 'category-management',
     component: ManageCategoriesComponent,
+  },
+  {
+    path: 'subscription-management',
+    component: SubscriptionManagementComponent,
   },
 ];
 

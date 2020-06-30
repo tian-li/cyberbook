@@ -5,6 +5,7 @@ import * as  fromBook from '@spend-book/core/store/book'
 import * as  fromCategory from '@spend-book/core/store/category'
 import * as  fromTransaction from '@spend-book/core/store/transaction'
 import * as  fromUI from '@spend-book/core/store/ui'
+import * as  fromSubscription from '@spend-book/core/store/subscription'
 import { environment } from '../../../environments/environment';
 
 export {
@@ -21,6 +22,7 @@ export interface RootState {
   [fromCategory.categoryFeatureKey]: fromCategory.State;
   [fromTransaction.transactionFeatureKey]: fromTransaction.State;
   [fromUI.uiFeatureKey]: fromUI.State;
+  [fromSubscription.subscriptionFeatureKey]: fromSubscription.State;
 }
 
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<RootState, Action>>('Root reducers token', {
@@ -30,6 +32,7 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<RootState, Acti
     [fromBook.bookFeatureKey]: fromBook.bookReducer,
     [fromCategory.categoryFeatureKey]: fromCategory.categoryReducer,
     [fromTransaction.transactionFeatureKey]: fromTransaction.transactionReducer,
+    [fromSubscription.subscriptionFeatureKey]: fromSubscription.subscriptionReducer,
   }),
 });
 

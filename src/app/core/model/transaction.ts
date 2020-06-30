@@ -6,6 +6,7 @@ export interface Transaction {
   amount: number;
   description: string;
   categoryId: string;
+  subscriptionId: string;
   transactionDate: ISOString;
   dateCreated: ISOString;
   dateModified: ISOString;

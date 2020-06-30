@@ -8,7 +8,7 @@ import { UserComponent } from './components/user/user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { ThemeSelectorComponent } from './components/theme-selector/theme-selector.component';
 import { ManageCategoriesComponent } from './components/manage-categories/manage-categories.component';
-import { RecurringManagementComponent } from './components/recurring-management/recurring-management.component';
+import { SubscriptionManagementComponent } from './components/subscription-management/subscription-management.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { RecurringManagementComponent } from './components/recurring-management/
     UserComponent,
     ThemeSelectorComponent,
     ManageCategoriesComponent,
-    RecurringManagementComponent
+    SubscriptionManagementComponent
   ],
   imports: [
     SharedModule,

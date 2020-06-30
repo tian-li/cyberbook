@@ -6,9 +6,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BookService } from '@spend-book/core/services/book.service';
 import { CategoryService } from '@spend-book/core/services/category.service';
+import { SubscriptionService } from '@spend-book/core/services/subscription.service';
 import { TransactionService } from '@spend-book/core/services/transaction.service';
 import { UserService } from '@spend-book/core/services/user.service';
 import { ROOT_REDUCERS } from '@spend-book/core/store';
+import { SubscriptionEffects } from '@spend-book/core/store/subscription/subscription.effects';
 import { UserEffects } from '@spend-book/core/store/user/user.effects';
 import { BookEffects } from '@spend-book/core/store/book/book.effects';
 import { CategoryEffects } from '@spend-book/core/store/category/category.effects';
@@ -35,7 +37,8 @@ import { environment } from '../../environments/environment';
       NotificationEffects,
       BookEffects,
       CategoryEffects,
-      TransactionEffects
+      TransactionEffects,
+      SubscriptionEffects
     ]),
     environment.production
       ? []
@@ -47,6 +50,7 @@ import { environment } from '../../environments/environment';
     BookService,
     CategoryService,
     TransactionService,
+    SubscriptionService,
     UserService
   ],
   declarations: []

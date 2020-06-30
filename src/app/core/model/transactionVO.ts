@@ -4,6 +4,7 @@ export class TransactionVO {
   userId: string;
   amount: number;
   description: string;
+  subscriptionId: string;
   categoryId: string;
   categoryName: string;
   categoryColor: string;
@@ -18,6 +19,7 @@ export class TransactionVO {
     this.userId = props.userId;
     this.amount = props.amount;
     this.description = props.description;
+    this.subscriptionId = props.subscriptionId;
     this.categoryId = props.categoryId;
     this.categoryName = props.categoryName;
     this.categoryColor = props.categoryColor;

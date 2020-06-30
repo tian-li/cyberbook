@@ -86,7 +86,11 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   }
 
   manageCategories() {
-    this.router.navigate(['./manage-categories'], { relativeTo: this.route });
+    this.router.navigate(['./category-management'], { relativeTo: this.route });
+  }
+
+  subscriptionManagement() {
+    this.router.navigate(['./subscription-management'], { relativeTo: this.route });
   }
 
 }
