@@ -3,22 +3,8 @@
     <div>{{startDate.format(dateAxisFormat)}} ~ {{endDate.format(dateAxisFormat)}}</div>
   </div>
 
-  <div class="transaction-type-switcher">
-    <div class="spend"
-         (click)="changeTransactionType(TransactionTypes.spend)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.spend }">
-      <div class="label">花费</div>
-    </div>
-    <div class="income"
-         (click)="changeTransactionType(TransactionTypes.income)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.income }">
-      <div class="label">收入</div>
-    </div>
-    <div class="both"
-         (click)="changeTransactionType(TransactionTypes.both)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.both }">
-      <div class="label">合并</div>
-    </div>
+  <div class="switcher-container">
+    <app-category-type-switcher [showBoth]="true" (categoryTypeChanged)="changeTransactionType($event)"></app-category-type-switcher>
   </div>
 
   <div class="chart">

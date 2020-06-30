@@ -8,19 +8,6 @@
 
   .header {
     background: mat-color($background, app-bar);
-
-    .transaction-type-switcher {
-      border: 1px solid mat-color($foreground, divider);
-
-      .selected {
-        background: mat-color($primary, 300);
-      }
-
-      .income {
-        border-left: 1px solid mat-color($foreground, divider);
-        background-clip: content-box;
-      }
-    }
   }
 
   .category-list {

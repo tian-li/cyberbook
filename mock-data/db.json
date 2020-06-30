@@ -1337,6 +1337,16 @@
       "id": "47961482-2de4-4bd8-86b7-558c6592f321",
       "userId": "725665d1-185e-48dc-95b7-2074ac93d086",
       "dateCreated": "2020-06-23T04:00:00.000Z"
+    },
+    {
+      "amount": -123,
+      "description": null,
+      "categoryId": "e1534b56-60b5-47e6-8cea-f9d941c238a6",
+      "transactionDate": "2020-06-29T04:00:00.000Z",
+      "dateModified": "2020-06-29T04:00:00.000Z",
+      "id": "4bbf86fa-d9db-4d10-b500-d5ec7aa6da94",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "dateCreated": "2020-06-29T04:00:00.000Z"
     }
   ]
 }

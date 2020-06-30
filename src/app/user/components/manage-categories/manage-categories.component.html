@@ -7,18 +7,9 @@
       <i matRipple *ngIf="!sortingMode" (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
       <i matRipple *ngIf="sortingMode" (click)="cancelCategoriesSorting()" class="material-icons md-clear"></i>
     </div>
-    <div class="transaction-type-switcher">
-      <div class="spend"
-           (click)="changeCategoryType(TransactionType.spend)"
-           [ngClass]="{ 'selected': selectedCategoryType === TransactionType.spend }">
-        <div class="label">花费</div>
-      </div>
-      <div class="income"
-           (click)="changeCategoryType(TransactionType.income)"
-           [ngClass]="{ 'selected': selectedCategoryType === TransactionType.income }">
-        <div class="label">收入</div>
-      </div>
-    </div>
+
+    <app-category-type-switcher (categoryTypeChanged)="changeCategoryType($event)"></app-category-type-switcher>
+
     <div class="sorting-toggle-button">
       <div *ngIf="!sortingMode" (click)="enableDragging()">
         排序

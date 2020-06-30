@@ -1,30 +1,19 @@
 <div class="pie-chart-container">
-  <div class="title" >
+  <div class="title">
     <div matRipple class="month-nav-arrow" (click)="previousMonth()">
       <i class="material-icons md-keyboard_arrow_left"></i>
     </div>
-    <div class="month-title" (click)="changeMonth()" >{{displayMonth|date:'yyyy/MM'}}</div>
+    <div class="month-title" (click)="changeMonth()">{{displayMonth|date:'yyyy/MM'}}</div>
     <div matRipple class="month-nav-arrow" (click)="nextMonth()">
       <i class="material-icons md-keyboard_arrow_right"></i>
     </div>
   </div>
 
-  <div class="transaction-type-switcher">
-    <div class="spend"
-         (click)="changeTransactionType(TransactionTypes.spend)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.spend }">
-      <div class="label">花费</div>
-    </div>
-    <div class="income"
-         (click)="changeTransactionType(TransactionTypes.income)"
-         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.income }">
-      <div class="label">收入</div>
-    </div>
-  </div>
+  <app-category-type-switcher (categoryTypeChanged)="changeTransactionType($event)"></app-category-type-switcher>
 
   <div class="chart">
     <div class="charts-container" style="position: relative; height:60vh; width:90vw">
-      <canvas class="chart" #myChart ></canvas>
+      <canvas class="chart" #myChart></canvas>
     </div>
   </div>
 

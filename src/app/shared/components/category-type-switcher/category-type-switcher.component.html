@@ -1,0 +1,17 @@
+<div class="category-type-switcher">
+  <div (click)="changeTransactionType(TransactionTypes.spend)"
+       [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.spend }"
+       class="spend">
+    <div class="label">花费</div>
+  </div>
+  <div (click)="changeTransactionType(TransactionTypes.income)"
+       [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.income }"
+       class="income">
+    <div class="label">收入</div>
+  </div>
+  <div (click)="changeTransactionType(TransactionTypes.both)" *ngIf="showBoth"
+       [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.both }"
+       class="both">
+    <div class="label">合并</div>
+  </div>
+</div>

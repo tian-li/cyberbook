@@ -1,12 +1,12 @@
 @import '~@angular/material/theming';
 
-@mixin app-transaction-editor-component-theme($theme) {
+@mixin app-category-type-switcher-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .transaction-type-switcher {
+  .category-type-switcher {
     border: 1px solid mat-color($foreground, divider);
 
     .selected {
@@ -15,7 +15,10 @@
 
     .income {
       border-left: 1px solid mat-color($foreground, divider);
-      background-clip: content-box;
+    }
+
+    .both {
+      border-left: 1px solid mat-color($foreground, divider);
     }
   }
 }

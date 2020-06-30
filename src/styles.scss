@@ -20,7 +20,6 @@
 @import './src/app/book/components/transaction-item/transaction-item.component.scss-theme';
 
 // graph
-@import './src/app/graph/components/graph-chart-line/graph-chart-line.component.scss-theme';
 @import './src/app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
 @import './src/app/graph/components/graph-header/graph-header.component.scss-theme';
 
@@ -33,7 +32,7 @@
 // shared
 @import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
 @import './src/app/shared/components/category-editor/category-editor.component.scss-theme';
-@import './src/app/shared/components/transaction-editor/transaction-editor.component.scss-theme';
+@import './src/app/shared/components/category-type-switcher/category-type-switcher.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -41,14 +40,13 @@
   @include app-book-header-component-theme($theme);
   @include app-date-divider-component-theme($theme);
   @include app-transaction-item-component-theme($theme);
-  @include app-graph-chart-line-component-theme($theme);
   @include app-graph-chart-pie-component-theme($theme);
   @include app-graph-header-component-theme($theme);
   @include app-user-home-component-theme($theme);
   @include app-profile-component-theme($theme);
   @include app-manage-categories-component-theme($theme);
   @include app-category-editor-component-theme($theme);
-  @include app-transaction-editor-component-theme($theme);
+  @include app-category-type-switcher-component-theme($theme);
 }
 
 .indigo-pink-theme {
