@@ -13,11 +13,7 @@
       background: mat-color($primary, 300);
     }
 
-    .income {
-      border-left: 1px solid mat-color($foreground, divider);
-    }
-
-    .both {
+    .income, .both {
       border-left: 1px solid mat-color($foreground, divider);
     }
   }
