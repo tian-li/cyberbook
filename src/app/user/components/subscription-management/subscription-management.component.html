@@ -1,1 +1,48 @@
-<p>recurring-management works!</p>
+<!--<div class="loading" *ngIf="loading">-->
+<!--  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>-->
+<!--</div>-->
+<div class="manage-categories-container" #list>
+  <div class="header">
+    <div class="return-button">
+      <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
+    </div>
+
+    <app-category-type-switcher (categoryTypeChanged)="changeCategoryType($event)"></app-category-type-switcher>
+
+<!--    <div class="sorting-toggle-button">-->
+<!--      <div *ngIf="!sortingMode" (click)="enableDragging()">-->
+<!--        排序-->
+<!--      </div>-->
+<!--      <div *ngIf="sortingMode" (click)="saveCategoriesSorting()">-->
+<!--        <i class="material-icons md-done"></i>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+
+  <div class="category-list">
+    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
+      <app-swipeable-item (swipeResult)="stopSubscription($event, index)">
+        <div class="draggable-category-item" (click)="editSubscription(subscription)">
+          <div class="category-icon">
+            <div class="category-icon-background">
+              <i class="material-icons-twotone"
+                 [ngClass]="'md-' + categoryEntities[subscription.categoryId].icon"
+                 [ngStyle]="{'color': categoryEntities[subscription.categoryId].color}"
+              ></i>
+            </div>
+
+          </div>
+          <div class="category-name" [ngClass]="{'category-name-border ': !last}">
+            <span>{{subscription.description}}</span>
+          </div>
+        </div>
+      </app-swipeable-item>
+    </div>
+  </div>
+
+  <div class="float-add-button" cdkDrag>
+    <button mat-fab (click)="add()">
+      <i class="material-icons md-add"></i>
+    </button>
+  </div>
+</div>

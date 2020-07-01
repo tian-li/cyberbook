@@ -1,0 +1,157 @@
+<div class="subscription-editor">
+
+  <div class="actions">
+    <button mat-button color="primary" class="cancel-button" (click)="cancel()">取消</button>
+    <div class="title">{{title}}</div>
+    <button mat-button color="primary" class="save-button"
+            [disabled]="formGroup.invalid"
+            (click)="save()">
+      保存
+    </button>
+  </div>
+
+  <form class="form" [formGroup]="formGroup" autocomplete="off">
+    <div class="switcher-container">
+      <app-category-type-switcher (categoryTypeChanged)="changeCategoryType($event)"></app-category-type-switcher>
+    </div>
+
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            This is the expansion title
+          </mat-panel-title>
+          <mat-panel-description>
+            This is a summary of the content
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>This is the primary content of the panel.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Self aware panel
+          </mat-panel-title>
+          <mat-panel-description>
+            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- 金额、类别 -->
+    <div class="amount-category">
+      <mat-form-field class="amount">
+        <mat-label>金额</mat-label>
+        <input matInput formControlName="amount" inputmode="decimal" placeholder="0.00">
+        <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
+        <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">最多两位小数</mat-error>
+      </mat-form-field>
+      <mat-form-field class="category">
+        <mat-label>类别</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of (categories$ | async)" [value]="category.id">
+            <div class="category-item">
+              <i class="category-icon material-icons-twotone"
+                 [ngClass]="'md-'+ category.icon"
+                 [ngStyle]="{'color': category.color}"
+              ></i>
+              <div class="category-label">{{category.name}}</div>
+            </div>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formGroup.controls['categoryId'].hasError('required')">必填</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- 起止日期 -->
+    <div class="start-end-date">
+      <mat-form-field class="start-date">
+        <mat-label>开始日期</mat-label>
+        <input matInput readonly [min]="minDate" [max]="maxDate" formControlName="startDate"
+               [matDatepicker]="startDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #startDatePicker disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="end-date">
+        <mat-label>结束日期</mat-label>
+        <input matInput readonly [min]="minDate" [max]="maxDate" formControlName="endDate"
+               [matDatepicker]="endDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #endDatePicker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+    <!-- 备注 -->
+    <mat-form-field class="description">
+      <mat-label>备注</mat-label>
+      <input matInput formControlName="description" placeholder="备注" [maxlength]="transactionDescriptionMaxLength">
+    </mat-form-field>
+
+    <!-- 重复频率 -->
+    <div class="frequency-type">
+      <mat-radio-group
+        [formControl]="frequencyTypeControl"
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group">
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let quickFrequencyInfo of quickFrequenciesInfo"
+          [value]="quickFrequencyInfo">
+          {{quickFrequencyInfo.display}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="custom-frequency">
+      <mat-form-field>
+        <mat-label>单位</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of (categories$ | async)" [value]="category.id">
+            <div class="category-item">
+              <i class="category-icon material-icons-twotone"
+                 [ngClass]="'md-'+ category.icon"
+                 [ngStyle]="{'color': category.color}"
+              ></i>
+              <div class="category-label">{{category.name}}</div>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>频率</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of (categories$ | async)" [value]="category.id">
+            <div class="category-item">
+              <i class="category-icon material-icons-twotone"
+                 [ngClass]="'md-'+ category.icon"
+                 [ngStyle]="{'color': category.color}"
+              ></i>
+              <div class="category-label">{{category.name}}</div>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>每个</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of (categories$ | async)" [value]="category.id">
+            <div class="category-item">
+              <i class="category-icon material-icons-twotone"
+                 [ngClass]="'md-'+ category.icon"
+                 [ngStyle]="{'color': category.color}"
+              ></i>
+              <div class="category-label">{{category.name}}</div>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

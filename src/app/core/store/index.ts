@@ -13,7 +13,8 @@ export {
   fromBook,
   fromCategory,
   fromTransaction,
-  fromUI
+  fromUI,
+  fromSubscription
 };
 
 export interface RootState {

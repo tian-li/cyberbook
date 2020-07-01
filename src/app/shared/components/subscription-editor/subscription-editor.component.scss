@@ -1,0 +1,54 @@
+div, form {
+  display: flex;
+}
+
+.subscription-editor {
+  flex-direction: column;
+
+  .actions {
+    justify-content: space-between;
+    align-items: center;
+
+    .cancel-button {
+      transform: translate(-1rem);
+    }
+
+    .save-button {
+      transform: translate(1rem);
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  }
+
+  .form {
+    flex-direction: column;
+    //justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+
+    .switcher-container {
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .amount-category, .start-end-date {
+      width: 100%;
+      justify-content: space-evenly;
+    }
+
+    .amount, .category, .start-date, .end-date {
+      width: 45%;
+    }
+
+    .description {
+      width: 94%;
+    }
+
+    .custom-frequency {
+      flex-direction: column;
+    }
+  }
+}

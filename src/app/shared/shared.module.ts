@@ -13,12 +13,14 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -35,6 +37,7 @@ import { CategoryTypeSwitcherComponent } from './components/category-type-switch
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { SubscriptionEditorComponent } from './components/subscription-editor/subscription-editor.component';
 import { SwipeableItemComponent } from './components/swipeable-item/swipeable-item.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
@@ -67,6 +70,8 @@ const material = [
   MatTreeModule,
   DragDropModule,
   MatBottomSheetModule,
+  MatRadioModule,
+  MatExpansionModule,
 ];
 
 const components = [
@@ -76,6 +81,7 @@ const components = [
   DateRangePickerComponent,
   ConfirmationAlertComponent,
   CategoryEditorComponent,
+  SubscriptionEditorComponent,
 
   // components
   NavBarComponent,
@@ -103,6 +109,7 @@ const components = [
     DateRangePickerComponent,
     ConfirmationAlertComponent,
     CategoryEditorComponent,
+    SubscriptionEditorComponent
   ]
 })
 export class SharedModule {

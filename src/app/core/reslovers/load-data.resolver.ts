@@ -3,6 +3,7 @@ import { Resolve } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { fromUser } from '@spend-book/core/store';
 import { loadCategoriesByUser } from '@spend-book/core/store/category';
+import { loadSubscriptionsByUser } from '@spend-book/core/store/subscription';
 import { loadTransactionsByUser } from '@spend-book/core/store/transaction';
 import { filter } from 'rxjs/operators';
 
@@ -19,6 +20,7 @@ export class LoadDataResolver implements Resolve<any> {
     ).subscribe((user) => {
       this.store.dispatch(loadTransactionsByUser({ userId: user.id }));
       this.store.dispatch(loadCategoriesByUser({ userId: user.id }))
+      this.store.dispatch(loadSubscriptionsByUser({ userId: user.id }))
     });
   }
 }
