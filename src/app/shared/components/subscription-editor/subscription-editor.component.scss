@@ -2,12 +2,17 @@ div, form {
   display: flex;
 }
 
+//mat-form-field{
+//  font-size: 1rem;
+//}
+
 .subscription-editor {
   flex-direction: column;
 
   .actions {
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 
     .cancel-button {
       transform: translate(-1rem);
@@ -24,31 +29,61 @@ div, form {
   }
 
   .form {
+    font-size: 1rem;
     flex-direction: column;
-    //justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-bottom: 1rem;
 
     .switcher-container {
       justify-content: center;
       margin-bottom: 1rem;
     }
 
-    .amount-category, .start-end-date {
+    .amount-category, .frequencies, .start-end-date {
       width: 100%;
       justify-content: space-evenly;
+      margin-bottom: 1rem;
     }
-
-    .amount, .category, .start-date, .end-date {
+    .amount, .category, .frequency, .interval {
       width: 45%;
     }
 
-    .description {
-      width: 94%;
+    .start-date, .end-date {
+      width: 45%;
     }
 
-    .custom-frequency {
-      flex-direction: column;
+    .frequencies {
+      margin-bottom: 1rem;
+      mat-radio-group{
+        display: grid;
+        grid-template-columns: repeat(3, auto);;
+        grid-template-rows: auto;
+        justify-items: center;
+        grid-row-gap: 3px;
+      }
     }
+
+    .description {
+      width: 100%;
+      justify-content: center;
+
+      mat-form-field {
+        width: 94%;
+      }
+    }
+
+    .summary {
+      width: 94%;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+
+  i.category-icon {
+    width: 40%;
   }
 }

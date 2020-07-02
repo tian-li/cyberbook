@@ -9,19 +9,11 @@
 
     <app-category-type-switcher (categoryTypeChanged)="changeCategoryType($event)"></app-category-type-switcher>
 
-<!--    <div class="sorting-toggle-button">-->
-<!--      <div *ngIf="!sortingMode" (click)="enableDragging()">-->
-<!--        排序-->
-<!--      </div>-->
-<!--      <div *ngIf="sortingMode" (click)="saveCategoriesSorting()">-->
-<!--        <i class="material-icons md-done"></i>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 
   <div class="category-list">
     <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
-      <app-swipeable-item (swipeResult)="stopSubscription($event, index)">
+      <app-swipeable-item (swipeResult)="stopSubscription($event, subscription)">
         <div class="draggable-category-item" (click)="editSubscription(subscription)">
           <div class="category-icon">
             <div class="category-icon-background">
@@ -32,9 +24,18 @@
             </div>
 
           </div>
-          <div class="category-name" [ngClass]="{'category-name-border ': !last}">
-            <span>{{subscription.description}}</span>
+
+          <div class="subscription-details"  [ngClass]="{'category-name-border ': !last}">
+            <div class="description-summary">
+              <div>{{getDescriptionDisplay(subscription)}}</div>
+              <div class="summary">{{subscription.summary}}</div>
+            </div>
+            <div class="amount">
+              {{subscription.amount}}
+            </div>
           </div>
+
+
         </div>
       </app-swipeable-item>
     </div>

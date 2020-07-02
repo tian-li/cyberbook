@@ -28,6 +28,7 @@
 @import './src/app/user/components/user-home/user-home.component.scss-theme';
 @import './src/app/user/components/profile/profile.component.scss-theme';
 @import './src/app/user/components/manage-categories/manage-categories.component.scss-theme';
+@import './src/app/user/components/subscription-management/subscription-management.component.scss-theme';
 
 // shared
 @import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
@@ -47,6 +48,7 @@
   @include app-manage-categories-component-theme($theme);
   @include app-category-editor-component-theme($theme);
   @include app-category-type-switcher-component-theme($theme);
+  @include app-subscription-management-component-theme($theme);
 }
 
 .indigo-pink-theme {

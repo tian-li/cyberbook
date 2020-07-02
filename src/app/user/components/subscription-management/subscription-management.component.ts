@@ -4,19 +4,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
+import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
-import { filter, take, takeUntil } from 'rxjs/operators';
-import { v4 as uuid } from 'uuid';
+import { takeUntil } from 'rxjs/operators';
 import { Category } from '../../../core/model/category';
-import { Subscription, SubscriptionFrequencyTypes } from '../../../core/model/subscription';
-import { User } from '../../../core/model/user';
+import { Subscription } from '../../../core/model/subscription';
 import { fromCategory, fromSubscription, fromUI, fromUser } from '../../../core/store';
-import { addSubscription } from '../../../core/store/subscription';
-import { CategoryEditorComponent } from '../../../shared/components/category-editor/category-editor.component';
+import { updateSubscription } from '../../../core/store/subscription';
 import { SubscriptionEditorComponent } from '../../../shared/components/subscription-editor/subscription-editor.component';
 import { TransactionType, TransactionTypes } from '../../../shared/constants';
-import { ISOString } from '../../../shared/model/helper-models';
-import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-recurring-management',
@@ -30,6 +26,7 @@ export class SubscriptionManagementComponent implements OnInit {
   categoryEntities: Dictionary<Category>;
   selectedCategoryType = this.defaultCategoryType;
   userId: string;
+
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store,
@@ -78,51 +75,60 @@ export class SubscriptionManagementComponent implements OnInit {
 
   editSubscription(subscription: Subscription) {
     console.log('editSubscription', subscription)
+    this.bottomSheet.open(SubscriptionEditorComponent, {
+      data: { subscription, editMode: true },
+      disableClose: true,
+    });
   }
 
-  stopSubscription(event, index) {
-    console.log('stopSubscription', event)
+  stopSubscription(event, subscription) {
+    console.log('stopSubscription', subscription)
+    this.store.dispatch(updateSubscription({
+      subscription: {
+        ...subscription,
+        endDate: dayjs().endOf('day').toISOString(),
+        dateModified: dayjs().endOf('day').toISOString(),
+      }
+    }));
   }
 
   add() {
     this.bottomSheet.open(SubscriptionEditorComponent, {
-    data: {editMode: false},
+      data: { editMode: false },
       disableClose: true,
-    }).afterDismissed().pipe(
-      filter(result => !!result),
-      take(1)
-    ).subscribe((editedCategory) => {
-      // this.saveEditedCategory(editedCategory, data.editMode);
     });
   }
 
-
-  addSubscription() {
-    const date = dayjs().toISOString();
-    const categories: Category[] = Object.values(this.categoryEntities);
-    const index = Math.floor(Math.random() * categories.length);
-    const category = categories[index];
-    // console.log('date', date);
-console.log('category', category)
-    const subscription: Subscription = {
-      id: uuid(),
-      userId: this.userId,
-      amount: 12,
-      description: category.name + 'description',
-      frequency: SubscriptionFrequencyTypes.week,
-      interval: 2,
-      every: 2,
-      startDate: date,
-      endDate: date,
-      categoryId: category.id,
-      dateCreated: date,
-      dateModified: date,
-      nextDate: date,
-    }
-
-    console.log('subscription', subscription);
-
-    this.store.dispatch(addSubscription({subscription}));
+  getDescriptionDisplay(subscription: Subscription): string {
+    return subscription.description ? subscription.description : this.categoryEntities[subscription.categoryId].name;
   }
+
+  // addSubscription() {
+  //   const date = dayjs().toISOString();
+  //   const categories: Category[] = Object.values(this.categoryEntities);
+  //   const index = Math.floor(Math.random() * categories.length);
+  //   const category = categories[index];
+  //   // console.log('date', date);
+  //   console.log('category', category)
+  //   const subscription: Subscription = {
+  //     id: uuid(),
+  //     userId: this.userId,
+  //     amount: 12,
+  //     description: category.name + 'description',
+  //     frequency: SubscriptionFrequencyTypes.week,
+  //     interval: 2,
+  //     // every: 2,
+  //     startDate: date,
+  //     endDate: date,
+  //     categoryId: category.id,
+  //     dateCreated: date,
+  //     dateModified: date,
+  //     nextDate: date,
+  //   }
+  //
+  //   console.log('subscription', subscription);
+  //
+  //   this.store.dispatch(addSubscription({ subscription }));
+  // }
 
 }

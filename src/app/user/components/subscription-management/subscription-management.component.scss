@@ -74,16 +74,26 @@ app-swipeable-item {
     }
   }
 
-  .category-name {
+  .subscription-details {
     flex-grow: 1;
     min-width: 50%;
     align-items: center;
 
-    span {
-      width: 100%;
+    .description-summary {
+      flex-grow: 1;
+      flex-direction: column;
+
+      .summary {
+        margin-top: 3px;
+        font-size: 0.7rem;
+      }
+
+      i.md-drag_handle {
+        padding-right: 1rem;
+      }
     }
 
-    i.md-drag_handle {
+    .amount {
       padding-right: 1rem;
     }
   }
