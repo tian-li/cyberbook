@@ -1,0 +1,27 @@
+div {
+  display: flex;
+}
+
+.type-switcher {
+  font-size: 0.8rem;
+  justify-content: center;
+  border-radius: 4px;
+
+  .type-item {
+    &:first-of-type {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      background-clip: content-box;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      background-clip: content-box;
+    }
+  }
+
+  .label {
+    margin: 5px 10px;
+  }
+}

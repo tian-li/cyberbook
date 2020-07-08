@@ -9,7 +9,10 @@
     </div>
   </div>
 
-  <app-category-type-switcher (categoryTypeChanged)="changeTransactionType($event)"></app-category-type-switcher>
+  <app-type-switcher
+    [types]="categoryTypes"
+    (typeChanged)="changeTransactionType($event)">
+  </app-type-switcher>
 
   <div class="chart">
     <div class="charts-container" style="position: relative; height:60vh; width:90vw">

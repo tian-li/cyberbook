@@ -5,12 +5,12 @@ import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@spend-book/core/store';
 import { setDisplayMonth } from '@spend-book/core/store/ui';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
-import { TransactionTypes, TransactionType } from '@spend-book/shared/constants';
+import { TransactionTypes } from '@spend-book/shared/constants';
 import { ISOString } from '@spend-book/shared/model/helper-models';
 import { Chart, ChartData } from 'chart.js'
+import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-graph-chart-pie',
@@ -18,11 +18,15 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./graph-chart-pie.component.scss']
 })
 export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy {
-  readonly TransactionTypes = TransactionTypes;
+  readonly categoryTypes = [
+    { value: 'spend', display: '支出' },
+    { value: 'income', display: '收入' },
+  ];
+
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
   transactionVOs: TransactionVO[];
   displayMonth: ISOString;
-  selectedTransactionType: TransactionType = this.TransactionTypes.spend;
+  selectedTransactionType: string = TransactionTypes.spend;
   pieChartData: ChartData = {
     datasets: [],
     labels: []
@@ -51,7 +55,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       this.spendTransactionVOs = this.transactionVOs.filter(t => t.amount < 0);
       this.incomeTransactionVOs = this.transactionVOs.filter(t => t.amount > 0);
 
-      if(!!this.pieChart) {
+      if (!!this.pieChart) {
         this.updateChart(this.createChartData(this.selectedTransactionType));
       }
     });
@@ -93,13 +97,13 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     });
   }
 
-  changeTransactionType(type: TransactionTypes) {
+  changeTransactionType(type: string) {
     this.selectedTransactionType = type;
 
     this.updateChart(this.createChartData(type))
   }
 
-  private createChartData(transactionType: TransactionType): ChartData {
+  private createChartData(transactionType: string): ChartData {
     const categorySummary: { [categoryName: string]: { amount: number, color: string } } = {};
     const amount: number[] = [];
     const labels: string[] = [];
@@ -111,10 +115,10 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     }
 
     transactionVOs.forEach(transactionVO => {
-      if(!!categorySummary[transactionVO.categoryName]) {
+      if (!!categorySummary[transactionVO.categoryName]) {
         categorySummary[transactionVO.categoryName].amount += transactionVO.amount
       } else {
-        categorySummary[transactionVO.categoryName]= {
+        categorySummary[transactionVO.categoryName] = {
           amount: transactionVO.amount,
           color: transactionVO.categoryColor
         };

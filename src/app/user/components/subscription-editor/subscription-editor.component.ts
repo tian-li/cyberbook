@@ -36,6 +36,11 @@ export class SubscriptionEditorComponent implements OnInit {
     SubscriptionFrequencyTypes.year,
   ];
 
+  readonly categoryTypes = [
+    {value: 'spend', display: '支出'},
+    {value: 'income', display: '收入'},
+  ];
+
   intervals: number[] = [];
   loading: boolean;
   title: string;
@@ -84,7 +89,7 @@ export class SubscriptionEditorComponent implements OnInit {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: TransactionType) {
+  changeCategoryType(type: string) {
     this.categoryTypeControl.setValue(type);
     this.formGroup.controls['categoryId'].reset();
   }

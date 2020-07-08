@@ -1,0 +1,9 @@
+<div class="type-switcher">
+  <ng-container *ngFor="let type of types">
+    <div (click)="changeType(type.value)"
+         [ngClass]="{ 'selected': type.value === selectedType }"
+         class="type-item">
+      <div class="label">{{type.display}}</div>
+    </div>
+  </ng-container>
+</div>

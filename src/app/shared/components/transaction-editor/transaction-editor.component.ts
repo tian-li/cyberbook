@@ -8,9 +8,9 @@ import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/m
 import { fromCategory } from '@spend-book/core/store';
 import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
-import { TransactionType, TransactionTypes, years } from '../../constants';
-import {v4 as uuid} from 'uuid';
+import { startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { v4 as uuid } from 'uuid';
+import { TransactionTypes, years } from '../../constants';
 
 @Component({
   selector: 'app-transaction-editor',
@@ -23,8 +23,12 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   readonly minDate = new Date(years[0], 0, 1);
   readonly maxDate = new Date(years[years.length - 1], 11, 31);
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
-  readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
+  readonly defaultCategoryType: string = TransactionTypes.spend;
   readonly TransactionType = TransactionTypes;
+  readonly categoryTypes = [
+    { value: 'spend', display: '支出' },
+    { value: 'income', display: '收入' },
+  ];
 
   loading: boolean;
   title: string;
@@ -67,7 +71,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: TransactionType) {
+  changeCategoryType(type: string) {
     this.selectedCategoryType = type;
     this.categoryTypeControl.setValue(type);
     this.formGroup.controls['categoryId'].reset(undefined);

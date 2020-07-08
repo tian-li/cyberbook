@@ -4,7 +4,10 @@
   </div>
 
   <div class="switcher-container">
-    <app-category-type-switcher [showBoth]="true" (categoryTypeChanged)="changeTransactionType($event)"></app-category-type-switcher>
+    <app-type-switcher
+      [types]="categoryTypes"
+      (typeChanged)="changeTransactionType($event)">
+    </app-type-switcher>
   </div>
 
   <div class="chart">

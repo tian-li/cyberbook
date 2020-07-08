@@ -10,7 +10,7 @@ import { Category } from '@spend-book/core/model/category';
 import { fromCategory, fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
 import { loadCategoriesByUser, updateCategory } from '@spend-book/core/store/category';
 import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
-import { AlertLevel, TransactionType, TransactionTypes } from '@spend-book/shared/constants';
+import { AlertLevel, TransactionTypes } from '@spend-book/shared/constants';
 import { SwipeResult } from '@spend-book/shared/model/helper-models';
 import { from, Observable, of, Subject } from 'rxjs';
 import { concatMap, debounceTime, delay, filter, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
@@ -41,7 +41,11 @@ import { CategoryEditorComponent } from '../category-editor/category-editor.comp
 })
 export class ManageCategoriesComponent implements OnInit, OnDestroy {
   readonly TransactionType = TransactionTypes;
-  readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
+  readonly defaultCategoryType: string = TransactionTypes.spend;
+  readonly categoryTypes = [
+    { value: 'spend', display: '支出' },
+    { value: 'income', display: '收入' },
+  ];
 
   @ViewChild('list') list: ElementRef;
 
@@ -98,7 +102,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: TransactionType) {
+  changeCategoryType(type: string) {
     this.selectedCategoryType = type;
     this.categoryTypeControl.setValue(type);
   }

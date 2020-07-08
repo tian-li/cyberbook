@@ -24,6 +24,11 @@ export class SubscriptionManagementComponent implements OnInit {
   readonly today: dayjs.Dayjs = dayjs().startOf('day');
   readonly hasSubscriptionEnded = hasSubscriptionEnded;
 
+  readonly subscriptionTypes = [
+    {value: 'active', display: '进行中'},
+    {value: 'inactive', display: '已结束'},
+  ]
+
   allSubscriptions: Subscription[];
   categoryEntities: Dictionary<Category>;
   selectedCategoryType = this.defaultCategoryType;
@@ -69,7 +74,7 @@ export class SubscriptionManagementComponent implements OnInit {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: TransactionType) {
+  changeSubscriptionType(type) {
     this.selectedCategoryType = type;
     // this.categoryTypeControl.setValue(type);
   }

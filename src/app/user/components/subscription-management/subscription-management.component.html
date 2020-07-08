@@ -7,7 +7,10 @@
       <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
     </div>
 
-    <app-category-type-switcher (categoryTypeChanged)="changeCategoryType($event)"></app-category-type-switcher>
+    <app-type-switcher
+      [types]="subscriptionTypes"
+      (typeChanged)="changeSubscriptionType($event)">
+    </app-type-switcher>
 
   </div>
 

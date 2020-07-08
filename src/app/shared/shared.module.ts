@@ -32,7 +32,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { PreventScrollDirective } from '@spend-book/shared/directives/prevent-scroll.directive';
-import { CategoryTypeSwitcherComponent } from './components/category-type-switcher/category-type-switcher.component';
+import { TypeSwitcherComponent } from './components/type-switcher/type-switcher.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -79,11 +79,10 @@ const components = [
   DateRangePickerComponent,
   ConfirmationAlertComponent,
 
-
   // components
   NavBarComponent,
   SwipeableItemComponent,
-  CategoryTypeSwitcherComponent,
+  TypeSwitcherComponent,
 
   // directives
   SwipeEventDirective,

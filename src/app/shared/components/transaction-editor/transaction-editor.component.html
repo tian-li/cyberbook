@@ -5,7 +5,10 @@
   <mat-dialog-content>
     <form [formGroup]="formGroup" autocomplete="off">
       <div class="switcher-container">
-        <app-category-type-switcher (categoryTypeChanged)="changeCategoryType($event)"></app-category-type-switcher>
+        <app-type-switcher
+          [types]="categoryTypes"
+          (typeChanged)="changeCategoryType($event)">
+        </app-type-switcher>
       </div>
 
       <div class="amount-category">

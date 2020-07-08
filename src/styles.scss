@@ -33,7 +33,7 @@
 
 // shared
 @import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
-@import './src/app/shared/components/category-type-switcher/category-type-switcher.component.scss-theme';
+@import 'app/shared/components/type-switcher/type-switcher.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -47,7 +47,7 @@
   @include app-profile-component-theme($theme);
   @include app-manage-categories-component-theme($theme);
   @include app-category-editor-component-theme($theme);
-  @include app-category-type-switcher-component-theme($theme);
+  @include app-type-switcher-component-theme($theme);
   @include app-subscription-management-component-theme($theme);
 }
 

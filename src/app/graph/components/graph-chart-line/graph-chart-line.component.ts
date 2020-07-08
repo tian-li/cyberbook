@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { fromTransaction } from '@spend-book/core/store';
 import { DateRangePickerComponent } from '@spend-book/shared/components/date-range-picker/date-range-picker.component';
-import { TransactionTypes, TransactionType } from '@spend-book/shared/constants';
+import { TransactionTypes } from '@spend-book/shared/constants';
 import { PeriodSummary } from '@spend-book/shared/model/helper-models';
 import { getMonthSummary } from '@spend-book/shared/utils/get-month-summary';
 import { Chart, ChartData, ChartDataSets } from 'chart.js';
@@ -31,7 +31,6 @@ enum DateFormats {
   styleUrls: ['./graph-chart-line.component.scss']
 })
 export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy {
-  readonly TransactionTypes = TransactionTypes;
   readonly today = dayjs();
   readonly defaultLineOption = {
     backgroundColor: 'transparent',
@@ -41,11 +40,16 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   };
   readonly incomeColor = 'green';
   readonly spendColor = 'red';
+  readonly categoryTypes = [
+    {value: 'spend', display: '支出'},
+    {value: 'income', display: '收入'},
+    {value: 'both', display: '合并'},
+  ];
 
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
   startDate = this.today.subtract(4, 'month').date(1);
   endDate = this.today.endOf('month');
-  selectedTransactionType: TransactionType = TransactionTypes.both;
+  selectedTransactionType: string = TransactionTypes.both;
   dateAxisFormat = DateFormats.month;
   transactionVOs: TransactionVO[];
 
@@ -104,7 +108,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
     });
   }
 
-  changeTransactionType(type: TransactionTypes) {
+  changeTransactionType(type: string) {
     this.selectedTransactionType = type;
     this.lineChart.data.datasets.forEach((dataset: ChartDataSets) => {
       let lineColor;
@@ -133,7 +137,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
     this.lineChart.update();
   }
 
-  private createChartData(transactionType: TransactionType): ChartData {
+  private createChartData(transactionType: string): ChartData {
     const spendSet: ChartDataSets = {
       ...this.defaultLineOption,
       data: [],
