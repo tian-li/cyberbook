@@ -6,16 +6,16 @@ import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { Subscription, SubscriptionFrequencyTypes } from '@spend-book/core/model/subscription';
 import { transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
-import { fromCategory, fromUser } from '@spend-book/core/store';
+import { fromCategory } from '@spend-book/core/store';
 import { addSubscription, updateSubscription } from '@spend-book/core/store/subscription';
+import { TransactionType, TransactionTypes, years } from '@spend-book/shared/constants';
 import { ISOString } from '@spend-book/shared/model/helper-models';
 import { calculateSubscriptionNextDate } from '@spend-book/shared/utils/calculate-subscription-next-date';
 import * as dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn'
+import 'dayjs/locale/zh-cn';
 import { Observable, Subject } from 'rxjs';
-import { startWith, switchMap, take, takeUntil } from 'rxjs/operators';
+import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
-import { TransactionType, TransactionTypes, years } from '../../constants';
 
 @Component({
   selector: 'app-subscription-editor',
@@ -42,14 +42,13 @@ export class SubscriptionEditorComponent implements OnInit {
   formGroup: FormGroup;
   categories$: Observable<Category[]>;
   categoryEntities: Dictionary<Category>;
-  userId: string;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
 
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(
     private bottomSheetRef: MatBottomSheetRef<SubscriptionEditorComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: { editMode: boolean, subscription: Subscription },
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: { editMode: boolean, subscription: Subscription, userId: string },
     private fb: FormBuilder,
     private store: Store,
   ) {
@@ -62,11 +61,6 @@ export class SubscriptionEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.data.editMode ? '编辑周期性账目' : '添加周期性账目';
-    console.log('data', this.data);
-    this.store.pipe(
-      select(fromUser.selectUser),
-      take(1)
-    ).subscribe(user => this.userId = user.id);
 
     this.store.pipe(
       select(fromCategory.selectCategoryEntities),
@@ -154,7 +148,7 @@ export class SubscriptionEditorComponent implements OnInit {
       subscription = {
         ...subscription,
         id: uuid(),
-        userId: this.userId,
+        userId: this.data.userId,
         totalAmount: 0,
         dateCreated: this.today.toISOString()
       }

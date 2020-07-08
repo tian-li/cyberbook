@@ -12,7 +12,8 @@
   </div>
 
   <div class="category-list">
-    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
+    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;"
+    [ngStyle]="{'opacity': hasSubscriptionEnded(subscription.endDate) ? 0.5:1}">
       <app-swipeable-item (swipeResult)="stopSubscription($event, subscription)">
         <div class="draggable-category-item" (click)="editSubscription(subscription)">
           <div class="category-icon">
@@ -22,27 +23,27 @@
                  [ngStyle]="{'color': categoryEntities[subscription.categoryId].color}"
               ></i>
             </div>
-
           </div>
 
           <div class="subscription-details"  [ngClass]="{'category-name-border ': !last}">
             <div class="description-summary">
-              <div>{{getDescriptionDisplay(subscription)}}</div>
-              <div class="summary">{{subscription.summary}}</div>
+              <div>
+                <span>{{getDescriptionDisplay(subscription)}}</span>
+                <span class="tag-ended-subscription" *ngIf="hasSubscriptionEnded(subscription.endDate)">已结束</span>
+              </div>
+              <div class="summary">{{subscription.summary}}{{getDaysUntilNextDate(subscription)}}</div>
             </div>
-            <div class="amount">
-              {{subscription.amount}}
+            <div class="amount" [ngStyle]="{ 'color': subscription.amount > 0 ? 'green' : 'red' }">
+              {{subscription.amount.toFixed(2)}}
             </div>
           </div>
-
-
         </div>
       </app-swipeable-item>
     </div>
   </div>
 
   <div class="float-add-button" cdkDrag>
-    <button mat-fab (click)="add()">
+    <button mat-fab (click)="addSubscription()">
       <i class="material-icons md-add"></i>
     </button>
   </div>

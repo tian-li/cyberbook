@@ -20,7 +20,7 @@
       "icon": "storefront",
       "color": "#f76464",
       "type": "spend",
-      "sortOrder": 0
+      "sortOrder": 1
     },
     {
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
@@ -30,7 +30,7 @@
       "icon": "restaurant",
       "color": "#5DA5DA",
       "type": "spend",
-      "sortOrder": 1
+      "sortOrder": 0
     },
     {
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
@@ -129,6 +129,38 @@
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "totalAmount": -1,
       "dateCreated": "2020-07-07T04:00:00.000Z"
+    },
+    {
+      "nextDate": "2020-07-22T04:00:00.000Z",
+      "amount": -15,
+      "description": null,
+      "frequency": "天",
+      "interval": 2,
+      "startDate": "2020-07-01T04:00:00.000Z",
+      "endDate": "2020-07-07T04:00:00.000Z",
+      "categoryId": "8cb584fb-0090-4dad-a34c-8cd7fbb0e72a",
+      "dateModified": "2020-07-08T04:00:00.000Z",
+      "summary": "每两个星期的星期三",
+      "id": "59e936c2-cb52-44a0-84f7-620227e9bfcc",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "totalAmount": 0,
+      "dateCreated": "2020-07-08T04:00:00.000Z"
+    },
+    {
+      "nextDate": "2020-07-09T04:00:00.000Z",
+      "amount": -4,
+      "description": null,
+      "frequency": "天",
+      "interval": 1,
+      "startDate": "2020-07-08T04:00:00.000Z",
+      "endDate": "2020-07-09T04:00:00.000Z",
+      "categoryId": "14fedb0f-9421-444b-8653-f13e5d4251f6",
+      "dateModified": "2020-07-08T04:00:00.000Z",
+      "summary": "每天",
+      "id": "2802539a-699e-47af-935f-917f40396fa4",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "totalAmount": -4,
+      "dateCreated": "2020-07-08T04:00:00.000Z"
     }
   ],
   "transaction": [
@@ -142,6 +174,17 @@
       "transactionDate": "2020-07-08T04:03:01.510Z",
       "dateModified": "2020-07-08T04:03:01.510Z",
       "subscriptionId": "6ceebf51-8c8d-4ed4-95c8-33c93b0b8458"
+    },
+    {
+      "id": "08525e46-793e-4903-85dd-1ff7e8b4f907",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "amount": -4,
+      "description": null,
+      "categoryId": "14fedb0f-9421-444b-8653-f13e5d4251f6",
+      "dateCreated": "2020-07-08T16:23:25.256Z",
+      "transactionDate": "2020-07-08T16:23:25.256Z",
+      "dateModified": "2020-07-08T16:23:25.256Z",
+      "subscriptionId": "2802539a-699e-47af-935f-917f40396fa4"
     }
   ]
 }

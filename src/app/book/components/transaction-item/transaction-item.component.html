@@ -13,6 +13,9 @@
         <span>
           {{transactionVO.description ? transactionVO.description : transactionVO.categoryName}}
         </span>
+        <span class="subscription-marker" *ngIf="!!transactionVO.subscriptionId">
+          周期性账目
+        </span>
       </div>
       <div class="amount" [ngStyle]="{ 'color': transactionVO.amount > 0 ? 'green' : 'red' }">
         {{transactionVO.amount.toFixed(2)}}

@@ -29,10 +29,10 @@
 @import './src/app/user/components/profile/profile.component.scss-theme';
 @import './src/app/user/components/manage-categories/manage-categories.component.scss-theme';
 @import './src/app/user/components/subscription-management/subscription-management.component.scss-theme';
+@import './src/app/user/components/category-editor/category-editor.component.scss-theme';
 
 // shared
 @import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
-@import './src/app/shared/components/category-editor/category-editor.component.scss-theme';
 @import './src/app/shared/components/category-type-switcher/category-type-switcher.component.scss-theme';
 
 @mixin custom-components-theme($theme) {

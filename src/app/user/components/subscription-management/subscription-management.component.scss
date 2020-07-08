@@ -83,6 +83,15 @@ app-swipeable-item {
       flex-grow: 1;
       flex-direction: column;
 
+      .tag-ended-subscription {
+        font-size: 0.5rem;
+        align-self: center;
+        margin-left: 5px;
+        //background: #00000038;
+        padding: 2px 3px;
+        border-radius: 3px;
+      }
+
       .summary {
         margin-top: 3px;
         font-size: 0.7rem;

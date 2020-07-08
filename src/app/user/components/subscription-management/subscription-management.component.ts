@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
@@ -8,11 +7,12 @@ import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Category } from '../../../core/model/category';
-import { Subscription } from '../../../core/model/subscription';
+import { hasSubscriptionEnded, Subscription } from '../../../core/model/subscription';
 import { fromCategory, fromSubscription, fromUI, fromUser } from '../../../core/store';
 import { loadSubscriptionsByUser, updateSubscription } from '../../../core/store/subscription';
-import { SubscriptionEditorComponent } from '../../../shared/components/subscription-editor/subscription-editor.component';
 import { TransactionType, TransactionTypes } from '../../../shared/constants';
+import { SwipeResult } from '../../../shared/model/helper-models';
+import { SubscriptionEditorComponent } from '../subscription-editor/subscription-editor.component';
 
 @Component({
   selector: 'app-recurring-management',
@@ -21,6 +21,8 @@ import { TransactionType, TransactionTypes } from '../../../shared/constants';
 })
 export class SubscriptionManagementComponent implements OnInit {
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
+  readonly today: dayjs.Dayjs = dayjs().startOf('day');
+  readonly hasSubscriptionEnded = hasSubscriptionEnded;
 
   allSubscriptions: Subscription[];
   categoryEntities: Dictionary<Category>;
@@ -32,14 +34,15 @@ export class SubscriptionManagementComponent implements OnInit {
   constructor(private store: Store,
               private router: Router,
               private route: ActivatedRoute,
-              private bottomSheet: MatBottomSheet,
-              private dialog: MatDialog) {
+              private bottomSheet: MatBottomSheet
+  ) {
   }
 
   ngOnInit(): void {
     this.store.dispatch(fromUI.hideToolbar());
     this.store.pipe(
-      select(fromUser.selectUser)
+      select(fromUser.selectUser),
+      takeUntil(this.unsubscribe$)
     ).subscribe(user => {
       this.userId = user.id;
       this.store.dispatch(loadSubscriptionsByUser({ userId: user.id }))
@@ -53,7 +56,8 @@ export class SubscriptionManagementComponent implements OnInit {
     });
 
     this.store.pipe(
-      select(fromCategory.selectCategoryEntities)
+      select(fromCategory.selectCategoryEntities),
+      takeUntil(this.unsubscribe$)
     ).subscribe(categoryEntities => {
       this.categoryEntities = categoryEntities;
     })
@@ -75,27 +79,29 @@ export class SubscriptionManagementComponent implements OnInit {
   }
 
   editSubscription(subscription: Subscription) {
-    console.log('editSubscription', subscription)
     this.bottomSheet.open(SubscriptionEditorComponent, {
-      data: { subscription, editMode: true },
+      data: { subscription, editMode: true, userId: this.userId },
       disableClose: true,
     });
   }
 
-  stopSubscription(event, subscription) {
-    console.log('stopSubscription', subscription)
-    this.store.dispatch(updateSubscription({
-      update: {
-        ...subscription,
-        endDate: dayjs().startOf('day').toISOString(),
-        dateModified: dayjs().startOf('day').toISOString(),
-      }
-    }));
+  stopSubscription(swipeResult: SwipeResult, subscription) {
+    if (swipeResult.direction === 'left' && swipeResult.result) {
+      this.store.dispatch(updateSubscription({
+        update: {
+          id: subscription.id,
+          changes: {
+            endDate: dayjs().startOf('day').toISOString(),
+            dateModified: dayjs().startOf('day').toISOString(),
+          }
+        }
+      }));
+    }
   }
 
-  add() {
+  addSubscription() {
     this.bottomSheet.open(SubscriptionEditorComponent, {
-      data: { editMode: false },
+      data: { editMode: false, userId: this.userId },
       disableClose: true,
     });
   }
@@ -104,32 +110,10 @@ export class SubscriptionManagementComponent implements OnInit {
     return subscription.description ? subscription.description : this.categoryEntities[subscription.categoryId].name;
   }
 
-  // addSubscription() {
-  //   const date = dayjs().toISOString();
-  //   const categories: Category[] = Object.values(this.categoryEntities);
-  //   const index = Math.floor(Math.random() * categories.length);
-  //   const category = categories[index];
-  //   // console.log('date', date);
-  //   console.log('category', category)
-  //   const subscription: Subscription = {
-  //     id: uuid(),
-  //     userId: this.userId,
-  //     amount: 12,
-  //     description: category.name + 'description',
-  //     frequency: SubscriptionFrequencyTypes.week,
-  //     interval: 2,
-  //     // every: 2,
-  //     startDate: date,
-  //     endDate: date,
-  //     categoryId: category.id,
-  //     dateCreated: date,
-  //     dateModified: date,
-  //     nextDate: date,
-  //   }
-  //
-  //   console.log('subscription', subscription);
-  //
-  //   this.store.dispatch(addSubscription({ subscription }));
-  // }
-
+  getDaysUntilNextDate(subscription: Subscription): string {
+    if (!this.hasSubscriptionEnded(subscription.endDate)) {
+      return `, 距离下次还有${dayjs(subscription.nextDate).diff(this.today, 'day')}天`;
+    }
+    return '';
+  }
 }

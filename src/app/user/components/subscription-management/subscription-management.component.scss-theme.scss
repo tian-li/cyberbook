@@ -21,6 +21,11 @@
 
   .subscription-details {
     .description-summary {
+      .tag-ended-subscription {
+        color: mat-color($foreground, secondary-text);
+        background: mat-color($background, hover);
+      }
+
       .summary {
         color: mat-color($foreground, secondary-text)
       }

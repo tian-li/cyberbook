@@ -29,11 +29,17 @@ div {
 .description {
   flex-grow: 1;
   min-width: 50%;
+  flex-direction: column;
 
   span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .subscription-marker {
+    font-size: 0.6rem;
+    margin-top: 3px;
   }
 }
 

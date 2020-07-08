@@ -32,12 +32,10 @@ import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
 import { PreventScrollDirective } from '@spend-book/shared/directives/prevent-scroll.directive';
-import { CategoryEditorComponent } from './components/category-editor/category-editor.component';
 import { CategoryTypeSwitcherComponent } from './components/category-type-switcher/category-type-switcher.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { SubscriptionEditorComponent } from './components/subscription-editor/subscription-editor.component';
 import { SwipeableItemComponent } from './components/swipeable-item/swipeable-item.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
@@ -80,8 +78,7 @@ const components = [
   YearMonthPickerComponent,
   DateRangePickerComponent,
   ConfirmationAlertComponent,
-  CategoryEditorComponent,
-  SubscriptionEditorComponent,
+
 
   // components
   NavBarComponent,
@@ -107,9 +104,7 @@ const components = [
     TransactionEditorComponent,
     YearMonthPickerComponent,
     DateRangePickerComponent,
-    ConfirmationAlertComponent,
-    CategoryEditorComponent,
-    SubscriptionEditorComponent
+    ConfirmationAlertComponent
   ]
 })
 export class SharedModule {

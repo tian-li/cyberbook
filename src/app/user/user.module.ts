@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
 import { SharedModule } from '../shared/shared.module';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
+import { CategoryEditorComponent } from './components/category-editor/category-editor.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SubscriptionEditorComponent } from './components/subscription-editor/subscription-editor.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -18,7 +20,9 @@ import { SubscriptionManagementComponent } from './components/subscription-manag
     UserComponent,
     ThemeSelectorComponent,
     ManageCategoriesComponent,
-    SubscriptionManagementComponent
+    SubscriptionManagementComponent,
+    CategoryEditorComponent,
+    SubscriptionEditorComponent,
   ],
   imports: [
     SharedModule,
@@ -26,6 +30,10 @@ import { SubscriptionManagementComponent } from './components/subscription-manag
   ],
   providers: [
     CanRegisterGuard
+  ],
+  entryComponents: [
+    CategoryEditorComponent,
+    SubscriptionEditorComponent
   ]
 })
 export class UserModule {

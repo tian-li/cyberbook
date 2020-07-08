@@ -22,5 +22,11 @@
     .divide-line {
       border-top: 1px solid mat-color($foreground, divider);
     }
+
+    .description {
+      .subscription-marker {
+        color: mat-color($foreground, secondary-text);
+      }
+    }
   }
 }

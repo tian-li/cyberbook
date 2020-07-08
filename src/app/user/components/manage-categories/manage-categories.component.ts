@@ -9,12 +9,12 @@ import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { fromCategory, fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
 import { loadCategoriesByUser, updateCategory } from '@spend-book/core/store/category';
-import { CategoryEditorComponent } from '@spend-book/shared/components/category-editor/category-editor.component';
 import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
 import { AlertLevel, TransactionType, TransactionTypes } from '@spend-book/shared/constants';
 import { SwipeResult } from '@spend-book/shared/model/helper-models';
 import { from, Observable, of, Subject } from 'rxjs';
 import { concatMap, debounceTime, delay, filter, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
+import { CategoryEditorComponent } from '../category-editor/category-editor.component';
 
 @Component({
   selector: 'app-manage-categories',

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Subscription } from '@spend-book/core/model/subscription';
+import { hasSubscriptionEnded, Subscription } from '@spend-book/core/model/subscription';
 import { Transaction } from '@spend-book/core/model/transaction';
 import { TransactionVO } from '@spend-book/core/model/transactionVO';
 import { User } from '@spend-book/core/model/user';
@@ -46,7 +46,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe(([subscriptions, user]: [Subscription[], User]) => {
       subscriptions.forEach((subscription: Subscription) => {
-        if (!subscription.nextDate || this.today.isSame(subscription.nextDate, 'day')) {
+        if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSame(subscription.nextDate, 'day')) {
           this.createSubscriptionTransaction(subscription, user.id);
           this.updateSubscription(subscription);
         }
