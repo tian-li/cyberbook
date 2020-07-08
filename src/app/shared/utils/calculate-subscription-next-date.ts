@@ -6,9 +6,9 @@ export function calculateSubscriptionNextDate(
   frequency: SubscriptionFrequencyTypes,
   interval: number,
   startDate: dayjs.Dayjs,
-  latestHappenDate: dayjs.Dayjs
+  latestHappenDate: dayjs.Dayjs | null
 ): ISOString {
-  if (startDate.isSame(latestHappenDate)) {
+  if (!latestHappenDate) {
     return startDate.toISOString();
   }
 

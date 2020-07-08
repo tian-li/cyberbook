@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Category } from '../../../core/model/category';
 import { Subscription } from '../../../core/model/subscription';
 import { fromCategory, fromSubscription, fromUI, fromUser } from '../../../core/store';
-import { updateSubscription } from '../../../core/store/subscription';
+import { loadSubscriptionsByUser, updateSubscription } from '../../../core/store/subscription';
 import { SubscriptionEditorComponent } from '../../../shared/components/subscription-editor/subscription-editor.component';
 import { TransactionType, TransactionTypes } from '../../../shared/constants';
 
@@ -42,6 +42,7 @@ export class SubscriptionManagementComponent implements OnInit {
       select(fromUser.selectUser)
     ).subscribe(user => {
       this.userId = user.id;
+      this.store.dispatch(loadSubscriptionsByUser({ userId: user.id }))
     })
 
     this.store.pipe(
@@ -84,10 +85,10 @@ export class SubscriptionManagementComponent implements OnInit {
   stopSubscription(event, subscription) {
     console.log('stopSubscription', subscription)
     this.store.dispatch(updateSubscription({
-      subscription: {
+      update: {
         ...subscription,
-        endDate: dayjs().endOf('day').toISOString(),
-        dateModified: dayjs().endOf('day').toISOString(),
+        endDate: dayjs().startOf('day').toISOString(),
+        dateModified: dayjs().startOf('day').toISOString(),
       }
     }));
   }

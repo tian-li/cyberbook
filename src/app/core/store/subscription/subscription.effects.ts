@@ -50,7 +50,7 @@ export class SubscriptionEffects {
     this.actions$.pipe(
       ofType(updateSubscription),
       mergeMap(action =>
-        this.subscriptionService.updateSubscription(action.subscription).pipe(
+        this.subscriptionService.updateSubscription(action.update).pipe(
           map((subscription: Subscription) => {
             this.closeSubscriptionEditor();
             return updateSubscriptionSuccess({ update: { id: subscription.id, changes: subscription } });

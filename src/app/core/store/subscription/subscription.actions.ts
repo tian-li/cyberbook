@@ -23,7 +23,7 @@ export const addSubscriptionSuccess = createAction(
 
 export const updateSubscription = createAction(
   '[Subscription] Update Subscription',
-  props<{ subscription: Partial<Subscription> }>()
+  props<{ update: Update<Subscription> }>()
 );
 export const updateSubscriptionSuccess = createAction(
   '[Subscription] Update Subscription Success',

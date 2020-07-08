@@ -14,4 +14,12 @@
        class="both last-type-round-border">
     <div class="label">合并</div>
   </div>
+
+  <ng-container *ngFor="let type of types">
+    <div (click)="changeType(type.value)"
+         [ngClass]="{ 'selected': selectedTransactionType === TransactionTypes.income, 'last-type-round-border': !showBoth }"
+         class="income">
+      <div class="label">{{type.display}}</div>
+    </div>
+  </ng-container>
 </div>

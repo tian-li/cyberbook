@@ -62,7 +62,7 @@ export class SubscriptionEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.data.editMode ? '编辑周期性账目' : '添加周期性账目';
-console.log('data', this.data);
+    console.log('data', this.data);
     this.store.pipe(
       select(fromUser.selectUser),
       take(1)
@@ -97,7 +97,7 @@ console.log('data', this.data);
 
   save() {
     const action = this.data.editMode ?
-      updateSubscription({ subscription: this.editedSubscription }) :
+      updateSubscription({ update: { id: this.data.subscription.id, changes: this.editedSubscription } }) :
       addSubscription({ subscription: this.editedSubscription });
 
     this.store.dispatch(action);
@@ -119,11 +119,10 @@ console.log('data', this.data);
       formValue.frequency,
       formValue.interval,
       dayjs(formValue.startDate),
-      dayjs(formValue.startDate),
+      null,
     );
 
     let amount = Number.parseFloat(Number.parseFloat(formValue.amount).toFixed(2));
-
 
     if (this.categoryEntities[formValue.categoryId].type === 'spend') {
       amount = 0 - amount;
@@ -156,6 +155,7 @@ console.log('data', this.data);
         ...subscription,
         id: uuid(),
         userId: this.userId,
+        totalAmount: 0,
         dateCreated: this.today.toISOString()
       }
     }

@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { fromCategory, fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
-import { updateCategory } from '@spend-book/core/store/category';
+import { loadCategoriesByUser, updateCategory } from '@spend-book/core/store/category';
 import { CategoryEditorComponent } from '@spend-book/shared/components/category-editor/category-editor.component';
 import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
 import { AlertLevel, TransactionType, TransactionTypes } from '@spend-book/shared/constants';
@@ -68,13 +68,17 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(fromUI.hideToolbar());
+
     this.themeName$ = this.store.pipe(select(fromUI.selectThemeName));
 
     this.store.pipe(
       select(fromUser.selectUser),
       filter(user => !!user.id),
       take(1),
-    ).subscribe(user => this.userId = user.id);
+    ).subscribe(user => {
+      this.userId = user.id
+      this.store.dispatch(loadCategoriesByUser({ userId: user.id }))
+    });
 
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),

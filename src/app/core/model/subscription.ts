@@ -15,6 +15,7 @@ export interface Subscription {
   dateModified: ISOString;
   nextDate: ISOString;
   summary: string;
+  totalAmount: number;
 }
 
 export interface FrequencyInfo {

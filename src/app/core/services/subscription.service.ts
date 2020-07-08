@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Update } from '@ngrx/entity';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -27,8 +28,8 @@ export class SubscriptionService {
     return <Observable<Subscription>>this.http.post(`${this.subscriptionRoute}`, subscription);
   }
 
-  updateSubscription(subscription: Partial<Subscription>): Observable<Subscription> {
-    return <Observable<Subscription>>this.http.put(`${this.subscriptionRoute}/${subscription.id}`, subscription);
+  updateSubscription(subscription: Update<Subscription>): Observable<Subscription> {
+    return <Observable<Subscription>>this.http.patch(`${this.subscriptionRoute}/${subscription.id}`, subscription.changes);
   }
 
   removeSubscription(id: string): Observable<any> {

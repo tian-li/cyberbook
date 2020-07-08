@@ -13,10 +13,15 @@ export class CategoryTypeSwitcherComponent {
    * Show 'both' type or not, defaults to false, only show 'spend' and 'income'.
    */
   @Input() showBoth: boolean = false;
+  @Input() types: {value: string, display: string}[];
 
   @Output() categoryTypeChanged: EventEmitter<TransactionType> = new EventEmitter<TransactionType>();
 
   selectedTransactionType: TransactionType = TransactionTypes.spend;
+
+  changeType(type: string) {
+
+  }
 
   changeTransactionType(type: TransactionType) {
     this.selectedTransactionType = type;
