@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { Category } from '../../../core/model/category';
 import { hasSubscriptionEnded, Subscription } from '../../../core/model/subscription';
 import { fromCategory, fromSubscription, fromUI, fromUser } from '../../../core/store';
@@ -20,7 +21,7 @@ import { SubscriptionEditorComponent } from '../subscription-editor/subscription
   styleUrls: ['./subscription-management.component.scss']
 })
 export class SubscriptionManagementComponent implements OnInit {
-  readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
+  readonly defaultSubscriptionType: string = 'active';
   readonly today: dayjs.Dayjs = dayjs().startOf('day');
   readonly hasSubscriptionEnded = hasSubscriptionEnded;
 
@@ -31,8 +32,9 @@ export class SubscriptionManagementComponent implements OnInit {
 
   allSubscriptions: Subscription[];
   categoryEntities: Dictionary<Category>;
-  selectedCategoryType = this.defaultCategoryType;
+  selectedCategoryType = this.defaultSubscriptionType;
   userId: string;
+  subscriptionTypeControl = new FormControl(this.defaultSubscriptionType);
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -51,10 +53,12 @@ export class SubscriptionManagementComponent implements OnInit {
     ).subscribe(user => {
       this.userId = user.id;
       this.store.dispatch(loadSubscriptionsByUser({ userId: user.id }))
-    })
+    });
 
-    this.store.pipe(
-      select(fromSubscription.selectAllSubscriptions),
+    this.subscriptionTypeControl.valueChanges.pipe(
+      startWith(this.defaultSubscriptionType),
+      switchMap((type) => this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: type==='active' }))),
+      debounceTime(200),
       takeUntil(this.unsubscribe$)
     ).subscribe(allSubscriptions => {
       this.allSubscriptions = allSubscriptions;
@@ -76,7 +80,7 @@ export class SubscriptionManagementComponent implements OnInit {
 
   changeSubscriptionType(type) {
     this.selectedCategoryType = type;
-    // this.categoryTypeControl.setValue(type);
+    this.subscriptionTypeControl.setValue(type);
   }
 
   back() {

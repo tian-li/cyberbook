@@ -1,6 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Subscription } from '@spend-book/core/model/subscription';
+import { Category } from '@spend-book/core/model/category';
+import { Subscription, hasSubscriptionEnded } from '@spend-book/core/model/subscription';
 import { RootState } from '@spend-book/core/store';
+import { selectAllSortedCategories } from '@spend-book/core/store/category';
 import * as fromSubscription from '@spend-book/core/store/subscription/subscription.reducer';
 
 const getSelectedSubscriptionId = (state: fromSubscription.State) => state.selectedSubscriptionId;
@@ -27,3 +29,13 @@ export const getSubscriptionCountByCategoryId = createSelector(
     return transitions.filter(t => t.categoryId === props.categoryId).length;
   }
 );
+
+export const selectAllSubscriptionsByActiveStatus = createSelector(
+  selectAllSubscriptions,
+  (subscriptions: Subscription[], props: { active: boolean }) => {
+    return subscriptions.filter((s: Subscription) => {
+      const isActive = !hasSubscriptionEnded(s.endDate);
+      return isActive === props.active;
+    });
+  }
+)
