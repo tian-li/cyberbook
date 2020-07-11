@@ -16,8 +16,11 @@
 
   <div class="category-list">
     <div *ngFor="let subscription of allSubscriptions; last as last; index as index;"
-    [ngStyle]="{'opacity': hasSubscriptionEnded(subscription.endDate) ? 0.5:1}">
-      <app-swipeable-item (swipeResult)="stopSubscription($event, subscription)">
+         [ngStyle]="{'opacity': hasSubscriptionEnded(subscription.endDate) ? 0.5:1}">
+      <app-swipeable-item
+        [canSwipeRight]="!hasSubscriptionEnded(subscription.endDate)"
+        [swipeRightIcon]="'timer_off'"
+        (swipeResult)="onSwipe($event, subscription)">
         <div class="draggable-category-item" (click)="editSubscription(subscription)">
           <div class="category-icon">
             <div class="category-icon-background">
@@ -28,7 +31,7 @@
             </div>
           </div>
 
-          <div class="subscription-details"  [ngClass]="{'category-name-border ': !last}">
+          <div class="subscription-details" [ngClass]="{'category-name-border ': !last}">
             <div class="description-summary">
               <div>
                 <span>{{getDescriptionDisplay(subscription)}}</span>

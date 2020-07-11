@@ -15,24 +15,24 @@
 
 // theme components
 // book
-@import './src/app/book/components/book-header/book-header.component.scss-theme';
-@import './src/app/book/components/date-divider/date-divider.component.scss-theme';
-@import './src/app/book/components/transaction-item/transaction-item.component.scss-theme';
+@import 'app/book/components/book-header/book-header.component.scss-theme';
+@import 'app/book/components/date-divider/date-divider.component.scss-theme';
+@import 'app/book/components/transaction-item/transaction-item.component.scss-theme';
 
 // graph
-@import './src/app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
-@import './src/app/graph/components/graph-header/graph-header.component.scss-theme';
+@import 'app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
+@import 'app/graph/components/graph-header/graph-header.component.scss-theme';
 
 // user
-@import './src/app/user/components/theme-selector/theme-selector.component.scss-theme';
-@import './src/app/user/components/user-home/user-home.component.scss-theme';
-@import './src/app/user/components/profile/profile.component.scss-theme';
-@import './src/app/user/components/manage-categories/manage-categories.component.scss-theme';
-@import './src/app/user/components/subscription-management/subscription-management.component.scss-theme';
-@import './src/app/user/components/category-editor/category-editor.component.scss-theme';
+@import 'app/user/components/theme-selector/theme-selector.component.scss-theme';
+@import 'app/user/components/user-home/user-home.component.scss-theme';
+@import 'app/user/components/profile/profile.component.scss-theme';
+@import 'app/user/components/manage-categories/manage-categories.component.scss-theme';
+@import 'app/user/components/subscription-management/subscription-management.component.scss-theme';
+@import 'app/user/components/category-editor/category-editor.component.scss-theme';
 
 // shared
-@import './src/app/shared/components/nav-bar/nav-bar.component.scss-theme';
+@import 'app/shared/components/nav-bar/nav-bar.component.scss-theme';
 @import 'app/shared/components/type-switcher/type-switcher.component.scss-theme';
 
 @mixin custom-components-theme($theme) {

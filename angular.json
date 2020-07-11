@@ -31,7 +31,11 @@
               "src/styles.scss",
               "src/flex.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "chart.js",
+              "dayjs/locale/zh-cn"
+            ]
           },
           "configurations": {
             "production": {

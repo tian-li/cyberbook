@@ -10,8 +10,7 @@ import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { Category } from '../../../core/model/category';
 import { hasSubscriptionEnded, Subscription } from '../../../core/model/subscription';
 import { fromCategory, fromSubscription, fromUI, fromUser } from '../../../core/store';
-import { loadSubscriptionsByUser, updateSubscription } from '../../../core/store/subscription';
-import { TransactionType, TransactionTypes } from '../../../shared/constants';
+import { loadSubscriptionsByUser, removeSubscription, updateSubscription } from '../../../core/store/subscription';
 import { SwipeResult } from '../../../shared/model/helper-models';
 import { SubscriptionEditorComponent } from '../subscription-editor/subscription-editor.component';
 
@@ -26,9 +25,9 @@ export class SubscriptionManagementComponent implements OnInit {
   readonly hasSubscriptionEnded = hasSubscriptionEnded;
 
   readonly subscriptionTypes = [
-    {value: 'active', display: '进行中'},
-    {value: 'inactive', display: '已结束'},
-  ]
+    { value: 'active', display: '进行中' },
+    { value: 'inactive', display: '已结束' },
+  ];
 
   allSubscriptions: Subscription[];
   categoryEntities: Dictionary<Category>;
@@ -57,7 +56,7 @@ export class SubscriptionManagementComponent implements OnInit {
 
     this.subscriptionTypeControl.valueChanges.pipe(
       startWith(this.defaultSubscriptionType),
-      switchMap((type) => this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: type==='active' }))),
+      switchMap((type) => this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: type === 'active' }))),
       debounceTime(200),
       takeUntil(this.unsubscribe$)
     ).subscribe(allSubscriptions => {
@@ -94,17 +93,13 @@ export class SubscriptionManagementComponent implements OnInit {
     });
   }
 
-  stopSubscription(swipeResult: SwipeResult, subscription) {
+  onSwipe(swipeResult: SwipeResult, subscription: Subscription) {
+    if (swipeResult.direction === 'right' && swipeResult.result) {
+      this.stopSubscription(subscription);
+    }
+
     if (swipeResult.direction === 'left' && swipeResult.result) {
-      this.store.dispatch(updateSubscription({
-        update: {
-          id: subscription.id,
-          changes: {
-            endDate: dayjs().startOf('day').toISOString(),
-            dateModified: dayjs().startOf('day').toISOString(),
-          }
-        }
-      }));
+      this.removeSubscription(subscription);
     }
   }
 
@@ -124,5 +119,21 @@ export class SubscriptionManagementComponent implements OnInit {
       return `, 距离下次还有${dayjs(subscription.nextDate).diff(this.today, 'day')}天`;
     }
     return '';
+  }
+
+  private stopSubscription(subscription: Subscription) {
+    this.store.dispatch(updateSubscription({
+      update: {
+        id: subscription.id,
+        changes: {
+          endDate: dayjs().startOf('day').toISOString(),
+          dateModified: dayjs().startOf('day').toISOString(),
+        }
+      }
+    }));
+  }
+
+  private removeSubscription(subscription: Subscription) {
+    this.store.dispatch(removeSubscription({ id: subscription.id }))
   }
 }

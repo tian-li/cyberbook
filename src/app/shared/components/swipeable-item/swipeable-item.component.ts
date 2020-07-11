@@ -12,68 +12,110 @@ import { SwipeDirection, SwipeInfo, SwipeResult } from '@spend-book/shared/model
       state('out', style({})),
       transition('in => out', animate('0.2s ease-out', style({ transform: 'translateX(-100%)', height: 0 }))),
     ]),
-    trigger('toggleSwipeDelete', [
+    trigger('toggleSwipeActionIcon', [
       state('true', style({})),
       state('false', style({ transform: 'translateX(0)' })),
-      transition('true => false', animate('0.1s ease-out'))
+      transition('true => false', animate('0.2s ease-out'))
     ])
   ]
 })
 export class SwipeableItemComponent {
   readonly defaultSwipeDeleteThreshold = 0.2;
+
   @Input('swipeableItemDisabled') disabled = false;
   @Input('swipeDeleteThreshold') swipeDeleteThreshold: number = this.defaultSwipeDeleteThreshold;
+
+  @Input() canSwipeLeft = true;
+  @Input() swipeLeftColor = '#c84031';
+  @Input() swipeLeftIcon = 'delete';
+
+  @Input() canSwipeRight = false;
+  @Input() swipeRightColor = '#3375e0';
+  @Input() swipeRightIcon = 'info';
 
   @Output() swipeResult = new EventEmitter<SwipeResult>();
 
   flyInOutState = 'in';
 
   // swipe animation
-  showSwipeDelete = false;
+  showSwipeIcon = false;
   widthPercentage = '0%';
   widthPercentageNumber = 0;
   swipeDirection: SwipeDirection;
 
   getTranslateXValue(): string {
-    return `translateX(-${this.widthPercentage})`;
+    let direction = '';
+
+    if (this.swipeDirection === 'left') {
+      direction = '-';
+    }
+
+    return `translateX(${direction}${this.widthPercentage})`;
   }
 
   swipe(swipeInfo: SwipeInfo) {
     this.swipeDirection = swipeInfo.direction;
-    if (swipeInfo.direction === 'left') {
-      this.swipeLeft(swipeInfo)
+
+    if (this.canSwipeLeft && swipeInfo.direction === 'left') {
+      this.swipeLeft(swipeInfo);
+      return;
+    }
+
+    if (this.canSwipeRight && swipeInfo.direction === 'right') {
+      this.swipeRight(swipeInfo);
+      return;
     }
   }
 
   endSwipe(swipeInfo: SwipeInfo) {
-    if (swipeInfo.direction === 'left' && swipeInfo.percentage >= this.swipeDeleteThreshold) {
+    if (this.canSwipeLeft && swipeInfo.direction === 'left' && swipeInfo.percentage >= this.swipeDeleteThreshold) {
       this.playFlyOut();
-    } else {
-      this.cancelSwipe();
+      return;
     }
+    if (this.canSwipeRight && swipeInfo.direction === 'right' && swipeInfo.percentage >= this.swipeDeleteThreshold) {
+      this.swipeResult.emit({ direction: this.swipeDirection, result: true });
+      this.reset();
+      return;
+    }
+
+    this.cancelSwipe();
   }
 
   cancelSwipe() {
-    this.showSwipeDelete = false;
+    this.showSwipeIcon = false;
     this.swipeResult.emit({ direction: this.swipeDirection, result: false });
+    this.reset();
   }
 
   flyOutFinished(event) {
     if (event.triggerName === 'flyInOut' && event.toState === 'out') {
       this.swipeResult.emit({ direction: this.swipeDirection, result: true });
       this.flyInOutState = 'in';
-      this.showSwipeDelete = false;
+      this.showSwipeIcon = false;
     }
+    this.reset();
   }
 
   private swipeLeft(swipeInfo: SwipeInfo) {
-    this.showSwipeDelete = true;
+    this.showSwipeIcon = true;
+    this.widthPercentage = `${(swipeInfo.percentage * 100).toFixed(2)}%`;
+    this.widthPercentageNumber = swipeInfo.percentage;
+  }
+
+  private swipeRight(swipeInfo: SwipeInfo) {
+    this.showSwipeIcon = true;
     this.widthPercentage = `${(swipeInfo.percentage * 100).toFixed(2)}%`;
     this.widthPercentageNumber = swipeInfo.percentage;
   }
 
   private playFlyOut() {
     this.flyInOutState = 'out';
+  }
+
+  private reset() {
+    this.widthPercentage = '0%';
+    this.widthPercentageNumber = 0;
+    this.swipeDirection = undefined;
   }
 
 }
