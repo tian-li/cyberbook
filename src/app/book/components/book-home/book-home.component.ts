@@ -8,9 +8,12 @@ import { fromSubscription, fromTransaction, fromUI, fromUser } from '@spend-book
 import { ISOString } from '@spend-book/shared/model/helper-models';
 import { calculateSubscriptionNextDate } from '@spend-book/shared/utils/calculate-subscription-next-date';
 import * as dayjs from 'dayjs';
+import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, withLatestFrom } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
+
+dayjs.extend(isSameOrAfter);
 
 @Component({
   selector: 'app-book-home',
@@ -46,7 +49,9 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe(([subscriptions, user]: [Subscription[], User]) => {
       subscriptions.forEach((subscription: Subscription) => {
-        if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSame(subscription.nextDate, 'day')) {
+        if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSameOrAfter(subscription.nextDate, 'day')) {
+          console.log('subscription.nextDate', subscription.nextDate);
+
           this.createSubscriptionTransaction(subscription, user.id);
           this.updateSubscription(subscription);
         }
@@ -61,9 +66,9 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       amount: subscription.amount,
       description: subscription.description,
       categoryId: subscription.categoryId,
-      dateCreated: this.today.toISOString(),
-      transactionDate: this.today.toISOString(),
-      dateModified: this.today.toISOString(),
+      dateCreated: dayjs(subscription.nextDate).toISOString(),
+      transactionDate: dayjs(subscription.nextDate).toISOString(),
+      dateModified: dayjs(subscription.nextDate).toISOString(),
       subscriptionId: subscription.id,
     };
 
@@ -71,11 +76,19 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   }
 
   updateSubscription(subscription: Subscription) {
+    let lastDayHappened;
+
+    if(this.today.isSameOrAfter(subscription.nextDate, 'day')) {
+      lastDayHappened = dayjs(subscription.nextDate);
+    } else {
+      lastDayHappened = this.today.clone();
+    }
+
     const nextDate = calculateSubscriptionNextDate(
       subscription.frequency,
       subscription.interval,
       dayjs(subscription.startDate),
-      this.today.startOf('day'),
+      lastDayHappened,
     );
 
     this.store.dispatch(fromSubscription.updateSubscription({

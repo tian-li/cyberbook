@@ -7,6 +7,7 @@ import { Category } from '@spend-book/core/model/category';
 import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
 import { fromCategory } from '@spend-book/core/store';
 import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
+import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
@@ -50,6 +51,9 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('now', this.now.toISOString())
+    console.log('today', this.today.toISOString())
+    console.log('dayjs today', dayjs().startOf('day').toISOString())
     this.store.pipe(
       select(fromCategory.selectCategoryEntities),
       takeUntil(this.unsubscribe$)
