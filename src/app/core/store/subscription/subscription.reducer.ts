@@ -3,7 +3,13 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { logout } from '@spend-book/core/store/user/user.actions';
 
 import { Subscription } from '../../model/subscription';
-import { addSubscriptionSuccess, loadSubscriptionsByUserSuccess, removeSubscription, updateSubscriptionSuccess } from './subscription.actions';
+import {
+  addSubscriptionSuccess,
+  loadSubscriptionsByUserSuccess,
+  removeSubscription,
+  stopSubscriptionSuccess,
+  updateSubscriptionSuccess
+} from './subscription.actions';
 
 export const subscriptionFeatureKey = 'subscription';
 
@@ -30,6 +36,8 @@ const reducer = createReducer(
       selectedSubscriptionId: subscription.id,
     })),
   on(updateSubscriptionSuccess, (state, { update }) =>
+    adapter.updateOne(update, { ...state, selectedSubscriptionId: update.id })),
+  on(stopSubscriptionSuccess, (state, { update }) =>
     adapter.updateOne(update, { ...state, selectedSubscriptionId: update.id })),
   on(removeSubscription, (state, { id }) =>
     adapter.removeOne(id, { ...state, selectedSubscriptionId: null })),

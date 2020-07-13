@@ -49,9 +49,9 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe(([subscriptions, user]: [Subscription[], User]) => {
       subscriptions.forEach((subscription: Subscription) => {
+        // TODO: server should automatically add subscription transactions on a new day
+        //  move this logic to server
         if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSameOrAfter(subscription.nextDate, 'day')) {
-          console.log('subscription.nextDate', subscription.nextDate);
-
           this.createSubscriptionTransaction(subscription, user.id);
           this.updateSubscription(subscription);
         }
@@ -76,19 +76,11 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   }
 
   updateSubscription(subscription: Subscription) {
-    let lastDayHappened;
-
-    if(this.today.isSameOrAfter(subscription.nextDate, 'day')) {
-      lastDayHappened = dayjs(subscription.nextDate);
-    } else {
-      lastDayHappened = this.today.clone();
-    }
-
     const nextDate = calculateSubscriptionNextDate(
       subscription.frequency,
       subscription.interval,
       dayjs(subscription.startDate),
-      lastDayHappened,
+      dayjs(subscription.nextDate)
     );
 
     this.store.dispatch(fromSubscription.updateSubscription({

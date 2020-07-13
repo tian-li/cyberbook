@@ -1,9 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Category } from '@spend-book/core/model/category';
-import { Subscription, hasSubscriptionEnded } from '@spend-book/core/model/subscription';
+import { hasSubscriptionEnded, Subscription } from '@spend-book/core/model/subscription';
 import { RootState } from '@spend-book/core/store';
-import { selectAllSortedCategories } from '@spend-book/core/store/category';
 import * as fromSubscription from '@spend-book/core/store/subscription/subscription.reducer';
+import * as dayjs from 'dayjs';
 
 const getSelectedSubscriptionId = (state: fromSubscription.State) => state.selectedSubscriptionId;
 
@@ -23,19 +22,36 @@ export const {
   selectTotal: selectSubscriptionTotal,
 } = fromSubscription.adapter.getSelectors(selectSubscriptionState);
 
+export const selectAllSubscriptionsOrderByModifiedDate = createSelector(
+  selectAllSubscriptions,
+  (subscriptions: Subscription[]) => {
+    return subscriptions.sort((a, b) => {
+      return dayjs(b.dateModified).valueOf() - dayjs(a.dateModified).valueOf();
+    });
+  }
+);
+
 export const getSubscriptionCountByCategoryId = createSelector(
   selectAllSubscriptions,
-  (transitions: Subscription[], props: { categoryId: string }) => {
-    return transitions.filter(t => t.categoryId === props.categoryId).length;
+  (subscriptions: Subscription[], props: { categoryId: string }) => {
+    return subscriptions.filter(s => s.categoryId === props.categoryId).length;
   }
 );
 
 export const selectAllSubscriptionsByActiveStatus = createSelector(
-  selectAllSubscriptions,
+  selectAllSubscriptionsOrderByModifiedDate,
   (subscriptions: Subscription[], props: { active: boolean }) => {
-    return subscriptions.filter((s: Subscription) => {
+    const filteredSubscriptions = subscriptions.filter((s: Subscription) => {
       const isActive = !hasSubscriptionEnded(s.endDate);
       return isActive === props.active;
     });
+
+    if (!props.active) {
+      return filteredSubscriptions.sort((a, b) => {
+        return dayjs(b.endDate).valueOf() - dayjs(a.endDate).valueOf();
+      })
+    } else {
+      return filteredSubscriptions;
+    }
   }
 )

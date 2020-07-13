@@ -1,7 +1,4 @@
-<!--<div class="loading" *ngIf="loading">-->
-<!--  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>-->
-<!--</div>-->
-<div class="manage-categories-container" #list>
+<div class="manage-categories-container">
   <div class="header">
     <div class="return-button">
       <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
@@ -15,8 +12,7 @@
   </div>
 
   <div class="category-list">
-    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;"
-         [ngStyle]="{'opacity': hasSubscriptionEnded(subscription.endDate) ? 0.5:1}">
+    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
       <app-swipeable-item
         [canSwipeRight]="!hasSubscriptionEnded(subscription.endDate)"
         [swipeRightIcon]="'timer_off'"
@@ -37,10 +33,17 @@
                 <span>{{getDescriptionDisplay(subscription)}}</span>
                 <span class="tag-ended-subscription" *ngIf="hasSubscriptionEnded(subscription.endDate)">已结束</span>
               </div>
-              <div class="summary">{{subscription.summary}}{{getDaysUntilNextDate(subscription)}}</div>
+              <div class="quick-overview">
+                {{quickOverview(subscription)}}
+              </div>
             </div>
-            <div class="amount" [ngStyle]="{ 'color': subscription.amount > 0 ? 'green' : 'red' }">
-              {{subscription.amount.toFixed(2)}}
+            <div class="amount-info">
+              <div class="amount" [ngStyle]="{ 'color': subscription.amount > 0 ? 'green' : 'red' }">
+                {{subscription.amount.toFixed(2)}}
+              </div>
+              <div class="total-amount">
+                总计：{{subscription.totalAmount.toFixed(2)}}
+              </div>
             </div>
           </div>
         </div>

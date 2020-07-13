@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Update } from '@ngrx/entity';
+import * as dayjs from 'dayjs';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -30,6 +31,14 @@ export class SubscriptionService {
 
   updateSubscription(subscription: Update<Subscription>): Observable<Subscription> {
     return <Observable<Subscription>>this.http.patch(`${this.subscriptionRoute}/${subscription.id}`, subscription.changes);
+  }
+
+  stopSubscription(id: string): Observable<Subscription> {
+    const changes = {
+      endDate: dayjs().startOf('day').toISOString(),
+      dateModified: dayjs().toISOString(),
+    }
+    return <Observable<Subscription>>this.http.patch(`${this.subscriptionRoute}/${id}`, changes);
   }
 
   removeSubscription(id: string): Observable<any> {

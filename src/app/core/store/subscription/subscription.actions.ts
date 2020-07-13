@@ -1,6 +1,5 @@
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
-
 import { Subscription } from '../../model/subscription';
 
 export const loadSubscriptionsByUser = createAction(
@@ -27,6 +26,15 @@ export const updateSubscription = createAction(
 );
 export const updateSubscriptionSuccess = createAction(
   '[Subscription] Update Subscription Success',
+  props<{ update: Update<Subscription> }>()
+);
+
+export const stopSubscription = createAction(
+  '[Subscription] Stop Subscription',
+  props<{ id: string }>()
+);
+export const stopSubscriptionSuccess = createAction(
+  '[Subscription] Stop Subscription Success',
   props<{ update: Update<Subscription> }>()
 );
 

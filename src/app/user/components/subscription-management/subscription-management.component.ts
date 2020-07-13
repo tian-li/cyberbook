@@ -4,14 +4,14 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
+import { Category } from '@spend-book/core/model/category';
+import { hasSubscriptionEnded, Subscription } from '@spend-book/core/model/subscription';
+import { fromCategory, fromSubscription, fromUI, fromUser } from '@spend-book/core/store';
+import { loadSubscriptionsByUser, removeSubscription, stopSubscription } from '@spend-book/core/store/subscription';
+import { SwipeResult } from '@spend-book/shared/model/helper-models';
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
-import { Category } from '../../../core/model/category';
-import { hasSubscriptionEnded, Subscription } from '../../../core/model/subscription';
-import { fromCategory, fromSubscription, fromUI, fromUser } from '../../../core/store';
-import { loadSubscriptionsByUser, removeSubscription, updateSubscription } from '../../../core/store/subscription';
-import { SwipeResult } from '../../../shared/model/helper-models';
 import { SubscriptionEditorComponent } from '../subscription-editor/subscription-editor.component';
 
 @Component({
@@ -114,23 +114,16 @@ export class SubscriptionManagementComponent implements OnInit {
     return subscription.description ? subscription.description : this.categoryEntities[subscription.categoryId].name;
   }
 
-  getDaysUntilNextDate(subscription: Subscription): string {
+  quickOverview(subscription: Subscription): string {
     if (!this.hasSubscriptionEnded(subscription.endDate)) {
-      return `, 距离下次还有${dayjs(subscription.nextDate).diff(this.today, 'day')}天`;
+      return `${subscription.summary}, 距离下次还有${dayjs(subscription.nextDate).diff(this.today, 'day')}天`;
+    } else {
+      return `已于${dayjs(subscription.endDate).format('YYYY年MM月DD日')}结束`;
     }
-    return '';
   }
 
   private stopSubscription(subscription: Subscription) {
-    this.store.dispatch(updateSubscription({
-      update: {
-        id: subscription.id,
-        changes: {
-          endDate: dayjs().startOf('day').toISOString(),
-          dateModified: dayjs().startOf('day').toISOString(),
-        }
-      }
-    }));
+    this.store.dispatch(stopSubscription({ id: subscription.id }));
   }
 
   private removeSubscription(subscription: Subscription) {
