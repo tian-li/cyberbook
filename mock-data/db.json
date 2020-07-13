@@ -15,6 +15,12 @@
       "username": "新用户d2e4",
       "registered": false,
       "registeredDate": "07/12/2020"
+    },
+    {
+      "id": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "username": "新用户a68b",
+      "registered": false,
+      "registeredDate": "07/12/2020"
     }
   ],
   "category": [
@@ -191,6 +197,106 @@
     {
       "userId": "d2e4f371-69bc-4cae-bb36-89dd15c652f4",
       "id": "612a3cf5-5c2f-4d97-9ab9-21f11fe91d24",
+      "addedByUser": false,
+      "name": "工资",
+      "icon": "local_atm",
+      "color": "#5DA5DA",
+      "type": "income",
+      "sortOrder": 1
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "b0329b1b-68af-4ad3-88c5-52ac6358c6f9",
+      "addedByUser": false,
+      "name": "超市",
+      "icon": "storefront",
+      "color": "#f76464",
+      "type": "spend",
+      "sortOrder": 0
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "7d61c776-df7f-49fc-975e-533eeab68c1d",
+      "addedByUser": false,
+      "name": "餐饮",
+      "icon": "restaurant",
+      "color": "#5DA5DA",
+      "type": "spend",
+      "sortOrder": 1
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "142e04c6-152a-42e4-8030-ff1396643564",
+      "addedByUser": false,
+      "name": "交通",
+      "icon": "commute",
+      "color": "#FAA43A",
+      "type": "spend",
+      "sortOrder": 2
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "45ed5a54-72e1-46cf-9f49-f67b56b30985",
+      "addedByUser": false,
+      "name": "娱乐",
+      "icon": "live_tv",
+      "color": "#60BD68",
+      "type": "spend",
+      "sortOrder": 3
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "43fb2a76-114c-48f2-908f-1c15387aa88b",
+      "addedByUser": false,
+      "name": "住房",
+      "icon": "house",
+      "color": "#F17CB0",
+      "type": "spend",
+      "sortOrder": 4
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "e37b9d4b-e042-4d51-a0ac-59c78ee7f372",
+      "addedByUser": false,
+      "name": "宠物",
+      "icon": "pets",
+      "color": "#B2912F",
+      "type": "spend",
+      "sortOrder": 5
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "3689b365-2f32-4385-a51b-39430c094f2d",
+      "addedByUser": false,
+      "name": "学习",
+      "icon": "school",
+      "color": "#B276B2",
+      "type": "spend",
+      "sortOrder": 6
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "40afb1c0-4859-4400-99e0-935e5f4d34e0",
+      "addedByUser": false,
+      "name": "其他",
+      "icon": "category",
+      "color": "#DECF3F",
+      "type": "spend",
+      "sortOrder": 7
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "912ae6b0-9f56-489a-93f8-1e30febe68c3",
+      "addedByUser": false,
+      "name": "投资",
+      "icon": "account_balance_wallet",
+      "color": "#f76464",
+      "type": "income",
+      "sortOrder": 0
+    },
+    {
+      "userId": "a68b28d1-adba-4c0a-b135-c71ea0f75706",
+      "id": "3deccf3c-7a6b-4ee6-9e15-e6895a4b5b4c",
       "addedByUser": false,
       "name": "工资",
       "icon": "local_atm",
