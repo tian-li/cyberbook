@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   test: true,
   appName: "Spend Book",
-  server: "http://192.168.50.115:3000"
+  server: "http://192.168.0.228:3000"
+  // server: "http://localhost:3000"
 };
 
 /*

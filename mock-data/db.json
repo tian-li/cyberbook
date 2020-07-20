@@ -433,6 +433,22 @@
       "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
       "totalAmount": 0,
       "dateCreated": "2020-07-12T05:00:00.000Z"
+    },
+    {
+      "nextDate": "2020-07-20T05:00:00.000Z",
+      "amount": -56,
+      "description": null,
+      "frequency": "星期",
+      "interval": 1,
+      "startDate": "2020-07-13T05:00:00.000Z",
+      "endDate": null,
+      "categoryId": "dcc15f63-81d1-44fb-a8ae-5e1328ce017b",
+      "dateModified": "2020-07-13T05:00:00.000Z",
+      "summary": "每个星期的星期一",
+      "id": "36ba9591-e008-450c-9cf2-0960660e4cbc",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "totalAmount": -112,
+      "dateCreated": "2020-07-13T05:00:00.000Z"
     }
   ],
   "transaction": [
@@ -577,6 +593,48 @@
       "transactionDate": "2020-07-12T05:00:00.000Z",
       "dateModified": "2020-07-12T05:00:00.000Z",
       "subscriptionId": "2308ed13-50c2-4ef8-aee9-cdb23a52a6ec"
+    },
+    {
+      "id": "b0492aea-b31e-4793-a6ea-a0641815c9aa",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "amount": -56,
+      "description": null,
+      "categoryId": "fcd14102-4560-47d0-973b-af78d22af208",
+      "dateCreated": "2020-07-13T05:00:00.000Z",
+      "transactionDate": "2020-07-13T05:00:00.000Z",
+      "dateModified": "2020-07-13T05:00:00.000Z",
+      "subscriptionId": "36ba9591-e008-450c-9cf2-0960660e4cbc"
+    },
+    {
+      "id": "209a60ed-8b07-428f-ab23-7fea4fb061be",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "amount": -56,
+      "description": null,
+      "categoryId": "dcc15f63-81d1-44fb-a8ae-5e1328ce017b",
+      "dateCreated": "2020-07-13T05:00:00.000Z",
+      "transactionDate": "2020-07-13T05:00:00.000Z",
+      "dateModified": "2020-07-13T05:00:00.000Z",
+      "subscriptionId": "36ba9591-e008-450c-9cf2-0960660e4cbc"
+    },
+    {
+      "amount": -12,
+      "description": null,
+      "categoryId": "8cb584fb-0090-4dad-a34c-8cd7fbb0e72a",
+      "transactionDate": "2020-07-13T05:00:00.000Z",
+      "dateModified": "2020-07-13T05:00:00.000Z",
+      "id": "1b83edfb-a8f7-4bfb-be25-5ad4e925d695",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "dateCreated": "2020-07-13T05:00:00.000Z"
+    },
+    {
+      "amount": -6,
+      "description": null,
+      "categoryId": "828c956d-2b9b-4fcd-adbb-eb7dc9ed58aa",
+      "transactionDate": "2020-07-13T05:00:00.000Z",
+      "dateModified": "2020-07-13T05:00:00.000Z",
+      "id": "7eca2d98-a8d1-464a-8ae7-97ce3d8de525",
+      "userId": "2f58f9f3-7534-422a-b2e3-269ed266a094",
+      "dateCreated": "2020-07-13T05:00:00.000Z"
     }
   ]
 }
