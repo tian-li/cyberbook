@@ -4,7 +4,7 @@ import { ISOString } from '../model/helper-models';
 
 export function calculateSubscriptionNextDate(
   frequency: SubscriptionFrequencyTypes,
-  interval: number,
+  period: number,
   startDate: dayjs.Dayjs,
   latestHappenDate: dayjs.Dayjs | null
 ): ISOString {
@@ -14,13 +14,13 @@ export function calculateSubscriptionNextDate(
 
   switch (frequency) {
     case SubscriptionFrequencyTypes.day:
-      return latestHappenDate.add(interval, 'day').toISOString();
+      return latestHappenDate.add(period, 'day').toISOString();
     case SubscriptionFrequencyTypes.week:
-      return latestHappenDate.add(interval, 'week').toISOString();
+      return latestHappenDate.add(period, 'week').toISOString();
     case SubscriptionFrequencyTypes.month:
-      return latestHappenDate.add(interval, 'month').toISOString();
+      return latestHappenDate.add(period, 'month').toISOString();
     case SubscriptionFrequencyTypes.year:
-      return latestHappenDate.add(interval, 'year').toISOString();
+      return latestHappenDate.add(period, 'year').toISOString();
     default:
       return startDate.toISOString();
   }

@@ -40,9 +40,9 @@ export class TransactionService {
   private convertToTransaction(responseData): Transaction {
     return {
       ...responseData,
-      transactionDate: dayjs(responseData.transactionDate).toISOString(),
-      dateCreated: dayjs(responseData.dateCreated).toISOString(),
-      dateModified: dayjs(responseData.dateModified).toISOString(),
+      // transactionDate: dayjs(responseData.transactionDate).toISOString(),
+      // dateCreated: dayjs(responseData.dateCreated).toISOString(),
+      // dateModified: dayjs(responseData.dateModified).toISOString(),
     }
   }
 }

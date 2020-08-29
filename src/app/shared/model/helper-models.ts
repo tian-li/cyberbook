@@ -1,6 +1,6 @@
 import { AlertLevel } from '@spend-book/shared/constants';
 
-export type ISOString = string;
+export type ISOString = string; //
 export type FullDateType = string;
 export const FullDate = 'MM/DD/YYYY';
 

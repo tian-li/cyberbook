@@ -9,8 +9,7 @@ export interface Subscription {
   amount: number;
   description: string;
   frequency: SubscriptionFrequencyTypes;
-  interval: number;
-  // every: number;
+  period: number;
   startDate: ISOString;
   endDate: ISOString;
   categoryId: string;
@@ -24,15 +23,15 @@ export interface Subscription {
 export interface FrequencyInfo {
   frequency: SubscriptionFrequencyTypes | 'custom';
   display: string;
-  interval?: number;
+  period?: number;
   every?: string| number;
 }
 
 export enum SubscriptionFrequencyTypes {
-  day = '天',
-  week = '星期',
-  month = '月',
-  year = '年',
+  day,
+  week,
+  month,
+  year,
 }
 
 export const subscriptionFrequencies = [

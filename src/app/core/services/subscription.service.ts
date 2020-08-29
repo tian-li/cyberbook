@@ -17,26 +17,19 @@ export class SubscriptionService {
   }
 
   loadSubscriptionsByUser(userId: string): Observable<Subscription[]> {
-    return <Observable<Subscription[]>>this.http.get(`${this.subscriptionRoute}`, { params: { userId } }).pipe(
+    return <Observable<Subscription[]>>this.http.get(`${this.subscriptionRoute}`).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   addSubscription(subscription: Partial<Subscription>): Observable<Subscription> {
-    // TODO: remove after server can do this
-    subscription = {
-      ...subscription,
-      dateCreated: subscription.dateCreated,
-      dateModified: subscription.dateCreated,
-    }
-
     return <Observable<Subscription>>this.http.post(`${this.subscriptionRoute}`, subscription).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   updateSubscription(subscription: Update<Subscription>): Observable<Subscription> {
-    return <Observable<Subscription>>this.http.patch(`${this.subscriptionRoute}/${subscription.id}`, subscription.changes).pipe(
+    return <Observable<Subscription>>this.http.put(`${this.subscriptionRoute}/${subscription.id}`, subscription.changes).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
@@ -44,9 +37,9 @@ export class SubscriptionService {
   stopSubscription(id: string): Observable<Subscription> {
     const changes = {
       endDate: dayjs().startOf('day').toISOString(),
-      dateModified: dayjs().toISOString(),
+      // dateModified: dayjs().toISOString(),
     }
-    return <Observable<Subscription>>this.http.patch(`${this.subscriptionRoute}/${id}`, changes).pipe(
+    return <Observable<Subscription>>this.http.post(`${this.subscriptionRoute}/stop/${id}`, changes).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }

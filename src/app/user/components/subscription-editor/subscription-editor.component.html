@@ -44,21 +44,21 @@
 
     <!-- 频率 -->
     <div class="frequencies">
-      <mat-form-field class="interval">
+      <mat-form-field class="period">
         <mat-label>间隔</mat-label>
-        <mat-select formControlName="interval" required>
-          <mat-option *ngFor="let interval of intervals" [value]="interval">
-            <div class="category-label">{{interval}}</div>
+        <mat-select formControlName="period" required>
+          <mat-option *ngFor="let period of periods" [value]="period">
+            <div class="category-label">{{period}}</div>
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="formGroup.controls['interval'].hasError('required')">必填</mat-error>
+        <mat-error *ngIf="formGroup.controls['period'].hasError('required')">必填</mat-error>
       </mat-form-field>
 
       <mat-form-field class="frequency">
         <mat-label>频率</mat-label>
         <mat-select formControlName="frequency" required>
-          <mat-option *ngFor="let frequency of frequencies" [value]="frequency">
-            <div class="category-label">{{frequency}}</div>
+          <mat-option *ngFor="let frequency of frequencies" [value]="frequency.value">
+            <div class="category-label">{{frequency.display}}</div>
           </mat-option>
         </mat-select>
         <mat-error *ngIf="formGroup.controls['frequency'].hasError('required')">必填</mat-error>

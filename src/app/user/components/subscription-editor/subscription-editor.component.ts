@@ -29,11 +29,11 @@ export class SubscriptionEditorComponent implements OnInit {
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
   readonly TransactionType = TransactionTypes;
-  readonly frequencies: SubscriptionFrequencyTypes[] = [
-    SubscriptionFrequencyTypes.day,
-    SubscriptionFrequencyTypes.week,
-    SubscriptionFrequencyTypes.month,
-    SubscriptionFrequencyTypes.year,
+  readonly frequencies: { value: SubscriptionFrequencyTypes, display: string }[] = [
+    {value: SubscriptionFrequencyTypes.day, display: '天'},
+    {value: SubscriptionFrequencyTypes.week, display: '星期'},
+    {value: SubscriptionFrequencyTypes.month, display: '月'},
+    {value: SubscriptionFrequencyTypes.year, display: '年'},
   ];
 
   readonly categoryTypes = [
@@ -41,7 +41,7 @@ export class SubscriptionEditorComponent implements OnInit {
     {value: 'income', display: '收入'},
   ];
 
-  intervals: number[] = [];
+  periods: number[] = [];
   loading: boolean;
   title: string;
   formGroup: FormGroup;
@@ -60,7 +60,7 @@ export class SubscriptionEditorComponent implements OnInit {
     dayjs.locale('zh-cn');
 
     for (let i = 1; i <= 99; i++) {
-      this.intervals.push(i);
+      this.periods.push(i);
     }
   }
 
@@ -116,7 +116,7 @@ export class SubscriptionEditorComponent implements OnInit {
 
     const nextDate: ISOString = calculateSubscriptionNextDate(
       formValue.frequency,
-      formValue.interval,
+      formValue.period,
       dayjs(formValue.startDate),
       null,
     );
@@ -132,9 +132,9 @@ export class SubscriptionEditorComponent implements OnInit {
       amount,
       description: formValue.description ? formValue.description.trim() : null,
       frequency: formValue.frequency,
-      interval: formValue.interval,
+      period: formValue.period,
       startDate: dayjs(formValue.startDate).toISOString(),
-      endDate: formValue.endDate ? formValue.endDate.toISOString() : null,
+      endDate: formValue.endDate ? dayjs(formValue.endDate).toISOString() : null,
       categoryId: formValue.categoryId,
       dateModified: this.today.toISOString(),
       summary: this.summary
@@ -170,8 +170,8 @@ export class SubscriptionEditorComponent implements OnInit {
     return dayjs(this.startDateControlValue).format('dddd');
   }
 
-  get intervalControlValue(): number {
-    return this.formGroup.controls['interval'].value;
+  get periodControlValue(): number {
+    return this.formGroup.controls['period'].value;
   }
 
   get frequencyControlValue(): SubscriptionFrequencyTypes {
@@ -183,33 +183,33 @@ export class SubscriptionEditorComponent implements OnInit {
   }
 
   get showSummary(): boolean {
-    return !!this.intervalControlValue && !!this.frequencyControlValue && !!this.startDateControlValue;
+    return !!this.periodControlValue && !!this.frequencyControlValue && !!this.startDateControlValue;
   }
 
   get summary(): string {
     let summary: string;
-    let intervalStr: string | number;
+    let periodStr: string | number;
 
-    if (this.intervalControlValue === 1) {
-      intervalStr = '';
-    } else if (this.intervalControlValue === 2) {
-      intervalStr = '两'
+    if (this.periodControlValue === 1) {
+      periodStr = '';
+    } else if (this.periodControlValue === 2) {
+      periodStr = '两'
     } else {
-      intervalStr = this.intervalControlValue;
+      periodStr = this.periodControlValue;
     }
 
     switch (this.frequencyControlValue) {
       case SubscriptionFrequencyTypes.day:
-        summary = `每${intervalStr}天`;
+        summary = `每${periodStr}天`;
         break;
       case SubscriptionFrequencyTypes.week:
-        summary = `每${intervalStr}个星期的${dayjs(this.startDateControlValue).format('dddd')}`
+        summary = `每${periodStr}个星期的${dayjs(this.startDateControlValue).format('dddd')}`
         break;
       case SubscriptionFrequencyTypes.month:
-        summary = `每${intervalStr}个月的${dayjs(this.startDateControlValue).format('D号')}`
+        summary = `每${periodStr}个月的${dayjs(this.startDateControlValue).format('D号')}`
         break;
       case SubscriptionFrequencyTypes.year:
-        summary = `每${intervalStr}年的${dayjs(this.startDateControlValue).format('M月D号')}`
+        summary = `每${periodStr}年的${dayjs(this.startDateControlValue).format('M月D号')}`
         break;
       default:
         break;
@@ -227,7 +227,7 @@ export class SubscriptionEditorComponent implements OnInit {
       startDate: new FormControl(initialFormData.startDate),
       endDate: new FormControl(initialFormData.endDate),
       frequency: new FormControl(initialFormData.frequency),
-      interval: new FormControl(initialFormData.interval),
+      period: new FormControl(initialFormData.period),
     });
   }
 
@@ -238,12 +238,12 @@ export class SubscriptionEditorComponent implements OnInit {
         description: this.data.subscription.description,
         categoryId: this.data.subscription.categoryId,
         frequency: this.data.subscription.frequency,
-        interval: this.data.subscription.interval,
+        period: this.data.subscription.period,
         startDate: this.data.subscription.startDate,
         endDate: this.data.subscription.endDate,
       } :
       {
-        interval: 1,
+        period: 1,
         startDate: this.today.toISOString(),
       };
   }

@@ -51,10 +51,10 @@ export class BookHomeComponent implements OnInit, OnDestroy {
       subscriptions.forEach((subscription: Subscription) => {
         // TODO: server should automatically add subscription transactions on a new day
         //  move this logic to server
-        if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSameOrAfter(subscription.nextDate, 'day')) {
-          this.createSubscriptionTransaction(subscription, user.id);
-          this.updateSubscription(subscription);
-        }
+        // if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSameOrAfter(subscription.nextDate, 'day')) {
+        //   this.createSubscriptionTransaction(subscription, user.id);
+        //   this.updateSubscription(subscription);
+        // }
       });
     });
   }
@@ -78,7 +78,7 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   updateSubscription(subscription: Subscription) {
     const nextDate = calculateSubscriptionNextDate(
       subscription.frequency,
-      subscription.interval,
+      subscription.period,
       dayjs(subscription.startDate),
       dayjs(subscription.nextDate)
     );
