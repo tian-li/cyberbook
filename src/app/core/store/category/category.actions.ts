@@ -16,10 +16,3 @@ export const updateCategorySuccess = createAction('[Category] Update Category Su
 
 export const removeCategory = createAction('[Category] Remove Category', props<{ id: string }>());
 export const removeCategorySuccess = createAction('[Category] Remove Category Success');
-
-// TODO: remove after backend is ready
-export const addDefaultCategoriesToUser = createAction('[Category] Add Default Categories', props<{ userId: string }>());
-export const addDefaultCategoriesToUserSuccess = createAction(
-  '[Category] Add Default Categories Success',
-  props<{ categories: Category[] }>()
-);

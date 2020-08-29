@@ -7,10 +7,8 @@ import { Category } from '@spend-book/core/model/category';
 import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
 import { fromCategory } from '@spend-book/core/store';
 import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
-import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
-import { v4 as uuid } from 'uuid';
 import { TransactionTypes, years } from '../../constants';
 
 @Component({
@@ -51,9 +49,6 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('now', this.now.toISOString())
-    console.log('today', this.today.toISOString())
-    console.log('dayjs today', dayjs().startOf('day').toISOString())
     this.store.pipe(
       select(fromCategory.selectCategoryEntities),
       takeUntil(this.unsubscribe$)
@@ -96,7 +91,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   }
 
   delete() {
-    this.store.dispatch(removeTransaction({id: this.data.transaction.id}));
+    this.store.dispatch(removeTransaction({ id: this.data.transaction.id }));
   }
 
   private get editedTransaction(): Partial<Transaction> {
@@ -111,27 +106,13 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
       amount,
       description: formValue.description,
       categoryId: formValue.categoryId,
-      transactionDate: typeof formValue.transactionDate === 'string' ?
-        formValue.transactionDate : formValue.transactionDate.toISOString(),
-      dateModified: this.now.toISOString(),
     };
 
     if (this.data.editMode) {
       transaction = {
         ...transaction,
         id: this.data.transaction.id,
-        userId: this.data.transaction.userId,
-
-        // TODO: remove after server can do this
-        dateCreated: this.data.transaction.dateCreated
       };
-    } else {
-      transaction = {
-        ...transaction,
-        id: uuid(),
-        userId: this.data.userId,
-        dateCreated: this.now.toISOString()
-      }
     }
 
     return transaction;

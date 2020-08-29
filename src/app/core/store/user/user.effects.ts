@@ -4,17 +4,15 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { User } from '@spend-book/core/model/user';
 import { UserService } from '@spend-book/core/services/user.service';
-import { addDefaultCategoriesToUser } from '@spend-book/core/store/category';
 import { notifyWithSnackBar } from '@spend-book/core/store/notification';
-import { createTempUser } from '@spend-book/shared/utils/create-temp-user';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import {
-  loginWithLocalToken,
-  loginWithLocalTokenSuccess,
   login,
   loginSuccess,
+  loginWithLocalToken,
+  loginWithLocalTokenSuccess,
   logout,
   register,
   registerSuccess,
@@ -54,17 +52,9 @@ export class UserEffects {
           map((user: User) => {
             this.saveUserToLocalstorage(user);
             return loginWithLocalTokenSuccess({ user });
-
           }),
           catchError((error: HttpErrorResponse) => {
-            // if (error.status === 404) {
-            //   return of(
-            //     notifyWithSnackBar({ snackBar: { message: '本地用户不存在，创建新临时用户' } }),
-            //     registerTempUser({ user: createTempUser() })
-            //   )
-            // } else {
-              return of(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }))
-            // }
+            return of(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }))
           })
         )
       )
@@ -92,18 +82,12 @@ export class UserEffects {
   registerTempUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(registerTempUser),
-      switchMap(action =>
+      switchMap(() =>
         this.userService.registerTempUser().pipe(
           map((user: User) => {
             this.saveUserToLocalstorage(user);
-            // if (user.registered) {
-              this.router.navigate(['/user']);
-            // }
+            this.router.navigate(['/user']);
             return registerTempUserSuccess({ user });
-            // return [
-            //   registerTempUserSuccess({ user }),
-            //   // addDefaultCategoriesToUser({ userId: user.id })
-            // ];
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
         )

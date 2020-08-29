@@ -31,13 +31,23 @@ export class CategoryService {
   }
 
   addCategory(category: Partial<Category>): Observable<Category> {
-    return <Observable<Category>>this.http.post(`${this.categoryRoute}`, category).pipe(
+    const payload = {
+      ...category,
+      isSpend: category.type === TransactionTypes.spend
+    };
+
+    return <Observable<Category>>this.http.post(`${this.categoryRoute}`, payload).pipe(
       map((res: CyberbookServerResponse) => this.convertToCategory(res.data))
     );
   }
 
   updateCategory(category: Partial<Category>): Observable<Category> {
-    return <Observable<Category>>this.http.put(`${this.categoryRoute}/${category.id}`, category).pipe(
+    const payload = {
+      ...category,
+      isSpend: category.type === TransactionTypes.spend
+    };
+
+    return <Observable<Category>>this.http.put(`${this.categoryRoute}/${category.id}`, payload).pipe(
       map((res: CyberbookServerResponse) => this.convertToCategory(res.data))
     );
   }

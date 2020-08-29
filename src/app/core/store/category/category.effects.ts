@@ -9,8 +9,6 @@ import { CategoryService } from '../../services/category.service';
 import {
   addCategory,
   addCategorySuccess,
-  addDefaultCategoriesToUser,
-  addDefaultCategoriesToUserSuccess,
   loadCategoriesByUser,
   loadCategoriesByUserSuccess,
   removeCategory,
@@ -39,20 +37,6 @@ export class CategoryEffects {
       mergeMap(action =>
         this.categoryService.addCategory(action.category).pipe(
           map((category: Category) => addCategorySuccess({ category })),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '添加类别失败，请稍后重试' } })))
-        ))
-    )
-  );
-
-  addDefaultCategoriesToUser$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(addDefaultCategoriesToUser),
-      mergeMap(action =>
-        this.categoryService.addDefaultCategories(action.userId).pipe(
-          map((categories: Category[]) => {
-            console.log('categories', categories);
-            return addDefaultCategoriesToUserSuccess({ categories });
-          }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '添加类别失败，请稍后重试' } })))
         ))
     )
