@@ -1,11 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '@spend-book/core/model/user';
 import {
-  loadUserFromLocalStorageSuccess,
+  loginWithLocalTokenSuccess,
   loginSuccess,
   logout,
   registerSuccess,
-  registerTempUserSuccess, saveTempUserSuccess,
+  registerTempUserSuccess,
   updateProfileSuccess
 } from './user.actions';
 
@@ -29,13 +29,13 @@ export const initialState: State = {
 const reducer = createReducer(
   initialState,
   on(updateProfileSuccess, (state, { user }) => ({ ...state, user: { ...state.user, ...user }, isAuthenticated: true })),
-  on(loginSuccess, registerSuccess, registerTempUserSuccess, saveTempUserSuccess, (state, { user }) => ({
+  on(loginSuccess, registerSuccess, registerTempUserSuccess, (state, { user }) => ({
     ...state,
     user,
     isAuthenticated: true
   })),
 
-  on(loadUserFromLocalStorageSuccess, (state, { user }) => {
+  on(loginWithLocalTokenSuccess, (state, { user }) => {
     return {
       ...state,
       user,

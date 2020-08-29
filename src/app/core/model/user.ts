@@ -9,4 +9,5 @@ export interface User {
   gender: string;
   birthday: ISOString;
   registered: boolean;
+  jwtToken: string;
 }

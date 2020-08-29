@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { UserService } from '@spend-book/core/services/user.service';
 import { getUserIdFromLocalStorage } from '@spend-book/shared/utils/get-user-from-localstorage';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class CanRegisterGuard implements CanActivate {
@@ -17,13 +17,16 @@ export class CanRegisterGuard implements CanActivate {
       return of(true);
     }
 
-    return this.userService.getUserById(userId).pipe(
+    return this.userService.loginWithToken().pipe(
       switchMap(user => {
         if (user.registered) {
           return of(false)
         } else {
           return of(true)
         }
+      }),
+      catchError(e => {
+        return of(true);
       })
     )
   }
