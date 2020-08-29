@@ -6,6 +6,7 @@ import {
   logout,
   registerSuccess,
   registerTempUserSuccess,
+  saveTempUserSuccess,
   updateProfileSuccess
 } from './user.actions';
 
@@ -29,7 +30,7 @@ export const initialState: State = {
 const reducer = createReducer(
   initialState,
   on(updateProfileSuccess, (state, { user }) => ({ ...state, user: { ...state.user, ...user }, isAuthenticated: true })),
-  on(loginSuccess, registerSuccess, registerTempUserSuccess, (state, { user }) => ({
+  on(loginSuccess, registerSuccess, registerTempUserSuccess, saveTempUserSuccess, (state, { user }) => ({
     ...state,
     user,
     isAuthenticated: true

@@ -1,20 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CyberbookServerResponse } from '@spend-book/core/model/cyberbook-server-response';
+import { TransactionTypes } from '@spend-book/shared/constants';
 import { generateDefaultCategories } from '@spend-book/shared/utils/generate-default-categories';
 import { forkJoin, Observable, of } from 'rxjs';
-import { concatMap, delay } from 'rxjs/operators';
+import { concatMap, delay, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Category } from '../model/category';
 
 @Injectable()
 export class CategoryService {
-  readonly categoryRoute = `${environment.server}/category`;
+  readonly categoryRoute = `${environment.server}/categories`;
 
   constructor(private http: HttpClient) {
   }
 
   loadCategoriesByUser(userId: string): Observable<Category[]> {
-    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } });
+    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`, { params: { userId } }).pipe(
+      map((res: CyberbookServerResponse) => res.data.map(data => this.convertToCategory(data)))
+    );
   }
 
   // TODO: This should be done by backend
@@ -27,14 +31,25 @@ export class CategoryService {
   }
 
   addCategory(category: Partial<Category>): Observable<Category> {
-    return <Observable<Category>>this.http.post(`${this.categoryRoute}`, category);
+    return <Observable<Category>>this.http.post(`${this.categoryRoute}`, category).pipe(
+      map((res: CyberbookServerResponse) => this.convertToCategory(res.data))
+    );
   }
 
   updateCategory(category: Partial<Category>): Observable<Category> {
-    return <Observable<Category>>this.http.put(`${this.categoryRoute}/${category.id}`, category);
+    return <Observable<Category>>this.http.put(`${this.categoryRoute}/${category.id}`, category).pipe(
+      map((res: CyberbookServerResponse) => this.convertToCategory(res.data))
+    );
   }
 
   removeCategory(id: string): Observable<any> {
     return this.http.delete(`${this.categoryRoute}/${id}`);
+  }
+
+  private convertToCategory(responseData): Category {
+    return {
+      ...responseData,
+      type: responseData.isSpend ? TransactionTypes.spend : TransactionTypes.income
+    }
   }
 }

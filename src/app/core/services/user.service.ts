@@ -16,7 +16,9 @@ export class UserService {
   }
 
   loginWithToken(): Observable<User> {
-    return <Observable<User>>this.http.post(`${this.userRoute}/loginWithToken`, {});
+    return <Observable<User>>this.http.post(`${this.userRoute}/login-with-token`, {}).pipe(
+      map((res: CyberbookServerResponse) => res.data)
+    );
   }
 
   login(email: string, password: string): Observable<User> {
@@ -42,21 +44,23 @@ export class UserService {
     //   ...user,
     //   registeredDate: dayjs().format(FullDate)
     // });
-    return <Observable<User>>this.http.post(`${this.userRoute}/registerTempUser`, {}).pipe(
+    return <Observable<User>>this.http.post(`${this.userRoute}/register-temp-user`, {}).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
-  // saveTempUser(user: Partial<User>, password: string): Observable<User> {
-  //   return <Observable<User>>this.http.put(`${this.userRoute}/${user.id}`, {
-  //     ...user,
-  //     password,
-  //     // registered: true,
-  //     // registeredDate: dayjs().format(FullDate)
-  //   });
-  // }
+  saveTempUser(user: Partial<User>, password: string): Observable<User> {
+    return <Observable<User>>this.http.post(`${this.userRoute}/save-temp-user`, {
+      ...user,
+      password,
+    }).pipe(
+      map((res: CyberbookServerResponse) => res.data)
+    );
+  }
 
   updateProfile(user: Partial<User>): Observable<User> {
-    return <Observable<User>>this.http.put(`${this.userRoute}/${user.id}`, user);
+    return <Observable<User>>this.http.put(`${this.userRoute}/update-profile`, user).pipe(
+      map((res: CyberbookServerResponse) => res.data)
+    );
   }
 }

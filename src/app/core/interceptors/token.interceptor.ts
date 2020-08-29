@@ -14,8 +14,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private readonly permittedPaths: string[] = [
     '/users/login/',
-    '/users/registerTempUser/',
-    // '/users/register/',
+    '/users/register-temp-user/',
+    '/users/register/',
   ]
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

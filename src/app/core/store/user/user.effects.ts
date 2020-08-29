@@ -20,8 +20,8 @@ import {
   registerSuccess,
   registerTempUser,
   registerTempUserSuccess,
-  // saveTempUser,
-  // saveTempUserSuccess,
+  saveTempUser,
+  saveTempUserSuccess,
   updateProfile,
   updateProfileSuccess
 } from './user.actions';
@@ -112,23 +112,23 @@ export class UserEffects {
   );
 
 
-  // saveTempUser$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(saveTempUser),
-  //     switchMap(action =>
-  //       this.userService.saveTempUser(action.user, action.password).pipe(
-  //         map((user: User) => {
-  //           this.saveUserToLocalstorage(user);
-  //           if (user.registered) {
-  //             this.router.navigate(['/user']);
-  //           }
-  //           return saveTempUserSuccess({ user });
-  //         }),
-  //         catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
-  //       )
-  //     )
-  //   )
-  // );
+  saveTempUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveTempUser),
+      switchMap(action =>
+        this.userService.saveTempUser(action.user, action.password).pipe(
+          map((user: User) => {
+            this.saveUserToLocalstorage(user);
+            if (user.registered) {
+              this.router.navigate(['/user']);
+            }
+            return saveTempUserSuccess({ user });
+          }),
+          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
+        )
+      )
+    )
+  );
 
   updateProfile$ = createEffect(() =>
     this.actions$.pipe(
@@ -139,8 +139,8 @@ export class UserEffects {
             this.saveUserToLocalstorage(user);
             this.router.navigate(['/user']);
             return [
+              notifyWithSnackBar({ snackBar: { message: '更新成功' } }),
               updateProfileSuccess({ user }),
-              notifyWithSnackBar({ snackBar: { message: '更新成功' } })
             ];
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '更新账户信息失败' } })))

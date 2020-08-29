@@ -1,4 +1,4 @@
-import { ISOString } from '@spend-book/shared/model/helper-models';
+import { FullDateType, ISOString } from '@spend-book/shared/model/helper-models';
 
 export interface User {
   id: string;
@@ -6,8 +6,8 @@ export interface User {
   profilePhotoURL: string;
   email: string;
   registeredDate: ISOString;
-  gender: string;
-  birthday: ISOString;
+  gender: number;
+  birthday: FullDateType;
   registered: boolean;
   jwtToken: string;
 }

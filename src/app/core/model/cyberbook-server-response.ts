@@ -1,4 +1,4 @@
 export interface CyberbookServerResponse {
-  data: object;
+  data: any;
   message: string;
 }

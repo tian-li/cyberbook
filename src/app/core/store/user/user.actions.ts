@@ -25,5 +25,5 @@ export const registerTempUser = createAction('[User] Register Temp User',
 );
 export const registerTempUserSuccess = createAction('[User] Register Temp User Success', props<{ user: Partial<User> }>());
 
-// export const saveTempUser = createAction('[User] Save Temp User',  props<{ user: Partial<User>, password: string }>());
-// export const saveTempUserSuccess = createAction('[User] Save Temp User Success',  props<{ user: Partial<User> }>());
+export const saveTempUser = createAction('[User] Save Temp User',  props<{ user: Partial<User>, password: string }>());
+export const saveTempUserSuccess = createAction('[User] Save Temp User Success',  props<{ user: Partial<User> }>());

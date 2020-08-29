@@ -39,10 +39,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((user) => {
       this.userId = user.id;
+
       this.form = this.fb.group({
         username: new FormControl(user.username, Validators.required),
         email: new FormControl(user.email, [Validators.email, Validators.required]),
-        gender: new FormControl(user.gender ? user.gender : '保密', Validators.required),
+        gender: new FormControl(user.gender ? user.gender : 0, Validators.required),
         birthday: new FormControl(dayjs(user.birthday).toDate(), Validators.required),
       });
     });

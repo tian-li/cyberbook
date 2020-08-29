@@ -4,7 +4,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { fromUI, fromUser } from '@spend-book/core/store';
-import { login, register } from '@spend-book/core/store/user';
+import { login, register, saveTempUser } from '@spend-book/core/store/user';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
@@ -66,20 +66,20 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
 
     if (this.registerMode) {
 
-      // if (!this.userId) {
-      //   this.userId = uuid();
+      if (!this.userId) {
+        this.userId = uuid();
         this.store.dispatch(register({
-          user: { id: this.userId, username: formValue.username, email: formValue.email },
+          user: { username: formValue.username, email: formValue.email },
           // TODO: encrypt
           password: formValue.password
         }));
-      // } else {
-      //   this.store.dispatch(saveTempUser({
-      //     user: { id: this.userId, username: formValue.username, email: formValue.email },
-      //     // TODO: encrypt
-      //     password: formValue.password
-      //   }));
-      // }
+      } else {
+        this.store.dispatch(saveTempUser({
+          user: { username: formValue.username, email: formValue.email },
+          // TODO: encrypt
+          password: formValue.password
+        }));
+      }
 
     } else {
       this.store.dispatch(login({ email: formValue.email, password: formValue.password }))
