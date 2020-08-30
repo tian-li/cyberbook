@@ -42,7 +42,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialogRef: MatDialogRef<TransactionEditorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, transaction: Transaction, userId: string },
+    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, transaction: Transaction },
     private fb: FormBuilder,
     private store: Store,
   ) {

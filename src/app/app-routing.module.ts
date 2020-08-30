@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutoLoginGuard } from '@spend-book/core/guards/auto-login.guard';
-import { LoadDataResolver } from '@spend-book/core/reslovers/load-data.resolver';
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [AutoLoginGuard],
-    resolve: { data: LoadDataResolver },
+    //
     children: [
       {
         path: '',

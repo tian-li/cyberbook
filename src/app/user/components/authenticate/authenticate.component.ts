@@ -32,16 +32,23 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.route.data.subscribe(data => {
+      console.log("route data", data)
+      this.registerMode = data.registerMode;
+    })
   }
 
   ngOnInit() {
     this.store.dispatch(fromUI.hideToolbar());
+
+
 
     this.store.pipe(
       select(fromUser.selectUser),
       takeUntil(this.unsubscribe$)
     ).subscribe((user) => {
       this.userId = user.id;
+      // this.registerMode = !localStorage.getItem('user')
 
       this.form = this.fb.group({
         username: new FormControl({

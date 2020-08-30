@@ -32,6 +32,7 @@ export enum SubscriptionFrequencyTypes {
   week,
   month,
   year,
+  minute,
 }
 
 export const subscriptionFrequencies = [

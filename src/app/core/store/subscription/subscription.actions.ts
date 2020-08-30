@@ -2,10 +2,7 @@ import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { Subscription } from '../../model/subscription';
 
-export const loadSubscriptionsByUser = createAction(
-  '[Subscription] Load Subscriptions by User',
-  props<{ userId: string }>()
-);
+export const loadSubscriptionsByUser = createAction('[Subscription] Load Subscriptions by User');
 export const loadSubscriptionsByUserSuccess = createAction(
   '[Subscription] Load Subscriptions by User Success',
   props<{ subscriptions: Subscription[] }>()

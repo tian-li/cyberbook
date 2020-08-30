@@ -24,8 +24,8 @@ export class TransactionEffects {
   loadTransactionsByBook$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadTransactionsByUser),
-      switchMap(action =>
-        this.transactionService.loadTransactionsByUser(action.userId).pipe(
+      switchMap(() =>
+        this.transactionService.loadTransactionsByUser().pipe(
           map((transactions: Transaction[]) => loadTransactionsByUserSuccess({ transactions })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '账本记录载入失败，请稍后重试' } })))
         ))

@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
-import { fromCategory, fromTransaction, fromUI, fromUser } from '@spend-book/core/store';
+import { fromCategory, fromTransaction, fromUI } from '@spend-book/core/store';
 import { loadCategoriesByUser, updateCategory } from '@spend-book/core/store/category';
 import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
 import { AlertLevel, TransactionTypes } from '@spend-book/shared/constants';
@@ -56,7 +56,6 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
   selectedCategoryType = this.defaultCategoryType;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
   sortingMode = false;
-  userId: string;
 
   themeName$: Observable<string>;
 
@@ -72,17 +71,9 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(fromUI.hideToolbar());
+    this.store.dispatch(loadCategoriesByUser());
 
     this.themeName$ = this.store.pipe(select(fromUI.selectThemeName));
-
-    this.store.pipe(
-      select(fromUser.selectUser),
-      filter(user => !!user.id),
-      take(1),
-    ).subscribe(user => {
-      this.userId = user.id
-      this.store.dispatch(loadCategoriesByUser({ userId: user.id }))
-    });
 
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
@@ -175,7 +166,6 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
           addedByUser: true,
           sortOrder: this.categories.length,
           type: this.selectedCategoryType,
-          userId: this.userId
         }
       }));
       window.scrollTo(0, this.list.nativeElement.scrollHeight);

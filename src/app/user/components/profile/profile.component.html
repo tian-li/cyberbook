@@ -24,11 +24,11 @@
     <mat-form-field>
 
       <mat-label>性别</mat-label>
-      <select matNativeControl formControlName="gender" required>
-        <option value="0">保密</option>
-        <option value="1">男</option>
-        <option value="2">女</option>
-      </select>
+      <mat-select formControlName="gender" required>
+        <mat-option [value]="0">保密</mat-option>
+        <mat-option [value]="1">男</mat-option>
+        <mat-option [value]="2">女</mat-option>
+      </mat-select>
       <mat-error *ngIf="form.controls.gender.hasError('required')">必填</mat-error>
 
     </mat-form-field>

@@ -66,9 +66,9 @@ export class UserHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((result) => {
       if (result === 'positive') {
-        this.store.dispatch(fromUser.logout({ id: this.user.id }));
+        this.store.dispatch(fromUser.logout());
         this.store.dispatch(fromUI.setTheme({themeName: defaultThemeName}));
-        this.router.navigate(['./authenticate'], { relativeTo: this.route });
+        this.router.navigate(['./login'], { relativeTo: this.route });
       }
     });
   }
@@ -77,7 +77,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     if (this.user.registered) {
       this.router.navigate(['./profile'], { relativeTo: this.route });
     } else {
-      this.router.navigate(['./authenticate'], { relativeTo: this.route });
+      this.router.navigate(['./register'], { relativeTo: this.route });
     }
   }
 

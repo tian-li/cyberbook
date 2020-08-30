@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
+import { LoadDataResolver } from '../core/reslovers/load-data.resolver';
 import { SharedModule } from '../shared/shared.module';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { CategoryEditorComponent } from './components/category-editor/category-editor.component';
@@ -29,7 +30,8 @@ import { SubscriptionManagementComponent } from './components/subscription-manag
     UserRoutingModule
   ],
   providers: [
-    CanRegisterGuard
+    CanRegisterGuard,
+    LoadDataResolver
   ],
   entryComponents: [
     CategoryEditorComponent,

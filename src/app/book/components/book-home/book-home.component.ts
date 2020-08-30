@@ -24,7 +24,6 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   readonly today: dayjs.Dayjs = dayjs();
   transactionVOs: TransactionVO[];
 
-
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store) {

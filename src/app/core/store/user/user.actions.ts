@@ -15,7 +15,7 @@ export const login = createAction('[User] Login', props<{ email: string, passwor
 export const loginSuccess = createAction('[User] Login Success', props<{ user: User }>());
 export const loginFail = createAction('[User] Login Fail', props<{ errorMessage: any }>());
 
-export const logout = createAction('[User] Logout', props<{ id: string }>());
+export const logout = createAction('[User] Logout');
 
 export const loginWithLocalToken = createAction('[User] Login With Local Token');
 export const loginWithLocalTokenSuccess = createAction('[User] Login With Local Token Success', props<{ user: User }>());

@@ -2,7 +2,7 @@ import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { Category } from '../../model/category';
 
-export const loadCategoriesByUser = createAction('[Category] Load Categories By User', props<{ userId: string }>());
+export const loadCategoriesByUser = createAction('[Category] Load Categories By User');
 export const loadCategoriesByUserSuccess = createAction(
   '[Category] Load Categories By User Success',
   props<{ categories: Category[] }>()

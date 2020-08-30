@@ -54,7 +54,10 @@ export class UserEffects {
             return loginWithLocalTokenSuccess({ user });
           }),
           catchError((error: HttpErrorResponse) => {
-            return of(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }))
+            this.router.navigate(['/user/login']);
+            return of(
+              notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }),
+            )
           })
         )
       )
@@ -136,7 +139,10 @@ export class UserEffects {
   logout$ = createEffect(() =>
       this.actions$.pipe(
         ofType(logout),
-        map(action => localStorage.clear())
+        map(() => {
+          localStorage.clear();
+          this.router.navigate(['/user/login']);
+        })
       ),
     { dispatch: false }
   )

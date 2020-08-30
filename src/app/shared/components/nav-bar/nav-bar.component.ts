@@ -51,10 +51,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
     this.dialog.open(TransactionEditorComponent, {
       ...defaultTransactionEditorDialogConfig,
-      data: {
-        ...defaultTransactionEditorDialogConfig.data,
-        userId: this.user.id
-      }
+      data: defaultTransactionEditorDialogConfig.data,
     }).afterClosed().pipe(take(1)).subscribe(() => {
       this.addButtonAnimateState = 'closed'
     });

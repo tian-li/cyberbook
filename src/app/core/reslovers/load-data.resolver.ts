@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { fromUser } from '@spend-book/core/store';
 import { loadCategoriesByUser } from '@spend-book/core/store/category';
@@ -10,17 +10,14 @@ import { filter } from 'rxjs/operators';
 @Injectable()
 export class LoadDataResolver implements Resolve<any> {
 
-  constructor(private store: Store) {
+  constructor(private store: Store ) {
+    console.log("    LoadDataResolver")
   }
 
   resolve() {
-    this.store.pipe(
-      select(fromUser.selectUser),
-      filter(user => !!user.id),
-    ).subscribe((user) => {
-      this.store.dispatch(loadTransactionsByUser({ userId: user.id }));
-      this.store.dispatch(loadCategoriesByUser({ userId: user.id }))
-      this.store.dispatch(loadSubscriptionsByUser({ userId: user.id }))
-    });
+    // if()
+    this.store.dispatch(loadTransactionsByUser());
+    this.store.dispatch(loadCategoriesByUser())
+    this.store.dispatch(loadSubscriptionsByUser())
   }
 }

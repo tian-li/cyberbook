@@ -53,7 +53,7 @@ export class SubscriptionEditorComponent implements OnInit {
 
   constructor(
     private bottomSheetRef: MatBottomSheetRef<SubscriptionEditorComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: { editMode: boolean, subscription: Subscription, userId: string },
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: { editMode: boolean, subscription: Subscription },
     private fb: FormBuilder,
     private store: Store,
   ) {
@@ -153,7 +153,6 @@ export class SubscriptionEditorComponent implements OnInit {
       subscription = {
         ...subscription,
         id: uuid(),
-        userId: this.data.userId,
         totalAmount: 0,
         dateCreated: this.today.toISOString()
       }

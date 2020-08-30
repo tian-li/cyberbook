@@ -6,7 +6,7 @@ import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
 import { Category } from '@spend-book/core/model/category';
 import { hasSubscriptionEnded, Subscription } from '@spend-book/core/model/subscription';
-import { fromCategory, fromSubscription, fromUI, fromUser } from '@spend-book/core/store';
+import { fromCategory, fromSubscription, fromUI } from '@spend-book/core/store';
 import { loadSubscriptionsByUser, removeSubscription, stopSubscription } from '@spend-book/core/store/subscription';
 import { SwipeResult } from '@spend-book/shared/model/helper-models';
 import * as dayjs from 'dayjs';
@@ -32,7 +32,6 @@ export class SubscriptionManagementComponent implements OnInit {
   allSubscriptions: Subscription[];
   categoryEntities: Dictionary<Category>;
   selectedCategoryType = this.defaultSubscriptionType;
-  userId: string;
   subscriptionTypeControl = new FormControl(this.defaultSubscriptionType);
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -45,14 +44,7 @@ export class SubscriptionManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(fromUI.hideToolbar());
-    this.store.pipe(
-      select(fromUser.selectUser),
-      takeUntil(this.unsubscribe$)
-    ).subscribe(user => {
-      this.userId = user.id;
-      this.store.dispatch(loadSubscriptionsByUser({ userId: user.id }))
-    });
+    this.store.dispatch(loadSubscriptionsByUser());
 
     this.subscriptionTypeControl.valueChanges.pipe(
       startWith(this.defaultSubscriptionType),
@@ -88,7 +80,7 @@ export class SubscriptionManagementComponent implements OnInit {
 
   editSubscription(subscription: Subscription) {
     this.bottomSheet.open(SubscriptionEditorComponent, {
-      data: { subscription, editMode: true, userId: this.userId },
+      data: { subscription, editMode: true },
       disableClose: true,
     });
   }
@@ -105,7 +97,7 @@ export class SubscriptionManagementComponent implements OnInit {
 
   addSubscription() {
     this.bottomSheet.open(SubscriptionEditorComponent, {
-      data: { editMode: false, userId: this.userId },
+      data: { editMode: false },
       disableClose: true,
     });
   }

@@ -32,7 +32,6 @@ export class TransactionItemComponent {
         editMode: true,
         transaction: {
           id: this.transactionVO.id,
-          userId: this.transactionVO.userId,
           amount: this.transactionVO.amount,
           description: this.transactionVO.description,
           categoryId: this.transactionVO.categoryId,

@@ -46,6 +46,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
         gender: new FormControl(user.gender ? user.gender : 0, Validators.required),
         birthday: new FormControl(dayjs(user.birthday).toDate(), Validators.required),
       });
+
+      console.log("form", this.form)
     });
   }
 

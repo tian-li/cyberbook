@@ -43,7 +43,7 @@ const reducer = createReducer(
       isAuthenticated: true
     }
   }),
-  on(logout, (state, { id }) => ({ user: defaultTempUser, isAuthenticated: false }))
+  on(logout, () => initialState)
 );
 
 export function userReducer(

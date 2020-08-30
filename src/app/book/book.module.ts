@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { LoadDataResolver } from '../core/reslovers/load-data.resolver';
 import { SharedModule } from '../shared/shared.module';
 import { BookRoutingModule } from './book-routing.module';
 import { BookHeaderComponent } from './components/book-header/book-header.component';
@@ -21,6 +22,9 @@ import { TransactionListComponent } from './components/transaction-list/transact
     SharedModule,
     BookRoutingModule,
   ],
+  providers:[
+    LoadDataResolver
+  ]
 })
 export class BookModule {
 }

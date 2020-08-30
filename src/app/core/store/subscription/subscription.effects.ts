@@ -25,8 +25,8 @@ export class SubscriptionEffects {
   loadSubscriptionsByBook$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadSubscriptionsByUser),
-      switchMap(action =>
-        this.subscriptionService.loadSubscriptionsByUser(action.userId).pipe(
+      switchMap(() =>
+        this.subscriptionService.loadSubscriptionsByUser().pipe(
           map((subscriptions: Subscription[]) => loadSubscriptionsByUserSuccess({ subscriptions })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '账本记录载入失败，请稍后重试' } })))
         ))

@@ -23,8 +23,8 @@ export class CategoryEffects {
   loadCategories$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCategoriesByUser),
-      switchMap(action =>
-        this.categoryService.loadCategoriesByUser(action.userId).pipe(
+      switchMap(() =>
+        this.categoryService.loadCategoriesByUser().pipe(
           map((categories: Category[]) => loadCategoriesByUserSuccess({ categories })),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '类别载入失败，请稍后重试' } })))
         ))
