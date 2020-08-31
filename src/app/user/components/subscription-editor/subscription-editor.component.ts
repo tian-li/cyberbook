@@ -30,6 +30,7 @@ export class SubscriptionEditorComponent implements OnInit {
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
   readonly TransactionType = TransactionTypes;
   readonly frequencies: { value: SubscriptionFrequencyTypes, display: string }[] = [
+    {value: SubscriptionFrequencyTypes.minute, display: '分钟'},
     {value: SubscriptionFrequencyTypes.day, display: '天'},
     {value: SubscriptionFrequencyTypes.week, display: '星期'},
     {value: SubscriptionFrequencyTypes.month, display: '月'},
@@ -198,6 +199,9 @@ export class SubscriptionEditorComponent implements OnInit {
     }
 
     switch (this.frequencyControlValue) {
+      case SubscriptionFrequencyTypes.minute:
+        summary = `每${periodStr}分钟`;
+        break;
       case SubscriptionFrequencyTypes.day:
         summary = `每${periodStr}天`;
         break;

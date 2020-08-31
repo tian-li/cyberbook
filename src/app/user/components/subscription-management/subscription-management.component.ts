@@ -12,6 +12,7 @@ import { SwipeResult } from '@spend-book/shared/model/helper-models';
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
+import { hideToolbar } from '../../../core/store/ui';
 import { SubscriptionEditorComponent } from '../subscription-editor/subscription-editor.component';
 
 @Component({
@@ -44,6 +45,7 @@ export class SubscriptionManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(hideToolbar());
     this.store.dispatch(loadSubscriptionsByUser());
 
     this.subscriptionTypeControl.valueChanges.pipe(

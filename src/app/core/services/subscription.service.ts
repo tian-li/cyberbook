@@ -37,7 +37,8 @@ export class SubscriptionService {
   stopSubscription(id: string): Observable<Subscription> {
     const changes = {
       // Need to get end data on client to make it at correct time in local time zone
-      endDate: dayjs().startOf('day').toISOString(),
+      // endDate: dayjs().startOf('day').toISOString(),
+      endDate: dayjs().startOf('minute').toISOString(), // test with minute
     }
     return <Observable<Subscription>>this.http.post(`${this.subscriptionRoute}/stop/${id}`, changes).pipe(
       map((res: CyberbookServerResponse) => res.data)

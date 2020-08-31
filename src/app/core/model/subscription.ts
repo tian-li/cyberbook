@@ -28,11 +28,11 @@ export interface FrequencyInfo {
 }
 
 export enum SubscriptionFrequencyTypes {
-  day,
-  week,
-  month,
-  year,
-  minute,
+  day= 1,
+  week = 2,
+  month = 3,
+  year = 4,
+  minute = 5,
 }
 
 export const subscriptionFrequencies = [
