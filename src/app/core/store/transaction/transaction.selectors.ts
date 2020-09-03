@@ -62,8 +62,8 @@ export const selectAllTransactionVOsByYearMonth = createSelector(
     const year: number = props.displayMonth.getFullYear();
     const month: number = props.displayMonth.getMonth();
     return transactionVOs.filter(
-      (transactionVO: TransactionVO) => transactionVO.transactionDate.getFullYear() === year &&
-        transactionVO.transactionDate.getMonth() === month
+      (transactionVO: TransactionVO) => transactionVO.transactionDate.year() === year &&
+        transactionVO.transactionDate.month() === month
     );
   }
 );

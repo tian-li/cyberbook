@@ -59,6 +59,15 @@
         </div>
       </div>
     </div>
+
+    <div matRipple class="feature">
+      <i class="material-icons-outlined md-email feature-icon"></i>
+      <div class="feature-content">
+        <div class="feature-text" (click)="getTimezone()">
+          时区
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="features" *ngIf="!!user.id">

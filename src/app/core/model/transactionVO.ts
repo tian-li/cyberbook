@@ -1,3 +1,9 @@
+import * as dayjs from 'dayjs';
+
+import * as utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
+
 export class TransactionVO {
   icon: string;
   id: string;
@@ -9,9 +15,9 @@ export class TransactionVO {
   categoryName: string;
   categoryColor: string;
   categoryType: 'income' | 'spend';
-  transactionDate: Date;
-  dateCreated: Date;
-  dateModified: Date;
+  transactionDate: dayjs.Dayjs;
+  dateCreated: dayjs.Dayjs;
+  dateModified: dayjs.Dayjs;
 
   constructor(props) {
     this.icon = props.icon;
@@ -24,9 +30,9 @@ export class TransactionVO {
     this.categoryName = props.categoryName;
     this.categoryColor = props.categoryColor;
     this.categoryType = props.categoryType;
-    this.transactionDate = new Date(props.transactionDate);
-    this.dateCreated = new Date(props.dateCreated);
-    this.dateModified = new Date(props.dateModified);
+    this.transactionDate = dayjs(props.transactionDate);
+    this.dateCreated = dayjs(props.dateCreated);
+    this.dateModified = dayjs(props.dateModified);
   }
 
 }
