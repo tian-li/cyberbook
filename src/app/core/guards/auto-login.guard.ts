@@ -12,9 +12,6 @@ export class AutoLoginGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    console.log("route", route);
-    console.log("state", state);
-
     // skip auto login when going to login page
     if(state.url === '/user/login' || state.url === '/user/register') {
       return of(true);

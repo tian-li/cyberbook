@@ -3,9 +3,12 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { logout } from '@spend-book/core/store/user/user.actions';
 import { Category } from '../../model/category';
 import {
+  addCategory,
   addCategorySuccess,
+  loadCategoriesByUser,
   loadCategoriesByUserSuccess,
   removeCategory,
+  updateCategory,
   updateCategorySuccess
 } from './category.actions';
 

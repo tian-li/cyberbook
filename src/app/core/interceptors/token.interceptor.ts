@@ -17,18 +17,12 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const localToken = getTokenFromLocalStorage();
 
-    // if(request.url.includes())
-
-    // console.log("request ", request)
-
     const skipToken = this.permittedPaths.some((path: string) => {
       return `${request.url}/`.includes(path)
     });
 
 
     if (!skipToken) {
-      // console.log("should add token", localToken)
-      // console.log("request.url ", request.url)
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${localToken}`
@@ -37,12 +31,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      map(res => {
-        console.log("res interceptor", res);
-        return res;
-      }),
       catchError(e => {
-        console.log('error in interceptor', e);
         return throwError("error")
       })
     )

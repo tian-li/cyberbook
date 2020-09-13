@@ -5,9 +5,11 @@
 export const environment = {
   production: false,
   test: true,
-  appName: "Spend Book",
+  appName: "Cyberbook",
   // server: "http://192.168.0.228:3000"
-  server: "http://localhost:8899"
+  server: "http://localhost"
+  // server: "http://ec2-34-222-171-96.us-west-2.compute.amazonaws.com:8080"
+  // server: "https://cyberbook.app"
 };
 
 /*

@@ -25,3 +25,8 @@ export const selectThemeName = createSelector(
   selectUIState,
   (state: fromUI.State) => state.themeName
 );
+
+export const selectLoading = createSelector(
+  selectUIState,
+  (state: fromUI.State) => state.loading
+);

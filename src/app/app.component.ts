@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { select, Store } from '@ngrx/store';
 import { fromUI } from '@spend-book/core/store';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit, OnDestroy {
   themeName: string;
+  loading: boolean;
 
   private unsubscribe$ = new Subject();
 
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
-      "github",
+      'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/github.svg')
     );
   }
@@ -39,6 +40,12 @@ export class AppComponent implements OnInit, OnDestroy {
       }
       overlayContainerClasses.add(themeName);
     });
+
+    this.store.pipe(
+      select(fromUI.selectLoading),
+      debounceTime(200),
+    takeUntil(this.unsubscribe$)
+    ).subscribe((loading: boolean) => this.loading = loading);
   }
 
   ngOnDestroy() {

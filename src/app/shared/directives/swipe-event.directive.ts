@@ -7,7 +7,7 @@ import { SwipeDirection, SwipeInfo } from '@spend-book/shared/model/helper-model
 export class SwipeEventDirective {
   @Input('swipeDisabled') disabled: boolean = false;
 
-  @Output() swipe = new EventEmitter<SwipeInfo>();
+  @Output() cbkSwipe = new EventEmitter<SwipeInfo>();
   @Output() endSwipe = new EventEmitter<SwipeInfo>();
   @Output() cancelSwipe = new EventEmitter();
 
@@ -60,7 +60,7 @@ export class SwipeEventDirective {
     this.touchEndY = event.touches[0].pageY;
 
     if (this.isSwiping) {
-      event.preventDefault(); // prevent scroll when swipe to delete
+      event.preventDefault(); // prevent scroll when cbkSwipe to delete
       this.calculateSwipe();
       this.triggerWipe();
     }
@@ -100,7 +100,7 @@ export class SwipeEventDirective {
   }
 
   private triggerWipe() {
-    this.swipe.emit({ direction: this.direction, percentage: this.percentage });
+    this.cbkSwipe.emit({ direction: this.direction, percentage: this.percentage });
   }
 
   private isMultiTouch(event: TouchEvent): boolean {

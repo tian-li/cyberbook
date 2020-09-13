@@ -1,4 +1,7 @@
 <div [class]="'wrapper mat-app-background ' + themeName">
+  <div class="loading" *ngIf="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

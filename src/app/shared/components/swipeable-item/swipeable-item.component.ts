@@ -37,7 +37,7 @@ export class SwipeableItemComponent {
 
   flyInOutState = 'in';
 
-  // swipe animation
+  // cbkSwipe animation
   showSwipeIcon = false;
   widthPercentage = '0%';
   widthPercentageNumber = 0;
