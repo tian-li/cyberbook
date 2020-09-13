@@ -89,7 +89,6 @@ export class UserEffects {
         this.userService.registerTempUser().pipe(
           map((user: User) => {
             this.saveUserToLocalstorage(user);
-            this.router.navigate(['/user']);
             return registerTempUserSuccess({ user });
           }),
           catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,14 +28,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private http: HttpClient
   ) {
-  }
-
-  getTimezone() {
-    this.http.get('http://localhost:8899/users/timezone').subscribe(t => {
-      console.log(t);
-    })
   }
 
   ngOnInit(): void {
@@ -75,7 +67,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     ).subscribe((result) => {
       if (result === 'positive') {
         this.store.dispatch(fromUser.logout());
-        this.store.dispatch(fromUI.setTheme({themeName: defaultThemeName}));
+        this.store.dispatch(fromUI.setTheme({ themeName: defaultThemeName }));
         this.router.navigate(['./login'], { relativeTo: this.route });
       }
     });

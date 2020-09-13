@@ -29,7 +29,7 @@ export const initialState: State = adapter.getInitialState({
 const reducer = createReducer(
   initialState,
   on(loadSubscriptionsByUserSuccess, (state, { subscriptions }) =>
-    adapter.upsertMany(subscriptions, { ...state, selectedSubscriptionId: null })),
+    adapter.setAll(subscriptions, { ...state, selectedSubscriptionId: null })),
   on(addSubscriptionSuccess, (state, { subscription }) =>
     adapter.addOne(subscription, {
       ...state,

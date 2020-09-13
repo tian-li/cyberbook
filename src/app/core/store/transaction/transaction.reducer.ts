@@ -34,7 +34,7 @@ const reducer = createReducer(
       }
     });
 
-    return adapter.addMany(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate })
+    return adapter.setAll(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate })
   }),
   on(addTransactionSuccess, (state, { transaction }) => {
     const date = transaction.transactionDate.substring(0, 10);

@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-import { fromUser } from '@spend-book/core/store';
+import { Resolve } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { loadCategoriesByUser } from '@spend-book/core/store/category';
 import { loadSubscriptionsByUser } from '@spend-book/core/store/subscription';
 import { loadTransactionsByUser } from '@spend-book/core/store/transaction';
-import { filter } from 'rxjs/operators';
+import { getUserIdFromLocalStorage } from '../../shared/utils/get-user-from-localstorage';
 
 @Injectable()
 export class LoadDataResolver implements Resolve<any> {
 
-  constructor(private store: Store ) {
-    console.log("    LoadDataResolver")
+  constructor(private store: Store) {
   }
 
   resolve() {
-    // if()
-    this.store.dispatch(loadTransactionsByUser());
-    this.store.dispatch(loadCategoriesByUser())
-    this.store.dispatch(loadSubscriptionsByUser())
+    const localUserId = getUserIdFromLocalStorage();
+    if (!!localUserId) {
+      this.store.dispatch(loadTransactionsByUser());
+      this.store.dispatch(loadCategoriesByUser());
+      this.store.dispatch(loadSubscriptionsByUser());
+    }
   }
 }

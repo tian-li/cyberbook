@@ -6,10 +6,13 @@ div {
   flex-direction: column;
 }
 
-.user {
+.user-info-overview {
   justify-content: flex-start;
   align-items: center;
   height: 114px; // make it same height as home header
+  position: fixed;
+  width: 100%;
+  z-index: 5;
 
   .profile-photo {
     img {
@@ -52,6 +55,21 @@ div {
 
   }
 
+}
+
+.settings-list {
+  padding-top: 114px;
+  display: block;
+
+
+
+  //position: fixed;
+  ///* margin-top: 114px; */
+  //width: 100%;
+  //display: block;
+  //top: 114px;
+  //height: 100%;
+  //overflow-y: scroll;
 }
 
 .features {
@@ -98,6 +116,7 @@ div {
   margin-top: 2rem;
   justify-content: center;
   align-items: center;
+  //margin-bottom: 220px;
 
   .version {
     font-size: 0.8rem;
@@ -107,6 +126,7 @@ div {
   .github-link {
     display: flex;
     align-self: baseline;
+
     mat-icon {
       width: 1rem;
       height: 1rem;

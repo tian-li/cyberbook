@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { UserService } from '@spend-book/core/services/user.service';
 import { getUserIdFromLocalStorage } from '@spend-book/shared/utils/get-user-from-localstorage';
 import { Observable, of } from 'rxjs';
@@ -7,7 +7,7 @@ import { catchError, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class CanRegisterGuard implements CanActivate {
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -20,9 +20,10 @@ export class CanRegisterGuard implements CanActivate {
     return this.userService.loginWithToken().pipe(
       switchMap(user => {
         if (user.registered) {
-          return of(false)
+          this.router.navigate(['/user']);
+          return of(false);
         } else {
-          return of(true)
+          return of(true);
         }
       }),
       catchError(e => {

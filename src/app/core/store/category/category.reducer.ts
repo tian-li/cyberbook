@@ -30,7 +30,7 @@ export const initialState: State = adapter.getInitialState({
 const reducer = createReducer(
   initialState,
   on(loadCategoriesByUserSuccess, (state, { categories }) =>
-    adapter.addMany(categories, { ...state, selectedCategoryId: null })
+    adapter.setAll(categories, { ...state, selectedCategoryId: null })
   ),
   on(addCategorySuccess, (state, { category }) =>
     adapter.addOne(category, { ...state, selectedCategoryId: category.id })

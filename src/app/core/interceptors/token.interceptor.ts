@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { getTokenFromLocalStorage } from '@spend-book/shared/utils/get-token-from-local-storage';
 // import { getTokenFromLocalStorage } from '@spend-book/shared/utils/get-token-from-localstorage';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, delay, map } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -31,6 +31,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
+      delay(300),
       catchError(e => {
         return throwError("error")
       })

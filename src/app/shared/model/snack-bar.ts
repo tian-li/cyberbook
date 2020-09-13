@@ -1,4 +1,4 @@
-export const defaultSnackBarDuration = 2000;
+export const defaultSnackBarDuration = 3000;
 export const defaultSnackBarAction = 'OK';
 
 export interface SnackBar {

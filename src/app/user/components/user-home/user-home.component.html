@@ -1,5 +1,5 @@
 <div class="user-home-container">
-  <div class="user">
+  <div class="user-info-overview">
     <div class="profile-photo">
       <img src="./assets/images/profile-photo.jpg" alt="profile photo">
     </div>
@@ -20,74 +20,80 @@
     </div>
   </div>
 
-  <div class="features">
-    <div matRipple matRippleColor="primary" class="feature">
-      <i class="material-icons-outlined md-palette feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text" (click)="selectTheme()">
-          选择主题
+  <div class="settings-list">
+    <div class="features">
+      <div  class="feature">
+        <i class="material-icons-outlined md-palette feature-icon"></i>
+        <div class="feature-content">
+          <div class="feature-text" (click)="selectTheme()">
+            选择主题
+          </div>
+          <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
         </div>
-        <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+      </div>
+
+      <div  class="feature">
+        <i class="material-icons-outlined md-category feature-icon"></i>
+        <div class="feature-content">
+          <div class="feature-text" (click)="manageCategories()">
+            管理分类
+          </div>
+          <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+        </div>
+      </div>
+
+      <div  class="feature">
+        <i class="material-icons-outlined md-update feature-icon"></i>
+        <div class="feature-content">
+          <div class="feature-text" (click)="subscriptionManagement()">
+            周期性账目
+          </div>
+          <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+        </div>
+      </div>
+
+      <div  class="feature">
+        <i class="material-icons-outlined md-email feature-icon"></i>
+        <div class="feature-content">
+          <div class="feature-text">
+            反馈意见
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngFor="let i of [1,2,3,4,5,6,7,8,9,10, 11, 12, 13]">
+        <div  class="feature">
+          <i class="material-icons-outlined md-email feature-icon"></i>
+          <div class="feature-content">
+            <div class="feature-text">
+              {{i}}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="features" *ngIf="!!user.id">
+      <div  class="feature" (click)="logout()">
+        <i class="material-icons md-exit_to_app feature-icon"></i>
+        <div class="feature-content">
+          <div class="feature-text">
+            退出登录
+          </div>
+        </div>
       </div>
     </div>
 
-    <div matRipple matRippleColor="primary" class="feature">
-      <i class="material-icons-outlined md-category feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text" (click)="manageCategories()">
-          管理分类
-        </div>
-        <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+    <div class="about">
+      <div class="version">
+        version: 1.0.0
       </div>
+      <a class="github-link" href="https://github.com/tian-li/spend-book" target="_blank">
+        <mat-icon svgIcon="github"></mat-icon>
+      </a>
     </div>
 
-    <div matRipple matRippleColor="primary" class="feature">
-      <i class="material-icons-outlined md-update feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text" (click)="subscriptionManagement()">
-          周期性账目
-        </div>
-        <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
-      </div>
-    </div>
-
-    <div matRipple class="feature">
-      <i class="material-icons-outlined md-email feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text">
-          反馈意见
-        </div>
-      </div>
-    </div>
-
-    <div matRipple class="feature">
-      <i class="material-icons-outlined md-email feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text" (click)="getTimezone()">
-          时区
-        </div>
-      </div>
-    </div>
   </div>
 
-  <div class="features" *ngIf="!!user.id">
-    <div matRipple class="feature" (click)="logout()">
-      <i class="material-icons md-exit_to_app feature-icon"></i>
-      <div class="feature-content">
-        <div class="feature-text">
-          退出登录
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="about">
-    <div class="version">
-      version: 1.0.0
-    </div>
-    <a class="github-link" href="https://github.com/tian-li/spend-book" target="_blank">
-      <mat-icon svgIcon="github"></mat-icon>
-    </a>
-  </div>
 
 </div>

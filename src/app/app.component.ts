@@ -1,5 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { select, Store } from '@ngrx/store';
@@ -20,7 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store, private overlayContainer: OverlayContainer,
               private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer) {
+              private domSanitizer: DomSanitizer,
+              private renderer: Renderer2) {
     this.matIconRegistry.addSvgIcon(
       'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/github.svg')
@@ -32,6 +33,8 @@ export class AppComponent implements OnInit, OnDestroy {
       select(fromUI.selectThemeName),
       takeUntil(this.unsubscribe$)
     ).subscribe((themeName) => {
+      this.renderer.addClass(document.body, themeName);
+      this.renderer.removeClass(document.body, this.themeName);
       this.themeName = themeName;
       const overlayContainerClasses = this.overlayContainer.getContainerElement().classList;
       const themeClassesToRemove = Array.from(overlayContainerClasses).filter((item: string) => item.includes('-theme'));
