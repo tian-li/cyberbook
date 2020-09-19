@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Update } from '@ngrx/entity';
-import { CyberbookServerResponse } from '@spend-book/core/model/cyberbook-server-response';
+import { CyberbookServerResponse } from '@cyberbook/core/model/cyberbook-server-response';
 import * as dayjs from 'dayjs';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

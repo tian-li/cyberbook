@@ -2,9 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { User } from '@spend-book/core/model/user';
-import { UserService } from '@spend-book/core/services/user.service';
-import { notifyWithSnackBar } from '@spend-book/core/store/notification';
+import { User } from '@cyberbook/core/model/user';
+import { UserService } from '@cyberbook/core/services/user.service';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 

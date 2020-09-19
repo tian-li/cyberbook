@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { months, years } from '@spend-book/shared/constants';
+import { months, years } from '@cyberbook/shared/constants';
 
 @Component({
   selector: 'app-year-month-picker',

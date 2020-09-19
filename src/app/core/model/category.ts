@@ -1,4 +1,4 @@
-import { TransactionType } from '@spend-book/shared/constants';
+import { TransactionType } from '@cyberbook/shared/constants';
 
 export interface Category {
   id: string;

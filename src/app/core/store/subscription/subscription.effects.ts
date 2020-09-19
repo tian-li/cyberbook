@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { notifyWithSnackBar } from '@spend-book/core/store/notification/notification.actions';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification/notification.actions';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { Subscription } from '../../model/subscription';

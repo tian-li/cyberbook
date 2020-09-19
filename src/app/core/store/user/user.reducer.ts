@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { User } from '@spend-book/core/model/user';
+import { User } from '@cyberbook/core/model/user';
 import {
   loginWithLocalTokenSuccess,
   loginSuccess,

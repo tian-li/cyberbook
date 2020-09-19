@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { TransactionVO } from '@spend-book/core/model/transactionVO';
-import { fromTransaction } from '@spend-book/core/store';
-import { DateRangePickerComponent } from '@spend-book/shared/components/date-range-picker/date-range-picker.component';
-import { TransactionTypes } from '@spend-book/shared/constants';
-import { PeriodSummary } from '@spend-book/shared/model/helper-models';
-import { getMonthSummary } from '@spend-book/shared/utils/get-month-summary';
+import { TransactionVO } from '@cyberbook/core/model/transactionVO';
+import { fromTransaction } from '@cyberbook/core/store';
+import { DateRangePickerComponent } from '@cyberbook/shared/components/date-range-picker/date-range-picker.component';
+import { TransactionTypes } from '@cyberbook/shared/constants';
+import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
+import { getMonthSummary } from '@cyberbook/shared/utils/get-month-summary';
 import { Chart, ChartData, ChartDataSets } from 'chart.js';
 import * as dayjs from 'dayjs';
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'

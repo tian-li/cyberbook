@@ -1,4 +1,4 @@
-import { User } from '@spend-book/core/model/user';
+import { User } from '@cyberbook/core/model/user';
 import { v4 as uuid } from 'uuid';
 
 export function createTempUser(): Partial<User> {

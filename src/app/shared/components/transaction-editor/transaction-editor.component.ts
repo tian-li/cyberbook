@@ -3,10 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
-import { Category } from '@spend-book/core/model/category';
-import { Transaction, transactionDescriptionMaxLength } from '@spend-book/core/model/transaction';
-import { fromCategory } from '@spend-book/core/store';
-import { addTransaction, removeTransaction, updateTransaction } from '@spend-book/core/store/transaction/transaction.actions';
+import { Category } from '@cyberbook/core/model/category';
+import { Transaction, transactionDescriptionMaxLength } from '@cyberbook/core/model/transaction';
+import { fromCategory } from '@cyberbook/core/store';
+import { addTransaction, removeTransaction, updateTransaction } from '@cyberbook/core/store/transaction/transaction.actions';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { TransactionTypes, years } from '../../constants';

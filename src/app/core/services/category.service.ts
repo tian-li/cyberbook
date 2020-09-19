@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CyberbookServerResponse } from '@spend-book/core/model/cyberbook-server-response';
-import { TransactionTypes } from '@spend-book/shared/constants';
+import { CyberbookServerResponse } from '@cyberbook/core/model/cyberbook-server-response';
+import { TransactionTypes } from '@cyberbook/shared/constants';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';

@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { select, Store } from '@ngrx/store';
-import { fromUI } from '@spend-book/core/store';
+import { fromUI } from '@cyberbook/core/store';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 

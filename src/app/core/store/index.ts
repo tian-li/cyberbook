@@ -1,11 +1,11 @@
 import { InjectionToken } from '@angular/core';
 import { Action, ActionReducer, ActionReducerMap, MetaReducer, } from '@ngrx/store';
-import * as  fromUser from '@spend-book/core/store/user'
-import * as  fromBook from '@spend-book/core/store/book'
-import * as  fromCategory from '@spend-book/core/store/category'
-import * as  fromTransaction from '@spend-book/core/store/transaction'
-import * as  fromUI from '@spend-book/core/store/ui'
-import * as  fromSubscription from '@spend-book/core/store/subscription'
+import * as  fromUser from '@cyberbook/core/store/user'
+import * as  fromBook from '@cyberbook/core/store/book'
+import * as  fromCategory from '@cyberbook/core/store/category'
+import * as  fromTransaction from '@cyberbook/core/store/transaction'
+import * as  fromUI from '@cyberbook/core/store/ui'
+import * as  fromSubscription from '@cyberbook/core/store/subscription'
 import { environment } from '../../../environments/environment';
 
 export {

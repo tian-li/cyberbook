@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AlertLevel, defaultNegativeAction, defaultPositiveAction } from '@spend-book/shared/constants';
-import { ConfirmationAlertData } from '@spend-book/shared/model/helper-models';
+import { AlertLevel, defaultNegativeAction, defaultPositiveAction } from '@cyberbook/shared/constants';
+import { ConfirmationAlertData } from '@cyberbook/shared/model/helper-models';
 
 @Component({
   selector: 'app-confirmation-alert',

@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { SwipeDirection, SwipeInfo } from '@spend-book/shared/model/helper-models';
+import { SwipeDirection, SwipeInfo } from '@cyberbook/shared/model/helper-models';
 
 @Directive({
   selector: '[appSwipeEvent]'

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { notifyWithSnackBar } from '@spend-book/core/store/notification/notification.actions';
-import { transactionEditorDialogId } from '@spend-book/shared/constants';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification/notification.actions';
+import { transactionEditorDialogId } from '@cyberbook/shared/constants';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { Transaction } from '../../model/transaction';

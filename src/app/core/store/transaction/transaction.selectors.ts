@@ -1,11 +1,11 @@
 import { Dictionary } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Category } from '@spend-book/core/model/category';
-import { Transaction } from '@spend-book/core/model/transaction';
-import { TransactionVO } from '@spend-book/core/model/transactionVO';
-import { RootState } from '@spend-book/core/store';
-import * as fromTransaction from '@spend-book/core/store/transaction/transaction.reducer';
-import { PeriodSummary } from '@spend-book/shared/model/helper-models';
+import { Category } from '@cyberbook/core/model/category';
+import { Transaction } from '@cyberbook/core/model/transaction';
+import { TransactionVO } from '@cyberbook/core/model/transactionVO';
+import { RootState } from '@cyberbook/core/store';
+import * as fromTransaction from '@cyberbook/core/store/transaction/transaction.reducer';
+import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import { selectCategoryEntities } from '../category';
 
 const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;

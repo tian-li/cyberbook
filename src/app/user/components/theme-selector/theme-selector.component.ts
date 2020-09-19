@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { fromUI } from '@spend-book/core/store';
+import { fromUI } from '@cyberbook/core/store';
 import { take } from 'rxjs/operators';
 
 @Component({

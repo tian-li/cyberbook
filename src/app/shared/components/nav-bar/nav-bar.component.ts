@@ -2,10 +2,10 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { User } from '@spend-book/core/model/user';
-import { fromUI, fromUser } from '@spend-book/core/store';
-import { TransactionEditorComponent } from '@spend-book/shared/components/transaction-editor/transaction-editor.component';
-import { defaultTransactionEditorDialogConfig } from '@spend-book/shared/constants';
+import { User } from '@cyberbook/core/model/user';
+import { fromUI, fromUser } from '@cyberbook/core/store';
+import { TransactionEditorComponent } from '@cyberbook/shared/components/transaction-editor/transaction-editor.component';
+import { defaultTransactionEditorDialogConfig } from '@cyberbook/shared/constants';
 import { Observable, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 

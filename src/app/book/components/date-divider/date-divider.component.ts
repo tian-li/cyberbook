@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import { fromTransaction } from '@spend-book/core/store'
+import { fromTransaction } from '@cyberbook/core/store'
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

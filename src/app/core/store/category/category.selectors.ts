@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Category } from '@spend-book/core/model/category';
+import { Category } from '@cyberbook/core/model/category';
 import * as fromCategory from './category.reducer';
-import { RootState } from '@spend-book/core/store';
+import { RootState } from '@cyberbook/core/store';
 
 const selectCategoryState = createFeatureSelector<RootState, fromCategory.State>(
   fromCategory.categoryFeatureKey

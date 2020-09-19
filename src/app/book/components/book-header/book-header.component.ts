@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { fromTransaction, fromUI } from '@spend-book/core/store';
-import { setDisplayMonth } from '@spend-book/core/store/ui/ui.actions';
-import { ISOString, PeriodSummary } from '@spend-book/shared/model/helper-models';
+import { fromTransaction, fromUI } from '@cyberbook/core/store';
+import { setDisplayMonth } from '@cyberbook/core/store/ui/ui.actions';
+import { ISOString, PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { YearMonthPickerComponent } from '../../../shared/components/year-month-picker/year-month-picker.component';

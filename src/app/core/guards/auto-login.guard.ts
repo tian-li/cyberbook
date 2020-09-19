@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loginWithLocalToken, registerTempUser } from '@spend-book/core/store/user';
-import { createTempUser } from '@spend-book/shared/utils/create-temp-user';
-import { getUserIdFromLocalStorage } from '@spend-book/shared/utils/get-user-from-localstorage';
+import { loginWithLocalToken, registerTempUser } from '@cyberbook/core/store/user';
+import { createTempUser } from '@cyberbook/shared/utils/create-temp-user';
+import { getUserIdFromLocalStorage } from '@cyberbook/shared/utils/get-user-from-localstorage';
 import { Observable, of } from 'rxjs';
 
 @Injectable()

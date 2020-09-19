@@ -1,8 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as categoryActions from '@spend-book/core/store/category/category.actions'
-import * as subscriptionActions from '@spend-book/core/store/subscription/subscription.actions'
-import * as transactionActions from '@spend-book/core/store/transaction/transaction.actions'
-import { defaultThemeName } from '@spend-book/shared/constants';
+import * as categoryActions from '@cyberbook/core/store/category/category.actions'
+import * as subscriptionActions from '@cyberbook/core/store/subscription/subscription.actions'
+import * as transactionActions from '@cyberbook/core/store/transaction/transaction.actions'
+import { defaultThemeName } from '@cyberbook/shared/constants';
 import { ISOString } from '../../../shared/model/helper-models';
 import { disableDarkTheme, enableDarkTheme, hideToolbar, setDisplayMonth, setTheme, showToolbar } from './ui.actions';
 

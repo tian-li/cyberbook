@@ -1,4 +1,4 @@
-import { FullDateType, ISOString } from '@spend-book/shared/model/helper-models';
+import { FullDateType, ISOString } from '@cyberbook/shared/model/helper-models';
 
 export interface User {
   id: string;

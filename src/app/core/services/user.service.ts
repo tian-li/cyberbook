@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CyberbookServerResponse } from '@spend-book/core/model/cyberbook-server-response';
-import { User } from '@spend-book/core/model/user';
-import { FullDate } from '@spend-book/shared/model/helper-models';
+import { CyberbookServerResponse } from '@cyberbook/core/model/cyberbook-server-response';
+import { User } from '@cyberbook/core/model/user';
+import { FullDate } from '@cyberbook/shared/model/helper-models';
 import * as dayjs from 'dayjs';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

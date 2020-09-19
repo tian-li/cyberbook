@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
-import { TransactionVO } from '@spend-book/core/model/transactionVO';
-import { fromTransaction, fromUI } from '@spend-book/core/store';
-import { setDisplayMonth } from '@spend-book/core/store/ui';
-import { YearMonthPickerComponent } from '@spend-book/shared/components/year-month-picker/year-month-picker.component';
-import { TransactionTypes } from '@spend-book/shared/constants';
-import { ISOString } from '@spend-book/shared/model/helper-models';
+import { TransactionVO } from '@cyberbook/core/model/transactionVO';
+import { fromTransaction, fromUI } from '@cyberbook/core/store';
+import { setDisplayMonth } from '@cyberbook/core/store/ui';
+import { YearMonthPickerComponent } from '@cyberbook/shared/components/year-month-picker/year-month-picker.component';
+import { TransactionTypes } from '@cyberbook/shared/constants';
+import { ISOString } from '@cyberbook/shared/model/helper-models';
 import { Chart, ChartData } from 'chart.js'
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';

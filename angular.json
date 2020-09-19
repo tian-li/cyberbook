@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "spend-book": {
+    "cyberbook": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -74,19 +74,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "spend-book:build",
+            "browserTarget": "cyberbook:build",
             "port": 1234
           },
           "configurations": {
             "production": {
-              "browserTarget": "spend-book:build:production"
+              "browserTarget": "cyberbook:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "spend-book:build"
+            "browserTarget": "cyberbook:build"
           }
         },
         "test": {
@@ -124,15 +124,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "spend-book:serve"
+            "devServerTarget": "cyberbook:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "spend-book:serve:production"
+              "devServerTarget": "cyberbook:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "spend-book"
+  "defaultProject": "cyberbook"
 }

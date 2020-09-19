@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CanRegisterGuard } from '@spend-book/user/guards/can-register.guard';
+import { CanRegisterGuard } from '@cyberbook/user/guards/can-register.guard';
 import { LoadDataResolver } from '../core/reslovers/load-data.resolver';
 import { SharedModule } from '../shared/shared.module';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';

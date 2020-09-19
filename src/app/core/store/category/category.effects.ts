@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { notifyWithSnackBar } from '@spend-book/core/store/notification';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 

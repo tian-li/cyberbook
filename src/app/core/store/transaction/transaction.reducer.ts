@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
-import { logout } from '@spend-book/core/store/user/user.actions';
+import { logout } from '@cyberbook/core/store/user/user.actions';
 
 import { Transaction } from '../../model/transaction';
 import { addTransactionSuccess, loadTransactionsByUserSuccess, removeTransaction, updateTransactionSuccess } from './transaction.actions';

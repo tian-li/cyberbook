@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadCategoriesByUser } from '@spend-book/core/store/category';
-import { loadSubscriptionsByUser } from '@spend-book/core/store/subscription';
-import { loadTransactionsByUser } from '@spend-book/core/store/transaction';
+import { loadCategoriesByUser } from '@cyberbook/core/store/category';
+import { loadSubscriptionsByUser } from '@cyberbook/core/store/subscription';
+import { loadTransactionsByUser } from '@cyberbook/core/store/transaction';
 import { getUserIdFromLocalStorage } from '../../shared/utils/get-user-from-localstorage';
 
 @Injectable()

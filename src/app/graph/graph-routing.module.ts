@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { GraphChartLineComponent } from '@spend-book/graph/components/graph-chart-line/graph-chart-line.component';
-import { GraphChartPieComponent } from '@spend-book/graph/components/graph-chart-pie/graph-chart-pie.component';
-import { GraphHomeComponent } from '@spend-book/graph/components/graph-home/graph-home.component';
+import { GraphChartLineComponent } from '@cyberbook/graph/components/graph-chart-line/graph-chart-line.component';
+import { GraphChartPieComponent } from '@cyberbook/graph/components/graph-chart-pie/graph-chart-pie.component';
+import { GraphHomeComponent } from '@cyberbook/graph/components/graph-home/graph-home.component';
 import { LoadDataResolver } from '../core/reslovers/load-data.resolver';
 
 const routes: Routes = [

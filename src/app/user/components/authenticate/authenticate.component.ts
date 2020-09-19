@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { fromUI, fromUser } from '@spend-book/core/store';
-import { login, register, saveTempUser } from '@spend-book/core/store/user';
+import { fromUI, fromUser } from '@cyberbook/core/store';
+import { login, register, saveTempUser } from '@cyberbook/core/store/user';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';

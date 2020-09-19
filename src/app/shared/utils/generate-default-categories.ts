@@ -1,4 +1,4 @@
-import { Category } from '@spend-book/core/model/category';
+import { Category } from '@cyberbook/core/model/category';
 import { v4 as uuid } from 'uuid';
 
 export function generateDefaultCategories(userId: string): Category[] {

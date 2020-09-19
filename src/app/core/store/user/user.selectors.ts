@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { RootState } from '@spend-book/core/store';
+import { RootState } from '@cyberbook/core/store';
 import * as fromUser from './user.reducer';
 
 export const selectUserState = createFeatureSelector<RootState, fromUser.State>(

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { TransactionVO } from '@spend-book/core/model/transactionVO';
-import { removeTransaction } from '@spend-book/core/store/transaction';
-import { TransactionEditorComponent } from '@spend-book/shared/components/transaction-editor/transaction-editor.component';
-import { defaultTransactionEditorDialogConfig } from '@spend-book/shared/constants';
-import { SwipeResult } from '@spend-book/shared/model/helper-models';
+import { TransactionVO } from '@cyberbook/core/model/transactionVO';
+import { removeTransaction } from '@cyberbook/core/store/transaction';
+import { TransactionEditorComponent } from '@cyberbook/shared/components/transaction-editor/transaction-editor.component';
+import { defaultTransactionEditorDialogConfig } from '@cyberbook/shared/constants';
+import { SwipeResult } from '@cyberbook/shared/model/helper-models';
 
 @Component({
   selector: 'app-transaction-item',

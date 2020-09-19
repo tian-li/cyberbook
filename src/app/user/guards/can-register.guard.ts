@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { UserService } from '@spend-book/core/services/user.service';
-import { getUserIdFromLocalStorage } from '@spend-book/shared/utils/get-user-from-localstorage';
+import { UserService } from '@cyberbook/core/services/user.service';
+import { getUserIdFromLocalStorage } from '@cyberbook/shared/utils/get-user-from-localstorage';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 

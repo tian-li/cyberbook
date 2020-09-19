@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getTokenFromLocalStorage } from '@spend-book/shared/utils/get-token-from-local-storage';
-// import { getTokenFromLocalStorage } from '@spend-book/shared/utils/get-token-from-localstorage';
+import { getTokenFromLocalStorage } from '@cyberbook/shared/utils/get-token-from-local-storage';
+// import { getTokenFromLocalStorage } from '@cyberbook/shared/utils/get-token-from-localstorage';
 import { Observable, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 

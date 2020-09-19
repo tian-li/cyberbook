@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { hasSubscriptionEnded, Subscription } from '@spend-book/core/model/subscription';
-import { RootState } from '@spend-book/core/store';
-import * as fromSubscription from '@spend-book/core/store/subscription/subscription.reducer';
+import { hasSubscriptionEnded, Subscription } from '@cyberbook/core/model/subscription';
+import { RootState } from '@cyberbook/core/store';
+import * as fromSubscription from '@cyberbook/core/store/subscription/subscription.reducer';
 import * as dayjs from 'dayjs';
 
 const getSelectedSubscriptionId = (state: fromSubscription.State) => state.selectedSubscriptionId;

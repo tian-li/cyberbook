@@ -1,4 +1,4 @@
-import { AlertLevel } from '@spend-book/shared/constants';
+import { AlertLevel } from '@cyberbook/shared/constants';
 
 export type ISOString = string; //
 export type FullDateType = string;

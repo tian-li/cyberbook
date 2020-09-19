@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SwipeDirection, SwipeInfo, SwipeResult } from '@spend-book/shared/model/helper-models';
+import { SwipeDirection, SwipeInfo, SwipeResult } from '@cyberbook/shared/model/helper-models';
 
 @Component({
   selector: 'app-swipeable-item',

@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
-import { Category } from '@spend-book/core/model/category';
-import { ConfirmationAlertComponent } from '@spend-book/shared/components/confirmation-alert/confirmation-alert.component';
-import { AlertLevel, availableCategoryColors, availableCategoryIcons } from '@spend-book/shared/constants';
+import { Category } from '@cyberbook/core/model/category';
+import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
+import { AlertLevel, availableCategoryColors, availableCategoryIcons } from '@cyberbook/shared/constants';
 import { v4 as uuid } from 'uuid';
 
 @Component({

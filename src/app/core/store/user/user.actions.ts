@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '@spend-book/core/model/user';
+import { User } from '@cyberbook/core/model/user';
 
 export const register = createAction('[User] Register',
   props<{ user: Partial<User>, password: string }>()

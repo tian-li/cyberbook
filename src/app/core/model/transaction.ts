@@ -1,4 +1,4 @@
-import { ISOString } from '@spend-book/shared/model/helper-models';
+import { ISOString } from '@cyberbook/shared/model/helper-models';
 
 export interface Transaction {
   id: string;
