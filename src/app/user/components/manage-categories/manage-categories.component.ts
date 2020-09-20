@@ -5,13 +5,13 @@ import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { Category } from '@cyberbook/core/model/category';
 import { fromCategory, fromTransaction, fromUI } from '@cyberbook/core/store';
 import { loadCategoriesByUser, updateCategory } from '@cyberbook/core/store/category';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { AlertLevel, TransactionTypes } from '@cyberbook/shared/constants';
 import { SwipeResult } from '@cyberbook/shared/model/helper-models';
+import { select, Store } from '@ngrx/store';
 import { from, Observable, of, Subject } from 'rxjs';
 import { concatMap, debounceTime, delay, filter, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 import { CategoryEditorComponent } from '../category-editor/category-editor.component';
@@ -40,7 +40,6 @@ import { CategoryEditorComponent } from '../category-editor/category-editor.comp
   ]
 })
 export class ManageCategoriesComponent implements OnInit, OnDestroy {
-  readonly TransactionType = TransactionTypes;
   readonly defaultCategoryType: string = TransactionTypes.spend;
   readonly categoryTypes = [
     { value: 'spend', display: '支出' },
@@ -49,7 +48,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
   @ViewChild('list') list: ElementRef;
 
-  loading: boolean = false;
+  loading = false;
 
   categories: Category[];
   sortingContainerData: Category[];
@@ -104,7 +103,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
   // add or edit category
   editCategory(category: Category) {
-    this.openEditor({ category, editMode: true, allCategories: this.categories })
+    this.openEditor({ category, editMode: true, allCategories: this.categories });
   }
 
   addCategory() {
@@ -118,7 +117,9 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
   saveCategoriesSorting() {
     this.disableDragging();
-    this.dispatchMultipleActions(this.createUpdateSortingActions(this.getCategoriesNeedToUpdate(this.sortingContainerData)))
+    this.dispatchMultipleActions(
+      this.createUpdateSortingActions(this.getCategoriesNeedToUpdate(this.sortingContainerData))
+    );
   }
 
   cancelCategoriesSorting() {
@@ -161,12 +162,12 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
       this.store.dispatch(fromCategory.updateCategory({ category: editedCategory }));
     } else {
       this.store.dispatch(fromCategory.addCategory({
-        category: <Category>{
+        category: {
           ...editedCategory,
           addedByUser: true,
           sortOrder: this.categories.length,
           type: this.selectedCategoryType,
-        }
+        } as Category
       }));
       window.scrollTo(0, this.list.nativeElement.scrollHeight);
     }
@@ -180,14 +181,14 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
   private getCategoriesNeedToUpdate(updatedCategories: Category[]): Category[] {
     return updatedCategories.reduce((result, category, index) => {
       if (this.categories[index].name !== category.name) {
-        result.push({ ...category, sortOrder: index })
+        result.push({ ...category, sortOrder: index });
       }
-      return result
+      return result;
     }, []);
   }
 
   private createUpdateSortingActions(categoriesToUpdate: Category[]) {
-    return categoriesToUpdate.map(category => updateCategory({ category }))
+    return categoriesToUpdate.map(category => updateCategory({ category }));
   }
 
   // delete category
@@ -195,7 +196,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     return this.getTransactionCountOfCategory(category).pipe(
       switchMap(count => {
         if (count < 1) {
-          return of(true)
+          return of(true);
         } else {
           return this.openDeleteAlert(category, count);
         }

@@ -2,7 +2,10 @@ import { TransactionVO } from '@cyberbook/core/model/transactionVO';
 import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import * as dayjs from 'dayjs';
 
-export function getMonthSummary(transactionVOs: TransactionVO[], date: dayjs.Dayjs, scale: 'day' | 'month'): PeriodSummary {
+export function getMonthSummary(
+  transactionVOs: TransactionVO[],
+  date: dayjs.Dayjs, scale: 'day' | 'month'
+): PeriodSummary {
   const periodSummary: PeriodSummary = {
     income: 0,
     spend: 0
@@ -10,16 +13,15 @@ export function getMonthSummary(transactionVOs: TransactionVO[], date: dayjs.Day
 
   transactionVOs
   .filter(t => {
-    return dayjs(t.transactionDate).isSame(date, scale)
+    return dayjs(t.transactionDate).isSame(date, scale);
   })
   .forEach((transaction) => {
     if (transaction.amount > 0) {
-      periodSummary.income += transaction.amount
+      periodSummary.income += transaction.amount;
     } else {
-      periodSummary.spend -= transaction.amount
+      periodSummary.spend -= transaction.amount;
     }
   });
-
 
   return {
     income: Number.parseFloat(periodSummary.income.toFixed(2)),

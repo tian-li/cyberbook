@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { notifyWithSnackBar } from '@cyberbook/core/store/notification/notification.actions';
 import { transactionEditorDialogId } from '@cyberbook/shared/constants';
-import { of } from 'rxjs';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { Transaction } from '../../model/transaction';
 import { TransactionService } from '../../services/transaction.service';
 import {
@@ -27,7 +25,6 @@ export class TransactionEffects {
       switchMap(() =>
         this.transactionService.loadTransactionsByUser().pipe(
           map((transactions: Transaction[]) => loadTransactionsByUserSuccess({ transactions })),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '账本记录载入失败，请稍后重试' } })))
         ))
     )
   );
@@ -41,7 +38,6 @@ export class TransactionEffects {
             this.closeTransactionEditor();
             return addTransactionSuccess({ transaction });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '记账失败，请稍后重试' } })))
         ))
     )
   );
@@ -55,7 +51,6 @@ export class TransactionEffects {
             this.closeTransactionEditor();
             return updateTransactionSuccess({ update: { id: transaction.id, changes: transaction } });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '编辑失败，请稍后重试' } })))
         ))
     )
   );
@@ -69,7 +64,6 @@ export class TransactionEffects {
             this.closeTransactionEditor();
             return removeTransactionSuccess();
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '删除失败，请稍后重试' } })))
         ))
     )
   );

@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   test: true,
-  appName: "Cyberbook",
-  server: "http://localhost:8080/api"
+  appName: 'Cyberbook',
+  server: 'http://localhost:8080/api'
 };
 
 /*

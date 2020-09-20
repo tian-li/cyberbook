@@ -32,6 +32,7 @@
     "@types/chart.js": "^2.9.20",
     "chart.js": "^2.9.3",
     "dayjs": "^1.8.27",
+    "jwt-decode": "^3.0.0-beta.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "uuid": "^8.1.0",

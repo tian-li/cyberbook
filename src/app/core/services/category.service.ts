@@ -15,7 +15,7 @@ export class CategoryService {
   }
 
   loadCategoriesByUser(): Observable<Category[]> {
-    return <Observable<Category[]>>this.http.get(`${this.categoryRoute}`).pipe(
+    return this.http.get(`${this.categoryRoute}`).pipe(
       map((res: CyberbookServerResponse) => res.data.map(data => this.convertToCategory(data)))
     );
   }
@@ -26,7 +26,7 @@ export class CategoryService {
       isSpend: category.type === TransactionTypes.spend
     };
 
-    return <Observable<Category>>this.http.post(`${this.categoryRoute}`, payload).pipe(
+    return this.http.post(`${this.categoryRoute}`, payload).pipe(
       map((res: CyberbookServerResponse) => this.convertToCategory(res.data))
     );
   }
@@ -37,7 +37,7 @@ export class CategoryService {
       isSpend: category.type === TransactionTypes.spend
     };
 
-    return <Observable<Category>>this.http.put(`${this.categoryRoute}/${category.id}`, payload).pipe(
+    return this.http.put(`${this.categoryRoute}/${category.id}`, payload).pipe(
       map((res: CyberbookServerResponse) => this.convertToCategory(res.data))
     );
   }
@@ -50,6 +50,6 @@ export class CategoryService {
     return {
       ...responseData,
       type: responseData.isSpend ? TransactionTypes.spend : TransactionTypes.income
-    }
+    };
   }
 }

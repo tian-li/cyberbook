@@ -15,19 +15,19 @@ export class TransactionService {
   }
 
   loadTransactionsByUser(): Observable<Transaction[]> {
-    return <Observable<Transaction[]>>this.http.get(`${this.transactionRoute}`).pipe(
+    return this.http.get(`${this.transactionRoute}`).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   addTransaction(transaction: Partial<Transaction>): Observable<Transaction> {
-    return <Observable<Transaction>>this.http.post(`${this.transactionRoute}`, transaction).pipe(
+    return this.http.post(`${this.transactionRoute}`, transaction).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   updateTransaction(transaction: Partial<Transaction>): Observable<Transaction> {
-    return <Observable<Transaction>>this.http.put(`${this.transactionRoute}/${transaction.id}`, transaction).pipe(
+    return this.http.put(`${this.transactionRoute}/${transaction.id}`, transaction).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }

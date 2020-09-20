@@ -12,4 +12,4 @@ export interface Transaction {
   subscriptionId?: string;
 }
 
-export const transactionDescriptionMaxLength: number = 10;
+export const transactionDescriptionMaxLength = 10;

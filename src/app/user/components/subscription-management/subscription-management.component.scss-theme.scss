@@ -33,7 +33,7 @@
 
   }
 
-  .draggable-category-item {
+  .draggable-subscription-item {
     background: mat-color($background, card);
     color: mat-color($foreground, text);
 
@@ -46,7 +46,7 @@
     }
   }
 
-  .category-name-border {
+  .subscription-name-border {
     border-bottom: 1px solid mat-color($foreground, divider);
   }
 

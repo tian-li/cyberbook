@@ -1,19 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { hasSubscriptionEnded, Subscription } from '@cyberbook/core/model/subscription';
-import { Transaction } from '@cyberbook/core/model/transaction';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
-import { User } from '@cyberbook/core/model/user';
-import { fromSubscription, fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
+import { fromTransaction, fromUI } from '@cyberbook/core/store';
 import { ISOString } from '@cyberbook/shared/model/helper-models';
-import { calculateSubscriptionNextDate } from '@cyberbook/shared/utils/calculate-subscription-next-date';
+import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
-import * as isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import { Subject } from 'rxjs';
-import { switchMap, takeUntil, withLatestFrom } from 'rxjs/operators';
-import { v4 as uuid } from 'uuid';
-
-dayjs.extend(isSameOrAfter);
+import { switchMap, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-home',
@@ -30,68 +22,17 @@ export class BookHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.pipe()
-
     this.store.pipe(
       select(fromUI.selectDisplayMonth),
       switchMap((displayMonth: ISOString) =>
-        this.store.pipe(select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) }))
+        this.store.pipe(
+          select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) })
+        )
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(transactions => {
       this.transactionVOs = transactions;
     });
-
-    this.store.pipe(
-      select(fromSubscription.selectAllSubscriptions),
-      withLatestFrom(this.store.pipe(select(fromUser.selectUser))),
-      takeUntil(this.unsubscribe$)
-    ).subscribe(([subscriptions, user]: [Subscription[], User]) => {
-      subscriptions.forEach((subscription: Subscription) => {
-        // TODO: server should automatically add subscription transactions on a new day
-        //  move this logic to server
-        // if (!hasSubscriptionEnded(subscription.endDate) && this.today.isSameOrAfter(subscription.nextDate, 'day')) {
-        //   this.createSubscriptionTransaction(subscription, user.id);
-        //   this.updateSubscription(subscription);
-        // }
-      });
-    });
-  }
-
-  createSubscriptionTransaction(subscription: Subscription, userId: string) {
-    const transaction: Transaction = {
-      id: uuid(),
-      userId: userId,
-      amount: subscription.amount,
-      description: subscription.description,
-      categoryId: subscription.categoryId,
-      dateCreated: dayjs(subscription.nextDate).toISOString(),
-      transactionDate: dayjs(subscription.nextDate).toISOString(),
-      dateModified: dayjs(subscription.nextDate).toISOString(),
-      subscriptionId: subscription.id,
-    };
-
-    this.store.dispatch(fromTransaction.addTransaction({ transaction }));
-  }
-
-  updateSubscription(subscription: Subscription) {
-    const nextDate = calculateSubscriptionNextDate(
-      subscription.frequency,
-      subscription.period,
-      dayjs(subscription.startDate),
-      dayjs(subscription.nextDate)
-    );
-
-    this.store.dispatch(fromSubscription.updateSubscription({
-      update: {
-        id: subscription.id,
-        changes: {
-          nextDate: nextDate,
-          totalAmount: subscription.totalAmount + subscription.amount
-        }
-      }
-    }));
-
   }
 
   ngOnDestroy() {

@@ -11,7 +11,6 @@ import { SubscriptionService } from '@cyberbook/core/services/subscription.servi
 import { TransactionService } from '@cyberbook/core/services/transaction.service';
 import { UserService } from '@cyberbook/core/services/user.service';
 import { ROOT_REDUCERS } from '@cyberbook/core/store';
-import { BookEffects } from '@cyberbook/core/store/book/book.effects';
 import { CategoryEffects } from '@cyberbook/core/store/category/category.effects';
 import { NotificationEffects } from '@cyberbook/core/store/notification/notification.effects';
 import { SubscriptionEffects } from '@cyberbook/core/store/subscription/subscription.effects';
@@ -36,7 +35,6 @@ import { environment } from '../../environments/environment';
     EffectsModule.forRoot([
       UserEffects,
       NotificationEffects,
-      BookEffects,
       CategoryEffects,
       TransactionEffects,
       SubscriptionEffects

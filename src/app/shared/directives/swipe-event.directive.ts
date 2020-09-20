@@ -5,7 +5,7 @@ import { SwipeDirection, SwipeInfo } from '@cyberbook/shared/model/helper-models
   selector: '[appSwipeEvent]'
 })
 export class SwipeEventDirective {
-  @Input('swipeDisabled') disabled: boolean = false;
+  @Input() swipeDisabled = false;
 
   @Output() cbkSwipe = new EventEmitter<SwipeInfo>();
   @Output() endSwipe = new EventEmitter<SwipeInfo>();
@@ -18,7 +18,7 @@ export class SwipeEventDirective {
 
   // track moving
   private touchStartX: number;
-  private touchStartY: number
+  private touchStartY: number;
   private firstMoveX: number;
   private firstMoveY: number;
   private touchEndX: number;
@@ -26,7 +26,7 @@ export class SwipeEventDirective {
 
   @HostListener('touchstart', ['$event'])
   private onTouchStart(event: TouchEvent) {
-    if (!this.isMultiTouch(event) && !this.disabled) {
+    if (!this.isMultiTouch(event) && !this.swipeDisabled) {
       this.touchStartX = event.touches[0].pageX;
       this.touchStartY = event.touches[0].pageY;
       this.touchstartTime = event.timeStamp;
@@ -35,7 +35,7 @@ export class SwipeEventDirective {
 
   @HostListener('touchmove', ['$event'])
   private onTouchMove(event: TouchEvent) {
-    if (this.disabled) {
+    if (this.swipeDisabled) {
       event.preventDefault();
       return;
     }
@@ -68,7 +68,7 @@ export class SwipeEventDirective {
 
   @HostListener('touchend', ['$event'])
   private onTouchEnd(event: TouchEvent) {
-    if (this.isMultiTouch(event) || this.disabled) {
+    if (this.isMultiTouch(event) || this.swipeDisabled) {
       event.preventDefault();
       return;
     }
@@ -95,7 +95,7 @@ export class SwipeEventDirective {
     }
 
     if (this.percentage > 0.2) {
-      this.percentage = Math.log10(this.percentage + 0.8) + 0.2
+      this.percentage = Math.log10(this.percentage + 0.8) + 0.2;
     }
   }
 

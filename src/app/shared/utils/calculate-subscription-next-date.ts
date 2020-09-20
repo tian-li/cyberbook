@@ -10,7 +10,7 @@ export function calculateSubscriptionNextDate(
 ): ISOString {
 
   if (!latestHappenDate) {
-    if(frequency===SubscriptionFrequencyTypes.minute) {
+    if (frequency === SubscriptionFrequencyTypes.minute) {
       return dayjs().add(period, 'minute').toISOString();
     }
 

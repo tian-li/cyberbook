@@ -1,15 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
 import { fromTransaction } from '@cyberbook/core/store';
 import { DateRangePickerComponent } from '@cyberbook/shared/components/date-range-picker/date-range-picker.component';
 import { TransactionTypes } from '@cyberbook/shared/constants';
 import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import { getMonthSummary } from '@cyberbook/shared/utils/get-month-summary';
+import { select, Store } from '@ngrx/store';
 import { Chart, ChartData, ChartDataSets } from 'chart.js';
 import * as dayjs from 'dayjs';
-import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
@@ -41,9 +41,9 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   readonly incomeColor = 'green';
   readonly spendColor = 'red';
   readonly categoryTypes = [
-    {value: 'spend', display: '支出'},
-    {value: 'income', display: '收入'},
-    {value: 'both', display: '合并'},
+    { value: 'spend', display: '支出' },
+    { value: 'income', display: '收入' },
+    { value: 'both', display: '合并' },
   ];
 
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
@@ -69,7 +69,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
       this.transactionVOs = transactionVOs;
 
       if (!!this.lineChart) {
-        this.updateChartData(this.createChartData(this.selectedTransactionType))
+        this.updateChartData(this.createChartData(this.selectedTransactionType));
       }
     });
   }
@@ -142,30 +142,34 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
       ...this.defaultLineOption,
       data: [],
       borderColor: this.spendColor,
-      pointBackgroundColor: transactionType === TransactionTypes.spend || transactionType === TransactionTypes.both ? this.spendColor : 'transparent',
+      pointBackgroundColor: transactionType === TransactionTypes.spend || transactionType === TransactionTypes.both ?
+        this.spendColor : 'transparent',
       label: '花费',
     };
     const incomeSet: ChartDataSets = {
       ...this.defaultLineOption,
       data: [],
       borderColor: this.incomeColor,
-      pointBackgroundColor: transactionType === TransactionTypes.income || transactionType === TransactionTypes.both ? this.incomeColor : 'transparent',
+      pointBackgroundColor: transactionType === TransactionTypes.income || transactionType === TransactionTypes.both ?
+        this.incomeColor : 'transparent',
       label: '收入',
     };
     const labels: string[] = [];
 
     let datasets: ChartDataSets[];
-    let periodSummaries: { [yearMonth: string]: PeriodSummary } = {};
+    const periodSummaries: { [yearMonth: string]: PeriodSummary } = {};
     let tempDate = this.startDate;
     while (tempDate.isSameOrBefore(this.endDate)) {
-      periodSummaries[tempDate.format(this.dateAxisFormat)] = getMonthSummary(this.transactionVOs, tempDate, this.dateAxisScale);
+      periodSummaries[tempDate.format(this.dateAxisFormat)] = getMonthSummary(
+        this.transactionVOs, tempDate, this.dateAxisScale
+      );
       tempDate = tempDate.add(1, this.dateAxisScale);
     }
 
     Object.keys(periodSummaries)
     .forEach((month) => {
-      spendSet.data.push(periodSummaries[month].spend)
-      incomeSet.data.push(periodSummaries[month].income)
+      spendSet.data.push(periodSummaries[month].spend);
+      incomeSet.data.push(periodSummaries[month].income);
       labels.push(month);
     });
 
@@ -197,7 +201,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
 
     return {
       datasets,
-      labels: labels
+      labels
     };
   }
 

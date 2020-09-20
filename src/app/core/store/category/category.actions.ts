@@ -12,7 +12,10 @@ export const addCategory = createAction('[Category] Add Category', props<{ categ
 export const addCategorySuccess = createAction('[Category] Add Category Success', props<{ category: Category }>());
 
 export const updateCategory = createAction('[Category] Update Category', props<{ category: Partial<Category> }>());
-export const updateCategorySuccess = createAction('[Category] Update Category Success', props<{ update: Update<Category> }>());
+export const updateCategorySuccess = createAction(
+  '[Category] Update Category Success',
+  props<{ update: Update<Category> }>()
+);
 
 export const removeCategory = createAction('[Category] Remove Category', props<{ id: string }>());
 export const removeCategorySuccess = createAction('[Category] Remove Category Success');

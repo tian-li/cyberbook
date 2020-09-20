@@ -22,7 +22,7 @@ import { TransactionListComponent } from './components/transaction-list/transact
     SharedModule,
     BookRoutingModule,
   ],
-  providers:[
+  providers: [
     LoadDataResolver
   ]
 })

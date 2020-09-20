@@ -10,7 +10,10 @@ export class CanRegisterGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const userId: null | string = getUserIdFromLocalStorage();
 
     if (!userId) {
@@ -29,6 +32,6 @@ export class CanRegisterGuard implements CanActivate {
       catchError(e => {
         return of(true);
       })
-    )
+    );
   }
 }

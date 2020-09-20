@@ -1,12 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { User } from '@cyberbook/core/model/user';
 import { UserService } from '@cyberbook/core/services/user.service';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
-import { of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, switchMap } from 'rxjs/operators';
 
 import {
   login,
@@ -24,7 +22,6 @@ import {
   updateProfileSuccess
 } from './user.actions';
 
-
 @Injectable()
 export class UserEffects {
 
@@ -38,7 +35,6 @@ export class UserEffects {
             this.router.navigate(['/user']);
             return loginSuccess({ user });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '登录失败' } })))
         )
       )
     )
@@ -53,12 +49,6 @@ export class UserEffects {
             this.saveUserToLocalstorage(user);
             return loginWithLocalTokenSuccess({ user });
           }),
-          catchError((error: HttpErrorResponse) => {
-            this.router.navigate(['/user/login']);
-            return of(
-              notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }),
-            )
-          })
         )
       )
     )
@@ -74,9 +64,8 @@ export class UserEffects {
             if (user.registered) {
               this.router.navigate(['/user']);
             }
-            return registerSuccess({ user })
+            return registerSuccess({ user });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册失败' } })))
         )
       )
     )
@@ -91,7 +80,6 @@ export class UserEffects {
             this.saveUserToLocalstorage(user);
             return registerTempUserSuccess({ user });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
         )
       )
     )
@@ -110,7 +98,6 @@ export class UserEffects {
             }
             return saveTempUserSuccess({ user });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '注册临时用户失败' } })))
         )
       )
     )
@@ -129,7 +116,6 @@ export class UserEffects {
               updateProfileSuccess({ user }),
             ];
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '更新账户信息失败' } })))
         )
       )
     )
@@ -144,7 +130,7 @@ export class UserEffects {
         })
       ),
     { dispatch: false }
-  )
+  );
 
   private saveUserToLocalstorage(user: User) {
     localStorage.setItem('userId', user.id);

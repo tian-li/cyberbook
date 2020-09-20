@@ -1,7 +1,7 @@
 <div class="swipeable-item" [@flyInOut]="flyInOutState" (@flyInOut.done)="flyOutFinished($event)">
   <div class="item-container" [ngStyle]="{'transform': getTranslateXValue()}"
        appSwipeEvent (cbkSwipe)="swipe($event)" (endSwipe)="endSwipe($event)" (cancelSwipe)="cancelSwipe()"
-       [swipeDisabled]="disabled"
+       [swipeDisabled]="swipeableItemDisabled"
        [@toggleSwipeActionIcon]="showSwipeIcon">
     <ng-content></ng-content>
   </div>

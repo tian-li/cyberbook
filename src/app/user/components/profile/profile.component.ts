@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { fromUI, fromUser } from '@cyberbook/core/store';
 import { updateProfile } from '@cyberbook/core/store/user';
 import { FullDate } from '@cyberbook/shared/model/helper-models';
+import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -16,7 +16,8 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
-  // readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
+  // readonly passwordPattern =
+  // new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
 
   userId: string;
   form: FormGroup;
@@ -46,8 +47,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         gender: new FormControl(user.gender ? user.gender : 0, Validators.required),
         birthday: new FormControl(dayjs(user.birthday).toDate(), Validators.required),
       });
-
-      console.log("form", this.form)
     });
   }
 

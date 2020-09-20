@@ -1,9 +1,12 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
+import { logout } from '@cyberbook/core/store/user';
 import { getTokenFromLocalStorage } from '@cyberbook/shared/utils/get-token-from-local-storage';
-// import { getTokenFromLocalStorage } from '@cyberbook/shared/utils/get-token-from-localstorage';
+import { Store } from '@ngrx/store';
 import { Observable, throwError } from 'rxjs';
-import { catchError, delay, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -12,17 +15,21 @@ export class TokenInterceptor implements HttpInterceptor {
     '/users/login/',
     '/users/register-temp-user/',
     '/users/register/',
-  ]
+  ];
+
+  constructor(private store: Store) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const localToken = getTokenFromLocalStorage();
 
-    const skipToken = this.permittedPaths.some((path: string) => {
-      return `${request.url}/`.includes(path)
+    const skipToken: boolean = this.permittedPaths.some((path: string) => {
+      return `${request.url}/`.includes(path);
     });
 
+    const isBackendAPI: boolean = request.url.includes(environment.server);
 
-    if (!skipToken) {
+    if (!skipToken && isBackendAPI) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${localToken}`
@@ -31,10 +38,30 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      delay(300),
-      catchError(e => {
-        return throwError("error")
+      catchError((error: HttpErrorResponse) => {
+        switch (error.status) {
+          case 401:
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '无权操作' } }));
+            break;
+          case 403:
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }));
+            this.store.dispatch(logout());
+            break;
+          case 404:
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '404：找不到资源' } }));
+            break;
+          case 422:
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '账号密码错误' } }));
+            break;
+          case 500:
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '服务器发生错误，请稍后重试' } }));
+            break;
+          default:
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '发生未知错误，请稍后重试' } }));
+            break;
+        }
+        return throwError(error);
       })
-    )
+    );
   }
 }

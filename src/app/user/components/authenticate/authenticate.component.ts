@@ -1,10 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { fromUI, fromUser } from '@cyberbook/core/store';
 import { login, register, saveTempUser } from '@cyberbook/core/store/user';
+import { select, Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
@@ -18,7 +27,8 @@ const passwordNotMatch = 'passwordNotMatch';
 })
 export class AuthenticateComponent implements OnInit, OnDestroy {
   readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
-  // TODO: readonly passwordPattern = new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
+  // TODO: readonly passwordPattern =
+  //  new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
   matcher = new MyErrorStateMatcher();
   userId;
   form: FormGroup;
@@ -33,22 +43,18 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
     this.route.data.subscribe(data => {
-      console.log("route data", data)
       this.registerMode = data.registerMode;
-    })
+    });
   }
 
   ngOnInit() {
     this.store.dispatch(fromUI.hideToolbar());
-
-
 
     this.store.pipe(
       select(fromUser.selectUser),
       takeUntil(this.unsubscribe$)
     ).subscribe((user) => {
       this.userId = user.id;
-      // this.registerMode = !localStorage.getItem('user')
 
       this.form = this.fb.group({
         username: new FormControl({
@@ -59,7 +65,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
         email: new FormControl(user.email, [Validators.email, Validators.required]),
         password: new FormControl(null, Validators.required),
       }, { validators: this.isPasswordMatch });
-    })
+    });
   }
 
   ngOnDestroy() {
@@ -89,7 +95,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
       }
 
     } else {
-      this.store.dispatch(login({ email: formValue.email, password: formValue.password }))
+      this.store.dispatch(login({ email: formValue.email, password: formValue.password }));
     }
   }
 

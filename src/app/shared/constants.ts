@@ -33,7 +33,7 @@ export const defaultTransactionEditorDialogConfig: MatDialogConfig<{ editMode: b
   height: '400px',
   disableClose: true,
   data: { editMode: false }
-}
+};
 
 export enum TransactionTypes {
   spend = 'spend',

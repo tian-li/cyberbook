@@ -1,16 +1,14 @@
 import { InjectionToken } from '@angular/core';
+import * as  fromCategory from '@cyberbook/core/store/category';
+import * as  fromSubscription from '@cyberbook/core/store/subscription';
+import * as  fromTransaction from '@cyberbook/core/store/transaction';
+import * as  fromUI from '@cyberbook/core/store/ui';
+import * as  fromUser from '@cyberbook/core/store/user';
 import { Action, ActionReducer, ActionReducerMap, MetaReducer, } from '@ngrx/store';
-import * as  fromUser from '@cyberbook/core/store/user'
-import * as  fromBook from '@cyberbook/core/store/book'
-import * as  fromCategory from '@cyberbook/core/store/category'
-import * as  fromTransaction from '@cyberbook/core/store/transaction'
-import * as  fromUI from '@cyberbook/core/store/ui'
-import * as  fromSubscription from '@cyberbook/core/store/subscription'
 import { environment } from '../../../environments/environment';
 
 export {
   fromUser,
-  fromBook,
   fromCategory,
   fromTransaction,
   fromUI,
@@ -19,7 +17,6 @@ export {
 
 export interface RootState {
   [fromUser.userFeatureKey]: fromUser.State;
-  [fromBook.bookFeatureKey]: fromBook.State;
   [fromCategory.categoryFeatureKey]: fromCategory.State;
   [fromTransaction.transactionFeatureKey]: fromTransaction.State;
   [fromUI.uiFeatureKey]: fromUI.State;
@@ -30,7 +27,6 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<RootState, Acti
   factory: () => ({
     [fromUser.userFeatureKey]: fromUser.userReducer,
     [fromUI.uiFeatureKey]: fromUI.uiReducer,
-    [fromBook.bookFeatureKey]: fromBook.bookReducer,
     [fromCategory.categoryFeatureKey]: fromCategory.categoryReducer,
     [fromTransaction.transactionFeatureKey]: fromTransaction.transactionReducer,
     [fromSubscription.subscriptionFeatureKey]: fromSubscription.subscriptionReducer,

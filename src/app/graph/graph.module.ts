@@ -9,7 +9,6 @@ import { GraphChartLineComponent } from './components/graph-chart-line/graph-cha
 import { GraphChartPieComponent } from './components/graph-chart-pie/graph-chart-pie.component';
 import { GraphHomeComponent } from './components/graph-home/graph-home.component';
 
-
 @NgModule({
   declarations: [
     GraphHomeComponent,
@@ -23,7 +22,7 @@ import { GraphHomeComponent } from './components/graph-home/graph-home.component
     GraphRoutingModule,
     FormsModule
   ],
-  providers:[
+  providers: [
     LoadDataResolver
   ]
 })

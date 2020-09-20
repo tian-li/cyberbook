@@ -12,7 +12,8 @@ export class ConfirmationAlertComponent {
   constructor(
     private dialogRef: MatDialogRef<ConfirmationAlertComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmationAlertData,
-  ) { }
+  ) {
+  }
 
   get alertIconColor() {
     switch (this.data.alertLevel) {
@@ -21,7 +22,7 @@ export class ConfirmationAlertComponent {
       case AlertLevel.warn:
         return '#ffca28';
       default:
-        return '#78909c'
+        return '#78909c';
     }
   }
 

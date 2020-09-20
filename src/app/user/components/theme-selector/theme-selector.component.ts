@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { fromUI } from '@cyberbook/core/store';
+import { select, Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -37,10 +37,10 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
       accent: '#69f0ae',
       isDark: true,
     }
-  ]
+  ];
 
-  previousTheme;
-  selectedTheme;
+  previousTheme: string;
+  selectedTheme: string;
 
   constructor(
     private store: Store,
@@ -70,7 +70,7 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
 
   selectTheme(themeName: string) {
     this.selectedTheme = themeName;
-    this.store.dispatch(fromUI.setTheme({themeName}));
+    this.store.dispatch(fromUI.setTheme({ themeName }));
   }
 
   save() {

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Dictionary } from '@ngrx/entity';
-import { select, Store } from '@ngrx/store';
 import { Category } from '@cyberbook/core/model/category';
 import { hasSubscriptionEnded, Subscription } from '@cyberbook/core/model/subscription';
 import { fromCategory, fromSubscription, fromUI } from '@cyberbook/core/store';
 import { loadSubscriptionsByUser, removeSubscription, stopSubscription } from '@cyberbook/core/store/subscription';
 import { SwipeResult } from '@cyberbook/shared/model/helper-models';
+import { Dictionary } from '@ngrx/entity';
+import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { debounceTime, startWith, switchMap, takeUntil } from 'rxjs/operators';
@@ -20,7 +20,7 @@ import { SubscriptionEditorComponent } from '../subscription-editor/subscription
   templateUrl: './subscription-management.component.html',
   styleUrls: ['./subscription-management.component.scss']
 })
-export class SubscriptionManagementComponent implements OnInit {
+export class SubscriptionManagementComponent implements OnInit, OnDestroy {
   readonly defaultSubscriptionType: string = 'active';
   readonly today: dayjs.Dayjs = dayjs().startOf('day');
   readonly hasSubscriptionEnded = hasSubscriptionEnded;
@@ -50,7 +50,9 @@ export class SubscriptionManagementComponent implements OnInit {
 
     this.subscriptionTypeControl.valueChanges.pipe(
       startWith(this.defaultSubscriptionType),
-      switchMap((type) => this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: type === 'active' }))),
+      switchMap(type =>
+        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: type === 'active' }))
+      ),
       debounceTime(200),
       takeUntil(this.unsubscribe$)
     ).subscribe(allSubscriptions => {
@@ -62,7 +64,7 @@ export class SubscriptionManagementComponent implements OnInit {
       takeUntil(this.unsubscribe$)
     ).subscribe(categoryEntities => {
       this.categoryEntities = categoryEntities;
-    })
+    });
   }
 
   ngOnDestroy() {
@@ -121,6 +123,6 @@ export class SubscriptionManagementComponent implements OnInit {
   }
 
   private removeSubscription(subscription: Subscription) {
-    this.store.dispatch(removeSubscription({ id: subscription.id }))
+    this.store.dispatch(removeSubscription({ id: subscription.id }));
   }
 }

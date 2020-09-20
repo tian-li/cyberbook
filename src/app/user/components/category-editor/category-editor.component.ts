@@ -20,9 +20,10 @@ export class CategoryEditorComponent implements OnInit {
   selectedIcon: string = this.availableCategoryIcons[0];
   categoryNameControl = new FormControl('', [Validators.required, Validators.maxLength(5)]);
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) private data: { editMode: boolean, allCategories: Category[], category?: Category },
-              private bottomSheetRef: MatBottomSheetRef<CategoryEditorComponent>,
-              private dialog: MatDialog) {
+  constructor(
+    @Inject(MAT_BOTTOM_SHEET_DATA) private data: { editMode: boolean, allCategories: Category[], category?: Category },
+    private bottomSheetRef: MatBottomSheetRef<CategoryEditorComponent>,
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -57,7 +58,7 @@ export class CategoryEditorComponent implements OnInit {
       name: categoryName,
       color: this.selectedColor,
       icon: this.selectedIcon
-    }
+    };
 
     let result: Partial<Category>;
 
@@ -65,13 +66,13 @@ export class CategoryEditorComponent implements OnInit {
       result = {
         ...this.data.category,
         ...changes
-      }
+      };
     } else {
       result = {
         id: uuid(),
         ...changes,
         addedByUser: true,
-      }
+      };
     }
 
     this.bottomSheetRef.dismiss(result);

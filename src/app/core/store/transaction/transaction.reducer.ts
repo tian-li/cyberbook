@@ -1,15 +1,20 @@
+import { logout } from '@cyberbook/core/store/user/user.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
-import { logout } from '@cyberbook/core/store/user/user.actions';
 
 import { Transaction } from '../../model/transaction';
-import { addTransactionSuccess, loadTransactionsByUserSuccess, removeTransaction, updateTransactionSuccess } from './transaction.actions';
+import {
+  addTransactionSuccess,
+  loadTransactionsByUserSuccess,
+  removeTransaction,
+  updateTransactionSuccess
+} from './transaction.actions';
 
 export const transactionFeatureKey = 'transaction';
 
 export interface State extends EntityState<Transaction> {
   selectedTransactionId: number;
-  transactionIdsByDate: { [date: string]: number[] }
+  transactionIdsByDate: { [date: string]: number[] };
 }
 
 export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transaction>({
@@ -31,22 +36,23 @@ const reducer = createReducer(
       transactionIdsByDate = {
         ...transactionIdsByDate,
         [date]: transactionIdsByDate[date] ? [...transactionIdsByDate[date], transaction.id] : [transaction.id]
-      }
+      };
     });
 
-    return adapter.setAll(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate })
+    return adapter.setAll(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate });
   }),
   on(addTransactionSuccess, (state, { transaction }) => {
     const date = transaction.transactionDate.substring(0, 10);
     const updatedTransactionIdsByDate = {
       ...state.transactionIdsByDate,
-      [date]: state.transactionIdsByDate[date] ? [...state.transactionIdsByDate[date], transaction.id] : [transaction.id]
+      [date]: state.transactionIdsByDate[date] ?
+        [...state.transactionIdsByDate[date], transaction.id] : [transaction.id]
     };
     return adapter.addOne(transaction, {
       ...state,
       selectedTransactionId: transaction.id,
       transactionIdsByDate: updatedTransactionIdsByDate
-    })
+    });
   }),
   on(updateTransactionSuccess, (state, { update }) => {
     const updatedTransaction = update.changes;
@@ -59,10 +65,15 @@ const reducer = createReducer(
       const updatedTransactionIdsByDate = {
         ...state.transactionIdsByDate,
         [oldDate]: state.transactionIdsByDate[oldDate].filter(id => id !== update.id),
-        [newDate]: state.transactionIdsByDate[newDate] ? [...state.transactionIdsByDate[newDate], update.id] : [update.id]
-      }
+        [newDate]: state.transactionIdsByDate[newDate] ?
+          [...state.transactionIdsByDate[newDate], update.id] : [update.id]
+      };
 
-      return adapter.updateOne(update, { ...state, selectedTransactionId: update.id, transactionIdsByDate: updatedTransactionIdsByDate });
+      return adapter.updateOne(update, {
+        ...state,
+        selectedTransactionId: update.id,
+        transactionIdsByDate: updatedTransactionIdsByDate
+      });
     }
     return adapter.updateOne(update, { ...state, selectedTransactionId: update.id });
   }),
@@ -72,8 +83,12 @@ const reducer = createReducer(
     const updatedTransactionIdsByDate = {
       ...state.transactionIdsByDate,
       [date]: state.transactionIdsByDate[date].filter(transactionId => transactionId !== id),
-    }
-    return adapter.removeOne(id, { ...state, selectedTransactionId: null, transactionIdsByDate: updatedTransactionIdsByDate })
+    };
+    return adapter.removeOne(id, {
+      ...state,
+      selectedTransactionId: null,
+      transactionIdsByDate: updatedTransactionIdsByDate
+    });
   }),
   on(logout, (state) => initialState),
 );

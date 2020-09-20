@@ -1,11 +1,11 @@
-import { Dictionary } from '@ngrx/entity';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Category } from '@cyberbook/core/model/category';
 import { Transaction } from '@cyberbook/core/model/transaction';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
 import { RootState } from '@cyberbook/core/store';
 import * as fromTransaction from '@cyberbook/core/store/transaction/transaction.reducer';
 import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
+import { Dictionary } from '@ngrx/entity';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectCategoryEntities } from '../category';
 
 const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;
@@ -22,7 +22,7 @@ export const selectSelectedTransactionId = createSelector(
 export const selectTransactionIdsByDate = createSelector(
   selectTransactionState,
   (state: fromTransaction.State) => state.transactionIdsByDate
-)
+);
 
 export const {
   selectIds: selectTransactionIds,
@@ -52,7 +52,7 @@ export const selectAllTransactionVOs = createSelector(selectCategoryEntities,
     .sort((a: TransactionVO, b: TransactionVO) =>
       b.transactionDate.valueOf() - a.transactionDate.valueOf() ||
       b.dateModified.valueOf() - a.dateModified.valueOf()
-    )
+    );
   }
 );
 
@@ -83,7 +83,7 @@ export const getTransactionSummaryByDate = createSelector(
       } else {
         summary.spend -= transaction.amount;
       }
-    })
+    });
     return summary;
   }
 );
@@ -98,14 +98,14 @@ export const getTransactionSummaryByMonth = createSelector(
 
     transactionVOs.forEach((transaction) => {
       if (transaction.amount > 0) {
-        monthSummary.income += transaction.amount
+        monthSummary.income += transaction.amount;
       } else {
-        monthSummary.spend -= transaction.amount
+        monthSummary.spend -= transaction.amount;
       }
     });
     return monthSummary;
   }
-)
+);
 
 export const getTransactionCountByCategoryId = createSelector(
   selectAllTransactions,

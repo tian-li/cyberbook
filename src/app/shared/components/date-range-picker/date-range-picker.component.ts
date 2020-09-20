@@ -53,6 +53,6 @@ export class DateRangePickerComponent implements OnInit {
 
 class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return form && form.invalid
+    return form && form.invalid;
   }
 }

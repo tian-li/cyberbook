@@ -1,8 +1,8 @@
-import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '@cyberbook/core/model/user';
+import { Action, createReducer, on } from '@ngrx/store';
 import {
-  loginWithLocalTokenSuccess,
   loginSuccess,
+  loginWithLocalTokenSuccess,
   logout,
   registerSuccess,
   registerTempUserSuccess,
@@ -15,7 +15,7 @@ export const userFeatureKey = 'user';
 const defaultTempUser: Partial<User> = {
   username: '立即注册',
   registered: false
-}
+};
 
 export interface State {
   user: Partial<User>;
@@ -29,7 +29,11 @@ export const initialState: State = {
 
 const reducer = createReducer(
   initialState,
-  on(updateProfileSuccess, (state, { user }) => ({ ...state, user: { ...state.user, ...user }, isAuthenticated: true })),
+  on(updateProfileSuccess, (state, { user }) => ({
+    ...state,
+    user: { ...state.user, ...user },
+    isAuthenticated: true
+  })),
   on(loginSuccess, registerSuccess, registerTempUserSuccess, saveTempUserSuccess, (state, { user }) => ({
     ...state,
     user,
@@ -41,7 +45,7 @@ const reducer = createReducer(
       ...state,
       user,
       isAuthenticated: true
-    }
+    };
   }),
   on(logout, () => initialState)
 );

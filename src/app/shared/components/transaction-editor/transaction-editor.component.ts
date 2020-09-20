@@ -1,12 +1,16 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Dictionary } from '@ngrx/entity';
-import { select, Store } from '@ngrx/store';
 import { Category } from '@cyberbook/core/model/category';
 import { Transaction, transactionDescriptionMaxLength } from '@cyberbook/core/model/transaction';
 import { fromCategory } from '@cyberbook/core/store';
-import { addTransaction, removeTransaction, updateTransaction } from '@cyberbook/core/store/transaction/transaction.actions';
+import {
+  addTransaction,
+  removeTransaction,
+  updateTransaction
+} from '@cyberbook/core/store/transaction/transaction.actions';
+import { Dictionary } from '@ngrx/entity';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { TransactionTypes, years } from '../../constants';
@@ -23,7 +27,6 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   readonly maxDate = new Date(years[years.length - 1], 11, 31);
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
   readonly defaultCategoryType: string = TransactionTypes.spend;
-  readonly TransactionType = TransactionTypes;
   readonly categoryTypes = [
     { value: 'spend', display: '支出' },
     { value: 'income', display: '收入' },
@@ -73,7 +76,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   changeCategoryType(type: string) {
     this.selectedCategoryType = type;
     this.categoryTypeControl.setValue(type);
-    this.formGroup.controls['categoryId'].reset(undefined);
+    this.formGroup.get('categoryId').reset(undefined);
   }
 
   cancel() {
@@ -122,7 +125,10 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
       amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^\d*(\.\d{0,2})?$/)]),
-      description: new FormControl(initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)),
+      description: new FormControl(
+        initialFormData.description,
+        Validators.maxLength(this.transactionDescriptionMaxLength)
+      ),
       categoryId: new FormControl(initialFormData.categoryId, Validators.required),
       transactionDate: new FormControl(initialFormData.transactionDate),
     });

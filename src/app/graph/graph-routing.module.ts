@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { GraphChartLineComponent } from '@cyberbook/graph/components/graph-chart-line/graph-chart-line.component';
 import { GraphChartPieComponent } from '@cyberbook/graph/components/graph-chart-pie/graph-chart-pie.component';
 import { GraphHomeComponent } from '@cyberbook/graph/components/graph-home/graph-home.component';
@@ -33,4 +33,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GraphRoutingModule {}
+export class GraphRoutingModule {
+}

@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { Dictionary } from '@ngrx/entity';
-import { select, Store } from '@ngrx/store';
 import { Category } from '@cyberbook/core/model/category';
 import { Subscription, SubscriptionFrequencyTypes } from '@cyberbook/core/model/subscription';
 import { transactionDescriptionMaxLength } from '@cyberbook/core/model/transaction';
@@ -11,6 +9,8 @@ import { addSubscription, updateSubscription } from '@cyberbook/core/store/subsc
 import { TransactionType, TransactionTypes, years } from '@cyberbook/shared/constants';
 import { ISOString } from '@cyberbook/shared/model/helper-models';
 import { calculateSubscriptionNextDate } from '@cyberbook/shared/utils/calculate-subscription-next-date';
+import { Dictionary } from '@ngrx/entity';
+import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { Observable, Subject } from 'rxjs';
@@ -22,24 +22,23 @@ import { v4 as uuid } from 'uuid';
   templateUrl: './subscription-editor.component.html',
   styleUrls: ['./subscription-editor.component.scss']
 })
-export class SubscriptionEditorComponent implements OnInit {
+export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   readonly today = dayjs().startOf('day');
   readonly minStartDate = new Date();
   readonly maxDate = new Date(years[years.length - 1], 11, 31);
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
-  readonly TransactionType = TransactionTypes;
   readonly frequencies: { value: SubscriptionFrequencyTypes, display: string }[] = [
-    {value: SubscriptionFrequencyTypes.minute, display: '分钟'},
-    {value: SubscriptionFrequencyTypes.day, display: '天'},
-    {value: SubscriptionFrequencyTypes.week, display: '星期'},
-    {value: SubscriptionFrequencyTypes.month, display: '月'},
-    {value: SubscriptionFrequencyTypes.year, display: '年'},
+    { value: SubscriptionFrequencyTypes.minute, display: '分钟' },
+    { value: SubscriptionFrequencyTypes.day, display: '天' },
+    { value: SubscriptionFrequencyTypes.week, display: '星期' },
+    { value: SubscriptionFrequencyTypes.month, display: '月' },
+    { value: SubscriptionFrequencyTypes.year, display: '年' },
   ];
 
   readonly categoryTypes = [
-    {value: 'spend', display: '支出'},
-    {value: 'income', display: '收入'},
+    { value: 'spend', display: '支出' },
+    { value: 'income', display: '收入' },
   ];
 
   periods: number[] = [];
@@ -78,7 +77,7 @@ export class SubscriptionEditorComponent implements OnInit {
     this.categories$ = this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
       switchMap((type) => {
-        return this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))
+        return this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }));
       }),
     );
 
@@ -92,7 +91,7 @@ export class SubscriptionEditorComponent implements OnInit {
 
   changeCategoryType(type: string) {
     this.categoryTypeControl.setValue(type);
-    this.formGroup.controls['categoryId'].reset();
+    this.formGroup.get('categoryId').reset();
   }
 
   save() {
@@ -146,9 +145,6 @@ export class SubscriptionEditorComponent implements OnInit {
         ...subscription,
         id: this.data.subscription.id,
         userId: this.data.subscription.userId,
-
-        // TODO: remove after server can do this
-        dateCreated: this.data.subscription.dateCreated
       };
     } else {
       subscription = {
@@ -156,7 +152,7 @@ export class SubscriptionEditorComponent implements OnInit {
         id: uuid(),
         totalAmount: 0,
         dateCreated: this.today.toISOString()
-      }
+      };
     }
 
     return subscription;
@@ -171,15 +167,15 @@ export class SubscriptionEditorComponent implements OnInit {
   }
 
   get periodControlValue(): number {
-    return this.formGroup.controls['period'].value;
+    return this.formGroup.get('period').value;
   }
 
   get frequencyControlValue(): SubscriptionFrequencyTypes {
-    return this.formGroup.controls['frequency'].value;
+    return this.formGroup.get('frequency').value;
   }
 
   get startDateControlValue(): string | Date {
-    return this.formGroup.controls['startDate'].value;
+    return this.formGroup.get('startDate').value;
   }
 
   get showSummary(): boolean {
@@ -193,7 +189,7 @@ export class SubscriptionEditorComponent implements OnInit {
     if (this.periodControlValue === 1) {
       periodStr = '';
     } else if (this.periodControlValue === 2) {
-      periodStr = '两'
+      periodStr = '两';
     } else {
       periodStr = this.periodControlValue;
     }
@@ -206,13 +202,13 @@ export class SubscriptionEditorComponent implements OnInit {
         summary = `每${periodStr}天`;
         break;
       case SubscriptionFrequencyTypes.week:
-        summary = `每${periodStr}个星期的${dayjs(this.startDateControlValue).format('dddd')}`
+        summary = `每${periodStr}个星期的${dayjs(this.startDateControlValue).format('dddd')}`;
         break;
       case SubscriptionFrequencyTypes.month:
-        summary = `每${periodStr}个月的${dayjs(this.startDateControlValue).format('D号')}`
+        summary = `每${periodStr}个月的${dayjs(this.startDateControlValue).format('D号')}`;
         break;
       case SubscriptionFrequencyTypes.year:
-        summary = `每${periodStr}年的${dayjs(this.startDateControlValue).format('M月D号')}`
+        summary = `每${periodStr}年的${dayjs(this.startDateControlValue).format('M月D号')}`;
         break;
       default:
         break;
@@ -225,7 +221,9 @@ export class SubscriptionEditorComponent implements OnInit {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
       amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^\d*(\.\d{0,2})?$/)]),
-      description: new FormControl(initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)),
+      description: new FormControl(
+        initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)
+      ),
       categoryId: new FormControl(initialFormData.categoryId, Validators.required),
       startDate: new FormControl(initialFormData.startDate),
       endDate: new FormControl(initialFormData.endDate),

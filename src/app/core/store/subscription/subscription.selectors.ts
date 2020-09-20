@@ -1,7 +1,7 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { hasSubscriptionEnded, Subscription } from '@cyberbook/core/model/subscription';
 import { RootState } from '@cyberbook/core/store';
 import * as fromSubscription from '@cyberbook/core/store/subscription/subscription.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 
 const getSelectedSubscriptionId = (state: fromSubscription.State) => state.selectedSubscriptionId;
@@ -49,9 +49,9 @@ export const selectAllSubscriptionsByActiveStatus = createSelector(
     if (!props.active) {
       return filteredSubscriptions.sort((a, b) => {
         return dayjs(b.endDate).valueOf() - dayjs(a.endDate).valueOf();
-      })
+      });
     } else {
       return filteredSubscriptions;
     }
   }
-)
+);

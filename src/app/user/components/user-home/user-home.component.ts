@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { User } from '@cyberbook/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { AlertLevel, defaultThemeName } from '@cyberbook/shared/constants';
+import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -32,7 +32,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.numberOfAllTransactions$ = this.store.pipe(select(fromTransaction.selectTransactionTotal))
+    this.numberOfAllTransactions$ = this.store.pipe(select(fromTransaction.selectTransactionTotal));
 
     this.store.pipe(
       select(fromUser.selectUser),

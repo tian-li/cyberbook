@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
 import { User } from '@cyberbook/core/model/user';
+import { createAction, props } from '@ngrx/store';
 
 export const register = createAction('[User] Register',
   props<{ user: Partial<User>, password: string }>()
@@ -18,12 +18,18 @@ export const loginFail = createAction('[User] Login Fail', props<{ errorMessage:
 export const logout = createAction('[User] Logout');
 
 export const loginWithLocalToken = createAction('[User] Login With Local Token');
-export const loginWithLocalTokenSuccess = createAction('[User] Login With Local Token Success', props<{ user: User }>());
+export const loginWithLocalTokenSuccess = createAction(
+  '[User] Login With Local Token Success',
+  props<{ user: User }>()
+);
 
 export const registerTempUser = createAction('[User] Register Temp User',
   props<{ user: Partial<User> }>()
 );
-export const registerTempUserSuccess = createAction('[User] Register Temp User Success', props<{ user: Partial<User> }>());
+export const registerTempUserSuccess = createAction(
+  '[User] Register Temp User Success',
+  props<{ user: Partial<User> }>()
+);
 
-export const saveTempUser = createAction('[User] Save Temp User',  props<{ user: Partial<User>, password: string }>());
-export const saveTempUserSuccess = createAction('[User] Save Temp User Success',  props<{ user: Partial<User> }>());
+export const saveTempUser = createAction('[User] Save Temp User', props<{ user: Partial<User>, password: string }>());
+export const saveTempUserSuccess = createAction('[User] Save Temp User Success', props<{ user: Partial<User> }>());

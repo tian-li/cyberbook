@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification/notification.actions';
-import { of } from 'rxjs';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { Subscription } from '../../model/subscription';
 import { SubscriptionService } from '../../services/subscription.service';
 import {
@@ -28,7 +27,6 @@ export class SubscriptionEffects {
       switchMap(() =>
         this.subscriptionService.loadSubscriptionsByUser().pipe(
           map((subscriptions: Subscription[]) => loadSubscriptionsByUserSuccess({ subscriptions })),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '账本记录载入失败，请稍后重试' } })))
         ))
     )
   );
@@ -42,7 +40,6 @@ export class SubscriptionEffects {
             // this.closeSubscriptionEditor();
             return addSubscriptionSuccess({ subscription });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '记账失败，请稍后重试' } })))
         ))
     )
   );
@@ -56,7 +53,6 @@ export class SubscriptionEffects {
             // this.closeSubscriptionEditor();
             return updateSubscriptionSuccess({ update: { id: subscription.id, changes: subscription } });
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '编辑失败，请稍后重试' } })))
         ))
     )
   );
@@ -73,7 +69,6 @@ export class SubscriptionEffects {
               notifyWithSnackBar({ snackBar: { message: '周期性账目已取消' } })
             ];
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '编辑失败，请稍后重试' } })))
         ))
     )
   );
@@ -87,7 +82,6 @@ export class SubscriptionEffects {
             // this.closeSubscriptionEditor();
             return removeSubscriptionSuccess();
           }),
-          catchError(() => of(notifyWithSnackBar({ snackBar: { message: '删除失败，请稍后重试' } })))
         ))
     )
   );

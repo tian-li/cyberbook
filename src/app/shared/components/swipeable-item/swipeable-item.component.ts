@@ -22,8 +22,8 @@ import { SwipeDirection, SwipeInfo, SwipeResult } from '@cyberbook/shared/model/
 export class SwipeableItemComponent {
   readonly defaultSwipeDeleteThreshold = 0.2;
 
-  @Input('swipeableItemDisabled') disabled = false;
-  @Input('swipeDeleteThreshold') swipeDeleteThreshold: number = this.defaultSwipeDeleteThreshold;
+  @Input() swipeableItemDisabled = false;
+  @Input() swipeDeleteThreshold: number = this.defaultSwipeDeleteThreshold;
 
   @Input() canSwipeLeft = true;
   @Input() swipeLeftColor = '#c84031';

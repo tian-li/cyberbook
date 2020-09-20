@@ -2,8 +2,8 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { select, Store } from '@ngrx/store';
 import { fromUI } from '@cyberbook/core/store';
+import { select, Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
@@ -37,7 +37,9 @@ export class AppComponent implements OnInit, OnDestroy {
       this.renderer.removeClass(document.body, this.themeName);
       this.themeName = themeName;
       const overlayContainerClasses = this.overlayContainer.getContainerElement().classList;
-      const themeClassesToRemove = Array.from(overlayContainerClasses).filter((item: string) => item.includes('-theme'));
+      const themeClassesToRemove = Array.from(overlayContainerClasses).filter(
+        (item: string) => item.includes('-theme')
+      );
       if (themeClassesToRemove.length) {
         overlayContainerClasses.remove(...themeClassesToRemove);
       }
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.store.pipe(
       select(fromUI.selectLoading),
       debounceTime(200),
-    takeUntil(this.unsubscribe$)
+      takeUntil(this.unsubscribe$)
     ).subscribe((loading: boolean) => this.loading = loading);
   }
 

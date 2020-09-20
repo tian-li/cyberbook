@@ -24,11 +24,11 @@ export interface FrequencyInfo {
   frequency: SubscriptionFrequencyTypes | 'custom';
   display: string;
   period?: number;
-  every?: string| number;
+  every?: string | number;
 }
 
 export enum SubscriptionFrequencyTypes {
-  day= 1,
+  day = 1,
   week = 2,
   month = 3,
   year = 4,
@@ -36,11 +36,11 @@ export enum SubscriptionFrequencyTypes {
 }
 
 export const subscriptionFrequencies = [
-   SubscriptionFrequencyTypes.day,
-   SubscriptionFrequencyTypes.week,
-   SubscriptionFrequencyTypes.month,
-   SubscriptionFrequencyTypes.year,
-]
+  SubscriptionFrequencyTypes.day,
+  SubscriptionFrequencyTypes.week,
+  SubscriptionFrequencyTypes.month,
+  SubscriptionFrequencyTypes.year,
+];
 
 export function hasSubscriptionEnded(endDate: string): boolean {
   return today.isAfter(endDate);
