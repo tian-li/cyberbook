@@ -54,4 +54,8 @@ export class UserService {
       map((res: CyberbookServerResponse) => res.data)
     );
   }
+
+  setTheme(theme: string): Observable<any> {
+    return this.http.post(`${this.userRoute}/set-theme`, theme);
+  }
 }

@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { RootState } from '@cyberbook/core/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromUser from './user.reducer';
 
 export const selectUserState = createFeatureSelector<RootState, fromUser.State>(
@@ -14,4 +14,9 @@ export const selectUser = createSelector(
 export const selectIsAuthenticated = createSelector(
   selectUserState,
   (state: fromUser.State) => state.isAuthenticated
+);
+
+export const selectTheme = createSelector(
+  selectUserState,
+  (state: fromUser.State) => state.theme
 );

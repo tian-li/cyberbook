@@ -17,9 +17,9 @@ import {
   registerTempUser,
   registerTempUserSuccess,
   saveTempUser,
-  saveTempUserSuccess,
+  saveTempUserSuccess, savePreferredTheme,
   updateProfile,
-  updateProfileSuccess
+  updateProfileSuccess, savePreferredThemeSuccess
 } from './user.actions';
 
 @Injectable()
@@ -115,6 +115,19 @@ export class UserEffects {
               notifyWithSnackBar({ snackBar: { message: '更新成功' } }),
               updateProfileSuccess({ user }),
             ];
+          }),
+        )
+      )
+    )
+  );
+
+  setTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(savePreferredTheme),
+      switchMap(({ theme }) =>
+        this.userService.setTheme(theme).pipe(
+          map(() => {
+            return savePreferredThemeSuccess({ theme });
           }),
         )
       )

@@ -44,7 +44,7 @@ export enum TransactionTypes {
 // TODO: needs more restriction
 export type TransactionType = 'spend' | 'income' | 'both';
 
-export const defaultThemeName = 'indigo-pink-theme';
+export const defaultTheme = 'indigo-pink-theme';
 
 export enum AlertLevel {
   warn,

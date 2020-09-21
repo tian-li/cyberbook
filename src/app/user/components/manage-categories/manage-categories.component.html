@@ -31,7 +31,7 @@
       <div *ngFor="let category of sortingContainerData; last as last; index as index;"
            cdkDrag cdkDragLockAxis="y"
            [cdkDragDisabled]="!sortingMode"
-           [cdkDragPreviewClass]="themeName$ | async">
+           [cdkDragPreviewClass]="theme$ | async">
         <app-swipeable-item (swipeResult)="delete($event, index)" [swipeableItemDisabled]="sortingMode">
           <div class="draggable-category-item" (click)="editCategory(category)">
             <div class="category-icon">

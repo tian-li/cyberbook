@@ -21,11 +21,6 @@ export const selectDarkThemeEnabled = createSelector(
   (state: fromUI.State) => state.darkThemeEnabled
 );
 
-export const selectThemeName = createSelector(
-  selectUIState,
-  (state: fromUI.State) => state.themeName
-);
-
 export const selectLoading = createSelector(
   selectUIState,
   (state: fromUI.State) => state.loading

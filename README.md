@@ -1,6 +1,4 @@
-# 狼蛛记账 Spend Book
-
-> 捉到狼蛛了！(绝对不可以模仿哦！!)
+# 赛博记账 Cyberbook
 
 A mobile-first web app that can record daily costs.
 

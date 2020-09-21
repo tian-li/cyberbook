@@ -24,7 +24,7 @@ export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transacti
 
 export const initialState: State = adapter.getInitialState({
   selectedTransactionId: null,
-  transactionIdsByDate: null,
+  transactionIdsByDate: {},
 });
 
 const reducer = createReducer(

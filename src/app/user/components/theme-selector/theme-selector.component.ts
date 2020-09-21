@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fromUI } from '@cyberbook/core/store';
+import { fromUI, fromUser } from '@cyberbook/core/store';
 import { select, Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 
@@ -54,23 +54,21 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
     this.store.dispatch(fromUI.hideToolbar());
 
     this.store.pipe(
-      select(fromUI.selectThemeName),
+      select(fromUser.selectTheme),
       take(1)
-    ).subscribe(themeName => {
-      this.previousTheme = themeName;
-      this.selectedTheme = themeName;
+    ).subscribe(theme => {
+      this.previousTheme = theme;
+      this.selectedTheme = theme;
     });
-
-
   }
 
   ngOnDestroy() {
     this.store.dispatch(fromUI.showToolbar());
   }
 
-  selectTheme(themeName: string) {
-    this.selectedTheme = themeName;
-    this.store.dispatch(fromUI.setTheme({ themeName }));
+  selectTheme(theme: string) {
+    this.selectedTheme = theme;
+    this.store.dispatch(fromUser.savePreferredTheme({ theme }));
   }
 
   save() {
@@ -78,7 +76,7 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
   }
 
   cancel() {
-    this.store.dispatch(fromUI.setTheme({ themeName: this.previousTheme }));
+    this.store.dispatch(fromUser.savePreferredTheme({ theme: this.previousTheme }));
     this.router.navigate(['..'], { relativeTo: this.route });
   }
 

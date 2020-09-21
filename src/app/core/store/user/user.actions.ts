@@ -7,6 +7,12 @@ export const register = createAction('[User] Register',
 export const registerSuccess = createAction('[User] Register Success', props<{ user: Partial<User> }>());
 export const registerFail = createAction('[User] Register Fail', props<{ errorMessage: any }>());
 
+export const savePreferredTheme = createAction('[User] Save Preferred Theme', props<{ theme: string }>());
+export const savePreferredThemeSuccess = createAction(
+  '[User] Save Preferred Theme Success',
+  props<{ theme: string }>()
+);
+
 export const updateProfile = createAction('[User] Update Profile', props<{ user: Partial<User> }>());
 export const updateProfileSuccess = createAction('[User] Update Profile Success', props<{ user: Partial<User> }>());
 export const updateProfileFail = createAction('[User] Update Profile Fail', props<{ errorMessage: any }>());

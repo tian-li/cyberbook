@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@cyberbook/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
-import { AlertLevel, defaultThemeName } from '@cyberbook/shared/constants';
+import { AlertLevel, defaultTheme } from '@cyberbook/shared/constants';
 import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
@@ -67,7 +67,6 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     ).subscribe((result) => {
       if (result === 'positive') {
         this.store.dispatch(fromUser.logout());
-        this.store.dispatch(fromUI.setTheme({ themeName: defaultThemeName }));
         this.router.navigate(['./login'], { relativeTo: this.route });
       }
     });

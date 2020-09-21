@@ -10,4 +10,5 @@ export interface User {
   birthday: FullDateType;
   registered: boolean;
   jwtToken: string;
+  theme: string;
 }

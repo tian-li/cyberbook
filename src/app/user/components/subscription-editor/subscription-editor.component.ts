@@ -29,7 +29,6 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
   readonly frequencies: { value: SubscriptionFrequencyTypes, display: string }[] = [
-    { value: SubscriptionFrequencyTypes.minute, display: '分钟' },
     { value: SubscriptionFrequencyTypes.day, display: '天' },
     { value: SubscriptionFrequencyTypes.week, display: '星期' },
     { value: SubscriptionFrequencyTypes.month, display: '月' },

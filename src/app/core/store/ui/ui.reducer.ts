@@ -1,10 +1,9 @@
 import * as categoryActions from '@cyberbook/core/store/category/category.actions';
 import * as subscriptionActions from '@cyberbook/core/store/subscription/subscription.actions';
 import * as transactionActions from '@cyberbook/core/store/transaction/transaction.actions';
-import { defaultThemeName } from '@cyberbook/shared/constants';
 import { Action, createReducer, on } from '@ngrx/store';
 import { ISOString } from '../../../shared/model/helper-models';
-import { disableDarkTheme, enableDarkTheme, hideToolbar, setDisplayMonth, setTheme, showToolbar } from './ui.actions';
+import { hideToolbar, setDisplayMonth, showToolbar } from './ui.actions';
 
 const today = new Date();
 
@@ -14,7 +13,6 @@ export interface State {
   displayMonth: ISOString;
   showToolbar: boolean;
   darkThemeEnabled: boolean;
-  themeName: string;
   loading: boolean;
 }
 
@@ -22,7 +20,6 @@ export const initialState: State = {
   displayMonth: today.toISOString(),
   showToolbar: true,
   darkThemeEnabled: false,
-  themeName: defaultThemeName,
   loading: false,
 };
 
@@ -31,10 +28,6 @@ const reducer = createReducer(
   on(setDisplayMonth, (state, { displayMonth }) => ({ ...state, displayMonth })),
   on(showToolbar, (state) => ({ ...state, showToolbar: true })),
   on(hideToolbar, (state) => ({ ...state, showToolbar: false })),
-  on(enableDarkTheme, (state) => ({ ...state, darkThemeEnabled: true, themeName: 'dark' })),
-  on(disableDarkTheme, (state) => ({ ...state, darkThemeEnabled: false, themeName: 'default' })),
-  on(setTheme, (state, { themeName }) => ({ ...state, themeName })),
-
   on(
     categoryActions.addCategory, categoryActions.updateCategory, categoryActions.removeCategory,
     subscriptionActions.addSubscription, subscriptionActions.updateSubscription,

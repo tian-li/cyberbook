@@ -6,7 +6,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '@cyberbook/core/model/category';
-import { fromCategory, fromTransaction, fromUI } from '@cyberbook/core/store';
+import { fromCategory, fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
 import { loadCategoriesByUser, updateCategory } from '@cyberbook/core/store/category';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { AlertLevel, TransactionTypes } from '@cyberbook/shared/constants';
@@ -56,7 +56,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
   categoryTypeControl = new FormControl(this.defaultCategoryType);
   sortingMode = false;
 
-  themeName$: Observable<string>;
+  theme$: Observable<string>;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -72,7 +72,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     this.store.dispatch(fromUI.hideToolbar());
     this.store.dispatch(loadCategoriesByUser());
 
-    this.themeName$ = this.store.pipe(select(fromUI.selectThemeName));
+    this.theme$ = this.store.pipe(select(fromUser.selectTheme));
 
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
