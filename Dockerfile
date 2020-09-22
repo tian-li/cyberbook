@@ -1,10 +1,11 @@
 # stage 1
 
 FROM node:alpine AS my-app-build
+ARG build_type=production
 WORKDIR /app
 COPY . .
 RUN npm install -g @angular/cli
-RUN npm ci && ng build --prod=true
+RUN npm ci && ng build --aot --configuration=${build_type}
 
 # stage 2
 

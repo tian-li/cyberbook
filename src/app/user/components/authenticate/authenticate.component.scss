@@ -5,9 +5,10 @@ div, form {
 }
 
 .login-container {
-  height: 100%;
+  min-height: 100%;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .return-button {
@@ -27,7 +28,7 @@ div, form {
 }
 
 .logo {
-  margin-top: 40%;
+  margin-top: 10%;
   margin-bottom: 10%;
   flex-direction: column;
   align-items: center;
@@ -59,6 +60,7 @@ form {
   flex-direction: column;
   width: 80%;
   margin-top: 1rem;
+  margin-bottom: 10%;
 
   .button-register {
     width: 100%;
@@ -68,6 +70,6 @@ form {
     font-size: 0.8rem;
     margin-top: 1rem;
     justify-content: space-between;
-    opacity: 50%;
+    opacity: 0.5;
   }
 }
