@@ -58,4 +58,8 @@ export class UserService {
   setTheme(theme: string): Observable<any> {
     return this.http.post(`${this.userRoute}/set-theme`, theme);
   }
+
+  giveFeedback(feedbackInfo: { contact: string, feedback: string }): Observable<any> {
+    return this.http.post(`${this.userRoute}/give-feedback`, feedbackInfo);
+  }
 }

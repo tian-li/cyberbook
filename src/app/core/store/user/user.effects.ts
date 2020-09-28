@@ -32,7 +32,7 @@ export class UserEffects {
         this.userService.login(action.email, action.password).pipe(
           map((user: User) => {
             this.saveUserToLocalstorage(user);
-            this.router.navigate(['/user']);
+            this.router.navigate(['/home']);
             return loginSuccess({ user });
           }),
         )

@@ -1,6 +1,6 @@
 {
-  "name": "cyberbook",
-  "short_name": "cyberbook",
+  "name": "赛博记账",
+  "short_name": "赛博记账",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

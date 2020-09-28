@@ -86,8 +86,8 @@ A mobile-first web app that can record daily costs.
 - [x] Show month summary
 - [x] Select month
 - [x] Pie chart
-- [x] Choose a month in pie chart
 - [x] Line chart
+- [x] Choose a month in pie chart
 - [x] Choose date range in line chart
 - [x] Auto register temp user
 - [x] Register the temp user account
@@ -96,6 +96,8 @@ A mobile-first web app that can record daily costs.
 - [x] Theme, and dark theme
 - [x] Add/Edit category
 - [x] Drag to sort categories
+- [x] 订阅管理/周期性账目(工资，订阅，房租等)
+- [x] Deploy
 
 ## TODOs
 
@@ -103,25 +105,20 @@ A mobile-first web app that can record daily costs.
 - [ ] Category icon
 - [ ] Search
 - [ ] Offline editing
-- [ ] Deploy
 - [ ] UI design
 - [ ] Theme color design
 - [ ] Animation (WIP)
-
-# How to run
-
-1. Edit `http://192.168.50.17:3000` to `http://localhost:3000` in `src/environments/environment.ts`.
-2. Run `npm install` and `npm install -g json-server`
-3. Run `npm run mock-server` to start mock-server with `json-server`
-4. Run `ng serve` in another terminal window, open `localhost:1234` in browser
-
-If you want to see on a mobile device:
-
-1. Run `npm install` and `npm install -g json-server` if you haven't done
-2. Connect your computer and mobile device to the same router
-3. Find the local network ip of your computer, usually something like `192.168.XX.XX`.
-4. Edit `http://192.168.50.17:3000` to `http://{your computer local ip}:3000` in `src/environments/environment.ts`.
-5. Run `json-server --host {your computer local ip} --watch mock-data/db.json`.
-6. Run `ng serve --host {your computer local ip}` in another terminal window.
-7. On your mobile device, open `http://{your computer local ip}:1234`. Note: at this time, on your computer, `localhost:1234` no longer works, you should also use `http://{your computer local ip}:1234` on your computer.
-
+- [ ] 站内信（意见反馈及回复）
+- [ ] PWA
+    - [ ] 提醒更新
+    - [ ] 提醒安装
+- [ ] 每次打开时会先显示默认主题
+- [ ] 研究hammerjs的swipe
+- [ ] 导出excel
+- [ ] i18n
+- [ ] 导航后退键提醒保存：
+    - [ ] 用户信息编辑
+    - [ ] 主题选择
+    - [ ] 排序管理
+- [ ] 禁止后退
+    - [ ] 登录页面

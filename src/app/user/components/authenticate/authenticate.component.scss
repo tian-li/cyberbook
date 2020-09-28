@@ -5,6 +5,11 @@ div, form {
 }
 
 .login-container {
+  #logo{
+    //height: 200px;
+    width: 50%;
+  }
+  //background: url("../../../../assets/images/电路.jpg");
   min-height: 100%;
   flex-direction: column;
   align-items: center;
@@ -28,7 +33,7 @@ div, form {
 }
 
 .logo {
-  margin-top: 10%;
+  //margin-top: 10%;
   margin-bottom: 10%;
   flex-direction: column;
   align-items: center;

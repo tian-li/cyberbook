@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  server: 'https://cyberbook.app/api'
+  server: 'https://www.cyberbook.app/api'
 };
