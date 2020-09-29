@@ -1,15 +1,22 @@
 <div class="manage-subscriptions-container">
-  <div class="header">
-    <div class="return-button">
-      <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
-    </div>
+  <app-list-header
+    [title]="'订阅管理'"
+    [leftButtonIcon]="'keyboard_arrow_left'"
+    (leftButtonClicked)="back()"
+    [typeSwitcherConfig]="typeSwitcherConfig"
+    (typeChanged)="changeSubscriptionType($event)"
+  ></app-list-header>
+<!--  <div class="header">-->
+<!--    <div class="return-button">-->
+<!--      <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>-->
+<!--    </div>-->
 
-    <app-type-switcher
-      [types]="subscriptionTypes"
-      (typeChanged)="changeSubscriptionType($event)">
-    </app-type-switcher>
+<!--    <app-type-switcher-->
+<!--      [types]="subscriptionTypes"-->
+<!--      (typeChanged)="changeSubscriptionType($event)">-->
+<!--    </app-type-switcher>-->
 
-  </div>
+<!--  </div>-->
 
   <div class="subscription-list-container">
     <div class="subscription-list">

@@ -29,6 +29,11 @@ const routes: Routes = [
           import('./graph/graph.module').then(m => m.GraphModule)
       },
       {
+        path: 'message-center',
+        loadChildren: () =>
+          import('./message-center/message-center.module').then(m => m.MessageCenterModule)
+      },
+      {
         path: '**',
         redirectTo: 'home'
       }

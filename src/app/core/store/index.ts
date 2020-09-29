@@ -4,6 +4,8 @@ import * as  fromSubscription from '@cyberbook/core/store/subscription';
 import * as  fromTransaction from '@cyberbook/core/store/transaction';
 import * as  fromUI from '@cyberbook/core/store/ui';
 import * as  fromUser from '@cyberbook/core/store/user';
+import * as  fromPrivateMessage from '@cyberbook/core/store/private-message';
+import * as  fromMessageThread from '@cyberbook/core/store/message-thread';
 import { Action, ActionReducer, ActionReducerMap, MetaReducer, } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 
@@ -12,7 +14,9 @@ export {
   fromCategory,
   fromTransaction,
   fromUI,
-  fromSubscription
+  fromSubscription,
+  fromPrivateMessage,
+  fromMessageThread
 };
 
 export interface RootState {
@@ -21,6 +25,8 @@ export interface RootState {
   [fromTransaction.transactionFeatureKey]: fromTransaction.State;
   [fromUI.uiFeatureKey]: fromUI.State;
   [fromSubscription.subscriptionFeatureKey]: fromSubscription.State;
+  [fromPrivateMessage.privateMessageFeatureKey]: fromPrivateMessage.State;
+  [fromMessageThread.messageThreadFeatureKey]: fromMessageThread.State;
 }
 
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<RootState, Action>>('Root reducers token', {
@@ -30,6 +36,8 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<RootState, Acti
     [fromCategory.categoryFeatureKey]: fromCategory.categoryReducer,
     [fromTransaction.transactionFeatureKey]: fromTransaction.transactionReducer,
     [fromSubscription.subscriptionFeatureKey]: fromSubscription.subscriptionReducer,
+    [fromPrivateMessage.privateMessageFeatureKey]: fromPrivateMessage.privateMessageReducer,
+    [fromMessageThread.messageThreadFeatureKey]: fromMessageThread.messageThreadReducer,
   }),
 });
 

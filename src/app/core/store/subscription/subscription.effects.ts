@@ -21,7 +21,7 @@ import {
 @Injectable()
 export class SubscriptionEffects {
 
-  loadSubscriptionsByBook$ = createEffect(() =>
+  loadSubscriptionsByUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadSubscriptionsByUser),
       switchMap(() =>

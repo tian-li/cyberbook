@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="title">
+    <h1 mat-dialog-title>意见反馈</h1>
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="formGroup">
+<!--      <mat-form-field>-->
+<!--        <mat-label>联系方式</mat-label>-->
+<!--        <input matInput formControlName="contact" placeholder="联系方式（邮箱或QQ或微信）">-->
+<!--      </mat-form-field>-->
+
+      <mat-form-field>
+        <mat-label>反馈信息</mat-label>
+        <textarea matInput formControlName="feedback" placeholder="反馈信息"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="actions">
+    <button mat-raised-button (click)="cancel()">取消</button>
+    <button mat-raised-button color="primary" (click)="submit()" [disabled]="formGroup.invalid">提交</button>
+  </mat-dialog-actions>
+
+</div>

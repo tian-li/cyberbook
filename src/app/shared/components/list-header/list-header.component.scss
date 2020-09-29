@@ -1,0 +1,43 @@
+div {
+  display: flex;
+}
+
+.list-header {
+  z-index: 3;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  flex-direction: column;
+
+  .title-actions {
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    .left-button {
+      position: absolute;
+      left: 1rem;
+
+      i {
+        border-radius: 50%;
+      }
+    }
+
+    .title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .right-button {
+      position: absolute;
+      font-size: 0.8rem;
+      right: 1rem;
+    }
+  }
+
+  .type-switcher-container {
+    margin-bottom: 1rem;
+  }
+
+
+}

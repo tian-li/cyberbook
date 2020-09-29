@@ -35,6 +35,11 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
   selectedCategoryType = this.defaultSubscriptionType;
   subscriptionTypeControl = new FormControl(this.defaultSubscriptionType);
 
+  typeSwitcherConfig = {
+    enabled: true,
+    types: this.subscriptionTypes
+  };
+
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store,

@@ -39,6 +39,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SwipeableItemComponent } from './components/swipeable-item/swipeable-item.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { ListHeaderComponent } from './components/list-header/list-header.component';
 
 const material = [
   MatButtonModule,
@@ -83,6 +85,7 @@ const components = [
   NavBarComponent,
   SwipeableItemComponent,
   TypeSwitcherComponent,
+  ListHeaderComponent,
 
   // directives
   SwipeEventDirective,
@@ -90,7 +93,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, FeedbackComponent],
   imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
   exports: [
     CommonModule,

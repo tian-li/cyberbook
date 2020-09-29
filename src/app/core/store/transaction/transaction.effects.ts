@@ -19,7 +19,7 @@ import {
 @Injectable()
 export class TransactionEffects {
 
-  loadTransactionsByBook$ = createEffect(() =>
+  loadTransactionsByUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadTransactionsByUser),
       switchMap(() =>

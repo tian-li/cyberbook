@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { MessageThreadService } from '@cyberbook/core/services/message-thread.service';
+import { PrivateMessageService } from '@cyberbook/core/services/private-message.service';
+import { MessageThreadEffects } from '@cyberbook/core/store/message-thread/message-thread.effects';
+import { PrivateMessageEffects } from '@cyberbook/core/store/private-message/private-message.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -37,7 +41,9 @@ import { environment } from '../../environments/environment';
       NotificationEffects,
       CategoryEffects,
       TransactionEffects,
-      SubscriptionEffects
+      SubscriptionEffects,
+      PrivateMessageEffects,
+      MessageThreadEffects
     ]),
     environment.production
       ? []
@@ -51,7 +57,9 @@ import { environment } from '../../environments/environment';
     TransactionService,
     SubscriptionService,
     UserService,
-    PwaService
+    PwaService,
+    PrivateMessageService,
+    MessageThreadService
   ],
   declarations: []
 })
