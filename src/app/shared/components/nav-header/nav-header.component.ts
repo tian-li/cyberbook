@@ -1,16 +1,19 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-list-header',
-  templateUrl: './list-header.component.html',
-  styleUrls: ['./list-header.component.scss']
+  selector: 'app-nav-header',
+  templateUrl: './nav-header.component.html',
+  styleUrls: ['./nav-header.component.scss']
 })
-export class ListHeaderComponent implements OnInit {
+export class NavHeaderComponent implements OnInit {
 
   @Input() title: string;
   @Input() leftButtonIcon: string;
   @Input() rightButtonIcon: string;
-  @Input() typeSwitcherConfig: { enabled: boolean, types: any };
+  @Input() typeSwitcherConfig: { enabled: boolean, types: any } = {
+    enabled: false,
+    types: []
+  };
 
   @Output() leftButtonClicked = new EventEmitter<void>();
   @Output() rightButtonClicked = new EventEmitter<void>();

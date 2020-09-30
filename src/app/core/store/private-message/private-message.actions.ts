@@ -12,9 +12,18 @@ export const loadPrivateMessagesByMessageThreadIdSuccess = createAction(
 
 export const sendPrivateMessage = createAction(
   '[Private Message] Send Private Message',
-  props<{privateMessage: PrivateMessage}>()
+  props<{privateMessage: Partial<PrivateMessage>}>()
 );
 export const sendPrivateMessageSuccess = createAction(
-  '[Private Message] Send Private Message',
+  '[Private Message] Send Private Message Success',
+  props<{privateMessage: PrivateMessage}>()
+);
+
+export const sendFeedback = createAction(
+  '[Private Message] Send Feedback',
+  props<{privateMessage: Partial<PrivateMessage>}>()
+);
+export const sendFeedbackSuccess = createAction(
+  '[Private Message] Send Feedback Success',
   props<{privateMessage: PrivateMessage}>()
 );

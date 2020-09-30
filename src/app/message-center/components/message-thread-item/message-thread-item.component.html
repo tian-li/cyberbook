@@ -1,0 +1,22 @@
+<app-swipeable-item (swipeResult)="delete($event)">
+  <div class="message-thread-item">
+    <div class="profile-photo">
+
+    </div>
+    <div class="details">
+      <div class="message-thread-info">
+        <span>
+          对方用户名
+        </span>
+        <div class="last-message-time">
+          {{lastMessageTimeDisplay()}}
+        </div>
+      </div>
+
+      <div class="message-preview">
+          {{messageThread.preview}}
+      </div>
+
+    </div>
+  </div>
+</app-swipeable-item>

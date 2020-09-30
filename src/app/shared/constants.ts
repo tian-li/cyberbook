@@ -26,6 +26,7 @@ export const months: string[] = [
 ];
 
 export const transactionEditorDialogId = 'TransactionEditor';
+export const feedbackDialogId = 'feedbackDialog';
 
 export const defaultTransactionEditorDialogConfig: MatDialogConfig<{ editMode: boolean, transaction?: Transaction }> = {
   id: transactionEditorDialogId,

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { addTransaction, updateTransaction } from '@cyberbook/core/store/transaction';
+import { PrivateMessage } from '@cyberbook/core/model/private-message';
+import { fromUser } from '@cyberbook/core/store';
+import { sendFeedback } from '@cyberbook/core/store/private-message';
+import { select, Store } from '@ngrx/store';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-feedback',
@@ -10,16 +14,22 @@ import { addTransaction, updateTransaction } from '@cyberbook/core/store/transac
 })
 export class FeedbackComponent implements OnInit {
   formGroup: FormGroup;
+  userId: string;
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FeedbackComponent>,
+    private store: Store
   ) {
   }
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({
-      feedback: new FormControl('', Validators.required)
+      message: new FormControl('', Validators.required)
+    });
+
+    this.store.pipe(select(fromUser.selectUser), take(1)).subscribe(user => {
+      this.userId = user.id;
     });
   }
 
@@ -28,13 +38,12 @@ export class FeedbackComponent implements OnInit {
   }
 
   submit() {
-    // this.loading = true;
-    //
-    // const action = this.data.editMode ?
-    //   updateTransaction({ transaction: this.editedTransaction }) :
-    //   addTransaction({ transaction: this.editedTransaction });
-    //
-    // this.store.dispatch(action);
+    const message = this.formGroup.get('message').value;
+    const privateMessage: Partial<PrivateMessage> = {
+      message,
+      fromUserId: this.userId
+    };
+    this.store.dispatch(sendFeedback({ privateMessage }));
   }
 
 }

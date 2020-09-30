@@ -56,6 +56,19 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
   categoryTypeControl = new FormControl(this.defaultCategoryType);
   sortingMode = false;
 
+  get navHeaderLeftIcon() {
+    return this.sortingMode ? 'clear' : 'keyboard_arrow_left';
+  }
+
+  get navHeaderRightIcon() {
+    return this.sortingMode ? 'done' : 'sort';
+  }
+
+  typeSwitcherConfig = {
+    enabled: true,
+    types: this.categoryTypes
+  };
+
   theme$: Observable<string>;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -66,6 +79,22 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
               private bottomSheet: MatBottomSheet,
               private dialog: MatDialog
   ) {
+  }
+
+  onLeftButtonClick() {
+    if (this.sortingMode) {
+      this.cancelCategoriesSorting();
+    } else {
+      this.back();
+    }
+  }
+
+  onRightButtonClick() {
+    if (this.sortingMode) {
+      this.saveCategoriesSorting();
+    } else {
+      this.enableDragging();
+    }
   }
 
   ngOnInit() {
@@ -169,7 +198,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
           type: this.selectedCategoryType,
         } as Category
       }));
-      window.scrollTo(0, this.list.nativeElement.scrollHeight);
+      this.list.nativeElement.scrollTo(0, this.list.nativeElement.scrollHeight);
     }
   }
 

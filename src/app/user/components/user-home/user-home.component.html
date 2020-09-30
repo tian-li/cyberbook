@@ -18,6 +18,10 @@
         <div>开始记账第 {{registeredLength}} 天，共 {{numberOfAllTransactions$|async}} 笔</div>
       </div>
     </div>
+    <i class="message-center material-icons-outlined md-mail"
+       matBadge="15" matBadgeColor="warn" matBadgeSize="small"
+       (click)="goToMessageCenter()"
+    ></i>
   </div>
 
   <div class="settings-list">
@@ -55,7 +59,7 @@
       <div  class="feature">
         <i class="material-icons-outlined md-email feature-icon"></i>
         <div class="feature-content">
-          <div class="feature-text">
+          <div class="feature-text" (click)="openFeedbackForm()">
             反馈意见
           </div>
         </div>

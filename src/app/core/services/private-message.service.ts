@@ -19,7 +19,7 @@ export class PrivateMessageService {
     );
   }
 
-  sendPrivateMessage(privateMessage: PrivateMessage): Observable<PrivateMessage> {
+  sendPrivateMessage(privateMessage: Partial<PrivateMessage>): Observable<PrivateMessage> {
     return this.http.post(`${this.privateMessageRoute}/feedback`, privateMessage).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );

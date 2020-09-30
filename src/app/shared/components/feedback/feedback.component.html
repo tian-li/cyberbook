@@ -5,14 +5,10 @@
 
   <mat-dialog-content>
     <form [formGroup]="formGroup">
-<!--      <mat-form-field>-->
-<!--        <mat-label>联系方式</mat-label>-->
-<!--        <input matInput formControlName="contact" placeholder="联系方式（邮箱或QQ或微信）">-->
-<!--      </mat-form-field>-->
-
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>反馈信息</mat-label>
-        <textarea matInput formControlName="feedback" placeholder="反馈信息"></textarea>
+        <textarea matInput formControlName="message" placeholder="反馈信息" rows="10"></textarea>
+        <mat-error *ngIf="formGroup.controls['message'].hasError('required')">必填</mat-error>
       </mat-form-field>
     </form>
   </mat-dialog-content>

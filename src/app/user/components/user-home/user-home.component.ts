@@ -3,12 +3,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@cyberbook/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
-import { AlertLevel, defaultTheme } from '@cyberbook/shared/constants';
+import { FeedbackComponent } from '@cyberbook/shared/components/feedback/feedback.component';
+import { AlertLevel, feedbackDialogId } from '@cyberbook/shared/constants';
 import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-home',
@@ -80,6 +82,10 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  goToMessageCenter() {
+    this.router.navigate(['/message-center']);
+  }
+
   selectTheme() {
     this.router.navigate(['./theme'], { relativeTo: this.route });
   }
@@ -90,6 +96,21 @@ export class UserHomeComponent implements OnInit, OnDestroy {
 
   subscriptionManagement() {
     this.router.navigate(['./subscription-management'], { relativeTo: this.route });
+  }
+
+  openFeedbackForm() {
+    this.dialog.open(FeedbackComponent, {
+      id: feedbackDialogId,
+      width: '400px',
+      height: '400px',
+      disableClose: true,
+    }).afterClosed().pipe(
+      take(1)
+    ).subscribe((result) => {
+      if (result === 'feedback success') {
+        this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '信息已收到，感谢您的反馈！', duration: 2500 } }));
+      }
+    });
   }
 
 }

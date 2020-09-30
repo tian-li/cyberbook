@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -32,18 +33,19 @@ import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@cyberbook/shared/components/year-month-picker/year-month-picker.component';
 import { PreventScrollDirective } from '@cyberbook/shared/directives/prevent-scroll.directive';
-import { TypeSwitcherComponent } from './components/type-switcher/type-switcher.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 import { SwipeableItemComponent } from './components/swipeable-item/swipeable-item.component';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
+import { TypeSwitcherComponent } from './components/type-switcher/type-switcher.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
-import { FeedbackComponent } from './components/feedback/feedback.component';
-import { ListHeaderComponent } from './components/list-header/list-header.component';
 
 const material = [
   MatButtonModule,
+  MatBadgeModule,
   MatToolbarModule,
   MatSelectModule,
   MatTabsModule,
@@ -85,7 +87,7 @@ const components = [
   NavBarComponent,
   SwipeableItemComponent,
   TypeSwitcherComponent,
-  ListHeaderComponent,
+  NavHeaderComponent,
 
   // directives
   SwipeEventDirective,

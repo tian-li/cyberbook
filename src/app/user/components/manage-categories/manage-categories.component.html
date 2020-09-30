@@ -1,65 +1,51 @@
 <div class="loading" *ngIf="loading">
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
-<div class="manage-categories-container" #list>
-  <div class="header">
-    <div class="return-button">
-      <i matRipple *ngIf="!sortingMode" (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
-      <i matRipple *ngIf="sortingMode" (click)="cancelCategoriesSorting()" class="material-icons md-clear"></i>
-    </div>
 
-    <app-type-switcher
-      [types]="categoryTypes"
-      (typeChanged)="changeCategoryType($event)">
-    </app-type-switcher>
+<app-nav-header
+  [title]="'类别管理'"
+  [leftButtonIcon]="navHeaderLeftIcon"
+  (leftButtonClicked)="onLeftButtonClick()"
+  [rightButtonIcon]="navHeaderRightIcon"
+  (rightButtonClicked)="onRightButtonClick()"
+  [typeSwitcherConfig]="typeSwitcherConfig"
+  (typeChanged)="changeCategoryType($event)"
+></app-nav-header>
 
-    <div class="sorting-toggle-button">
-      <div *ngIf="!sortingMode" (click)="enableDragging()">
-        排序
-      </div>
-      <div *ngIf="sortingMode" (click)="saveCategoriesSorting()">
-        <i class="material-icons md-done"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="category-list-container">
-    <div class="category-list"
-         cdkDropList
-         [cdkDropListData]="sortingContainerData"
-         (cdkDropListDropped)="drop($event)">
-      <div *ngFor="let category of sortingContainerData; last as last; index as index;"
-           cdkDrag cdkDragLockAxis="y"
-           [cdkDragDisabled]="!sortingMode"
-           [cdkDragPreviewClass]="theme$ | async">
-        <app-swipeable-item (swipeResult)="delete($event, index)" [swipeableItemDisabled]="sortingMode">
-          <div class="draggable-category-item" (click)="editCategory(category)">
-            <div class="category-icon">
-              <div class="category-icon-background">
-                <i class="material-icons-twotone"
-                   [ngClass]="'md-' + category.icon"
-                   [ngStyle]="{'color': category.color}"
-                ></i>
-              </div>
-
-            </div>
-            <div class="category-name" [ngClass]="{'category-name-border ': !last}">
-              <span>{{category.name}}</span>
-              <i class="material-icons md-drag_handle" cdkDragHandle
-                 [@toggleDragHandle]="sortingMode"
+<div class="category-list-container">
+  <div class="category-list" #list
+       cdkDropList
+       [cdkDropListData]="sortingContainerData"
+       (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let category of sortingContainerData; last as last; index as index;"
+         cdkDrag cdkDragLockAxis="y"
+         [cdkDragDisabled]="!sortingMode"
+         [cdkDragPreviewClass]="theme$ | async">
+      <app-swipeable-item (swipeResult)="delete($event, index)" [swipeableItemDisabled]="sortingMode">
+        <div class="draggable-category-item" (click)="editCategory(category)">
+          <div class="category-icon">
+            <div class="category-icon-background">
+              <i class="material-icons-twotone"
+                 [ngClass]="'md-' + category.icon"
+                 [ngStyle]="{'color': category.color}"
               ></i>
             </div>
+
           </div>
-        </app-swipeable-item>
-      </div>
+          <div class="category-name" [ngClass]="{'category-name-border ': !last}">
+            <span>{{category.name}}</span>
+            <i class="material-icons md-drag_handle" cdkDragHandle
+               [@toggleDragHandle]="sortingMode"
+            ></i>
+          </div>
+        </div>
+      </app-swipeable-item>
     </div>
   </div>
+</div>
 
-
-
-  <div class="float-add-button" cdkDrag>
-    <button mat-fab (click)="addCategory()">
-      <i class="material-icons md-add"></i>
-    </button>
-  </div>
+<div class="float-add-button" cdkDrag>
+  <button mat-fab (click)="addCategory()">
+    <i class="material-icons md-add"></i>
+  </button>
 </div>

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification/notification.actions';
+import { feedbackDialogId, transactionEditorDialogId } from '@cyberbook/shared/constants';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { PrivateMessage } from '../../model/private-message';
 import { PrivateMessageService } from '../../services/private-message.service';
 import {
-  loadPrivateMessagesByMessageThreadId, loadPrivateMessagesByMessageThreadIdSuccess,
+  loadPrivateMessagesByMessageThreadId, loadPrivateMessagesByMessageThreadIdSuccess, sendFeedback, sendFeedbackSuccess,
   sendPrivateMessage,
   sendPrivateMessageSuccess
 } from './private-message.actions';
@@ -24,18 +25,37 @@ export class PrivateMessageEffects {
     )
   );
 
-  addPrivateMessage$ = createEffect(() =>
+  sendPrivateMessage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(sendPrivateMessage),
       mergeMap(action =>
         this.privateMessageService.sendPrivateMessage(action.privateMessage).pipe(
           map((privateMessage: PrivateMessage) => {
-            // this.closePrivateMessageEditor();
             return sendPrivateMessageSuccess({ privateMessage });
           }),
         ))
     )
   );
+
+  sendFeedback$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(sendFeedback),
+      mergeMap(action =>
+        this.privateMessageService.sendPrivateMessage(action.privateMessage).pipe(
+          map((privateMessage: PrivateMessage) => {
+            this.closePrivateMessageEditor('feedback success');
+            return sendFeedbackSuccess({ privateMessage });
+          }),
+        ))
+    )
+  );
+
+  closePrivateMessageEditor(message?: string) {
+    const feedbackDialog = this.matDialog.getDialogById(feedbackDialogId);
+    if (!!feedbackDialog) {
+      feedbackDialog.close(message);
+    }
+  }
 
   constructor(
     private actions$: Actions,

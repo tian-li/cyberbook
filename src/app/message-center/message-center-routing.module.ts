@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: MessageCenterHomeComponent,
-    resolve: { data: LoadDataResolver },
+    // resolve: { data: LoadDataResolver },
     children: [
       {
         path: 'list',

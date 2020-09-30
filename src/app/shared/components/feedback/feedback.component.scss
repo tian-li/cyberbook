@@ -1,0 +1,31 @@
+div, form {
+  display: flex;
+}
+
+.container {
+  flex-direction: column;
+
+  .title {
+    justify-content: center;
+    h1 {
+      display: flex;
+    }
+  }
+
+  form {
+    justify-content: center;
+
+    mat-form-field {
+      width: 100%;
+
+      textarea {
+        resize: none;
+      }
+    }
+  }
+
+  mat-dialog-actions {
+    justify-content: flex-end;
+  }
+}
+

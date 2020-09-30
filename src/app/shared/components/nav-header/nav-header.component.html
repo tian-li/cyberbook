@@ -1,13 +1,11 @@
-<div class="list-header">
+<div class="nav-header mat-elevation-z2">
   <div class="title-actions">
     <div class="left-button">
       <i matRipple *ngIf="!!leftButtonIcon" (click)="leftButtonClicked.emit()"
          [class]="'material-icons md-'+leftButtonIcon"></i>
     </div>
 
-<!--    <div class="title">-->
-      <div class="title">{{title}}</div>
-<!--    </div>-->
+    <div class="title">{{title}}</div>
 
     <div class="right-button">
       <i matRipple *ngIf="!!rightButtonIcon" (click)="rightButtonClicked.emit()"

@@ -1,3 +1,4 @@
+import { MessageThread } from '@cyberbook/core/model/message-thread';
 import { FullDateType, ISOString } from '@cyberbook/shared/model/helper-models';
 
 export interface User {
@@ -11,4 +12,5 @@ export interface User {
   registered: boolean;
   jwtToken: string;
   theme: string;
+  messageThreads: MessageThread[];
 }

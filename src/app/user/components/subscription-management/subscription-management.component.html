@@ -1,68 +1,55 @@
-<div class="manage-subscriptions-container">
-  <app-list-header
-    [title]="'订阅管理'"
-    [leftButtonIcon]="'keyboard_arrow_left'"
-    (leftButtonClicked)="back()"
-    [typeSwitcherConfig]="typeSwitcherConfig"
-    (typeChanged)="changeSubscriptionType($event)"
-  ></app-list-header>
-<!--  <div class="header">-->
-<!--    <div class="return-button">-->
-<!--      <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>-->
-<!--    </div>-->
+<app-nav-header
+  [title]="'订阅管理'"
+  [leftButtonIcon]="'keyboard_arrow_left'"
+  (leftButtonClicked)="back()"
+  [typeSwitcherConfig]="typeSwitcherConfig"
+  (typeChanged)="changeSubscriptionType($event)"
+></app-nav-header>
 
-<!--    <app-type-switcher-->
-<!--      [types]="subscriptionTypes"-->
-<!--      (typeChanged)="changeSubscriptionType($event)">-->
-<!--    </app-type-switcher>-->
+<div class="subscription-list-container">
+  <div class="subscription-list">
+    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
+      <app-swipeable-item
+        [canSwipeRight]="!hasSubscriptionEnded(subscription.endDate)"
+        [swipeRightIcon]="'timer_off'"
+        (swipeResult)="onSwipe($event, subscription)">
+        <div class="draggable-subscription-item" (click)="editSubscription(subscription)">
+          <div class="category-icon">
+            <div class="category-icon-background">
+              <i class="material-icons-twotone"
+                 [ngClass]="'md-' + categoryEntities[subscription.categoryId].icon"
+                 [ngStyle]="{'color': categoryEntities[subscription.categoryId].color}"
+              ></i>
+            </div>
+          </div>
 
-<!--  </div>-->
-
-  <div class="subscription-list-container">
-    <div class="subscription-list">
-      <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
-        <app-swipeable-item
-          [canSwipeRight]="!hasSubscriptionEnded(subscription.endDate)"
-          [swipeRightIcon]="'timer_off'"
-          (swipeResult)="onSwipe($event, subscription)">
-          <div class="draggable-subscription-item" (click)="editSubscription(subscription)">
-            <div class="category-icon">
-              <div class="category-icon-background">
-                <i class="material-icons-twotone"
-                   [ngClass]="'md-' + categoryEntities[subscription.categoryId].icon"
-                   [ngStyle]="{'color': categoryEntities[subscription.categoryId].color}"
-                ></i>
+          <div class="subscription-details" [ngClass]="{'subscription-name-border ': !last}">
+            <div class="description-summary">
+              <div>
+                <span>{{getDescriptionDisplay(subscription)}}</span>
+                <span class="tag-ended-subscription" *ngIf="hasSubscriptionEnded(subscription.endDate)">已结束</span>
+              </div>
+              <div class="quick-overview">
+                {{quickOverview(subscription)}}
               </div>
             </div>
-
-            <div class="subscription-details" [ngClass]="{'subscription-name-border ': !last}">
-              <div class="description-summary">
-                <div>
-                  <span>{{getDescriptionDisplay(subscription)}}</span>
-                  <span class="tag-ended-subscription" *ngIf="hasSubscriptionEnded(subscription.endDate)">已结束</span>
-                </div>
-                <div class="quick-overview">
-                  {{quickOverview(subscription)}}
-                </div>
+            <div class="amount-info">
+              <div class="amount" [ngStyle]="{ 'color': subscription.amount > 0 ? 'green' : 'red' }">
+                {{subscription.amount.toFixed(2)}}
               </div>
-              <div class="amount-info">
-                <div class="amount" [ngStyle]="{ 'color': subscription.amount > 0 ? 'green' : 'red' }">
-                  {{subscription.amount.toFixed(2)}}
-                </div>
-                <div class="total-amount">
-                  总计：{{subscription.totalAmount.toFixed(2)}}
-                </div>
+              <div class="total-amount">
+                总计：{{subscription.totalAmount.toFixed(2)}}
               </div>
             </div>
           </div>
-        </app-swipeable-item>
-      </div>
+        </div>
+      </app-swipeable-item>
     </div>
   </div>
+</div>
 
-  <div class="float-add-button" cdkDrag>
-    <button mat-fab (click)="addSubscription()">
-      <i class="material-icons md-add"></i>
-    </button>
-  </div>
+<div class="float-add-button" cdkDrag>
+  <button mat-fab (click)="addSubscription()">
+    <i class="material-icons md-add"></i>
+  </button>
 </div>

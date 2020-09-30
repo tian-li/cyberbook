@@ -1,1 +1,6 @@
-<p>message-thread-list works!</p>
+<div class="list-container"
+     *ngFor="let messageThread of allMessageThreads;
+     index as i; first as first;">
+
+  <app-message-thread-item [messageThread]="messageThread" [today]="today"></app-message-thread-item>
+</div>

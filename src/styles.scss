@@ -34,7 +34,7 @@
 // shared
 @import 'app/shared/components/nav-bar/nav-bar.component.scss-theme';
 @import 'app/shared/components/type-switcher/type-switcher.component.scss-theme';
-@import 'app/shared/components/list-header/list-header.component.scss-theme';
+@import 'app/shared/components/nav-header/nav-header.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -50,7 +50,7 @@
   @include app-category-editor-component-theme($theme);
   @include app-type-switcher-component-theme($theme);
   @include app-subscription-management-component-theme($theme);
-  @include app-list-header-component-theme($theme);
+  @include app-nav-header-component-theme($theme);
 }
 
 .indigo-pink-theme {

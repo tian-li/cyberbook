@@ -1,33 +1,32 @@
-import { PrivateMessage } from '@cyberbook/core/model/private-message';
+import { MessageThread } from '@cyberbook/core/model/message-thread';
 import { RootState } from '@cyberbook/core/store';
-import * as fromPrivateMessage from '@cyberbook/core/store/private-message/private-message.reducer';
+import * as fromMessageThread from '@cyberbook/core/store/message-thread/message-thread.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 
-const getSelectedPrivateMessageId = (state: fromPrivateMessage.State) => state.selectedPrivateMessageId;
+const getSelectedMessageThreadId = (state: fromMessageThread.State) => state.selectedMessageThreadId;
 
-export const selectPrivateMessageState = createFeatureSelector<RootState, fromPrivateMessage.State>(
-  fromPrivateMessage.privateMessageFeatureKey
+export const selectMessageThreadState = createFeatureSelector<RootState, fromMessageThread.State>(
+  fromMessageThread.messageThreadFeatureKey
 );
 
-export const selectSelectedPrivateMessageId = createSelector(
-  selectPrivateMessageState,
-  getSelectedPrivateMessageId
+export const selectSelectedMessageThreadId = createSelector(
+  selectMessageThreadState,
+  getSelectedMessageThreadId
 );
 
 export const {
-  selectIds: selectPrivateMessageIds,
-  selectEntities: selectPrivateMessageEntities,
-  selectAll: selectAllPrivateMessages,
-  selectTotal: selectPrivateMessageTotal,
-} = fromPrivateMessage.adapter.getSelectors(selectPrivateMessageState);
+  selectIds: selectMessageThreadIds,
+  selectEntities: selectMessageThreadEntities,
+  selectAll: selectAllMessageThreads,
+  selectTotal: selectMessageThreadTotal,
+} = fromMessageThread.adapter.getSelectors(selectMessageThreadState);
 
 
-export const selectAllSortedPrivateMessagesByMessageThreadId = createSelector(
-  selectAllPrivateMessages,
-  (privateMessages: PrivateMessage[], props: { messageThreadId: string }) => {
-    return privateMessages
-    .filter((pm: PrivateMessage) => pm.messageThreadId === props.messageThreadId)
-    .sort((a, b) => dayjs(b.dateCreated).valueOf() - dayjs(a.dateCreated).valueOf());
+export const selectAllSortedMessageThreads = createSelector(
+  selectAllMessageThreads,
+  (messageThreads: MessageThread[]) => {
+    return messageThreads
+    .sort((a, b) => dayjs(b.lastMessageDate).valueOf() - dayjs(a.lastMessageDate).valueOf());
   }
 );

@@ -5,11 +5,12 @@ import { MessageThreadListComponent } from './components/message-thread-list/mes
 import { MessageCenterHomeComponent } from './components/message-center-home/message-center-home.component';
 import { MessageCenterRoutingModule } from './message-center-routing.module';
 import { ChatComponent } from './components/chat/chat.component';
+import { MessageThreadItemComponent } from './components/message-thread-item/message-thread-item.component';
 
 
 
 @NgModule({
-  declarations: [MessageThreadListComponent, MessageCenterHomeComponent, ChatComponent],
+  declarations: [MessageThreadListComponent, MessageCenterHomeComponent, ChatComponent, MessageThreadItemComponent],
   imports: [
     CommonModule,
     SharedModule,
