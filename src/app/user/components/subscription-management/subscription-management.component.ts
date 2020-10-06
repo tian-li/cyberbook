@@ -21,19 +21,19 @@ import { SubscriptionEditorComponent } from '../subscription-editor/subscription
   styleUrls: ['./subscription-management.component.scss']
 })
 export class SubscriptionManagementComponent implements OnInit, OnDestroy {
-  readonly defaultSubscriptionType: string = 'active';
+  readonly defaultSubscriptionActivateStatus = true;
   readonly today: dayjs.Dayjs = dayjs().startOf('day');
   readonly hasSubscriptionEnded = hasSubscriptionEnded;
 
   readonly subscriptionTypes = [
-    { value: 'active', display: '进行中' },
-    { value: 'inactive', display: '已结束' },
+    { value: true, display: '进行中' },
+    { value: false, display: '已结束' },
   ];
 
   allSubscriptions: Subscription[];
   categoryEntities: Dictionary<Category>;
-  selectedCategoryType = this.defaultSubscriptionType;
-  subscriptionTypeControl = new FormControl(this.defaultSubscriptionType);
+  selectedCategoryType = this.defaultSubscriptionActivateStatus;
+  subscriptionTypeControl = new FormControl(this.defaultSubscriptionActivateStatus);
 
   typeSwitcherConfig = {
     enabled: true,
@@ -54,9 +54,9 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     this.store.dispatch(loadSubscriptionsByUser());
 
     this.subscriptionTypeControl.valueChanges.pipe(
-      startWith(this.defaultSubscriptionType),
-      switchMap(type =>
-        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: type === 'active' }))
+      startWith(this.defaultSubscriptionActivateStatus),
+      switchMap(activateStatus =>
+        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: activateStatus }))
       ),
       debounceTime(200),
       takeUntil(this.unsubscribe$)

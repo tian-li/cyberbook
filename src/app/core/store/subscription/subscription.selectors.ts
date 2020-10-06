@@ -41,17 +41,6 @@ export const getSubscriptionCountByCategoryId = createSelector(
 export const selectAllSubscriptionsByActiveStatus = createSelector(
   selectAllSubscriptionsOrderByModifiedDate,
   (subscriptions: Subscription[], props: { active: boolean }) => {
-    const filteredSubscriptions = subscriptions.filter((s: Subscription) => {
-      const isActive = !hasSubscriptionEnded(s.endDate);
-      return isActive === props.active;
-    });
-
-    if (!props.active) {
-      return filteredSubscriptions.sort((a, b) => {
-        return dayjs(b.endDate).valueOf() - dayjs(a.endDate).valueOf();
-      });
-    } else {
-      return filteredSubscriptions;
-    }
+    return subscriptions.filter((s: Subscription) => s.activateStatus === props.active);
   }
 );

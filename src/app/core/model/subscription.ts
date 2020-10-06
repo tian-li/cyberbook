@@ -9,6 +9,7 @@ export interface Subscription {
   amount: number;
   description: string;
   frequency: SubscriptionFrequencyTypes;
+  activateStatus: boolean;
   period: number;
   startDate: ISOString;
   endDate: ISOString;
