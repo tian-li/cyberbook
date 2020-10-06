@@ -1,0 +1,17 @@
+div {
+  display: flex;
+}
+
+.message-thread-list-container {
+  position: absolute;
+  top: 3rem;
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+  right: 0;
+  flex-direction: column;
+}
+
+app-swipeable-item {
+  width: 100%;
+}

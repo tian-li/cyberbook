@@ -11,6 +11,7 @@ import {
 } from '@cyberbook/core/store/transaction/transaction.actions';
 import { Dictionary } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
+import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 import { TransactionTypes, years } from '../../constants';
@@ -109,6 +110,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
       amount,
       description: formValue.description,
       categoryId: formValue.categoryId,
+      transactionDate: dayjs(formValue.transactionDate).toISOString()
     };
 
     if (this.data.editMode) {
@@ -143,7 +145,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
         transactionDate: this.data.transaction.transactionDate,
       } :
       {
-        transactionDate: this.today.toISOString(),
+        transactionDate: dayjs().toISOString()
       };
   }
 

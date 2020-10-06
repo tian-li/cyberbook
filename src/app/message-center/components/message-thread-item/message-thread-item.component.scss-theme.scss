@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@mixin app-message-thread-item-component-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .message-thread-item {
+    background: mat-color($background, card);
+  }
+
+  .message-thread-border {
+    border-bottom: 1px solid mat-color($foreground, divider);
+  }
+}

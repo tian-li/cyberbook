@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageThread } from '@cyberbook/core/model/message-thread';
 import { User } from '@cyberbook/core/model/user';
 import { fromMessageThread, fromUser } from '@cyberbook/core/store';
+import { hideToolbar, showToolbar } from '@cyberbook/core/store/ui';
 import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
@@ -20,10 +22,11 @@ export class MessageCenterHomeComponent implements OnInit, OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject();
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(hideToolbar());
     this.store.dispatch(fromMessageThread.loadAllMessageThreadsByUser());
 
     this.store.pipe(
@@ -36,8 +39,13 @@ export class MessageCenterHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.store.dispatch(showToolbar());
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  back() {
+    this.router.navigate(['/user']);
   }
 
 }

@@ -1,0 +1,44 @@
+div {
+  display: flex;
+}
+
+.message-thread-item {
+  flex-direction: row;
+  width: 100%;
+  //padding: 0.5rem 0;
+
+}
+
+.profile-photo {
+  margin: 0.7rem;
+
+  img {
+    height: 55px;
+    border-radius: 50%;
+  }
+}
+
+.details {
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-right: 1rem;
+
+  .message-thread-info {
+    flex-direction: row;
+
+    .thread-name {
+      flex-grow: 1;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .last-message-time {
+      font-size: 0.7rem;
+    }
+  }
+
+  .message-preview {
+    font-size: 0.9rem;
+  }
+}

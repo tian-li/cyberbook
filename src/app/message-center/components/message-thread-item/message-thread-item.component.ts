@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MessageThread } from '@cyberbook/core/model/message-thread';
 import * as dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 
 @Component({
   selector: 'app-message-thread-item',
@@ -10,6 +11,7 @@ import * as dayjs from 'dayjs';
 export class MessageThreadItemComponent implements OnInit {
   @Input() messageThread: MessageThread;
   @Input() today: dayjs.Dayjs;
+  @Input() isLastItem: boolean;
 
   constructor() {
   }

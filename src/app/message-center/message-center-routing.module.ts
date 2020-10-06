@@ -12,7 +12,7 @@ const routes: Routes = [
     // resolve: { data: LoadDataResolver },
     children: [
       {
-        path: 'list',
+        path: '',
         component: MessageThreadListComponent
       },
       {

@@ -1,13 +1,16 @@
-<app-swipeable-item (swipeResult)="delete($event)">
-  <div class="message-thread-item">
+<app-swipeable-item
+  [canSwipeRight]="true"
+  [swipeRightIcon]="'timer_off'"
+  (swipeResult)="delete($event)">
+  <div class="message-thread-item" >
     <div class="profile-photo">
-
+      <img src="./assets/images/profile-photo.jpg" alt="profile photo">
     </div>
-    <div class="details">
+    <div class="details" [ngClass]="{'message-thread-border': !isLastItem}">
       <div class="message-thread-info">
-        <span>
+        <div class="thread-name">
           对方用户名
-        </span>
+        </div>
         <div class="last-message-time">
           {{lastMessageTimeDisplay()}}
         </div>

@@ -1,6 +1,6 @@
-<div class="list-container"
-     *ngFor="let messageThread of allMessageThreads;
-     index as i; first as first;">
-
-  <app-message-thread-item [messageThread]="messageThread" [today]="today"></app-message-thread-item>
+<div class="message-thread-list-container">
+  <app-message-thread-item
+    *ngFor="let messageThread of allMessageThreads;
+     index as i; first as first; last as last"
+    [messageThread]="messageThread" [today]="today"></app-message-thread-item>
 </div>
