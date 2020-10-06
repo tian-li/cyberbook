@@ -8,3 +8,13 @@ $purple-green-theme: mat-dark-theme(
     $purple-green-accent,
     $purple-green-warn
 );
+
+$contrast-text-color: white;
+$contrast-secondary-text-color: $light-secondary-text;
+
+$foreground: map-get($purple-green-theme, foreground);
+$foreground: map_merge($foreground, (
+  contrast-text: $contrast-text-color,
+  contrast-secondary-text: $contrast-secondary-text-color
+));
+$purple-green-theme: map_merge($purple-green-theme, (foreground: $foreground));

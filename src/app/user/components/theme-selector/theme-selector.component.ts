@@ -36,6 +36,12 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
       primary: '#7b1fa2',
       accent: '#69f0ae',
       isDark: true,
+    },
+    {
+      name: 'cyberpunk-2077-theme',
+      primary: '#FCEE0A',
+      accent: '#02D7F2',
+      isDark: true,
     }
   ];
 

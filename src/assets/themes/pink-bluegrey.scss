@@ -4,3 +4,13 @@ $pink-bluegrey-accent: mat-palette($mat-blue-grey, A200, A100, A400);
 $pink-bluegrey-warn: mat-palette($mat-red);
 
 $pink-bluegrey-theme: mat-dark-theme($pink-bluegrey-primary, $pink-bluegrey-accent, $pink-bluegrey-warn);
+
+$contrast-text-color: white;
+$contrast-secondary-text-color: $light-secondary-text;
+
+$foreground: map-get($pink-bluegrey-theme, foreground);
+$foreground: map_merge($foreground, (
+  contrast-text: $contrast-text-color,
+  contrast-secondary-text: $contrast-secondary-text-color
+));
+$pink-bluegrey-theme: map_merge($pink-bluegrey-theme, (foreground: $foreground));

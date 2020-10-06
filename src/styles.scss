@@ -10,6 +10,7 @@
 // dark themes
 @import 'assets/themes/purple-green';
 @import 'assets/themes/pink-bluegrey';
+@import 'assets/themes/cyberpunk-2077';
 
 @include mat-core();
 
@@ -55,6 +56,11 @@
   @include app-subscription-management-component-theme($theme);
   @include app-nav-header-component-theme($theme);
   @include app-message-thread-item-component-theme($theme);
+}
+
+.cyberpunk-2077-theme {
+  @include angular-material-theme($cyberpunk-2077-theme);
+  @include custom-components-theme($cyberpunk-2077-theme);
 }
 
 .indigo-pink-theme {

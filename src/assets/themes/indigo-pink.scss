@@ -3,6 +3,14 @@ $indigo-pink-primary: mat-palette($mat-indigo);
 $indigo-pink-accent: mat-palette($mat-pink, A200, A100, A400);
 $indigo-pink-warn: mat-palette($mat-red);
 
-
-
 $indigo-pink-theme: mat-light-theme($indigo-pink-primary, $indigo-pink-accent, $indigo-pink-warn);
+
+$contrast-text-color: rgba(black, 0.87);
+$contrast-secondary-text-color: $dark-secondary-text;
+
+$foreground: map-get($indigo-pink-theme, foreground);
+$foreground: map_merge($foreground, (
+  contrast-text: $contrast-text-color,
+  contrast-secondary-text: $contrast-secondary-text-color
+));
+$indigo-pink-theme: map_merge($indigo-pink-theme, (foreground: $foreground));

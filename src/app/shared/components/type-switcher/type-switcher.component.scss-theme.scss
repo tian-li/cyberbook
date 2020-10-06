@@ -16,7 +16,8 @@
     }
 
     .selected {
-      background: mat-color($primary, 300);
+      background: mat-color($accent, 300);
+      color: mat-color($primary, default-contrast);
     }
   }
 }

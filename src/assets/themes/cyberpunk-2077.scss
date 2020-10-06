@@ -1,0 +1,120 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$cyberpunk-2077-yellow: (
+  50: #FFFDE2,
+  100: #FEFAB6,
+  200: #FEF785,
+  300: #FDF354,
+  400: #FCF12F,
+  500: #FCEE0A,
+  600: #FCEC09,
+  700: #FBE907,
+  800: #FBE705,
+  900: #FAE203,
+  A100: #FFFFFF,
+  A200: #FFFDED,
+  A400: #FFF8BA,
+  A700: #FFF5A1,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$cyberpunk-2077-blue: (
+  50: #E1FAFD,
+  100: #B3F3FB,
+  200: #81EBF9,
+  300: #4EE3F6,
+  400: #28DDF4,
+  500: #02D7F2,
+  600: #02D3F0,
+  700: #01CDEE,
+  800: #01C7EC,
+  900: #01BEE8,
+  A100: #FFFFFF,
+  A200: #DCF8FF,
+  A400: #A9EDFF,
+  A700: #90E8FF,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$cyberpunk-2077-red: (
+  50: #FFE0E8,
+  100: #FFB3C5,
+  200: #FF809E,
+  300: #FF4D77,
+  400: #FF2659,
+  500: #FF003C,
+  600: #FF0036,
+  700: #FF002E,
+  800: #FF0027,
+  900: #FF001A,
+  A100: #FFFFFF,
+  A200: #FFF2F3,
+  A400: #FFBFC3,
+  A700: #FFA6AB,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$cyberpunk-2077-primary: mat-palette($cyberpunk-2077-yellow);
+$cyberpunk-2077-accent: mat-palette($cyberpunk-2077-blue);
+$cyberpunk-2077-warn: mat-palette($cyberpunk-2077-red);
+
+$cyberpunk-2077-theme: mat-dark-theme($cyberpunk-2077-primary, $cyberpunk-2077-accent, $cyberpunk-2077-warn);
+
+
+// Insert custom background color
+$contrast-text-color: rgba(black, 0.87);
+$contrast-secondary-text-color: $dark-secondary-text;
+
+$foreground: map-get($cyberpunk-2077-theme, foreground);
+$foreground: map_merge($foreground, (
+  contrast-text: $contrast-text-color,
+  contrast-secondary-text: $contrast-secondary-text-color
+));
+$cyberpunk-2077-theme: map_merge($cyberpunk-2077-theme, (foreground: $foreground));

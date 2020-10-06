@@ -6,19 +6,25 @@
 
   .book-header {
     background: mat-color($primary);
+
+    .title-bar {
+      .title, .quick-tools {
+        color: mat-color($primary, default-contrast);
+      }
+    }
+
     .monthly-overview {
+      color: mat-color($foreground, contrast-text);
+
       .label {
-        color: mat-color($foreground, secondary-text);
+        color: mat-color($foreground, contrast-secondary-text);
       }
 
       .year-month {
         .month-group {
-          border-right: 1px solid mat-color($foreground, text);;
+          border-right: 1px solid mat-color($primary, default-contrast);
         }
       }
     }
   }
-
-
-
 }

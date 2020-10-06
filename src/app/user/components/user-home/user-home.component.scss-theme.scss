@@ -8,6 +8,7 @@
   .user-home-container {
     .user-info-overview {
       background: mat-color($primary);
+      color: mat-color($primary, default-contrast);
     }
 
     .features {
