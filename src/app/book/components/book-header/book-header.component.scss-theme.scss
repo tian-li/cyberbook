@@ -14,7 +14,7 @@
     }
 
     .monthly-overview {
-      color: mat-color($foreground, contrast-text);
+      color: mat-color($primary, default-contrast);
 
       .label {
         color: mat-color($foreground, contrast-secondary-text);

@@ -1,11 +1,10 @@
 @import '~@angular/material/theming';
 
-@mixin app-theme-selector-component-theme($theme) {
+@mixin app-authenticate-component-theme($theme) {
   $primary: map-get($theme, primary);
 
-  .theme-container {
-    .header {
-      background: mat-color($primary);
+  .auth-container {
+    .form {
       color: mat-color($primary, default-contrast);
     }
   }

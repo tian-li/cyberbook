@@ -2,7 +2,6 @@
 
 @mixin app-nav-bar-component-theme($theme) {
   $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 

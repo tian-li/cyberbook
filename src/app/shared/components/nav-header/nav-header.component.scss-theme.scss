@@ -1,9 +1,10 @@
 @import '~@angular/material/theming';
 
 @mixin app-nav-header-component-theme($theme) {
-  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
 
   .nav-header {
-    background: mat-color($background, app-bar);
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
   }
 }

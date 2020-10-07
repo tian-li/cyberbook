@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@mixin app-book-home-component-theme($theme) {
+  $background: map-get($theme, background);
+
+  .book-home {
+    .list {
+      background: mat-color($background, background);;
+    }
+  }
+}

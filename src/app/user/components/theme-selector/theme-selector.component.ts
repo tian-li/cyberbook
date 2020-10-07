@@ -14,35 +14,40 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
 
   readonly themes = [
     {
-      name: 'deeppurple-amber-theme',
-      primary: '#673ab7',
-      accent: '#ffd740',
+      name: 'cyberpunk-2077-theme',
+      displayName: '赛博朋克 2077',
+      primary: '#FCEE0A',
+      accent: '#02D7F2',
+      isDark: true,
+    },
+    {
+      name: 'early-morning-theme',
+      displayName: '凌晨',
+      primary: '#9bafc7',
+      accent: '#ffe5de',
       isDark: false,
     },
     {
       name: 'indigo-pink-theme',
+      displayName: '银翼杀手 2049',
       primary: '#3f51b5',
       accent: '#ff4081',
       isDark: false,
     },
     {
       name: 'pink-bluegrey-theme',
+      displayName: '黄昏',
       primary: '#c2185b',
       accent: '#b0bec5',
       isDark: true,
     },
     {
       name: 'purple-green-theme',
+      displayName: '黑白',
       primary: '#7b1fa2',
       accent: '#69f0ae',
       isDark: true,
     },
-    {
-      name: 'cyberpunk-2077-theme',
-      primary: '#FCEE0A',
-      accent: '#02D7F2',
-      isDark: true,
-    }
   ];
 
   previousTheme: string;

@@ -1,13 +1,10 @@
-<div class="profile-container">
-  <div class="header">
-    <div class="return-button">
-      <i matRipple (click)="back()" class="material-icons md-keyboard_arrow_left"></i>
-    </div>
-    <div class="title">
-      用户信息
-    </div>
-  </div>
+<app-nav-header
+  [title]="'用户信息'"
+  [leftButtonIcon]="'keyboard_arrow_left'"
+  (leftButtonClicked)="back()"
+></app-nav-header>
 
+<div class="profile-container">
   <form class="user-info" [formGroup]="form">
     <mat-form-field>
       <input matInput type="text" placeholder="用户名" formControlName="username" required/>

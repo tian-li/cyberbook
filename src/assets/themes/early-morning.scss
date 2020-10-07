@@ -1,0 +1,87 @@
+@import '~@angular/material/theming';
+
+$early-morning-blue: (
+  50: #F3F5F8,
+  100: #E1E7EE,
+  200: #CDD7E3,
+  300: #B9C7D8,
+  400: #AABBCF,
+  500: #9BAFC7,
+  600: #93A8C1,
+  700: #899FBA,
+  800: #7F96B3,
+  900: #6D86A6,
+  A100: #FFFFFF,
+  A200: #EDF5FF,
+  A400: #BAD7FF,
+  A700: #A1C9FF,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$early-morning-pink: (
+  50: #FFFCFB,
+  100: #FFF7F5,
+  200: #FFF2EF,
+  300: #FFEDE8,
+  400: #FFE9E3,
+  500: #FFE5DE,
+  600: #FFE2DA,
+  700: #FFDED5,
+  800: #FFDAD1,
+  900: #FFD3C8,
+  A100: #FFFFFF,
+  A200: #FFFFFF,
+  A400: #FFFFFF,
+  A700: #FFFFFF,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$early-morning-primary: mat-palette($early-morning-blue);
+$early-morning-accent: mat-palette($early-morning-pink);
+$early-morning-warn: mat-palette($mat-red);
+
+$early-morning-theme: mat-light-theme($early-morning-primary, $early-morning-accent, $early-morning-warn);
+
+$foreground: map-get($early-morning-theme, foreground);
+
+$contrast-text-color: rgba(black, 0.87);
+$contrast-secondary-text-color: $dark-secondary-text;
+$contrast-dividers-color: $dark-dividers;
+
+$foreground: map_merge($foreground, (
+  contrast-text: $contrast-text-color,
+  contrast-secondary-text: $contrast-secondary-text-color,
+  contrast-dividers: $contrast-dividers-color
+));
+
+$early-morning-theme: map_merge($early-morning-theme, (foreground: $foreground));

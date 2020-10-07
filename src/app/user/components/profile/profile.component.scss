@@ -3,34 +3,10 @@ div, form {
 }
 
 .profile-container {
+  margin-top: 3rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  .header {
-    position: relative;
-    width: 100%;
-    height: 3rem;
-    align-items: center;
-
-    .return-button {
-      position: absolute;
-      left: 0.5rem;
-
-      i {
-        border-radius: 50%;
-        display: flex;
-        font-size: 2.5rem;
-        height: unset;
-        width: unset;
-      }
-    }
-
-    .title {
-      justify-content: center;
-      flex-grow: 1;
-    }
-  }
 }
 
 

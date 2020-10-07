@@ -1,2 +1,7 @@
-<app-graph-header></app-graph-header>
-<router-outlet></router-outlet>
+<app-graph-header (chartTypeChanged)="chartTypeChanged($event)"></app-graph-header>
+
+<div class="chart-container" [ngSwitch]="chartType">
+  <app-graph-chart-pie *ngSwitchCase="'pie'"></app-graph-chart-pie>
+
+  <app-graph-chart-line *ngSwitchCase="'line'"></app-graph-chart-line>
+</div>

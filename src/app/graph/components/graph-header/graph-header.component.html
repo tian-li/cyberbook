@@ -1,12 +1,5 @@
-<nav class="chart-type">
-  <div class="type" routerLinkActive="activated-route">
-    <i class="material-icons md-pie_chart"></i>
-    <a routerLink="pie">比例</a>
-  </div>
-
-  <div class="type" routerLinkActive="activated-route">
-    <i class="material-icons md-timeline"></i>
-    <a routerLink="line">趋势</a>
-  </div>
-</nav>
-
+<app-nav-header
+  [title]="'图表'"
+  [typeSwitcherConfig]="typeSwitcherConfig"
+  (typeChanged)="changeCartType($event)"
+></app-nav-header>

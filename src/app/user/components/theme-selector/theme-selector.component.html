@@ -7,16 +7,20 @@
 
   <div class="themes">
     <ng-container *ngFor="let theme of themes;">
-      <div matRipple class="preview" (click)="selectTheme(theme.name)">
-        <i class="material-icons md-check_circle theme-selected" *ngIf="selectedTheme === theme.name"></i>
+      <div class="theme-info" [ngClass]="{'selected': selectedTheme === theme.name}">
+        <div matRipple class="preview" (click)="selectTheme(theme.name)">
+          <i class="material-icons md-check_circle theme-selected" *ngIf="selectedTheme === theme.name"></i>
 
-        <i class="material-icons-twotone theme-type" [ngClass]="{'md-wb_sunny': !theme.isDark, 'md-brightness_2': theme.isDark}"></i>
+          <i class="material-icons-twotone theme-type" [ngClass]="{'md-wb_sunny': !theme.isDark, 'md-brightness_2': theme.isDark}"></i>
 
-        <div class="primary-color" [ngStyle]="{'border-top-color': theme.primary}">
+          <div class="primary-color" [ngStyle]="{'border-top-color': theme.primary}">
+          </div>
+          <div class="accent-color" [ngStyle]="{'border-bottom-color': theme.accent}">
+          </div>
         </div>
-        <div class="accent-color" [ngStyle]="{'border-bottom-color': theme.accent}">
-        </div>
+        <div class="theme-name">{{theme.displayName}}</div>
       </div>
+
     </ng-container>
   </div>
 

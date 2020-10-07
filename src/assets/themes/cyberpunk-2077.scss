@@ -109,12 +109,16 @@ $cyberpunk-2077-theme: mat-dark-theme($cyberpunk-2077-primary, $cyberpunk-2077-a
 
 
 // Insert custom background color
+$foreground: map-get($cyberpunk-2077-theme, foreground);
+
 $contrast-text-color: rgba(black, 0.87);
 $contrast-secondary-text-color: $dark-secondary-text;
+$contrast-dividers-color: $dark-dividers;
 
-$foreground: map-get($cyberpunk-2077-theme, foreground);
 $foreground: map_merge($foreground, (
   contrast-text: $contrast-text-color,
-  contrast-secondary-text: $contrast-secondary-text-color
+  contrast-secondary-text: $contrast-secondary-text-color,
+  contrast-dividers: $contrast-dividers-color
 ));
+
 $cyberpunk-2077-theme: map_merge($cyberpunk-2077-theme, (foreground: $foreground));

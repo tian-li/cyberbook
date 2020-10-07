@@ -2,10 +2,13 @@
 
 @mixin app-date-divider-component-theme($theme) {
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
 
   .date-divider {
+    background: mat-color($background, background);
     color: mat-color($foreground, secondary-text);;
     border-bottom: 1px solid mat-color($foreground, divider);
+    border-top: 1px solid mat-color($foreground, divider);
   }
 
 }

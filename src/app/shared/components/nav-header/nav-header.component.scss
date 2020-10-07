@@ -16,7 +16,7 @@ div {
     align-items: center;
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
@@ -28,12 +28,11 @@ div {
     .right-button {
       position: absolute;
       right: 1rem;
-
     }
 
     .left-button, .right-button {
       i {
-
+        font-size: 2rem;
         border-radius: 50%;
       }
     }

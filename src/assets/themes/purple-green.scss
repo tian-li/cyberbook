@@ -9,12 +9,16 @@ $purple-green-theme: mat-dark-theme(
     $purple-green-warn
 );
 
+$foreground: map-get($purple-green-theme, foreground);
+
 $contrast-text-color: white;
 $contrast-secondary-text-color: $light-secondary-text;
+$contrast-dividers-color: $dark-dividers;
 
-$foreground: map-get($purple-green-theme, foreground);
 $foreground: map_merge($foreground, (
   contrast-text: $contrast-text-color,
-  contrast-secondary-text: $contrast-secondary-text-color
+  contrast-secondary-text: $contrast-secondary-text-color,
+  contrast-dividers: $contrast-dividers-color
 ));
+
 $purple-green-theme: map_merge($purple-green-theme, (foreground: $foreground));

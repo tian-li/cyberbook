@@ -5,7 +5,7 @@
 
 // light themes
 @import 'assets/themes/indigo-pink';
-@import 'assets/themes/deeppurple-amber';
+@import 'assets/themes/early-morning';
 
 // dark themes
 @import 'assets/themes/purple-green';
@@ -19,10 +19,10 @@
 @import 'app/book/components/book-header/book-header.component.scss-theme';
 @import 'app/book/components/date-divider/date-divider.component.scss-theme';
 @import 'app/book/components/transaction-item/transaction-item.component.scss-theme';
+@import 'app/book/components/book-home/book-home.component.scss-theme';
 
 // graph
 @import 'app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
-@import 'app/graph/components/graph-header/graph-header.component.scss-theme';
 
 // user
 @import 'app/user/components/theme-selector/theme-selector.component.scss-theme';
@@ -31,6 +31,7 @@
 @import 'app/user/components/manage-categories/manage-categories.component.scss-theme';
 @import 'app/user/components/subscription-management/subscription-management.component.scss-theme';
 @import 'app/user/components/category-editor/category-editor.component.scss-theme';
+@import 'app/user/components/authenticate/authenticate.component.scss-theme';
 
 // message-center
 @import 'app/message-center/components/message-thread-item/message-thread-item.component.scss-theme';
@@ -47,7 +48,6 @@
   @include app-date-divider-component-theme($theme);
   @include app-transaction-item-component-theme($theme);
   @include app-graph-chart-pie-component-theme($theme);
-  @include app-graph-header-component-theme($theme);
   @include app-user-home-component-theme($theme);
   @include app-profile-component-theme($theme);
   @include app-manage-categories-component-theme($theme);
@@ -56,6 +56,8 @@
   @include app-subscription-management-component-theme($theme);
   @include app-nav-header-component-theme($theme);
   @include app-message-thread-item-component-theme($theme);
+  @include app-authenticate-component-theme($theme);
+  @include app-book-home-component-theme($theme);
 }
 
 .cyberpunk-2077-theme {
@@ -78,9 +80,9 @@
   @include custom-components-theme($purple-green-theme);
 }
 
-.deeppurple-amber-theme {
-  @include angular-material-theme($deeppurple-amber-theme);
-  @include custom-components-theme($deeppurple-amber-theme);
+.early-morning-theme {
+  @include angular-material-theme($early-morning-theme);
+  @include custom-components-theme($early-morning-theme);
 }
 
 @font-face {

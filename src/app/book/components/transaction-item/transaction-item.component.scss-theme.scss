@@ -5,7 +5,7 @@
   $background: map-get($theme, background);
 
   .transaction-item {
-    background: mat-color($background, background);
+    background: mat-color($background, card);
 
     .icon {
       .icon-inner-container {
