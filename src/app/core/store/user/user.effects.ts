@@ -4,8 +4,8 @@ import { User } from '@cyberbook/core/model/user';
 import { UserService } from '@cyberbook/core/services/user.service';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Action, TypedAction } from '@ngrx/store/src/models';
 import { map, switchMap } from 'rxjs/operators';
-
 import {
   login,
   loginSuccess,
@@ -16,10 +16,12 @@ import {
   registerSuccess,
   registerTempUser,
   registerTempUserSuccess,
+  savePreferredTheme,
+  savePreferredThemeSuccess,
   saveTempUser,
-  saveTempUserSuccess, savePreferredTheme,
+  saveTempUserSuccess,
   updateProfile,
-  updateProfileSuccess, savePreferredThemeSuccess
+  updateProfileSuccess
 } from './user.actions';
 
 @Injectable()
@@ -45,9 +47,18 @@ export class UserEffects {
       ofType(loginWithLocalToken),
       switchMap(() =>
         this.userService.loginWithToken().pipe(
-          map((user: User) => {
+          switchMap((user: User) => {
             this.saveUserToLocalstorage(user);
-            return loginWithLocalTokenSuccess({ user });
+
+            const actions: Action[] = [
+              loginWithLocalTokenSuccess({ user }),
+            ];
+
+            if (!user.registered) {
+              actions.push(notifyWithSnackBar({ snackBar: { message: '正在使用临时账户，请及时注册' } }));
+            }
+
+            return actions;
           }),
         )
       )
@@ -76,9 +87,12 @@ export class UserEffects {
       ofType(registerTempUser),
       switchMap(() =>
         this.userService.registerTempUser().pipe(
-          map((user: User) => {
+          switchMap((user: User) => {
             this.saveUserToLocalstorage(user);
-            return registerTempUserSuccess({ user });
+            return [
+              registerTempUserSuccess({ user }),
+              notifyWithSnackBar({ snackBar: { message: '正在使用临时账户，请及时注册' } }),
+            ];
           }),
         )
       )
@@ -150,6 +164,7 @@ export class UserEffects {
     localStorage.setItem('username', user.username);
     localStorage.setItem('jwt_token', user.jwtToken);
     localStorage.setItem('registered', String(user.registered));
+    localStorage.setItem('theme', user.theme);
   }
 
   constructor(

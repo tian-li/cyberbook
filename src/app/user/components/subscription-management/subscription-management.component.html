@@ -27,7 +27,7 @@
             <div class="description-summary">
               <div>
                 <span>{{getDescriptionDisplay(subscription)}}</span>
-                <span class="tag-ended-subscription" *ngIf="hasSubscriptionEnded(subscription.endDate)">已结束</span>
+                <span class="tag-ended-subscription" *ngIf="!subscription.activateStatus">已结束</span>
               </div>
               <div class="quick-overview">
                 {{quickOverview(subscription)}}
