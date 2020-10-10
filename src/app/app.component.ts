@@ -4,9 +4,10 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { fromUI, fromUser } from '@cyberbook/core/store';
 import { defaultTheme } from '@cyberbook/shared/constants';
+import { getLocalStorageValueByKey } from '@cyberbook/shared/utils/get-localstorage-value-by-key';
 import { select, Store } from '@ngrx/store';
-import { Observable, of, Subject } from 'rxjs';
-import { debounceTime, takeUntil, withLatestFrom } from 'rxjs/operators';
+import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -30,13 +31,17 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.pipe(
-      select(fromUser.selectTheme),
-      withLatestFrom(this.getLocalTheme()),
-      takeUntil(this.unsubscribe$)
-    ).subscribe(([userTheme, localTheme]: [string, string]) => {
-      const theme = userTheme || localTheme || defaultTheme;
-      this.setTheme(theme);
+    combineLatest([
+      this.store.pipe(select(fromUser.selectTheme)),
+      this.getLocalTheme()
+    ])
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(([userTheme, localTheme]: [null | string, null | string]) => {
+      const theme = userTheme ?? localTheme ?? defaultTheme;
+
+      if (theme !== this.theme) {
+        this.setTheme(theme);
+      }
     });
 
     this.store.pipe(
@@ -52,7 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private getLocalTheme(): Observable<string> {
-    return of(localStorage.getItem('theme'));
+    return of(getLocalStorageValueByKey('theme'));
   }
 
   private setTheme(theme: string) {

@@ -17,7 +17,7 @@
        cdkDropList
        [cdkDropListData]="sortingContainerData"
        (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let category of sortingContainerData; last as last; index as index;"
+    <div *ngFor="let category of sortingContainerData; last as last; index as index; trackBy: trackByFn"
          cdkDrag cdkDragLockAxis="y"
          [cdkDragDisabled]="!sortingMode"
          [cdkDragPreviewClass]="theme$ | async">

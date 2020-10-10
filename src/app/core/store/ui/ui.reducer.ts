@@ -3,7 +3,7 @@ import * as subscriptionActions from '@cyberbook/core/store/subscription/subscri
 import * as transactionActions from '@cyberbook/core/store/transaction/transaction.actions';
 import { Action, createReducer, on } from '@ngrx/store';
 import { ISOString } from '../../../shared/model/helper-models';
-import { hideToolbar, setDisplayMonth, showToolbar } from './ui.actions';
+import { hideLoadingSpinner, hideToolbar, setDisplayMonth, showLoadingSpinner, showToolbar } from './ui.actions';
 
 const today = new Date();
 
@@ -33,6 +33,7 @@ const reducer = createReducer(
     subscriptionActions.addSubscription, subscriptionActions.updateSubscription,
     subscriptionActions.removeSubscription, subscriptionActions.stopSubscription,
     transactionActions.addTransaction, transactionActions.updateTransaction, transactionActions.removeTransaction,
+    showLoadingSpinner,
     (state => {
       return {
         ...state,
@@ -46,6 +47,7 @@ const reducer = createReducer(
     transactionActions.removeTransactionSuccess,
     subscriptionActions.addSubscriptionSuccess, subscriptionActions.updateSubscriptionSuccess,
     subscriptionActions.removeSubscriptionSuccess, subscriptionActions.stopSubscriptionSuccess,
+    hideLoadingSpinner,
     (state => {
       return {
         ...state,

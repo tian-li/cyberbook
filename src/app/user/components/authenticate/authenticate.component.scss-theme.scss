@@ -2,10 +2,13 @@
 
 @mixin app-authenticate-component-theme($theme) {
   $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
 
   .auth-container {
-    .form {
-      color: mat-color($primary, default-contrast);
-    }
+    //background: mat-color($accent);
+    //.form {
+    //  //color: mat-color($primary, default-contrast);
+    //  color: black;
+    //}
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { loginWithLocalToken, registerTempUser } from '@cyberbook/core/store/user';
 import { createTempUser } from '@cyberbook/shared/utils/create-temp-user';
-import { getUserIdFromLocalStorage } from '@cyberbook/shared/utils/get-user-from-localstorage';
+import { getLocalStorageValueByKey } from '@cyberbook/shared/utils/get-localstorage-value-by-key';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class AutoLoginGuard implements CanActivate {
       return of(true);
     }
 
-    const localUserId = getUserIdFromLocalStorage();
+    const localUserId = getLocalStorageValueByKey('userId');
     if (!!localUserId) {
       this.store.dispatch(loginWithLocalToken());
     } else {

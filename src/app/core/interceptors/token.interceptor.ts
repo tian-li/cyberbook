@@ -1,8 +1,9 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
+import { hideLoadingSpinner } from '@cyberbook/core/store/ui';
 import { logout } from '@cyberbook/core/store/user';
-import { getTokenFromLocalStorage } from '@cyberbook/shared/utils/get-token-from-local-storage';
+import { getLocalStorageValueByKey } from '@cyberbook/shared/utils/get-localstorage-value-by-key';
 import { Store } from '@ngrx/store';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -21,7 +22,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const localToken = getTokenFromLocalStorage();
+    const localToken = getLocalStorageValueByKey('jwt_token');
 
     const skipToken: boolean = this.permittedPaths.some((path: string) => {
       return `${request.url}/`.includes(path);
@@ -60,6 +61,7 @@ export class TokenInterceptor implements HttpInterceptor {
             this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '发生未知错误，请稍后重试' } }));
             break;
         }
+        this.store.dispatch(hideLoadingSpinner());
         return throwError(error);
       })
     );

@@ -6,7 +6,7 @@ import { loadTransactionsByUser } from '@cyberbook/core/store/transaction';
 import { Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import JwtDecode from 'jwt-decode';
-import { getTokenFromLocalStorage } from '../../shared/utils/get-token-from-local-storage';
+import { getLocalStorageValueByKey } from '../../shared/utils/get-localstorage-value-by-key';
 import { notifyWithSnackBar } from '../store/notification';
 import { logout } from '../store/user';
 
@@ -17,9 +17,17 @@ export class LoadDataResolver implements Resolve<any> {
   }
 
   resolve() {
-    const token: string = getTokenFromLocalStorage();
+    const token: string = getLocalStorageValueByKey('jwt_token');
     if (!!token) {
-      const decoded = JwtDecode(token);
+      let decoded;
+
+      try {
+        decoded = JwtDecode(token);
+      } catch (e) {
+        this.store.dispatch(logout());
+        return;
+      }
+
       const isTokenValid: boolean = dayjs(decoded.exp * 1000).isAfter(dayjs());
 
       if (isTokenValid) {

@@ -5,3 +5,6 @@ export const setDisplayMonth = createAction('[UI] Set Display Month', props<{ di
 
 export const showToolbar = createAction('[UI] Show Toolbar');
 export const hideToolbar = createAction('[UI] Hide Toolbar');
+
+export const showLoadingSpinner = createAction('[UI] Show Loading Spinner');
+export const hideLoadingSpinner = createAction('[UI] Hide Loading Spinner');

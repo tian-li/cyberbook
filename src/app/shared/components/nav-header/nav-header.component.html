@@ -5,7 +5,7 @@
          [class]="'material-icons md-'+leftButtonIcon"></i>
     </div>
 
-    <div class="title">{{title}}</div>
+    <div class="title" [style]="{'font-size': titleSize}">{{title}}</div>
 
     <div class="right-button">
       <i matRipple *ngIf="!!rightButtonIcon" (click)="rightButtonClicked.emit()"

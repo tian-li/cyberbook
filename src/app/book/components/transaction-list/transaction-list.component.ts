@@ -15,4 +15,8 @@ export class TransactionListComponent {
     return index > 0 && index <= this.transactionVOs.length - 1 &&
       transaction.transactionDate.date() !== this.transactionVOs[index - 1].transactionDate.date();
   }
+
+  trackByFn(index: number, item): number {
+    return item.id;
+  }
 }

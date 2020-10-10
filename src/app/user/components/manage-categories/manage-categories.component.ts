@@ -173,6 +173,10 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     });
   }
 
+  trackByFn(index: number, item): number {
+    return item.id;
+  }
+
   // add or edit category
   private openEditor(data: { editMode: boolean, allCategories: Category[], category?: Category }) {
     this.bottomSheet.open(CategoryEditorComponent, {

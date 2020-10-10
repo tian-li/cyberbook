@@ -1,7 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { fromTransaction } from '@cyberbook/core/store';
+import { FullDate } from '@cyberbook/shared/model/helper-models';
 import { select, Store } from '@ngrx/store';
+import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -11,8 +13,12 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./date-divider.component.scss']
 })
 export class DateDividerComponent implements OnInit, OnDestroy {
-  @Input() date: Date;
-  daySummary: { income: number, spend: number };
+  @Input() date: dayjs.Dayjs;
+
+  daySummary: { income: number, spend: number } = {
+    income: 0,
+    spend: 0
+  };
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -21,9 +27,11 @@ export class DateDividerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.pipe(
-      select(fromTransaction.getTransactionSummaryByDate, { date: this.date.toISOString().substring(0, 10) }),
+      select(fromTransaction.getTransactionSummaryByDate, { date: this.date.format(FullDate) }),
       takeUntil(this.unsubscribe$)
-    ).subscribe(daySummary => this.daySummary = daySummary);
+    ).subscribe(daySummary => {
+      this.daySummary = daySummary;
+    });
   }
 
   ngOnDestroy() {

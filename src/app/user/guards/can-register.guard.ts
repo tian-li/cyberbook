@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { UserService } from '@cyberbook/core/services/user.service';
-import { getUserIdFromLocalStorage } from '@cyberbook/shared/utils/get-user-from-localstorage';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
+import { getLocalStorageValueByKey } from '../../shared/utils/get-localstorage-value-by-key';
 
 @Injectable()
 export class CanRegisterGuard implements CanActivate {
@@ -14,7 +14,7 @@ export class CanRegisterGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const userId: null | string = getUserIdFromLocalStorage();
+    const userId: null | string = getLocalStorageValueByKey('userId');
 
     if (!userId) {
       return of(true);

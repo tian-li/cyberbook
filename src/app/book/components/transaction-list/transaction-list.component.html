@@ -1,6 +1,6 @@
 <div class="list-container"
      *ngFor="let transactionVO of transactionVOs;
-     index as i; first as first;">
+     index as i; first as first; trackBy: trackByFn">
 
   <app-date-divider
     *ngIf="first || isFirstOfDate(transactionVO, i)"

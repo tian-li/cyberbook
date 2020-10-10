@@ -1,6 +1,8 @@
 import { logout } from '@cyberbook/core/store/user/user.actions';
+import { FullDate } from '@cyberbook/shared/model/helper-models';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
+import * as dayjs from 'dayjs';
 
 import { Transaction } from '../../model/transaction';
 import {
@@ -32,7 +34,7 @@ const reducer = createReducer(
   on(loadTransactionsByUserSuccess, (state, { transactions }) => {
     let transactionIdsByDate = {};
     transactions.forEach((transaction: Transaction) => {
-      const date = transaction.transactionDate.substring(0, 10);
+      const date = dayjs(transaction.transactionDate).format(FullDate);
       transactionIdsByDate = {
         ...transactionIdsByDate,
         [date]: transactionIdsByDate[date] ? [...transactionIdsByDate[date], transaction.id] : [transaction.id]
@@ -42,7 +44,7 @@ const reducer = createReducer(
     return adapter.setAll(transactions, { ...state, selectedTransactionId: null, transactionIdsByDate });
   }),
   on(addTransactionSuccess, (state, { transaction }) => {
-    const date = transaction.transactionDate.substring(0, 10);
+    const date = dayjs(transaction.transactionDate).format(FullDate);
     const updatedTransactionIdsByDate = {
       ...state.transactionIdsByDate,
       [date]: state.transactionIdsByDate[date] ?
@@ -59,8 +61,8 @@ const reducer = createReducer(
     const oldTransaction = state.entities[update.id];
 
     if (updatedTransaction.transactionDate !== oldTransaction.transactionDate) {
-      const newDate = updatedTransaction.transactionDate.substring(0, 10);
-      const oldDate = oldTransaction.transactionDate.substring(0, 10);
+      const newDate = dayjs(updatedTransaction.transactionDate).format(FullDate);
+      const oldDate = dayjs(oldTransaction.transactionDate).format(FullDate);
 
       const updatedTransactionIdsByDate = {
         ...state.transactionIdsByDate,
@@ -78,7 +80,7 @@ const reducer = createReducer(
     return adapter.updateOne(update, { ...state, selectedTransactionId: update.id });
   }),
   on(removeTransaction, (state, { id }) => {
-    const date = state.entities[id].transactionDate.substring(0, 10);
+    const date = dayjs(state.entities[id].transactionDate).format(FullDate);
 
     const updatedTransactionIdsByDate = {
       ...state.transactionIdsByDate,

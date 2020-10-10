@@ -1,15 +1,30 @@
 div, form {
   // TODO: use app main color
-  background: #ffda43;
+  //background: #7a04eb;
   display: flex;
 }
 
+.background {
+  display: block;
+  position: absolute;
+  top: 170px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("../../../../building.png");
+  background-size: contain;
+transform: translateY(180px);
+  filter: blur(5px);
+}
+
 .auth-container {
+
   #logo{
     //height: 200px;
     width: 50%;
   }
-  //background: url("../../../../assets/images/电路.jpg");
+
+  background: #000;
   min-height: 100%;
   flex-direction: column;
   align-items: center;
@@ -37,6 +52,8 @@ div, form {
   margin-bottom: 10%;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
+  filter: invert(1) contrast(0.8);
 
   img {
     display: flex;
@@ -58,6 +75,10 @@ form {
 
   .username {
     width: 100%;
+  }
+
+  mat-form-field {
+    margin-bottom: 5px;
   }
 }
 

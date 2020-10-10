@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class NavHeaderComponent implements OnInit {
 
+  @Input() titleSize = '1.3rem';
   @Input() title: string;
   @Input() leftButtonIcon: string;
   @Input() rightButtonIcon: string;

@@ -11,6 +11,7 @@ import { SubscriptionManagementComponent } from './components/subscription-manag
 import { ThemeSelectorComponent } from './components/theme-selector/theme-selector.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserComponent } from './components/user/user.component';
+import { CanLeaveAuthGuard } from './guards/can-leave-auth.guard';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UserRoutingModule } from './user-routing.module';
   ],
   providers: [
     CanRegisterGuard,
-    LoadDataResolver
+    LoadDataResolver,
+    CanLeaveAuthGuard
   ],
   entryComponents: [
     CategoryEditorComponent,
