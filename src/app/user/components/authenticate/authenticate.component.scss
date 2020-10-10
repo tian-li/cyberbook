@@ -1,101 +1,82 @@
 div, form {
-  // TODO: use app main color
-  //background: #7a04eb;
   display: flex;
+}
+
+.auth-wrapper {
+  width: 100%;
+  justify-content: center;
 }
 
 .background {
   display: block;
-  position: absolute;
-  top: 170px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: url("../../../../building.png");
-  background-size: contain;
-transform: translateY(180px);
-  filter: blur(5px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url("../../../../assets/images/登录背景.png");
+  background-position: center;
 }
 
 .auth-container {
-
-  #logo{
-    //height: 200px;
-    width: 50%;
-  }
-
-  background: #000;
-  min-height: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+  position: fixed;
 
-.return-button {
-  justify-self: flex-start;
-  align-items: center;
-  width: 100%;
-  height: 2rem;
-  padding-top: 5px;
+  .logo {
+    margin-bottom: 10%;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
 
-  i {
-    border-radius: 50%;
-    display: flex;
-    font-size: 2.5rem;
-    height: unset;
-    width: unset;
-  }
-}
+    img {
+      display: flex;
+      width: 50%;
+    }
 
-.logo {
-  //margin-top: 10%;
-  margin-bottom: 10%;
-  flex-direction: column;
-  align-items: center;
-  z-index: 1;
-  filter: invert(1) contrast(0.8);
-
-  img {
-    display: flex;
+    .title {
+      font-size: 2rem;
+      justify-content: center;
+    }
   }
 
-  .title {
-    font-size: 2rem;
-    justify-content: center;
-  }
-}
+  form {
+    flex-direction: column;
+    width: 80%;
 
-form {
-  flex-direction: column;
-  width: 80%;
+    ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+      background-color: #9291917d;
+      backdrop-filter: blur(5px);
+    }
 
-  .hidden {
-    display: none;
-  }
+    .hidden {
+      display: none;
+    }
 
-  .username {
-    width: 100%;
-  }
+    .username {
+      width: 100%;
+    }
 
-  mat-form-field {
-    margin-bottom: 5px;
-  }
-}
-
-.actions {
-  flex-direction: column;
-  width: 80%;
-  margin-top: 1rem;
-  margin-bottom: 10%;
-
-  .button-register {
-    width: 100%;
+    mat-form-field {
+      margin-bottom: 5px;
+    }
   }
 
-  .sub-actions {
-    font-size: 0.8rem;
+  .actions {
+    flex-direction: column;
+    width: 80%;
     margin-top: 1rem;
-    justify-content: space-between;
-    opacity: 0.5;
+
+    .button-register {
+      width: 100%;
+    }
+
+    .sub-actions {
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      justify-content: space-between;
+      opacity: 0.99;
+    }
   }
 }
