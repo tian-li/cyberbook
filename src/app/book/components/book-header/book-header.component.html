@@ -1,34 +1,38 @@
 <div appPreventScroll class="book-header">
   <div class="title-bar">
     <div class="logo">
-      <img src="../../../../assets/icons/transparent-icon.png" alt="Tarantula Logo">
+<!--      <img src="../../../../assets/icons/transparent-icon.png" alt="Tarantula Logo">-->
+<!--      <img src="../../../../assets/images/Untitled-3.svg" alt="Tarantula Logo">-->
+      <span data-text="Cyber" class="cyber glitch">Cyber</span>
+      <span data-text="Cyber" class="glitch">Book</span>
     </div>
     <div class="title">
       赛博记账
     </div>
     <div class="quick-tools">
-      <i class="material-icons md-search"></i>
+      <i class="material-icons md-today" (click)="changeMonth()"></i>
+<!--      <i class="material-icons md-search"></i>-->
     </div>
   </div>
 
   <div class="monthly-overview">
-    <div class="year-month">
-      <div class="label">
-        {{displayMonth | date:'yyyy年'}}
-      </div>
-      <div class="month-group" (click)="changeMonth()">
-        <div class="month-number">{{displayMonth | date:'MM'}}</div>
-        <div class="month">月</div>
-        <i class="material-icons md-arrow_drop_down"></i>
-      </div>
-    </div>
+<!--    <div class="year-month">-->
+<!--      <div class="label">-->
+<!--        {{displayMonth | date:'yyyy年'}}-->
+<!--      </div>-->
+<!--      <div class="month-group" (click)="changeMonth()">-->
+<!--        <div class="month-number">{{displayMonth | date:'MM'}}</div>-->
+<!--        <div class="month">月</div>-->
+<!--        <i class="material-icons md-arrow_drop_down"></i>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div class="income">
       <div class="label">
         收入
       </div>
       <div class="amount">
-        <span>{{monthSummary?.income.toFixed(0)}}</span>
+        <span class="integer">{{monthSummary?.income.toFixed(0)}}</span>
         <span class="decimal">.{{monthSummary?.income.toFixed(2).slice(-2)}}</span>
       </div>
     </div>
@@ -38,8 +42,18 @@
         支出
       </div>
       <div class="amount">
-        <span>{{monthSummary?.spend.toFixed(0)}}</span>
+        <span class="integer">{{monthSummary?.spend.toFixed(0)}}</span>
         <span class="decimal">.{{monthSummary?.spend.toFixed(2).slice(-2)}}</span>
+      </div>
+    </div>
+
+    <div class="balance">
+      <div class="label">
+        结余
+      </div>
+      <div class="amount">
+        <span class="integer">{{balance.toFixed(0)}}</span>
+        <span class="decimal">.{{balance.toFixed(2).slice(-2)}}</span>
       </div>
     </div>
   </div>

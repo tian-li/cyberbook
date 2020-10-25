@@ -8,9 +8,7 @@
     background: mat-color($primary);
 
     .title-bar {
-      .title, .quick-tools {
-        color: mat-color($primary, default-contrast);
-      }
+      color: mat-color($primary, default-contrast);
     }
 
     .monthly-overview {

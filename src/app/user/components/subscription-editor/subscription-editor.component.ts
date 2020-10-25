@@ -6,7 +6,7 @@ import { Subscription, SubscriptionFrequencyTypes } from '@cyberbook/core/model/
 import { transactionDescriptionMaxLength } from '@cyberbook/core/model/transaction';
 import { fromCategory } from '@cyberbook/core/store';
 import { addSubscription, updateSubscription } from '@cyberbook/core/store/subscription';
-import { TransactionType, TransactionTypes, years } from '@cyberbook/shared/constants';
+import { maxTransactionAmount, TransactionType, TransactionTypes, years } from '@cyberbook/shared/constants';
 import { ISOString } from '@cyberbook/shared/model/helper-models';
 import { calculateSubscriptionNextDate } from '@cyberbook/shared/utils/calculate-subscription-next-date';
 import { Dictionary } from '@ngrx/entity';
@@ -28,6 +28,7 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   readonly maxDate = new Date(years[years.length - 1], 11, 31);
   readonly defaultCategoryType: TransactionType = TransactionTypes.spend;
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
+  readonly maxTransactionAmount = maxTransactionAmount;
   readonly frequencies: { value: SubscriptionFrequencyTypes, display: string }[] = [
     { value: SubscriptionFrequencyTypes.day, display: '天' },
     { value: SubscriptionFrequencyTypes.week, display: '星期' },
@@ -219,7 +220,11 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   private buildForm() {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
-      amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^\d*(\.\d{0,2})?$/)]),
+      amount: new FormControl(initialFormData.amount, [
+        Validators.required,
+        Validators.pattern(/^\d*(\.\d{0,2})?$/),
+        Validators.max(maxTransactionAmount)
+      ]),
       description: new FormControl(
         initialFormData.description, Validators.maxLength(this.transactionDescriptionMaxLength)
       ),

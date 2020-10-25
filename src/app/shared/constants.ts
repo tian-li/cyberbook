@@ -55,6 +55,7 @@ export enum AlertLevel {
 export const defaultPositiveAction = '好';
 export const defaultNegativeAction = '取消';
 export const defaultAlertLevel = AlertLevel.warn;
+export const maxTransactionAmount = 999999;
 
 export const availableCategoryIcons: string[] = [
   'account_balance_wallet',

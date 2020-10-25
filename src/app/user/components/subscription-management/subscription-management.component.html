@@ -8,7 +8,7 @@
 
 <div class="subscription-list-container">
   <div class="subscription-list">
-    <div *ngFor="let subscription of allSubscriptions; last as last; index as index;">
+    <div *ngFor="let subscription of allSubscriptions; last as last; index as index; trackBy: trackByFn">
       <app-swipeable-item
         [canSwipeRight]="!hasSubscriptionEnded(subscription.endDate)"
         [swipeRightIcon]="'timer_off'"

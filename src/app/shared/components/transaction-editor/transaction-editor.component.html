@@ -17,6 +17,7 @@
           <input matInput formControlName="amount" inputmode="decimal" placeholder="0.00">
           <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">必填</mat-error>
           <mat-error *ngIf="formGroup.controls['amount'].hasError('pattern')">最多两位小数</mat-error>
+          <mat-error *ngIf="formGroup.controls['amount'].hasError('max')">每笔最多{{maxTransactionAmount}}</mat-error>
         </mat-form-field>
         <mat-form-field class="category">
           <mat-label>类别</mat-label>

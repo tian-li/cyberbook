@@ -88,10 +88,12 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
   }
 
   editSubscription(subscription: Subscription) {
-    this.bottomSheet.open(SubscriptionEditorComponent, {
-      data: { subscription, editMode: true },
-      disableClose: true,
-    });
+    if (subscription.activateStatus) {
+      this.bottomSheet.open(SubscriptionEditorComponent, {
+        data: { subscription, editMode: true },
+        disableClose: true,
+      });
+    }
   }
 
   onSwipe(swipeResult: SwipeResult, subscription: Subscription) {
@@ -116,11 +118,15 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
   }
 
   quickOverview(subscription: Subscription): string {
-    if (!this.hasSubscriptionEnded(subscription.endDate)) {
+    if (subscription.activateStatus) {
       return `${subscription.summary}, 距离下次还有${dayjs(subscription.nextDate).diff(this.today, 'day')}天`;
     } else {
       return `已于${dayjs(subscription.endDate).format('YYYY年MM月DD日')}结束`;
     }
+  }
+
+  trackByFn(index: number, item): number {
+    return item.id;
   }
 
   private stopSubscription(subscription: Subscription) {

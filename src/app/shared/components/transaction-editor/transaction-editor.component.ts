@@ -14,7 +14,7 @@ import { select, Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil } from 'rxjs/operators';
-import { TransactionTypes, years } from '../../constants';
+import { maxTransactionAmount, TransactionTypes, years } from '../../constants';
 
 @Component({
   selector: 'app-transaction-editor',
@@ -27,6 +27,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   readonly minDate = new Date(years[0], 0, 1);
   readonly maxDate = new Date(years[years.length - 1], 11, 31);
   readonly transactionDescriptionMaxLength = transactionDescriptionMaxLength;
+  readonly maxTransactionAmount = maxTransactionAmount;
   readonly defaultCategoryType: string = TransactionTypes.spend;
   readonly categoryTypes = [
     { value: 'spend', display: '支出' },
@@ -126,7 +127,11 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
   private buildForm() {
     const initialFormData = this.getInitialFormData();
     this.formGroup = this.fb.group({
-      amount: new FormControl(initialFormData.amount, [Validators.required, Validators.pattern(/^\d*(\.\d{0,2})?$/)]),
+      amount: new FormControl(initialFormData.amount, [
+        Validators.required,
+        Validators.pattern(/^\d*(\.\d{0,2})?$/),
+        Validators.max(maxTransactionAmount)
+      ]),
       description: new FormControl(
         initialFormData.description,
         Validators.maxLength(this.transactionDescriptionMaxLength)

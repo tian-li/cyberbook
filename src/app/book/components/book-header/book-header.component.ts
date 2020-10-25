@@ -1,12 +1,12 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
 import { fromTransaction, fromUI } from '@cyberbook/core/store';
 import { setDisplayMonth } from '@cyberbook/core/store/ui/ui.actions';
+import { YearMonthPickerComponent } from '@cyberbook/shared/components/year-month-picker/year-month-picker.component';
 import { ISOString, PeriodSummary } from '@cyberbook/shared/model/helper-models';
+import { select, Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import { YearMonthPickerComponent } from '../../../shared/components/year-month-picker/year-month-picker.component';
 
 @Component({
   selector: 'app-book-header',
@@ -17,6 +17,8 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
   displayMonth: ISOString;
   monthSummary: PeriodSummary;
   dialogRef: MatDialogRef<any>;
+
+  balance: number;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -33,6 +35,7 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe(monthSummary => {
       this.monthSummary = monthSummary;
+      this.balance = monthSummary.income - monthSummary.spend;
     });
   }
 
