@@ -1,20 +1,20 @@
 @import '~@angular/material/theming';
 
-$early-morning-blue: (
+$seasons-winter-blue: (
   50: #FFFFFF,
-  100: #E8F0F0,
-  200: #C6D9DA,
-  300: #9BBDBE,
-  400: #89B0B2,
-  500: #76A4A6,
-  600: #64979A,
-  700: #588587,
-  800: #4C7374,
-  900: #406162,
+  100: #D9E2EA,
+  200: #B5C6D6,
+  300: #87A3BC,
+  400: #7494B1,
+  500: #6085A6,
+  600: #537694,
+  700: #486681,
+  800: #3D566D,
+  900: #324759,
   A100: #FFFFFF,
-  A200: #C8ECED,
-  A400: #88C5C7,
-  A700: #80B3B5,
+  A200: #B4D1EB,
+  A400: #729FC7,
+  A700: #6B92B5,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -33,21 +33,21 @@ $early-morning-blue: (
   )
 );
 
-$early-morning-orange: (
+$seasons-winter-orange: (
   50: #FFFFFF,
   100: #FFFFFF,
-  200: #FFFCFB,
-  300: #FED3B4,
-  400: #FEC195,
-  500: #FEAF77,
-  600: #FE9D59,
-  700: #FE8B3A,
-  800: #FD791C,
-  900: #F96802,
+  200: #FFFFFF,
+  300: #EEF9FC,
+  400: #D5F1F7,
+  500: #BBE8F2,
+  600: #A1DFED,
+  700: #88D7E8,
+  800: #6ECEE3,
+  900: #54C5DE,
   A100: #FFFFFF,
   A200: #FFFFFF,
-  A400: #FFCDA9,
-  A700: #FFBE8F,
+  A400: #E4F8FC,
+  A700: #CFF0F7,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -66,13 +66,13 @@ $early-morning-orange: (
   )
 );
 
-$early-morning-primary: mat-palette($early-morning-blue);
-$early-morning-accent: mat-palette($early-morning-orange);
-$early-morning-warn: mat-palette($mat-red);
+$seasons-winter-primary: mat-palette($seasons-winter-blue);
+$seasons-winter-accent: mat-palette($seasons-winter-orange);
+$seasons-winter-warn: mat-palette($mat-red);
 
-$early-morning-theme: mat-light-theme($early-morning-primary, $early-morning-accent, $early-morning-warn);
+$seasons-winter-theme: mat-light-theme($seasons-winter-primary, $seasons-winter-accent, $seasons-winter-warn);
 
-$foreground: map-get($early-morning-theme, foreground);
+$foreground: map-get($seasons-winter-theme, foreground);
 
 $contrast-text-color: rgba(black, 0.87);
 $contrast-secondary-text-color: $dark-secondary-text;
@@ -84,4 +84,4 @@ $foreground: map_merge($foreground, (
   contrast-dividers: $contrast-dividers-color
 ));
 
-$early-morning-theme: map_merge($early-morning-theme, (foreground: $foreground));
+$seasons-winter-theme: map_merge($seasons-winter-theme, (foreground: $foreground));

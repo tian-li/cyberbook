@@ -1,20 +1,20 @@
 @import '~@angular/material/theming';
 
-$early-morning-blue: (
-  50: #FFFFFF,
-  100: #E8F0F0,
-  200: #C6D9DA,
-  300: #9BBDBE,
-  400: #89B0B2,
-  500: #76A4A6,
-  600: #64979A,
-  700: #588587,
-  800: #4C7374,
-  900: #406162,
-  A100: #FFFFFF,
-  A200: #C8ECED,
-  A400: #88C5C7,
-  A700: #80B3B5,
+$seasons-spring-blue: (
+  50: #EBF6E1,
+  100: #C5E4A7,
+  200: #A8D67C,
+  300: #84C546,
+  400: #75B438,
+  500: #669D31,
+  600: #57862A,
+  700: #486E22,
+  800: #39571B,
+  900: #294014,
+  A100: #E6FBD2,
+  A200: #B2F275,
+  A400: #7FD62B,
+  A700: #73B631,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -33,21 +33,21 @@ $early-morning-blue: (
   )
 );
 
-$early-morning-orange: (
+$seasons-spring-orange: (
   50: #FFFFFF,
-  100: #FFFFFF,
-  200: #FFFCFB,
-  300: #FED3B4,
-  400: #FEC195,
-  500: #FEAF77,
-  600: #FE9D59,
-  700: #FE8B3A,
-  800: #FD791C,
-  900: #F96802,
+  100: #EEF2D7,
+  200: #DCE4AD,
+  300: #C6D377,
+  400: #BCCB60,
+  500: #B2C449,
+  600: #A2B43A,
+  700: #8D9D33,
+  800: #79862B,
+  900: #646F24,
   A100: #FFFFFF,
-  A200: #FFFFFF,
-  A400: #FFCDA9,
-  A700: #FFBE8F,
+  A200: #ECF7AF,
+  A400: #CCDF61,
+  A700: #BED057,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -66,13 +66,13 @@ $early-morning-orange: (
   )
 );
 
-$early-morning-primary: mat-palette($early-morning-blue);
-$early-morning-accent: mat-palette($early-morning-orange);
-$early-morning-warn: mat-palette($mat-red);
+$seasons-spring-primary: mat-palette($seasons-spring-blue);
+$seasons-spring-accent: mat-palette($seasons-spring-orange);
+$seasons-spring-warn: mat-palette($mat-red);
 
-$early-morning-theme: mat-light-theme($early-morning-primary, $early-morning-accent, $early-morning-warn);
+$seasons-spring-theme: mat-light-theme($seasons-spring-primary, $seasons-spring-accent, $seasons-spring-warn);
 
-$foreground: map-get($early-morning-theme, foreground);
+$foreground: map-get($seasons-spring-theme, foreground);
 
 $contrast-text-color: rgba(black, 0.87);
 $contrast-secondary-text-color: $dark-secondary-text;
@@ -84,4 +84,4 @@ $foreground: map_merge($foreground, (
   contrast-dividers: $contrast-dividers-color
 ));
 
-$early-morning-theme: map_merge($early-morning-theme, (foreground: $foreground));
+$seasons-spring-theme: map_merge($seasons-spring-theme, (foreground: $foreground));

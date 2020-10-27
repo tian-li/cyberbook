@@ -1,20 +1,20 @@
 @import '~@angular/material/theming';
 
-$early-morning-blue: (
-  50: #FFFFFF,
-  100: #E8F0F0,
-  200: #C6D9DA,
-  300: #9BBDBE,
-  400: #89B0B2,
-  500: #76A4A6,
-  600: #64979A,
-  700: #588587,
-  800: #4C7374,
-  900: #406162,
-  A100: #FFFFFF,
-  A200: #C8ECED,
-  A400: #88C5C7,
-  A700: #80B3B5,
+$sunset-blue: (
+  50: #EEEEEE,
+  100: #C7C7C7,
+  200: #ABABAB,
+  300: #888888,
+  400: #787878,
+  500: #696969,
+  600: #5A5A5A,
+  700: #4A4A4A,
+  800: #3B3B3B,
+  900: #2C2C2C,
+  A100: #EFE2E2,
+  A200: #CC9F9F,
+  A400: #957070,
+  A700: #7C7070,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -33,21 +33,21 @@ $early-morning-blue: (
   )
 );
 
-$early-morning-orange: (
+$sunset-orange: (
   50: #FFFFFF,
-  100: #FFFFFF,
-  200: #FFFCFB,
-  300: #FED3B4,
-  400: #FEC195,
-  500: #FEAF77,
-  600: #FE9D59,
-  700: #FE8B3A,
-  800: #FD791C,
-  900: #F96802,
-  A100: #FFFFFF,
-  A200: #FFFFFF,
-  A400: #FFCDA9,
-  A700: #FFBE8F,
+  100: #FEF2B7,
+  200: #FCE980,
+  300: #FBDC3A,
+  400: #FAD71C,
+  500: #F3CD05,
+  600: #D5B404,
+  700: #B79A04,
+  800: #998103,
+  900: #7B6803,
+  A100: #FFFEF8,
+  A200: #FFEE92,
+  A400: #FFDD2C,
+  A700: #FFD912,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -66,13 +66,13 @@ $early-morning-orange: (
   )
 );
 
-$early-morning-primary: mat-palette($early-morning-blue);
-$early-morning-accent: mat-palette($early-morning-orange);
-$early-morning-warn: mat-palette($mat-red);
+$sunset-primary: mat-palette($sunset-blue);
+$sunset-accent: mat-palette($sunset-orange);
+$sunset-warn: mat-palette($mat-red);
 
-$early-morning-theme: mat-light-theme($early-morning-primary, $early-morning-accent, $early-morning-warn);
+$sunset-theme: mat-light-theme($sunset-primary, $sunset-accent, $sunset-warn);
 
-$foreground: map-get($early-morning-theme, foreground);
+$foreground: map-get($sunset-theme, foreground);
 
 $contrast-text-color: rgba(black, 0.87);
 $contrast-secondary-text-color: $dark-secondary-text;
@@ -84,4 +84,4 @@ $foreground: map_merge($foreground, (
   contrast-dividers: $contrast-dividers-color
 ));
 
-$early-morning-theme: map_merge($early-morning-theme, (foreground: $foreground));
+$sunset-theme: map_merge($sunset-theme, (foreground: $foreground));
