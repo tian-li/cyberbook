@@ -5,6 +5,7 @@ import { setDisplayMonth } from '@cyberbook/core/store/ui/ui.actions';
 import { YearMonthPickerComponent } from '@cyberbook/shared/components/year-month-picker/year-month-picker.component';
 import { ISOString, PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import { select, Store } from '@ngrx/store';
+import * as dayjs from 'dayjs';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 
@@ -60,6 +61,14 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
         this.store.dispatch(setDisplayMonth({ displayMonth: yearMonth.toISOString() }));
       }
     });
+  }
+
+  previousMonth() {
+    this.store.dispatch(setDisplayMonth({ displayMonth: dayjs(this.displayMonth).subtract(1, 'month').toISOString() }));
+  }
+
+  nextMonth() {
+    this.store.dispatch(setDisplayMonth({ displayMonth: dayjs(this.displayMonth).add(1, 'month').toISOString() }));
   }
 
 }

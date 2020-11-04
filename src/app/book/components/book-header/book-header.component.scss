@@ -2,68 +2,57 @@ div {
   display: flex;
 }
 
-
 .book-header {
   z-index: 2;
-  padding: 0.5rem 1rem;
   position: fixed;
   width: 100%;
   flex-direction: column;
 }
 
-.month-summary-spend {
-  margin-bottom: 1rem;
-
-  .amount {
-    align-items: baseline;
-    font-size: 1.5rem;
-
-    .integer {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .decimal {
-      font-size: 1rem;
-    }
-  }
-}
-
-.month-summary-other {
-  .amount {
-    align-items: baseline;
-    font-size: 1rem;
-
-    .integer {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .decimal {
-      font-size: 1rem;
-    }
-  }
-}
-
-.year-month, .income, .spend, .balance {
-  flex-direction: column;
-  min-width: 100px;
-}
-
-.income, .spend, .balance {
+.tool-bar {
   justify-content: space-between;
+  margin: 0.5rem 1rem 0.5rem 1rem;
+
+  .month {
+    align-items: center;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+}
+
+.monthly-spend {
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0.5rem 1rem 0.5rem 1rem;
+
+  .label {
+    align-items: baseline;
+
+    i {
+      position: relative;
+      top: 3px;
+      font-size: 1.3rem;
+    }
+  }
+
+  .spend-amount {
+    font-size: 2rem;
+  }
+}
+
+.monthly-overview {
+  flex-direction: row;
+  justify-content: start;
+  margin: 0 1rem 0.5rem 1rem;
+
+  .overview {
+    flex-direction: column;
+    width: 33%;
+  }
 }
 
 .label {
   font-size: 0.8rem;
-}
-
-
-
-.year-month {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
 }
