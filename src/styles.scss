@@ -130,3 +130,8 @@ body {
   box-sizing: border-box;
   overscroll-behavior: none !important;
 }
+
+.pwa-safe-margin-bottom {
+  //margin-bottom: 8px;
+  margin-bottom: max(8px, env(safe-area-inset-bottom, 0)) !important;
+}

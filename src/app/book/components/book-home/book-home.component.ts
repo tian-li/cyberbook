@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@cyberbook/core/store';
 import { ISOString } from '@cyberbook/shared/model/helper-models';
@@ -12,9 +12,10 @@ import { switchMap, takeUntil } from 'rxjs/operators';
   templateUrl: './book-home.component.html',
   styleUrls: ['./book-home.component.scss']
 })
-export class BookHomeComponent implements OnInit, OnDestroy {
+export class BookHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   readonly today: dayjs.Dayjs = dayjs();
   transactionVOs: TransactionVO[];
+  @ViewChild('header') header: ElementRef;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -33,6 +34,10 @@ export class BookHomeComponent implements OnInit, OnDestroy {
     ).subscribe(transactions => {
       this.transactionVOs = transactions;
     });
+  }
+
+  ngAfterViewInit() {
+    console.log('height', this.header.nativeElement)
   }
 
   ngOnDestroy() {

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MessageThreadService } from '@cyberbook/core/services/message-thread.service';
 import { PrivateMessageService } from '@cyberbook/core/services/private-message.service';
 import { MessageThreadEffects } from '@cyberbook/core/store/message-thread/message-thread.effects';
@@ -48,7 +49,7 @@ import { environment } from '../../environments/environment';
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-        name: 'Spend Book'
+        name: 'CyberBook'
       })
   ],
   providers: [
@@ -59,7 +60,8 @@ import { environment } from '../../environments/environment';
     UserService,
     PwaService,
     PrivateMessageService,
-    MessageThreadService
+    MessageThreadService,
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {panelClass: 'pwa-safe-margin-bottom'}}
   ],
   declarations: []
 })

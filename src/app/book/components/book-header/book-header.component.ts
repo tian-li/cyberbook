@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { fromTransaction, fromUI } from '@cyberbook/core/store';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
+import { addSubscriptionSuccess } from '@cyberbook/core/store/subscription';
+import { addTransactionSuccess } from '@cyberbook/core/store/transaction';
 import { setDisplayMonth } from '@cyberbook/core/store/ui/ui.actions';
 import { YearMonthPickerComponent } from '@cyberbook/shared/components/year-month-picker/year-month-picker.component';
 import { ISOString, PeriodSummary } from '@cyberbook/shared/model/helper-models';
@@ -35,6 +38,7 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(monthSummary => {
+      console.log('displayMonth', this.displayMonth)
       this.monthSummary = monthSummary;
       this.balance = monthSummary.income - monthSummary.spend;
     });
@@ -69,6 +73,22 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
 
   nextMonth() {
     this.store.dispatch(setDisplayMonth({ displayMonth: dayjs(this.displayMonth).add(1, 'month').toISOString() }));
+  }
+
+  search() {
+    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', duration: 10000000 } }));
+    // this.store.dispatch(addTransactionSuccess({ transaction: {
+    //     "id": "123123123",
+    //     "userId": "03a77da8-d51b-41ee-b339-7f74cb2fdcd2",
+    //     "amount": -7,
+    //     "description": "测试",
+    //     "categoryId": "18daa0d1-469a-4434-b443-7cf0f3dd0f84",
+    //     // "subscriptionId": "a4aab225-25ce-4658-a113-401818a004d2",
+    //     "transactionDate": "2020-12-11T06:00:00.000Z",
+    //     "dateCreated": "2020-12-11T06:00:00.000Z",
+    //     "dateModified": "2020-12-11T06:00:00.000Z"
+    //   } }));
+
   }
 
 }

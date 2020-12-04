@@ -10,16 +10,17 @@
          (click)="previousMonth()"
       ></i>
 
-      <span (click)="changeMonth()">{{displayMonth | date:'MM'}}月</span>
+      <span (click)="changeMonth()">{{displayMonth | date:'yyyy年MM月'}}</span>
 
       <i class="material-icons md-play_arrow"
          (click)="nextMonth()"
       ></i>
     </div>
 
-    <div class="search">
+    <div class="search" (click)="search()">
       <i class="material-icons md-search"></i>
     </div>
+
   </div>
 
   <div class="monthly-spend">
@@ -52,6 +53,12 @@
         <span class="decimal">.{{balance.toFixed(2).slice(-2)}}</span>
       </div>
     </div>
+  </div>
+
+  <div class="cyberpunk-2077-theme-header-bg">
+    <div class="cp-logo"></div>
+    <div class="cp-texture"></div>
+    <div class="cp-bg"></div>
   </div>
 </div>
 

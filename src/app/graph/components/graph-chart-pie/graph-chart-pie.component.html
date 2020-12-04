@@ -3,7 +3,7 @@
     <div matRipple class="month-nav-arrow" (click)="previousMonth()">
       <i class="material-icons md-keyboard_arrow_left"></i>
     </div>
-    <div class="month-title" (click)="changeMonth()">{{displayMonth|date:'yyyy/MM'}}</div>
+    <button mat-stroked-button class="month-title" (click)="changeMonth()">{{displayMonth|date:'yyyy/MM'}}</button>
     <div matRipple class="month-nav-arrow" (click)="nextMonth()">
       <i class="material-icons md-keyboard_arrow_right"></i>
     </div>

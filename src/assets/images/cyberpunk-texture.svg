@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="374" height="170" viewBox="0 0 374 170">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.35;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="线条" class="cls-1">
+    <path class="cls-2" d="M263.976,127.357l0.779,0.627h0l-523.289,649.4h0l-0.778-.627h0l523.288-649.4h0Z"/>
+    <path id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-2" d="M252.976,132.357l0.779,0.627h0l-523.289,649.4h0l-0.778-.627h0l523.288-649.4h0Z"/>
+    <path id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" class="cls-2" d="M241.976,137.357l0.779,0.627h0l-523.289,649.4h0l-0.778-.627h0l523.288-649.4h0Z"/>
+    <path class="cls-2" d="M264,127H1432v1H264v-1h0Z"/>
+    <path id="Rectangle_2_copy" data-name="Rectangle 2 copy" class="cls-2" d="M109.074,38.8h1528v1h-1528v-1h0Z"/>
+    <path id="Rectangle_2_copy_2" data-name="Rectangle 2 copy 2" class="cls-2" d="M33.9-26.2l75.675,65.371h0l-0.654.757h0L33.245-25.442h0L33.9-26.2h0Z"/>
+  </g>
+</svg>

@@ -2,11 +2,15 @@ div {
   display: flex;
 }
 
+$safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+$padding: max(1rem, #{$safe-area-inset-bottom});
+
 .nav-container {
   position: relative;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: calc(3rem + #{$padding});
+  padding-bottom: #{$padding};
 }
 
 .nav-item {
@@ -36,10 +40,11 @@ div {
 
 .add-button {
   position: absolute;
-  bottom: 5rem;
+  top: -1rem;
   height: 0;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
   display: flex;
 }
+

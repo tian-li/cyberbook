@@ -77,7 +77,7 @@ app-swipeable-item {
 .float-add-button {
   z-index: 3;
   position: fixed;
-  bottom: 1rem;
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   right: 1rem;
 }
 

@@ -1,9 +1,7 @@
 <ng-container *ngIf="showToolbar$|async">
   <div appPreventScroll class="nav-container">
     <div class="nav-item" routerLink="/home">
-      <i class="md-receipt"
-         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
-         routerLinkActive="activated-route"
+      <i class="md-receipt" routerLinkActive="activated-route"
          #list="routerLinkActive"
          [ngClass]="{
            'material-icons-outlined': !list.isActive,
@@ -14,9 +12,7 @@
     </div>
 
     <div class="nav-item" routerLink="/graph">
-      <i class="md-timeline"
-         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
-         routerLinkActive="activated-route"
+      <i class="md-timeline" routerLinkActive="activated-route"
          #chart="routerLinkActive"
          [ngClass]="{
            'material-icons-outlined': !chart.isActive,
@@ -32,22 +28,18 @@
     </div>
 
     <div class="nav-item">
-      <i class="md-forum"
-         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
-         routerLinkActive="activated-route"
+      <i class="md-construction" routerLinkActive="activated-route"
          #forum="routerLinkActive"
          [ngClass]="{
            'material-icons-outlined': !forum.isActive,
            'material-icons-twotone': forum.isActive
           }"
       ></i>
-      <span>社区</span>
+      <span>开发中</span>
     </div>
 
     <div class="nav-item" routerLink="/user">
-      <i class="md-account_circle"
-         matRipple matRippleCentered="true" matRippleRadius="16" matRippleUnbounded="true"
-         routerLinkActive="activated-route"
+      <i class="md-account_circle" routerLinkActive="activated-route"
          #account="routerLinkActive"
          [ngClass]="{
            'material-icons-outlined': !account.isActive,
@@ -55,11 +47,12 @@
           }"></i>
       <span>我的</span>
     </div>
+    <div class="add-button">
+      <button mat-fab (click)="addTransaction()">
+        <i class="material-icons md-add" [@rotateAddButton]="addButtonAnimateState"></i>
+      </button>
+    </div>
   </div>
 
-  <div class="add-button">
-    <button mat-fab (click)="addTransaction()">
-      <i class="material-icons md-add" [@rotateAddButton]="addButtonAnimateState"></i>
-    </button>
-  </div>
+
 </ng-container>

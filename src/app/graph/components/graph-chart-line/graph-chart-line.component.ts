@@ -49,7 +49,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
   startDate = this.today.subtract(4, 'month').date(1);
   endDate = this.today.endOf('month');
-  selectedTransactionType: string = TransactionTypes.both;
+  selectedTransactionType: string = TransactionTypes.spend;
   dateAxisFormat = DateFormats.month;
   transactionVOs: TransactionVO[];
 
