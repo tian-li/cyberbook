@@ -107,7 +107,6 @@ $cyberpunk-2077-warn: mat-palette($cyberpunk-2077-red);
 
 $cyberpunk-2077-theme: mat-dark-theme($cyberpunk-2077-primary, $cyberpunk-2077-accent, $cyberpunk-2077-warn);
 
-
 // Insert custom background color
 $foreground: map-get($cyberpunk-2077-theme, foreground);
 
@@ -122,3 +121,41 @@ $foreground: map_merge($foreground, (
 ));
 
 $cyberpunk-2077-theme: map_merge($cyberpunk-2077-theme, (foreground: $foreground));
+
+.theme-header-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+
+  .header-bg-icon {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    bottom: 0.4rem;
+    right: 0.4rem;
+
+    background-image: url("../images/cyberpunk-logo.png");
+    background-size: contain;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+  }
+
+  .header-bg-texture {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/cyberpunk-texture.svg");
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+  }
+
+  .header-bg-img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url("../images/cyberpunk-buildings-bg.png");
+  }
+}

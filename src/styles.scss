@@ -96,15 +96,6 @@
   font-weight: normal;
   src: local('Helvetica Neue Light'), url('./assets/fonts/HelveticaNeue-Light.woff') format('woff');
 }
-//
-//@font-face {
-//  font-family: 'YouSheBiaoTiHei';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: url('./assets/fonts/youshebiaotihei-2-webfont.woff') format('woff'),
-//       url('./assets/fonts/youshebiaotihei-2-webfont.woff2') format('woff2');
-//}
-
 
 @font-face {
   font-family: 'YouSheBiaoTiHei';
@@ -132,6 +123,5 @@ body {
 }
 
 .pwa-safe-margin-bottom {
-  //margin-bottom: 8px;
   margin-bottom: max(8px, env(safe-area-inset-bottom, 0)) !important;
 }
