@@ -28,8 +28,7 @@
       支出
     </div>
     <div class="spend-amount">
-      <span class="integer">{{monthSummary?.spend.toFixed(0)}}</span>
-      <span class="decimal">.{{monthSummary?.spend.toFixed(2).slice(-2)}}</span>
+      <span>{{monthSummary?.spend.toFixed(2)}}</span>
     </div>
   </div>
 
@@ -39,8 +38,7 @@
         收入
       </div>
       <div class="amount">
-        <span class="integer">{{monthSummary?.income.toFixed(0)}}</span>
-        <span class="decimal">.{{monthSummary?.income.toFixed(2).slice(-2)}}</span>
+        <span>{{monthSummary?.income.toFixed(2)}}</span>
       </div>
     </div>
 
@@ -49,8 +47,7 @@
         结余
       </div>
       <div class="amount">
-        <span class="integer">{{balance.toFixed(0)}}</span>
-        <span class="decimal">.{{balance.toFixed(2).slice(-2)}}</span>
+        <span>{{balance.toFixed(2)}}</span>
       </div>
     </div>
   </div>

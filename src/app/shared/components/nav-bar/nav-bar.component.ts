@@ -1,11 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
 import { User } from '@cyberbook/core/model/user';
 import { fromUI, fromUser } from '@cyberbook/core/store';
+import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { TransactionEditorComponent } from '@cyberbook/shared/components/transaction-editor/transaction-editor.component';
 import { defaultTransactionEditorDialogConfig } from '@cyberbook/shared/constants';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
@@ -55,5 +56,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
     }).afterClosed().pipe(take(1)).subscribe(() => {
       this.addButtonAnimateState = 'closed';
     });
+  }
+
+  developing() {
+    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', duration: 10000000 } }));
   }
 }

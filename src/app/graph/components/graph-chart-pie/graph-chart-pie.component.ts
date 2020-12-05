@@ -145,6 +145,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       datasets: [{
         data: amount,
         backgroundColor: colors,
+        borderWidth: 0,
       }],
       labels
     };

@@ -1,16 +1,18 @@
-# 赛博记账 Cyberbook
+# 赛博记账 Cyberbook 
 
-A mobile-first web app that can record daily costs.
+A mobile-first web app to keep track of daily spend.
+
+[Try here](https://test.cyberbook.app)
 
 # Screenshots
 
-## Transactons
+## Transactions
 
 <table>
   <tr>
     <td>Transaction List</td>
-     <td>Edit Transaction</td>
-     <td>Add Transaction</td>
+    <td>Edit Transaction</td>
+    <td>Add Transaction</td>
   </tr>
   <tr>
     <td><img src="./readme-assets/transaction-list.PNG" width=270 ></td>
@@ -42,6 +44,19 @@ A mobile-first web app that can record daily costs.
   <tr>
     <td><img src="./readme-assets/add-category.gif" width=270 ></td>
     <td><img src="./readme-assets/sort-category.gif" width=270 ></td>
+  </tr>
+ </table>
+
+## Subscription
+
+<table>
+  <tr>
+    <td>Add Subscription</td>
+    <td>Stop Subscription</td>
+  </tr>
+  <tr>
+    <td><img src="./readme-assets/add-subscription.gif" width=270 ></td>
+    <td><img src="./readme-assets/stop-subscription.gif" width=270 ></td>
   </tr>
  </table>
 
@@ -80,9 +95,11 @@ A mobile-first web app that can record daily costs.
 ## Existing Features
 
 - [x] Mobile first responsive
-- [x] Add record
-- [x] Edit record
-- [x] Record category
+- [x] PWA
+- [x] Add transaction
+- [x] Edit transaction
+- [x] Category management
+- [x] Drag to sort categories
 - [x] Show month summary
 - [x] Select month
 - [x] Pie chart
@@ -94,31 +111,13 @@ A mobile-first web app that can record daily costs.
 - [x] Login with existing account
 - [x] Swipe to delete a transaction/category
 - [x] Theme, and dark theme
-- [x] Add/Edit category
-- [x] Drag to sort categories
-- [x] 订阅管理/周期性账目(工资，订阅，房租等)
+- [x] Subscription / Periodic transactions management (Salary, subscription, rent etc.)
 - [x] Deploy
 
 ## TODOs
 
 - [ ] User profile image
-- [ ] Category icon
 - [ ] Search
 - [ ] Offline editing
-- [ ] UI design
-- [ ] Theme color design
 - [ ] Animation (WIP)
-- [ ] 站内信（意见反馈及回复）
-- [ ] PWA
-    - [ ] 提醒更新
-    - [ ] 提醒安装
-- [ ] 每次打开时会先显示默认主题
-- [ ] 研究hammerjs的swipe
-- [ ] 导出excel
 - [ ] i18n
-- [ ] 导航后退键提醒保存：
-    - [ ] 用户信息编辑
-    - [ ] 主题选择
-    - [ ] 排序管理
-- [ ] 禁止后退
-    - [ ] 登录页面

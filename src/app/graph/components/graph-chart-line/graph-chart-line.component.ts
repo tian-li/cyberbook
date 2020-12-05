@@ -41,15 +41,15 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   readonly incomeColor = 'green';
   readonly spendColor = 'red';
   readonly categoryTypes = [
+    { value: 'both', display: '合并' },
     { value: 'spend', display: '支出' },
     { value: 'income', display: '收入' },
-    { value: 'both', display: '合并' },
   ];
 
   @ViewChild('myChart', { static: false }) myChart: ElementRef;
   startDate = this.today.subtract(4, 'month').date(1);
   endDate = this.today.endOf('month');
-  selectedTransactionType: string = TransactionTypes.spend;
+  selectedTransactionType: string = TransactionTypes.both;
   dateAxisFormat = DateFormats.month;
   transactionVOs: TransactionVO[];
 
