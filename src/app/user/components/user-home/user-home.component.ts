@@ -35,7 +35,6 @@ export class UserHomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.numberOfAllTransactions$ = this.store.pipe(select(fromTransaction.selectTransactionTotal));
-
     this.store.pipe(
       select(fromUser.selectUser),
       takeUntil(this.unsubscribe$)
@@ -111,6 +110,10 @@ export class UserHomeComponent implements OnInit, OnDestroy {
         this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '信息已收到，感谢您的反馈！', duration: 2500 } }));
       }
     });
+  }
+
+  changeProfilePhoto() {
+    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能' } }));
   }
 
 }
