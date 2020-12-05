@@ -1,7 +1,7 @@
 <div class="book-home">
-  <app-book-header class="book-header" #header></app-book-header>
+  <app-book-header class="book-header"></app-book-header>
 
-  <div class="list">
+  <div class="list" *ngIf="!!headerHeight" [style.top]="headerHeight">
     <app-transaction-list [transactionVOs]="transactionVOs"></app-transaction-list>
 
     <div class="empty-list" *ngIf="transactionVOs.length <= 0">

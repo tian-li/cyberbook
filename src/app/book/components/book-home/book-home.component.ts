@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { BookHeaderComponent } from '@cyberbook/book/components/book-header/book-header.component';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
 import { fromTransaction, fromUI } from '@cyberbook/core/store';
 import { ISOString } from '@cyberbook/shared/model/helper-models';
@@ -12,10 +13,13 @@ import { switchMap, takeUntil } from 'rxjs/operators';
   templateUrl: './book-home.component.html',
   styleUrls: ['./book-home.component.scss']
 })
-export class BookHomeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class BookHomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly today: dayjs.Dayjs = dayjs();
+
+  @ViewChild(BookHeaderComponent) bookHeaderComponent: BookHeaderComponent;
+
   transactionVOs: TransactionVO[];
-  @ViewChild('header') header: ElementRef;
+  headerHeight: string;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -37,7 +41,10 @@ export class BookHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('height', this.header.nativeElement)
+    // to avoid ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => {
+      this.headerHeight = this.bookHeaderComponent.headerRef.nativeElement.offsetHeight + 'px';
+    }, 0);
   }
 
   ngOnDestroy() {

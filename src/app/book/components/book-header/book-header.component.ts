@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { fromTransaction, fromUI } from '@cyberbook/core/store';
+import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { addSubscriptionSuccess } from '@cyberbook/core/store/subscription';
 import { addTransactionSuccess } from '@cyberbook/core/store/transaction';
@@ -18,10 +18,12 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
   styleUrls: ['./book-header.component.scss']
 })
 export class BookHeaderComponent implements OnInit, OnDestroy {
+  @ViewChild('headerRef') headerRef: ElementRef;
+
+  themeBackgroundCSSClass: string;
   displayMonth: ISOString;
   monthSummary: PeriodSummary;
   dialogRef: MatDialogRef<any>;
-
   balance: number;
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -38,9 +40,15 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(monthSummary => {
-      console.log('displayMonth', this.displayMonth)
       this.monthSummary = monthSummary;
       this.balance = monthSummary.income - monthSummary.spend;
+    });
+
+    this.store.pipe(
+      select(fromUser.selectTheme),
+      takeUntil(this.unsubscribe$)
+    ).subscribe(theme => {
+      this.themeBackgroundCSSClass = `${theme}-header-bg`;
     });
   }
 

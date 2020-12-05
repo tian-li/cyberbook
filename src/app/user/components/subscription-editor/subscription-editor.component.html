@@ -71,9 +71,10 @@
       <mat-form-field class="start-date">
         <mat-label>开始日期</mat-label>
         <input matInput readonly required [min]="minStartDate" [max]="maxDate" formControlName="startDate"
+               [disabled]="data.editMode"
                [matDatepicker]="startDatePicker">
         <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #startDatePicker disabled="false"></mat-datepicker>
+        <mat-datepicker touchUi #startDatePicker></mat-datepicker>
         <mat-error *ngIf="formGroup.controls['startDate'].hasError('required')">必填</mat-error>
         <mat-hint *ngIf="!!startDateControlValue">{{startDateDayOfWeek}}</mat-hint>
       </mat-form-field>
@@ -85,7 +86,7 @@
         <mat-datepicker-toggle
           matSuffix [for]="endDatePicker"
           [disabled]="!startDateControlValue"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #endDatePicker disabled="false"></mat-datepicker>
+        <mat-datepicker touchUi #endDatePicker></mat-datepicker>
         <mat-error *ngIf="formGroup.controls['endDate'].hasError('matDatepickerMin')">必须晚于开始日期</mat-error>
         <mat-hint *ngIf="formGroup.controls['endDate'].valid">如果结束在周期当天，将会发生记账</mat-hint>
       </mat-form-field>

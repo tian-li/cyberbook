@@ -1,7 +1,7 @@
 .list {
   position: absolute;
-  top: 170px;
-  bottom: 3rem;
+  bottom: 0;
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
   left: 0;
   overflow: scroll;
   right: 0;

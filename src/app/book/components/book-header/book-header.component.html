@@ -1,4 +1,4 @@
-<div appPreventScroll class="book-header">
+<div appPreventScroll class="book-header" #headerRef>
   <div class="tool-bar">
     <div class="chart">
       <i class="material-icons md-timeline" style="opacity: 0;"></i>
@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="cyberpunk-2077-theme-header-bg">
+  <div [class]="themeBackgroundCSSClass">
     <div class="cp-logo"></div>
     <div class="cp-texture"></div>
     <div class="cp-bg"></div>

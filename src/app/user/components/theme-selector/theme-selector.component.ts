@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fromUI, fromUser } from '@cyberbook/core/store';
 import { select, Store } from '@ngrx/store';
-import { take } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-theme-selector',
@@ -25,7 +25,7 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
       displayName: '银翼杀手 2049',
       primary: '#EEBE46',
       accent: '#E88935',
-      isDark: false,
+      isDark: true,
     },
     {
       name: 'seasons-spring-theme',
@@ -73,6 +73,7 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
 
     this.store.pipe(
       select(fromUser.selectTheme),
+      filter(theme => !!theme),
       take(1)
     ).subscribe(theme => {
       this.previousTheme = theme;
@@ -94,7 +95,9 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
   }
 
   cancel() {
-    this.store.dispatch(fromUser.savePreferredTheme({ theme: this.previousTheme }));
+    if (this.previousTheme !== this.selectedTheme) {
+      this.store.dispatch(fromUser.savePreferredTheme({ theme: this.previousTheme }));
+    }
     this.router.navigate(['..'], { relativeTo: this.route });
   }
 
