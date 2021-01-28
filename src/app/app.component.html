@@ -1,4 +1,4 @@
-<div [class]="'wrapper mat-app-background ' + theme">
+<div *ngIf="!isWeChat" [class]="'wrapper mat-app-background ' + theme">
   <div class="loading" *ngIf="loading">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </div>
@@ -7,5 +7,12 @@
   </div>
   <div class="nav-bar">
     <app-nav-bar></app-nav-bar>
+  </div>
+</div>
+
+<div *ngIf="isWeChat" class="wechat-cover">
+  <div class="logo">
+      <span data-text="赛博记账" class="logo-zh glitch">赛博记账</span>
+      <span data-text="CyberBook" class="logo-en glitch">CyberBook</span>
   </div>
 </div>

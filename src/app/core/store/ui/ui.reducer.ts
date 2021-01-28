@@ -3,7 +3,14 @@ import * as subscriptionActions from '@cyberbook/core/store/subscription/subscri
 import * as transactionActions from '@cyberbook/core/store/transaction/transaction.actions';
 import { Action, createReducer, on } from '@ngrx/store';
 import { ISOString } from '../../../shared/model/helper-models';
-import { hideLoadingSpinner, hideToolbar, setDisplayMonth, showLoadingSpinner, showToolbar } from './ui.actions';
+import {
+  hideLoadingSpinner,
+  hideToolbar,
+  setDisplayMonth,
+  setIsWeChat,
+  showLoadingSpinner,
+  showToolbar
+} from './ui.actions';
 
 const today = new Date();
 
@@ -14,6 +21,7 @@ export interface State {
   showToolbar: boolean;
   darkThemeEnabled: boolean;
   loading: boolean;
+  isWeChat: boolean;
 }
 
 export const initialState: State = {
@@ -21,6 +29,7 @@ export const initialState: State = {
   showToolbar: true,
   darkThemeEnabled: false,
   loading: false,
+  isWeChat: false
 };
 
 const reducer = createReducer(
@@ -28,6 +37,7 @@ const reducer = createReducer(
   on(setDisplayMonth, (state, { displayMonth }) => ({ ...state, displayMonth })),
   on(showToolbar, (state) => ({ ...state, showToolbar: true })),
   on(hideToolbar, (state) => ({ ...state, showToolbar: false })),
+  on(setIsWeChat, (state) => ({ ...state, isWeChat: true })),
   on(
     categoryActions.addCategory, categoryActions.updateCategory, categoryActions.removeCategory,
     subscriptionActions.addSubscription, subscriptionActions.updateSubscription,

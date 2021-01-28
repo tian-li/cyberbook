@@ -33,3 +33,35 @@
   width: 100%;
   z-index: 10;
 }
+
+.wechat-cover {
+  background-image: url("../assets/images/live_weixin.png");
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: top right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 30;
+
+  .logo {
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+    font-family: "YouSheBiaoTiHei", "Yuanti SC", sans-serif;
+
+    .logo-zh {
+      font-size: 3rem;
+    }
+
+    .logo-en {
+      font-size: 1.5rem;
+      margin-top: -16px;
+    }
+  }
+}

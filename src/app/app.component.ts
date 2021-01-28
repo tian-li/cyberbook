@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { fromUI, fromUser } from '@cyberbook/core/store';
+import { selectIsWeChat } from '@cyberbook/core/store/ui';
 import { defaultTheme } from '@cyberbook/shared/constants';
 import { getLocalStorageValueByKey } from '@cyberbook/shared/utils/get-localstorage-value-by-key';
 import { select, Store } from '@ngrx/store';
@@ -17,6 +18,7 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
   theme: string;
   loading: boolean;
+  isWeChat: boolean;
 
   private unsubscribe$ = new Subject();
 
@@ -31,6 +33,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.store.pipe(
+      select(selectIsWeChat),
+      takeUntil(this.unsubscribe$)
+    ).subscribe(isWeChat => {
+      this.isWeChat = isWeChat;
+    });
+
     combineLatest([
       this.store.pipe(select(fromUser.selectTheme)),
       this.getLocalTheme()

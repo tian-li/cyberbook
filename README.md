@@ -2,7 +2,7 @@
 
 A mobile-first web app to keep track of daily spend.
 
-[Try here](https://test.cyberbook.app)
+[Try here](https://www.cyberbook.app)
 
 # Screenshots
 

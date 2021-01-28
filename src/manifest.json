@@ -4,7 +4,7 @@
   "name": "赛博记账",
   "scope": "./",
   "display": "fullscreen",
-  "start_url": "https://test.cyberbook.app/",
+  "start_url": "https://cyberbook.app/",
   "short_name": "赛博记账",
   "theme_color": "#1976d2",
   "description": "免安装的，简单易用的记账工具",

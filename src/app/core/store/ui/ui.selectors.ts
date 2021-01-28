@@ -25,3 +25,8 @@ export const selectLoading = createSelector(
   selectUIState,
   (state: fromUI.State) => state.loading
 );
+
+export const selectIsWeChat = createSelector(
+  selectUIState,
+  (state: fromUI.State) => state.isWeChat
+);
