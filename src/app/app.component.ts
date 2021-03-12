@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.store.pipe(
       select(fromUI.selectLoading),
-      debounceTime(200),
+      debounceTime(500),
       takeUntil(this.unsubscribe$)
     ).subscribe((loading: boolean) => this.loading = loading);
   }

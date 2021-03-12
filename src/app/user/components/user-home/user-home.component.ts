@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '@cyberbook/core/model/user';
+import { registeredDays, User } from '@cyberbook/core/model/user';
 import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { FeedbackComponent } from '@cyberbook/shared/components/feedback/feedback.component';
 import { AlertLevel, feedbackDialogId } from '@cyberbook/shared/constants';
 import { select, Store } from '@ngrx/store';
-import * as dayjs from 'dayjs';
 import { Observable, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
@@ -40,7 +39,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscribe$)
     ).subscribe((user: User) => {
       this.user = user;
-      this.registeredLength = dayjs().diff(dayjs(user.registeredDate), 'day') + 1;
+      this.registeredLength = registeredDays(this.user) + 1;
     });
 
     this.store.pipe(
@@ -107,13 +106,13 @@ export class UserHomeComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe((result) => {
       if (result === 'feedback success') {
-        this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '信息已收到，感谢您的反馈！', duration: 2500 } }));
+        this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '信息已收到，感谢您的反馈！', duration: 2500, level: 'success' } }));
       }
     });
   }
 
   changeProfilePhoto() {
-    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能' } }));
+    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', prefixIcon: '🚧' } }));
   }
 
 }

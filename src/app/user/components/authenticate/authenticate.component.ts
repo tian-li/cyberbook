@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -14,8 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fromUI, fromUser } from '@cyberbook/core/store';
 import { login, register, saveTempUser } from '@cyberbook/core/store/user';
 import { select, Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
 
 const passwordNotMatch = 'passwordNotMatch';
@@ -23,7 +23,24 @@ const passwordNotMatch = 'passwordNotMatch';
 @Component({
   selector: 'app-login',
   templateUrl: './authenticate.component.html',
-  styleUrls: ['./authenticate.component.scss']
+  styleUrls: ['./authenticate.component.scss'],
+  animations: [
+    trigger('fade', [
+      state('show', style({ opacity: 1 })),
+      state('hide', style({ opacity: 0 })),
+      transition('show <=> hide', [animate('0.2s ease')]),
+    ]),
+    trigger('slideUp', [
+      state('up', style({ transform: 'translateY(0%)' })),
+      state('down', style({ transform: 'translateY(46%)' })),
+      transition('up <=> down', [animate('0.2s ease')]),
+    ]),
+    trigger('slideDown', [
+      state('up', style({ transform: 'translateY(-50%)' })),
+      state('down', style({ transform: 'translateY(0%)' })),
+      transition('up <=> down', [animate('0.2s ease')]),
+    ]),
+  ]
 })
 export class AuthenticateComponent implements OnInit, OnDestroy {
   readonly usernamePattern = new RegExp(/^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/);
@@ -34,7 +51,9 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   form: FormGroup;
   registerMode = true;
 
-  private unsubscribe$: Subject<void> = new Subject();
+  slideDownState = 'up';
+  slideUpState = 'down';
+  fadeState = 'hide';
 
   constructor(
     private store: Store,
@@ -44,6 +63,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   ) {
     this.route.data.subscribe(data => {
       this.registerMode = data.registerMode;
+      this.animateToRegisterMode();
     });
   }
 
@@ -52,7 +72,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
 
     this.store.pipe(
       select(fromUser.selectUser),
-      takeUntil(this.unsubscribe$)
+      take(1),
     ).subscribe((user) => {
       this.userId = user.id;
 
@@ -70,8 +90,6 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.store.dispatch(fromUI.showToolbar());
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   submit() {
@@ -104,14 +122,28 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     if (this.registerMode) {
       this.form.controls.username.enable();
       this.form.controls.confirmPassword.enable();
+      this.animateToRegisterMode();
     } else {
       this.form.controls.username.disable();
       this.form.controls.confirmPassword.disable();
+      this.animateToLoginMode();
     }
   }
 
   back() {
     this.router.navigate(['..'], { relativeTo: this.route });
+  }
+
+  private animateToRegisterMode() {
+    this.slideDownState = 'down';
+    this.slideUpState = 'up';
+    this.fadeState = 'show';
+  }
+
+  private animateToLoginMode() {
+    this.slideDownState = 'up';
+    this.slideUpState = 'down';
+    this.fadeState = 'hide';
   }
 
   private isPasswordMatch: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
@@ -123,7 +155,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
 
     return password && confirmPassword && password.value === confirmPassword.value ?
       null : { [passwordNotMatch]: true };
-  }
+  };
 }
 
 

@@ -42,23 +42,23 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         switch (error.status) {
           case 401:
-            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '无权操作' } }));
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '无权操作',level: 'error' } }));
             break;
           case 403:
-            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }));
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录', level: 'warn' } }));
             this.store.dispatch(logout());
             break;
           case 404:
-            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '404：找不到资源' } }));
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '404：找不到资源', level: 'error' } }));
             break;
           case 422:
-            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '账号密码错误' } }));
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '账号密码错误', level: 'error' } }));
             break;
           case 500:
-            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '服务器发生错误，请稍后重试' } }));
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '服务器发生错误，请稍后重试', level: 'error' } }));
             break;
           default:
-            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '发生未知错误，请稍后重试' } }));
+            this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '发生未知错误，请稍后重试', level: 'error' } }));
             break;
         }
         this.store.dispatch(hideLoadingSpinner());

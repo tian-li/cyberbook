@@ -74,7 +74,7 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', duration: 10000000 } }));
+    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', duration: 10000000, prefixIcon: '🚧' } }));
     // this.store.dispatch(addTransactionSuccess({ transaction: {
     //     "id": "123123123",
     //     "userId": "03a77da8-d51b-41ee-b339-7f74cb2fdcd2",

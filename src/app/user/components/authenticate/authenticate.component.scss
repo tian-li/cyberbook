@@ -56,6 +56,7 @@ div, form {
   form {
     flex-direction: column;
     width: 80%;
+    z-index: 1;
 
     ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
       background-color: #9291917d;
@@ -69,16 +70,10 @@ div, form {
     .username {
       width: 100%;
     }
-
-    mat-form-field {
-      margin-bottom: 5px;
-    }
   }
 
   .actions {
     flex-direction: column;
-    width: 80%;
-    margin-top: 1rem;
 
     .button-register {
       width: 100%;
@@ -91,4 +86,9 @@ div, form {
       opacity: 0.99;
     }
   }
+}
+
+.animate-wrapper {
+  display: block;
+  z-index: -1;
 }

@@ -66,7 +66,7 @@ export class SubscriptionEffects {
             // this.closeSubscriptionEditor();
             return [
               stopSubscriptionSuccess({ update: { id: subscription.id, changes: subscription } }),
-              notifyWithSnackBar({ snackBar: { message: '周期性账目已取消' } })
+              notifyWithSnackBar({ snackBar: { message: '周期性账目已取消', level: 'success' } })
             ];
           }),
         ))

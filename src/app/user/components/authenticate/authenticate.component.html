@@ -1,22 +1,24 @@
 <div class="background"></div>
 <div class="auth-wrapper">
   <div class="auth-container">
-    <div class="logo">
-      <span data-text="赛博记账" class="logo-zh glitch">赛博记账</span>
-      <span data-text="CyberBook" class="logo-en glitch">CyberBook</span>
-    </div>
-
     <form [formGroup]="form">
-      <mat-form-field class="username" appearance="fill" [ngClass]="{'hidden':!registerMode}">
-        <mat-label>用户名</mat-label>
-        <input matInput type="text" placeholder="用户名" formControlName="username" required/>
-        <mat-error *ngIf="form.controls.username.hasError('pattern') && !form.controls.username.hasError('required')">
-          无效的用户名
-        </mat-error>
-        <mat-error *ngIf="!form.controls.username.hasError('pattern') && form.controls.username.hasError('required')">
-          必填
-        </mat-error>
-      </mat-form-field>
+      <div class="animate-wrapper" [@slideUp]="slideUpState">
+        <div class="logo">
+          <span data-text="赛博记账" class="logo-zh glitch">赛博记账</span>
+          <span data-text="CyberBook" class="logo-en glitch">CyberBook</span>
+        </div>
+
+        <mat-form-field [@fade]="fadeState" class="username" appearance="fill">
+          <mat-label>用户名</mat-label>
+          <input matInput type="text" placeholder="用户名" formControlName="username" required/>
+          <mat-error *ngIf="form.controls.username.hasError('pattern') && !form.controls.username.hasError('required')">
+            无效的用户名
+          </mat-error>
+          <mat-error *ngIf="!form.controls.username.hasError('pattern') && form.controls.username.hasError('required')">
+            必填
+          </mat-error>
+        </mat-form-field>
+      </div>
 
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
@@ -38,34 +40,37 @@
 
       </mat-form-field>
 
-      <mat-form-field class="username" appearance="fill" [ngClass]="{'hidden':!registerMode}">
-        <mat-label>确认密码</mat-label>
-        <input matInput type="password" placeholder="确认密码" formControlName="confirmPassword" required
-               [errorStateMatcher]="matcher"/>
-        <mat-error *ngIf="form.hasError('passwordNotMatch') && !form.controls.confirmPassword.hasError('required')">
-          密码不一致
-        </mat-error>
-        <mat-error *ngIf="!form.hasError('passwordNotMatch') && form.controls.confirmPassword.hasError('required')">必填
-        </mat-error>
-      </mat-form-field>
-    </form>
+      <div class="animate-wrapper" [@slideDown]="slideDownState">
+        <mat-form-field [@fade]="fadeState" class="username" appearance="fill">
+          <mat-label>确认密码</mat-label>
+          <input matInput type="password" placeholder="确认密码" formControlName="confirmPassword" required
+                 [errorStateMatcher]="matcher"/>
+          <mat-error *ngIf="form.hasError('passwordNotMatch') && !form.controls.confirmPassword.hasError('required')">
+            密码不一致
+          </mat-error>
+          <mat-error *ngIf="!form.hasError('passwordNotMatch') && form.controls.confirmPassword.hasError('required')">必填
+          </mat-error>
+        </mat-form-field>
 
-    <div class="actions">
-      <div>
-        <button class="button-register" mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">
-          {{registerMode ? '注册' : '登录'}}
-        </button>
-      </div>
+        <div class="actions">
+          <div>
+            <button class="button-register" mat-raised-button color="primary" (click)="submit()"
+                    [disabled]="form.invalid">
+              {{registerMode ? '注册' : '登录'}}
+            </button>
+          </div>
 
-      <div class="sub-actions">
-        <div (click)="toggleRegisterMode()">
-          {{registerMode ? '返回登录' : '快速注册'}}
+          <div class="sub-actions">
+            <div (click)="toggleRegisterMode()">
+              {{registerMode ? '返回登录' : '快速注册'}}
+            </div>
+
+            <!--        <div *ngIf="!registerMode">-->
+            <!--          忘记密码-->
+            <!--        </div>-->
+          </div>
         </div>
-
-<!--        <div *ngIf="!registerMode">-->
-<!--          忘记密码-->
-<!--        </div>-->
       </div>
-    </div>
+    </form>
   </div>
 </div>

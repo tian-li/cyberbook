@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '@cyberbook/core/model/user';
+import { registeredDays, User } from '@cyberbook/core/model/user';
 import { UserService } from '@cyberbook/core/services/user.service';
+import { loadCategoriesByUser } from '@cyberbook/core/store/category';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
+import { loadSubscriptionsByUser } from '@cyberbook/core/store/subscription';
+import { loadTransactionsByUser } from '@cyberbook/core/store/transaction';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Action, TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store/src/models';
 import { map, switchMap } from 'rxjs/operators';
 import {
   login,
@@ -55,7 +58,14 @@ export class UserEffects {
             ];
 
             if (!user.registered) {
-              actions.push(notifyWithSnackBar({ snackBar: { message: '正在使用临时账户，请及时注册' } }));
+              const daysRemaining = 7 - registeredDays(user);
+              actions.push(notifyWithSnackBar({
+                snackBar: {
+                  message: `临时账户将于${daysRemaining}天后失效，请及时注册！`,
+                  duration: 10000,
+                  level: 'warn'
+                }
+              }));
             }
 
             return actions;
@@ -91,7 +101,10 @@ export class UserEffects {
             this.saveUserToLocalstorage(user);
             return [
               registerTempUserSuccess({ user }),
-              notifyWithSnackBar({ snackBar: { message: '正在使用临时账户，请及时注册' } }),
+              notifyWithSnackBar({ snackBar: { message: '正在使用临时账户，请及时注册', level: 'warn' } }),
+              loadTransactionsByUser(),
+              loadCategoriesByUser(),
+              loadSubscriptionsByUser()
             ];
           }),
         )
@@ -126,7 +139,7 @@ export class UserEffects {
             this.saveUserToLocalstorage(user);
             this.router.navigate(['/user']);
             return [
-              notifyWithSnackBar({ snackBar: { message: '更新成功' } }),
+              notifyWithSnackBar({ snackBar: { message: '更新成功', level: 'success' } }),
               updateProfileSuccess({ user }),
             ];
           }),

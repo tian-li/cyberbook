@@ -59,6 +59,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   developing() {
-    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', duration: 10000000 } }));
+    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', duration: 10000000, prefixIcon: '🚧' } }));
   }
 }

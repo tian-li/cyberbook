@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { debounceTime, tap } from 'rxjs/operators';
 
-import { defaultSnackBarAction, defaultSnackBarDuration } from '../../../shared/model/snack-bar';
+import { defaultSnackBarAction, defaultSnackBarDuration, LevelPrefix } from '../../../shared/model/snack-bar';
 import { notifyWithSnackBar } from './notification.actions';
 
 @Injectable()
@@ -13,14 +13,23 @@ export class NotificationEffects {
       this.actions$.pipe(
         ofType(notifyWithSnackBar),
         debounceTime(200),
-        tap(action =>
-          this.snackBar.open(
-            action.snackBar.message,
-            action.snackBar.action ? action.snackBar.action : defaultSnackBarAction,
-            {
-              duration: action.snackBar.duration ? action.snackBar.duration : defaultSnackBarDuration,
+        tap(action => {
+            let message = action.snackBar.message;
+
+            if (action.snackBar.prefixIcon !== undefined) {
+              message = `${action.snackBar.prefixIcon} ${message}`;
+            } else if (action.snackBar.level !== undefined) {
+              message = `${LevelPrefix[action.snackBar.level]} ${message}`;
             }
-          )
+
+            this.snackBar.open(
+              message,
+              action.snackBar.action ? action.snackBar.action : defaultSnackBarAction,
+              {
+                duration: action.snackBar.duration ? action.snackBar.duration : defaultSnackBarDuration,
+              }
+            );
+          }
         )
       ),
     { dispatch: false }

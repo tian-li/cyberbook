@@ -35,7 +35,7 @@ export class LoadDataResolver implements Resolve<any> {
         this.store.dispatch(loadCategoriesByUser());
         this.store.dispatch(loadSubscriptionsByUser());
       } else {
-        this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录' } }));
+        this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '登录信息已过期，请重新登录', level: 'warn' } }));
         this.store.dispatch(logout());
       }
     }
