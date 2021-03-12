@@ -63,7 +63,11 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   ) {
     this.route.data.subscribe(data => {
       this.registerMode = data.registerMode;
-      this.animateToRegisterMode();
+      if(this.registerMode) {
+        this.animateToRegisterMode();
+      } else {
+        this.animateToLoginMode();
+      }
     });
   }
 
