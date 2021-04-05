@@ -20,12 +20,16 @@ export class DateDividerComponent implements OnInit, OnDestroy {
     spend: 0
   };
 
+  dateString: number;
+
+
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store) {
   }
 
   ngOnInit(): void {
+    this.dateString = this.date.valueOf();
     this.store.pipe(
       select(fromTransaction.getTransactionSummaryByDate, { date: this.date.format(FullDate) }),
       takeUntil(this.unsubscribe$)

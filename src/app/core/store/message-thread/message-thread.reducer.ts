@@ -8,7 +8,7 @@ import { loadAllMessageThreadsByUserSuccess, loadMessageThreadByIdSuccess } from
 export const messageThreadFeatureKey = 'messageThread';
 
 export interface State extends EntityState<MessageThread> {
-  selectedMessageThreadId: number;
+  selectedMessageThreadId: number | string;
 }
 
 export const adapter: EntityAdapter<MessageThread> = createEntityAdapter<MessageThread>({

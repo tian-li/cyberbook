@@ -1,4 +1,5 @@
 import { User } from '@cyberbook/core/model/user';
+import { uploadProfileImageSuccess } from '@cyberbook/core/store/image-upload/image-upload.actions';
 import { defaultTheme } from '@cyberbook/shared/constants';
 import { Action, createReducer, on } from '@ngrx/store';
 import {
@@ -57,6 +58,15 @@ const reducer = createReducer(
       user,
       isAuthenticated: true,
       theme: user.theme ? user.theme : defaultTheme
+    };
+  }),
+  on(uploadProfileImageSuccess, (state, { imageName }) => {
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        profileImage: imageName
+      }
     };
   }),
   on(logout, () => initialState)

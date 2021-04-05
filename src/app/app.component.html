@@ -16,3 +16,25 @@
       <span data-text="CyberBook" class="logo-en glitch">CyberBook</span>
   </div>
 </div>
+
+<div class="progress-spinner-container" *ngIf="show">
+  <mat-progress-spinner
+    class="example-margin"
+    mode="determinate"
+    [value]="uploadProgress$ | async">
+
+  </mat-progress-spinner>
+
+  <i class="material-icons md-done" *ngIf="show && finished"></i>
+
+  <div class="backdrop">
+    <div class="percentage">
+      {{uploadProgress$ | async}}%
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- [value]="uploadProgress$ | async"> -->

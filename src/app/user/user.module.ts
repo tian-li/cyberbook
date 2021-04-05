@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CanRegisterGuard } from '@cyberbook/user/guards/can-register.guard';
 import { LoadDataResolver } from '../core/reslovers/load-data.resolver';
 import { SharedModule } from '../shared/shared.module';
@@ -28,7 +29,8 @@ import { UserRoutingModule } from './user-routing.module';
   ],
   imports: [
     SharedModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule
   ],
   providers: [
     CanRegisterGuard,

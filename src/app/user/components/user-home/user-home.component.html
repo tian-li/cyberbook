@@ -2,7 +2,15 @@
   <div class="user-info-overview">
     <div class="profile-photo" (click)="changeProfilePhoto()">
       <img src="./assets/images/profile-photo.png" alt="profile photo">
+      <!--      TODO: upload progress circle-->
+      <!--      <div class="upload-progress">-->
+      <!--        <i class="material-icons md-done"></i>-->
+      <!--      </div>-->
     </div>
+
+    <input #uploader style="display: none" type="file"
+           (change)="profileImageSelected($event)"
+    >
 
     <div class="user-info" (click)="gotoAccountDetail()">
       <div class="user-name">
@@ -19,11 +27,11 @@
       </div>
     </div>
 
-<!--  TODO: 私信列表  -->
-<!--    <i class="message-center material-icons-outlined md-mail"-->
-<!--       matBadge="15" matBadgeColor="warn" matBadgeSize="small"-->
-<!--       (click)="goToMessageCenter()"-->
-<!--    ></i>-->
+    <!--  TODO: 私信列表  -->
+    <!--    <i class="message-center material-icons-outlined md-mail"-->
+    <!--       matBadge="15" matBadgeColor="warn" matBadgeSize="small"-->
+    <!--       (click)="goToMessageCenter()"-->
+    <!--    ></i>-->
 
     <div class="theme-header-bg">
       <div class="header-bg-icon"></div>
@@ -34,7 +42,7 @@
 
   <div class="settings-list">
     <div class="features">
-      <div  class="feature">
+      <div class="feature">
         <i class="material-icons-outlined md-category feature-icon"></i>
         <div class="feature-content">
           <div class="feature-text" (click)="manageCategories()">
@@ -44,7 +52,7 @@
         </div>
       </div>
 
-      <div  class="feature">
+      <div class="feature">
         <i class="material-icons-outlined md-update feature-icon"></i>
         <div class="feature-content">
           <div class="feature-text" (click)="subscriptionManagement()">
@@ -54,7 +62,7 @@
         </div>
       </div>
 
-      <div  class="feature">
+      <div class="feature">
         <i class="material-icons-outlined md-palette feature-icon"></i>
         <div class="feature-content">
           <div class="feature-text" (click)="selectTheme()">
@@ -66,7 +74,7 @@
     </div>
 
     <div class="features" *ngIf="!!user.id">
-      <div  class="feature">
+      <div class="feature">
         <i class="material-icons-outlined md-email feature-icon"></i>
         <div class="feature-content">
           <div class="feature-text" (click)="openFeedbackForm()">
@@ -77,7 +85,7 @@
     </div>
 
     <div class="features" *ngIf="!!user.id">
-      <div  class="feature" (click)="logout()">
+      <div class="feature" (click)="logout()">
         <i class="material-icons md-log_out feature-icon"></i>
         <div class="feature-content">
           <div class="feature-text">

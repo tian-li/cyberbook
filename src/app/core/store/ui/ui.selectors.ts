@@ -30,3 +30,5 @@ export const selectIsWeChat = createSelector(
   selectUIState,
   (state: fromUI.State) => state.isWeChat
 );
+
+// export const selectIsWeChat = (selectUIState: { isWeChat: any; }) => selectUIState.isWeChat

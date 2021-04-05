@@ -2,9 +2,10 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ImageUploadService } from '@cyberbook/core/services/image-upload.service';
 import { fromUI, fromUser } from '@cyberbook/core/store';
-import { selectIsWeChat } from '@cyberbook/core/store/ui';
-import { defaultTheme } from '@cyberbook/shared/constants';
+// import { selectIsWeChat } from '@cyberbook/core/store/ui';
+import { defaultTheme, UploadStatus } from '@cyberbook/shared/constants';
 import { getLocalStorageValueByKey } from '@cyberbook/shared/utils/get-localstorage-value-by-key';
 import { select, Store } from '@ngrx/store';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
@@ -16,15 +17,19 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  theme: string;
-  loading: boolean;
-  isWeChat: boolean;
+  theme: string = '';
+  loading: boolean = false;
+  isWeChat: boolean = false;
+
+  uploadProgress$;
+  uploadStatus$;
 
   private unsubscribe$ = new Subject();
 
   constructor(private store: Store, private overlayContainer: OverlayContainer,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
+              private imageUploadService: ImageUploadService,
               private renderer: Renderer2) {
     this.matIconRegistry.addSvgIcon(
       'github',
@@ -32,9 +37,36 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  show = false;
+  finished = false;
+
   ngOnInit() {
-    this.store.pipe(
-      select(selectIsWeChat),
+    this.uploadProgress$ = this.imageUploadService.progress$;
+    this.uploadStatus$ = this.imageUploadService.status$;
+
+
+    this.uploadProgress$.subscribe((p) => {
+      console.log('progress', p)
+    })
+
+    this.imageUploadService.status$.subscribe(status => {
+
+      this.finished = status === UploadStatus.Finished;
+
+      if(status === UploadStatus.InProgress) {
+
+        this.show = true;
+      }
+      if(status === UploadStatus.Finished) {
+        setTimeout(() => {
+          this.show = false;
+        }, 2000)
+      }
+
+    });
+
+    this.store.select(fromUI.selectIsWeChat).pipe(
+      // select(selectIsWeChat),
       takeUntil(this.unsubscribe$)
     ).subscribe(isWeChat => {
       this.isWeChat = isWeChat;
@@ -58,6 +90,9 @@ export class AppComponent implements OnInit, OnDestroy {
       debounceTime(500),
       takeUntil(this.unsubscribe$)
     ).subscribe((loading: boolean) => this.loading = loading);
+
+
+
   }
 
   ngOnDestroy() {
@@ -65,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  private getLocalTheme(): Observable<string> {
+  private getLocalTheme(): Observable<string | null> {
     return of(getLocalStorageValueByKey('theme'));
   }
 

@@ -7,7 +7,7 @@ import { loadPrivateMessagesByMessageThreadIdSuccess, sendPrivateMessageSuccess 
 export const privateMessageFeatureKey = 'privateMessage';
 
 export interface State extends EntityState<PrivateMessage> {
-  selectedPrivateMessageId: number;
+  selectedPrivateMessageId: number | string;
 }
 
 export const adapter: EntityAdapter<PrivateMessage> = createEntityAdapter<PrivateMessage>({

@@ -15,8 +15,8 @@ import {
 export const transactionFeatureKey = 'transaction';
 
 export interface State extends EntityState<Transaction> {
-  selectedTransactionId: number;
-  transactionIdsByDate: { [date: string]: number[] };
+  selectedTransactionId: number | string;
+  transactionIdsByDate: { [date: string]: (number | string)[] };
 }
 
 export const adapter: EntityAdapter<Transaction> = createEntityAdapter<Transaction>({

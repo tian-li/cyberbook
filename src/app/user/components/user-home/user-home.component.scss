@@ -15,11 +15,35 @@ div {
   z-index: 5;
 
   .profile-photo {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
     img {
       width: 70px;
       height: 70px;
       margin: 1rem;
       border-radius: 50%;
+    }
+
+    .upload-progress {
+      width: 70%;
+      position: absolute;
+      /* left: 50%; */
+      /* display: none; */
+      /* top: 50%; */
+      background: #00000099;
+      /* margin-left: auto; */
+      height: 70%;
+      border: 5px #16a9c3 solid;
+      border-radius: 100%;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        color: white;
+        font-size: 3rem;
+      }
     }
   }
 

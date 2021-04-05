@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { registeredDays, User } from '@cyberbook/core/model/user';
+import { ImageUploadService } from '@cyberbook/core/services/image-upload.service';
 import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
+import { uploadProfileImage } from '@cyberbook/core/store/image-upload/image-upload.actions';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { FeedbackComponent } from '@cyberbook/shared/components/feedback/feedback.component';
@@ -22,6 +24,11 @@ export class UserHomeComponent implements OnInit, OnDestroy {
 
   numberOfAllTransactions$: Observable<number>;
   darkThemeEnabled;
+
+  @ViewChild('uploader') uploader: ElementRef;
+
+  selectedProfileImage;
+
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(
@@ -29,6 +36,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog,
+    private imageUploadService: ImageUploadService
   ) {
   }
 
@@ -112,7 +120,17 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   }
 
   changeProfilePhoto() {
+    this.uploader.nativeElement.click();
     this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', prefixIcon: '🚧' } }));
+  }
+
+  profileImageSelected(event) {
+    console.log('profileImageSelected', event.target.files[0]);
+
+    this.imageUploadService.uploadImage(event.target.files[0]);
+
+
+    // this.store.dispatch(uploadProfileImage({image: event.target.files[0]}));
   }
 
 }

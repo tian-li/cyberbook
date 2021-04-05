@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { ImageUploadService } from '@cyberbook/core/services/image-upload.service';
 import { MessageThreadService } from '@cyberbook/core/services/message-thread.service';
 import { PrivateMessageService } from '@cyberbook/core/services/private-message.service';
+import { ImageUploadEffects } from '@cyberbook/core/store/image-upload/image-upload.effects';
 import { MessageThreadEffects } from '@cyberbook/core/store/message-thread/message-thread.effects';
 import { PrivateMessageEffects } from '@cyberbook/core/store/private-message/private-message.effects';
 import { EffectsModule } from '@ngrx/effects';
@@ -44,7 +46,8 @@ import { environment } from '../../environments/environment';
       TransactionEffects,
       SubscriptionEffects,
       PrivateMessageEffects,
-      MessageThreadEffects
+      MessageThreadEffects,
+      ImageUploadEffects
     ]),
     environment.production
       ? []
@@ -61,6 +64,7 @@ import { environment } from '../../environments/environment';
     PwaService,
     PrivateMessageService,
     MessageThreadService,
+    ImageUploadService,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {panelClass: 'pwa-safe-margin-bottom'}}
   ],
   declarations: []

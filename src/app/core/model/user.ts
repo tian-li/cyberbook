@@ -5,7 +5,7 @@ import * as dayjs from 'dayjs';
 export interface User {
   id: string;
   username: string;
-  profilePhotoURL: string;
+  profileImage: string;
   email: string;
   dateRegistered: ISOString;
   gender: number;

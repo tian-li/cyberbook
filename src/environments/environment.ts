@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   test: true,
   appName: 'Cyberbook',
-  server: 'http://192.168.0.124:8899/api'
+  server: 'http://192.168.0.200:8899/api'
 
 };
 

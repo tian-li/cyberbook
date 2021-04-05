@@ -15,7 +15,7 @@ import {
 export const categoryFeatureKey = 'category';
 
 export interface State extends EntityState<Category> {
-  selectedCategoryId: number;
+  selectedCategoryId: string | number;
 }
 
 export const adapter: EntityAdapter<Category> = createEntityAdapter<Category>({
@@ -33,7 +33,7 @@ const reducer = createReducer(
     adapter.setAll(categories, { ...state, selectedCategoryId: null })
   ),
   on(addCategorySuccess, (state, { category }) =>
-    adapter.addOne(category, { ...state, selectedCategoryId: category.id })
+    adapter.setOne(category, { ...state, selectedCategoryId: category.id })
   ),
   on(updateCategorySuccess, (state, { update }) =>
     adapter.updateOne(update, { ...state, selectedCategoryId: update.id })

@@ -65,3 +65,43 @@
     }
   }
 }
+
+.progress-spinner-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+
+  mat-progress-spinner {
+    z-index: 2;
+  }
+
+  i {
+    z-index: 2;
+    justify-self: center;
+    font-size: 3rem;
+    display: block;
+    position: absolute;
+  }
+
+  .backdrop {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    border-radius: 10%;
+    background: #000000a1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+
+    .percentage {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+  }
+}

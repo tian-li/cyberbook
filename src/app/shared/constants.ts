@@ -100,3 +100,12 @@ export const availableCategoryColors: string[] = [
   '#7d7d7d',
   '#afafaf',
 ];
+
+export enum UploadStatus {
+  NotStarted = 'Not Started',
+  Waiting = 'Waiting',
+  Started = 'Started',
+  InProgress = 'In Progress',
+  Finished = 'Finished',
+  Error = 'Error'
+}
