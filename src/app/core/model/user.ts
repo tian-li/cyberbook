@@ -5,7 +5,7 @@ import * as dayjs from 'dayjs';
 export interface User {
   id: string;
   username: string;
-  profileImage: string;
+  profilePhoto: string;
   email: string;
   dateRegistered: ISOString;
   gender: number;
@@ -15,6 +15,8 @@ export interface User {
   theme: string;
   messageThreads: MessageThread[];
 }
+
+export const defaultProfilePhoto = './assets/images/profile-photo.png';
 
 export function registeredDays(user: User): number {
   return dayjs().diff(dayjs(user.dateRegistered), 'day');

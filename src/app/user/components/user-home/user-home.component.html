@@ -1,15 +1,16 @@
 <div class="user-home-container">
   <div class="user-info-overview">
     <div class="profile-photo" (click)="changeProfilePhoto()">
-      <img src="./assets/images/profile-photo.png" alt="profile photo">
+      <img [src]="(user.profilePhoto | imageUrl:user.id:defaultProfilePhoto)" alt="profile photo">
       <!--      TODO: upload progress circle-->
       <!--      <div class="upload-progress">-->
       <!--        <i class="material-icons md-done"></i>-->
       <!--      </div>-->
     </div>
 
-    <input #uploader style="display: none" type="file"
+    <input #uploader style="display: none" type="file" accept="image/x-png,image/jpeg"
            (change)="profileImageSelected($event)"
+           (click)="resetUploader($event)"
     >
 
     <div class="user-info" (click)="gotoAccountDetail()">

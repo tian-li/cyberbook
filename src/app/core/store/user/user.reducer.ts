@@ -60,15 +60,6 @@ const reducer = createReducer(
       theme: user.theme ? user.theme : defaultTheme
     };
   }),
-  on(uploadProfileImageSuccess, (state, { imageName }) => {
-    return {
-      ...state,
-      user: {
-        ...state.user,
-        profileImage: imageName
-      }
-    };
-  }),
   on(logout, () => initialState)
   )
 ;

@@ -109,3 +109,7 @@ export enum UploadStatus {
   Finished = 'Finished',
   Error = 'Error'
 }
+
+export enum UploadRole {
+  Profile = 'Profile'
+}

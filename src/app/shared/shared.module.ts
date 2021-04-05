@@ -33,6 +33,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { RouterModule } from '@angular/router';
 import { YearMonthPickerComponent } from '@cyberbook/shared/components/year-month-picker/year-month-picker.component';
 import { PreventScrollDirective } from '@cyberbook/shared/directives/prevent-scroll.directive';
+import { ImageUrlPipe } from '@cyberbook/shared/pipes/image-url.pipe';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
@@ -92,6 +93,9 @@ const components = [
   // directives
   SwipeEventDirective,
   PreventScrollDirective,
+
+  // pipes
+  ImageUrlPipe
 ];
 
 @NgModule({

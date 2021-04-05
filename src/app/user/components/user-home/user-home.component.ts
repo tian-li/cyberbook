@@ -1,14 +1,13 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { registeredDays, User } from '@cyberbook/core/model/user';
+import { defaultProfilePhoto, registeredDays, User } from '@cyberbook/core/model/user';
 import { ImageUploadService } from '@cyberbook/core/services/image-upload.service';
 import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
-import { uploadProfileImage } from '@cyberbook/core/store/image-upload/image-upload.actions';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { FeedbackComponent } from '@cyberbook/shared/components/feedback/feedback.component';
-import { AlertLevel, feedbackDialogId } from '@cyberbook/shared/constants';
+import { AlertLevel, feedbackDialogId, UploadRole } from '@cyberbook/shared/constants';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
@@ -19,15 +18,12 @@ import { take, takeUntil } from 'rxjs/operators';
   styleUrls: ['./user-home.component.scss']
 })
 export class UserHomeComponent implements OnInit, OnDestroy {
+  readonly defaultProfilePhoto = defaultProfilePhoto;
   user: User;
   registeredLength = 1;
-
   numberOfAllTransactions$: Observable<number>;
   darkThemeEnabled;
-
   @ViewChild('uploader') uploader: ElementRef;
-
-  selectedProfileImage;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -46,6 +42,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
       select(fromUser.selectUser),
       takeUntil(this.unsubscribe$)
     ).subscribe((user: User) => {
+      console.log('user', user);
       this.user = user;
       this.registeredLength = registeredDays(this.user) + 1;
     });
@@ -114,23 +111,28 @@ export class UserHomeComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe((result) => {
       if (result === 'feedback success') {
-        this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '信息已收到，感谢您的反馈！', duration: 2500, level: 'success' } }));
+        this.store.dispatch(notifyWithSnackBar({
+          snackBar: {
+            message: '信息已收到，感谢您的反馈！',
+            duration: 2500,
+            level: 'success'
+          }
+        }));
       }
     });
   }
 
   changeProfilePhoto() {
     this.uploader.nativeElement.click();
-    this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '开发中的功能', prefixIcon: '🚧' } }));
+  }
+
+  resetUploader(event) {
+    event.target.value = '';
   }
 
   profileImageSelected(event) {
-    console.log('profileImageSelected', event.target.files[0]);
-
-    this.imageUploadService.uploadImage(event.target.files[0]);
-
-
-    // this.store.dispatch(uploadProfileImage({image: event.target.files[0]}));
+    if (event.target.files?.length > 0) {
+      this.imageUploadService.uploadImage(event.target.files[0], UploadRole.Profile);
+    }
   }
-
 }

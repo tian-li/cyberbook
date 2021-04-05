@@ -12,29 +12,24 @@
 
 <div *ngIf="isWeChat" class="wechat-cover">
   <div class="logo">
-      <span data-text="赛博记账" class="logo-zh glitch">赛博记账</span>
-      <span data-text="CyberBook" class="logo-en glitch">CyberBook</span>
+    <span data-text="赛博记账" class="logo-zh glitch">赛博记账</span>
+    <span data-text="CyberBook" class="logo-en glitch">CyberBook</span>
   </div>
 </div>
 
-<div class="progress-spinner-container" *ngIf="show">
+<div class="progress-spinner-container" *ngIf="showUploadProgress">
   <mat-progress-spinner
     class="example-margin"
     mode="determinate"
-    [value]="uploadProgress$ | async">
+    [value]="uploadProgress">
 
   </mat-progress-spinner>
 
-  <i class="material-icons md-done" *ngIf="show && finished"></i>
+  <i class="material-icons md-done" *ngIf="finished"></i>
 
   <div class="backdrop">
     <div class="percentage">
-      {{uploadProgress$ | async}}%
+      {{uploadProgress}}%
     </div>
   </div>
-
-
 </div>
-
-
-<!-- [value]="uploadProgress$ | async"> -->

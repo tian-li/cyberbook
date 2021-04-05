@@ -4,7 +4,6 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageUploadService } from '@cyberbook/core/services/image-upload.service';
 import { fromUI, fromUser } from '@cyberbook/core/store';
-// import { selectIsWeChat } from '@cyberbook/core/store/ui';
 import { defaultTheme, UploadStatus } from '@cyberbook/shared/constants';
 import { getLocalStorageValueByKey } from '@cyberbook/shared/utils/get-localstorage-value-by-key';
 import { select, Store } from '@ngrx/store';
@@ -21,8 +20,9 @@ export class AppComponent implements OnInit, OnDestroy {
   loading: boolean = false;
   isWeChat: boolean = false;
 
-  uploadProgress$;
-  uploadStatus$;
+  showUploadProgress = false;
+  finished = false;
+  uploadProgress = 0;
 
   private unsubscribe$ = new Subject();
 
@@ -37,36 +37,25 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
-  show = false;
-  finished = false;
-
   ngOnInit() {
-    this.uploadProgress$ = this.imageUploadService.progress$;
-    this.uploadStatus$ = this.imageUploadService.status$;
-
-
-    this.uploadProgress$.subscribe((p) => {
-      console.log('progress', p)
-    })
-
-    this.imageUploadService.status$.subscribe(status => {
-
-      this.finished = status === UploadStatus.Finished;
+    combineLatest([
+      this.imageUploadService.progress$,
+      this.imageUploadService.status$
+    ]).subscribe(([progress, status]: [number, UploadStatus]) => {
+      this.finished = progress === 100 && status === UploadStatus.Finished;
+      this.uploadProgress = progress;
 
       if(status === UploadStatus.InProgress) {
-
-        this.show = true;
+        this.showUploadProgress = true;
       }
       if(status === UploadStatus.Finished) {
         setTimeout(() => {
-          this.show = false;
-        }, 2000)
+          this.showUploadProgress = false;
+        }, 700);
       }
-
     });
 
     this.store.select(fromUI.selectIsWeChat).pipe(
-      // select(selectIsWeChat),
       takeUntil(this.unsubscribe$)
     ).subscribe(isWeChat => {
       this.isWeChat = isWeChat;
@@ -90,9 +79,6 @@ export class AppComponent implements OnInit, OnDestroy {
       debounceTime(500),
       takeUntil(this.unsubscribe$)
     ).subscribe((loading: boolean) => this.loading = loading);
-
-
-
   }
 
   ngOnDestroy() {

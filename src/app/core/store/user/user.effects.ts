@@ -8,6 +8,7 @@ import { loadSubscriptionsByUser } from '@cyberbook/core/store/subscription';
 import { loadTransactionsByUser } from '@cyberbook/core/store/transaction';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store/src/models';
+import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import {
   login,
@@ -138,10 +139,7 @@ export class UserEffects {
           switchMap((user: User) => {
             this.saveUserToLocalstorage(user);
             this.router.navigate(['/user']);
-            return [
-              notifyWithSnackBar({ snackBar: { message: '更新成功', level: 'success' } }),
-              updateProfileSuccess({ user }),
-            ];
+            return of(updateProfileSuccess({ user }));
           }),
         )
       )
