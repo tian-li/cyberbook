@@ -7,6 +7,7 @@ import { fromTransaction, fromUI, fromUser } from '@cyberbook/core/store';
 import { notifyWithSnackBar } from '@cyberbook/core/store/notification';
 import { ConfirmationAlertComponent } from '@cyberbook/shared/components/confirmation-alert/confirmation-alert.component';
 import { FeedbackComponent } from '@cyberbook/shared/components/feedback/feedback.component';
+import { ImageEditorComponent } from '@cyberbook/shared/components/image-editor/image-editor.component';
 import { AlertLevel, feedbackDialogId, UploadRole } from '@cyberbook/shared/constants';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
@@ -32,7 +33,8 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private imageUploadService: ImageUploadService
+    private imageUploadService: ImageUploadService,
+    // private matModal: MatDialog
   ) {
   }
 
@@ -132,7 +134,13 @@ export class UserHomeComponent implements OnInit, OnDestroy {
 
   profileImageSelected(event) {
     if (event.target.files?.length > 0) {
-      this.imageUploadService.uploadImage(event.target.files[0], UploadRole.Profile);
+      this.dialog.open(ImageEditorComponent, {
+        // height: '300px',
+        data: {
+          image: event.target.files[0]
+        }
+      })
+      // this.imageUploadService.uploadImage(event.target.files[0], UploadRole.Profile);
     }
   }
 }

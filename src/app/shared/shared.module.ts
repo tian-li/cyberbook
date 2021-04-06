@@ -43,6 +43,7 @@ import { SwipeableItemComponent } from './components/swipeable-item/swipeable-it
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { TypeSwitcherComponent } from './components/type-switcher/type-switcher.component';
 import { SwipeEventDirective } from './directives/swipe-event.directive';
+import { ImageEditorComponent } from './components/image-editor/image-editor.component';
 
 const material = [
   MatButtonModule,
@@ -99,7 +100,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, FeedbackComponent],
+  declarations: [...components, FeedbackComponent, ImageEditorComponent],
   imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
   exports: [
     CommonModule,
