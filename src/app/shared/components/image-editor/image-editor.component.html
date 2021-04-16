@@ -1,21 +1,42 @@
 <div>
-  <h2 mat-dialog-title>Install Angular</h2>
+  <h2>Install Angular</h2>
   <div class="mat-typography">
 
-    <div class="image-editor">
-      <div class="crop-mask" #cropMask>
-        <div class="circle" [ngStyle]="{'width': size, 'height': size}">
-
-        </div>
+    <div class="cropper-container">
+      <div class="cropper-window">
+        <img id="image"  class="original-image" draggable="true" #imageElement src=""
+             alt=""
+             [ngStyle]="{
+              'width': displayWidth + 'px',
+              'height': displayHeight + 'px',
+              'left': displayOffsetLeft + 'px',
+              'top': displayOffsetTop + 'px'
+             }"
+             (load)="onImgLoad($event)"
+             cbkTouchDragEvent
+             (cbkDragStart)="onTouchstart($event)"
+             (cbkDragMove)="onTouchMove($event)"
+             (cbkDragEnd)="onTouchend($event)"
+        >
       </div>
-      <img id="image" #imageElement src="" alt="" (load)="calculate()">
+
+      <!--      <img id="image" class="original-image" #imageElement src="#" alt="">-->
+
     </div>
 
+
+    <!--    <div class="image-editor">-->
+    <!--      <div class="crop-mask" #cropMask>-->
+    <!--&lt;!&ndash;        <div class="circle" [ngStyle]="{'width': size, 'height': size}">&ndash;&gt;-->
+    <!--&lt;!&ndash;        <div class="circle">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+    <!--        <img id="image" #imageElement src="" alt="" (load)="calculate()">-->
+
+    <!--      </div>-->
+    <!--    </div>-->
+
   </div>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
-  </mat-dialog-actions>
 
 
 </div>

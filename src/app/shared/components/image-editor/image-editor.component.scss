@@ -2,25 +2,63 @@
   position: relative;
 }
 
-.crop-mask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #000000a3;
-  mix-blend-mode: darken;
-  display: flex;
+.cropper-container {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  margin-top: 16px;
+  background-color: #000;
+}
 
-  .circle {
-    background: white;
+.cropper-window {
+  position: absolute;
+  overflow: visible;
+  width: 280px;
+  height: 280px;
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    -webkit-box-shadow: 0 0 0 500px rgb(0 0 0 / 60%);
+    box-shadow: 0 0 0 500px rgb(0 0 0 / 60%);
     border-radius: 100%;
-    margin: auto;
+    content: "";
+    pointer-events: none;
   }
 }
 
-#image {
-  display: block;
-  max-width: 400px;
-  max-height: 400px;
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+.original-image {
+  -ms-touch-action: none;
+  touch-action: none;
+  will-change: left, top, width, height, transform;
+  position: absolute;
+  //width: 280px;
+  //height: 280px;
+  //-webkit-transform: translateZ(0);
+  //transform: translateZ(0);
+  cursor: pointer;
+
+
+  //width: 1898.45px;
+  //height: 280px;
+  transform-origin: center center;
+  //transform: translateZ(0px);
+  //left: -809.223px;
+  //top: 0px;
 }

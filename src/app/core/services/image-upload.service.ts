@@ -16,7 +16,10 @@ export class ImageUploadService {
   progress$ = new BehaviorSubject(0);
   status$ = new BehaviorSubject(UploadStatus.NotStarted);
 
+  image: File;
+
   constructor(private http: HttpClient, private store: Store) {
+    // this.image =
   }
 
   uploadImage(image: File, uploadRole: UploadRole) {

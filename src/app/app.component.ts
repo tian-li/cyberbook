@@ -92,7 +92,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private setTheme(theme: string) {
     this.renderer.addClass(document.body, theme);
-    this.renderer.removeClass(document.body, this.theme);
+
+    if(this.theme) {
+      this.renderer.removeClass(document.body, this.theme);
+    }
+
     this.theme = theme;
     const overlayContainerClasses = this.overlayContainer.getContainerElement().classList;
     const themeClassesToRemove = Array.from(overlayContainerClasses).filter(

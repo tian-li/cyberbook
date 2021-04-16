@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutoLoginGuard } from '@cyberbook/core/guards/auto-login.guard';
+import { ImageEditorComponent } from '@cyberbook/shared/components/image-editor/image-editor.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
+      },
+      {
+        path: 'image-editor',
+        component: ImageEditorComponent
       },
       {
         path: 'user',
