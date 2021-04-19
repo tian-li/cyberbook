@@ -1,126 +1,186 @@
-import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { SwipeDirection, SwipeInfo } from '@cyberbook/shared/model/helper-models';
+import { Directive, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 
 @Directive({
   selector: '[cbkTouchDragEvent]'
 })
 export class TouchDragEventDirective {
-  @Input() touchDragDisabled = false;
 
-  @Output() cbkDragStart = new EventEmitter<any>();
-  @Output() cbkDragMove = new EventEmitter<any>();
-  @Output() cbkDragEnd = new EventEmitter<any>();
-  // @Output() cancelSwipe = new EventEmitter();
+  @Input() maxScale: number = 5;
+  @Input() minScale: number = 1;
 
-  private touchstartTime: number;
-  private isDragging = false;
-  private percentage = 0;
-  private direction: SwipeDirection;
+  @Input() initialWidth: number;
+  @Input() initialHeight: number;
+  @Input() initialLeft: number;
+  @Input() initialTop: number;
 
-  // track moving
-  private touchStartX: number;
-  private touchStartY: number;
-  private firstMoveX: number;
-  private firstMoveY: number;
-  private touchEndX: number;
-  private touchEndY: number;
+  @Output() result = new EventEmitter();
+
+  translateXLeftLimit: number = 0;
+  translateYUpperLimit: number = 0;
+
+  translateXRightLimit: number = 0;
+  translateYLowerLimit: number = 0;
+
+  preTouchPosition: any = {};
+  translateX = 0;
+  translateY = 0;
+  scaleRatio = 1;
+  scaleOrigin = {
+    x: 0,
+    y: 0
+  };
+  preTouchesClientx1y1x2y2 = [];
+  originHaveSet = false;
+
+  constructor(private img: ElementRef) {
+  }
 
   @HostListener('touchstart', ['$event'])
-  private onTouchStart(event: TouchEvent) {
-    if (!this.isMultiTouch(event) && !this.touchDragDisabled) {
-      this.touchStartX = event.touches[0].pageX;
-      this.touchStartY = event.touches[0].pageY;
-      this.touchstartTime = event.timeStamp;
+  onTouchstart(e) {
+    let touches = e.touches;
+    if (touches.length > 1) {
+      let one = touches['0'];
+      let two = touches['1'];
+      this.preTouchesClientx1y1x2y2 = [one.clientX, one.clientY, two.clientX, two.clientY];
+      this.originHaveSet = false;
     }
-  }
+    this.recordPreTouchPosition(touches['0']);
+  };
 
   @HostListener('touchmove', ['$event'])
-  private onTouchMove(event: TouchEvent) {
-    if (this.touchDragDisabled) {
-      event.preventDefault();
-      return;
+  onTouchmove(e) {
+    let touches = e.touches;
+    if (touches.length === 1) {
+      let oneTouch = touches['0'];
+      let translated = this.getTranslate(oneTouch.target);
+      this.translateX = oneTouch.clientX - this.preTouchPosition.x + translated.left;
+      this.translateY = oneTouch.clientY - this.preTouchPosition.y + translated.top;
+
+      this.limitImageBorder();
+
+      let matrix = `matrix(${this.scaleRatio}, 0, 0, ${this.scaleRatio}, ${this.translateX}, ${this.translateY})`;
+      this.setStyle('transform', matrix);
+      this.recordPreTouchPosition(oneTouch);
+    } else {
+      let one = touches['0'];
+      let two = touches['1'];
+
+      this.scaleRatio = this.distance(one.clientX, one.clientY, two.clientX, two.clientY) / this.distance(...this.preTouchesClientx1y1x2y2) * this.scaleRatio || 1;
+      if (this.scaleRatio > this.maxScale) {
+        this.scaleRatio = this.maxScale;
+      }
+      if (this.scaleRatio < this.minScale) {
+        this.scaleRatio = this.minScale;
+      }
+      if (!this.originHaveSet) {
+        this.originHaveSet = true;
+        // 移动视线中心
+        let origin = this.relativeCoordinate((one.clientX + two.clientX) / 2, (one.clientY + two.clientY) / 2, this.img.nativeElement.getBoundingClientRect());
+        // 修正视野变化带来的平移量
+        this.translateX = (this.scaleRatio - 1) * (origin.x - this.scaleOrigin.x) + this.translateX;
+        this.translateY = (this.scaleRatio - 1) * (origin.y - this.scaleOrigin.y) + this.translateY;
+
+        this.setStyle('transform-origin', `${origin.x}px ${origin.y}px`);
+        this.scaleOrigin = origin;
+      }
+
+      this.limitImageBorder();
+      let matrix = `matrix(${this.scaleRatio}, 0, 0, ${this.scaleRatio}, ${this.translateX}, ${this.translateY})`;
+      this.setStyle('transform', matrix);
+      this.preTouchesClientx1y1x2y2 = [one.clientX, one.clientY, two.clientX, two.clientY];
     }
-
-    if (this.isMultiTouch(event)) {
-      event.preventDefault();
-      return;
-    }
-
-    this.touchEndX = event.touches[0].pageX;
-    this.touchEndY = event.touches[0].pageY;
-
-    const diffX = this.touchEndX - this.touchStartX;
-    const diffY = this.touchEndY - this.touchStartY;
-
-    this.cbkDragMove.emit({diffX, diffY});
+    e.preventDefault();
   }
 
+  // 触摸点离开时更新最后位置
   @HostListener('touchend', ['$event'])
-  private onTouchEnd(event: TouchEvent) {
-    if (this.isMultiTouch(event) || this.touchDragDisabled) {
-      event.preventDefault();
-      return;
+  onTouchend(e) {
+    let touches = e.touches;
+    if (touches.length === 1) {
+      this.recordPreTouchPosition(touches['0']);
     }
 
-    this.touchEndX = event.changedTouches[0].pageX;
-    this.touchEndY = event.changedTouches[0].pageY;
 
-    const diffX = this.touchEndX - this.touchStartX;
-    const diffY = this.touchEndY - this.touchStartY;
+    this.result.emit({
+      scaleRatio: this.scaleRatio,
+      translateX: this.translateX,
+      translateY: this.translateY,
+      scaleOriginX: this.scaleOrigin.x,
+      scaleOriginY: this.scaleOrigin.y
+    });
 
-    this.cbkDragEnd.emit({diffX, diffY});
-
-
-    // if (this.isDragging) {
-    //   this.cbkDragEnd.emit({ });
-    // } else {
-    //   // this.cancel();
-    // }
-    this.resetSwipeStatus();
+    // console.log('scaleRatio', this.scaleRatio);
+    // console.log('translateX', this.translateX);
+    // console.log('translateY', this.translateY);
   }
 
-  private calculateSwipe() {
-    const diff = this.touchEndX - this.touchStartX;
-    switch (this.direction) {
-      case 'left':
-        this.percentage = diff < 0 ? Math.abs(diff) / window.innerWidth : 0;
-        break;
-      case 'right':
-        this.percentage = diff > 0 ? Math.abs(diff) / window.innerWidth : 0;
-        break;
-      default:
-        this.direction = diff < 0 ? 'left' : 'right';
-        this.percentage = Math.abs(diff) / window.innerWidth;
-    }
-
-    if (this.percentage > 0.2) {
-      this.percentage = Math.log10(this.percentage + 0.8) + 0.2;
+  @HostListener('touchcancel', ['$event'])
+  ontouchcancel(e) {
+    let touches = e.touches;
+    if (touches.length === 1) {
+      this.recordPreTouchPosition(touches['0']);
     }
   }
 
-  private triggerWipe() {
-    this.cbkDragStart.emit({ direction: this.direction, percentage: this.percentage });
+  limitImageBorder() {
+    this.translateXLeftLimit = (this.scaleRatio - 1) * this.scaleOrigin.x - this.initialLeft; // 已正确
+    this.translateXRightLimit = -(this.scaleRatio - 1) * (this.initialWidth - this.scaleOrigin.x) + this.initialLeft;
+
+    this.translateYUpperLimit = (this.scaleRatio - 1) * (this.scaleOrigin.y) - this.initialTop; // 已正确
+    this.translateYLowerLimit = -(this.scaleRatio - 1) * (this.initialHeight - this.scaleOrigin.y) + this.initialTop; // 已正确
+
+    if (this.translateY > this.translateYUpperLimit) {
+      this.translateY = this.translateYUpperLimit;
+    } else if (this.translateY < this.translateYLowerLimit) {
+      this.translateY = this.translateYLowerLimit;
+    }
+
+    if (this.translateX > this.translateXLeftLimit) {
+      this.translateX = this.translateXLeftLimit;
+    } else if (this.translateX < this.translateXRightLimit) {
+      this.translateX = this.translateXRightLimit;
+    }
   }
 
-  private isMultiTouch(event: TouchEvent): boolean {
-    return event.touches.length > 1;
+  getStyle(target, style) {
+    let styles = window.getComputedStyle(target, null);
+    return styles.getPropertyValue(style);
   }
 
-  // private cancel() {
-  //   this.isDragging = false;
-  //   // this.cancelSwipe.emit();
-  // }
+  getTranslate(target) {
+    let matrix = this.getStyle(target, 'transform');
+    let nums = matrix.substring(7, matrix.length - 1).split(', ');
+    let left = parseInt(nums[4]) || 0;
+    let top = parseInt(nums[5]) || 0;
+    return {
+      left: left,
+      top: top
+    };
+  }
 
-  private resetSwipeStatus() {
-    this.isDragging = false;
-    this.touchstartTime = 0;
-    this.percentage = 0;
-    this.direction = undefined;
-    this.touchStartX = 0;
-    this.touchStartY = 0;
-    this.touchEndX = 0;
-    this.touchEndY = 0;
-    this.firstMoveX = undefined;
-    this.firstMoveY = undefined;
+  recordPreTouchPosition(touch) {
+    this.preTouchPosition = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
+  }
+
+  relativeCoordinate(x, y, rect) {
+    let cx = (x - rect.left) / this.scaleRatio;
+    let cy = (y - rect.top) / this.scaleRatio;
+    return {
+      x: cx,
+      y: cy
+    };
+  }
+
+  setStyle(key, value) {
+    this.img.nativeElement.style[key] = value;
+  }
+
+  distance(x1?, y1?, x2?, y2?) {
+    let a = x1 - x2;
+    let b = y1 - y2;
+    return Math.sqrt(a * a + b * b);
   }
 }

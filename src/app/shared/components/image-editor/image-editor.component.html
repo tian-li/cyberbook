@@ -1,11 +1,11 @@
 <div>
-  <h2>Install Angular</h2>
+<!--  <h2>裁剪</h2>-->
   <div class="mat-typography">
 
     <div class="cropper-container">
       <div class="cropper-window">
-        <img id="image"  class="original-image" draggable="true" #imageElement src=""
-             alt=""
+        <img id="image"  class="original-image" draggable="true" #imageElement src="../../../../assets/images/summer.jpg"
+             alt="图片"
              [ngStyle]="{
               'width': displayWidth + 'px',
               'height': displayHeight + 'px',
@@ -14,28 +14,22 @@
              }"
              (load)="onImgLoad($event)"
              cbkTouchDragEvent
-             (cbkDragStart)="onTouchstart($event)"
-             (cbkDragMove)="onTouchMove($event)"
-             (cbkDragEnd)="onTouchend($event)"
+             [initialWidth] = displayWidth
+             [initialHeight] = displayHeight
+             [initialLeft] = displayOffsetLeft
+             [initialTop] = displayOffsetTop
+             (result)="onResult($event)"
         >
       </div>
-
-      <!--      <img id="image" class="original-image" #imageElement src="#" alt="">-->
-
     </div>
+  </div>
 
+  <canvas id="preview" width="280px" height="280px" #previewCanvas></canvas>
 
-    <!--    <div class="image-editor">-->
-    <!--      <div class="crop-mask" #cropMask>-->
-    <!--&lt;!&ndash;        <div class="circle" [ngStyle]="{'width': size, 'height': size}">&ndash;&gt;-->
-    <!--&lt;!&ndash;        <div class="circle">&ndash;&gt;-->
-
-    <!--&lt;!&ndash;        </div>&ndash;&gt;-->
-    <!--        <img id="image" #imageElement src="" alt="" (load)="calculate()">-->
-
-    <!--      </div>-->
-    <!--    </div>-->
-
+  <div>
+    <button mat-raised-button (click)="cutImage()">
+      裁剪
+    </button>
   </div>
 
 

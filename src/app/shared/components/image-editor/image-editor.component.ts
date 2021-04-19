@@ -13,6 +13,7 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
   image: File;
 
   @ViewChild('imageElement') imageElement: ElementRef;
+  @ViewChild('previewCanvas') previewCanvas: ElementRef;
   @ViewChild('cropMask') cropMask: ElementRef;
   naturalWidth;
   naturalHeight;
@@ -22,15 +23,13 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
 
   displayOffsetLeft = 0;
   displayOffsetTop = 0;
+  scaleRatio = 1;
+  translateX = 0;
+  translateY = 0;
+  scaleOriginX;
+  scaleOriginY;
 
-  previousOffsetLeft = 0;
-  previousOffsetTop = 0;
-
-  initialOffsetLeft = 0;
-  initialOffsetTop = 0;
-
-  minOffsetLeft = 0;
-  minOffsetTop = 0;
+  displayRatio = 1;
 
   constructor(
     private imageUploadService: ImageUploadService,
@@ -40,19 +39,19 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(hideToolbar());
-    console.log('image', this.imageUploadService.image);
+    // console.log('image', this.imageUploadService.image);
+    // //
+    // const reader = new FileReader();
     //
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      this.imageElement.nativeElement.setAttribute('src', e.target.result);
-
-      console.log('reader', e);
-    };
-
-
+    // reader.onload = (e) => {
+    //   this.imageElement.nativeElement.setAttribute('src', e.target.result);
+    //
+    //   console.log('reader', e);
+    // };
+    //
+    //
+    // // reader.readAsDataURL(this.imageUploadService.image);
     // reader.readAsDataURL(this.imageUploadService.image);
-    reader.readAsDataURL(this.imageUploadService.image);
   }
 
   ngOnDestroy() {
@@ -63,11 +62,8 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
     console.log('onImgLoad', event);
     this.naturalWidth = this.imageElement.nativeElement.naturalWidth;
     this.naturalHeight = this.imageElement.nativeElement.naturalHeight;
-
     this.naturalRatio = this.naturalWidth / this.naturalHeight;
-
     this.calculateInitialSize();
-
   }
 
   calculateInitialSize() {
@@ -86,106 +82,75 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
 
     if (this.displayWidth > 280) {
       this.displayOffsetLeft = -(this.displayWidth - 280) / 2;
-      this.initialOffsetLeft = this.displayOffsetLeft;
-      this.minOffsetLeft = -(this.displayWidth - 280);
-      this.previousOffsetLeft = this.displayOffsetLeft;
-
     }
 
     if (this.displayHeight > 280) {
       this.displayOffsetTop = -(this.displayHeight - 280) / 2;
-      this.initialOffsetTop = this.displayOffsetTop;
-      this.minOffsetTop = -(this.displayHeight - 280);
-      this.previousOffsetTop = this.displayOffsetTop;
-
-    }
-  }
-
-  onTouchstart(e) {
-    // console.log();
-  }
-
-
-  onTouchMove({ diffX, diffY }) {
-    console.log('onTouchMove', { diffX, diffY });
-
-    const resultX = this.previousOffsetLeft + diffX;
-    const resultY = this.previousOffsetTop + diffY;
-
-    if (resultX > 0) {
-      this.displayOffsetLeft = 0;
-    } else if (resultX < this.minOffsetLeft) {
-      this.displayOffsetLeft = this.minOffsetLeft;
-    } else {
-      this.displayOffsetLeft = resultX;
     }
 
-    if (resultY > 0) {
-      this.displayOffsetTop = 0;
-    } else if (resultY < this.minOffsetTop) {
-      this.displayOffsetTop = this.minOffsetTop;
-    } else {
-      this.displayOffsetTop = resultY;
-    }
-
+    this.displayRatio = this.displayWidth/this.naturalWidth;
   }
 
-  onTouchend({ diffX, diffY }) {
-    console.log('onTouchend', { diffX, diffY });
-    const resultX = this.previousOffsetLeft + diffX;
-    const resultY = this.previousOffsetTop + diffY;
-    if (resultX > 0) {
-      this.previousOffsetLeft = 0;
-    } else if (resultX < this.minOffsetLeft) {
-      this.previousOffsetLeft = this.minOffsetLeft;
-    } else {
-      this.previousOffsetLeft = resultX;
-    }
-
-    if (resultY > 0) {
-      this.previousOffsetTop = 0;
-    } else if (resultY < this.minOffsetTop) {
-      this.previousOffsetTop = this.minOffsetTop;
-    } else {
-      this.previousOffsetTop = resultY;
-    }
-
-
-    // this.previousOffsetLeft = diffX;
-    // this.previousOffsetTop = diffY;
+  onResult(e) {
+    this.scaleRatio = e.scaleRatio;
+    this.translateX = e.translateX;
+    this.translateY = e.translateY;
+    this.scaleOriginX = e.scaleOriginX;
+    this.scaleOriginY = e.scaleOriginY;
+    console.log('onResult', e);
   }
 
-  calculate() {
-    let width = this.cropMask.nativeElement.getBoundingClientRect().width;
-    let height = this.cropMask.nativeElement.getBoundingClientRect().height;
+  cutImage() {
+    console.log('this.displayRatio',this.displayRatio);
+    const originalImg = this.imageElement.nativeElement;
+    let styles = window.getComputedStyle(originalImg, null);
+    const transform =  styles.getPropertyValue('transform');
+    const transformOrigin =  styles.getPropertyValue('transform-origin');
 
-    console.log(
-      this.cropMask.nativeElement.getBoundingClientRect()
-    );
 
-    console.log(width, height);
+    const canvas = this.previewCanvas.nativeElement;
+    const ctx = canvas.getContext('2d');
 
-    let offsetWidth = this.cropMask.nativeElement.offsetWidth;
-    let offsetHeight = this.cropMask.nativeElement.offsetHeight;
+    // console.log('this.naturalWidth', this.naturalWidth);
+    // console.log('this.naturalHeight', this.naturalHeight);
+    // console.log('this.scaleRatio', this.scaleRatio);
 
-    // console.log(
-    //   this.cropMask.nativeElement.getBoundingClientRect()
-    // );
+    const sx = Math.abs(this.displayOffsetLeft + this.translateX)/this.displayRatio* (this.scaleRatio )
+    const sy = Math.abs(this.displayOffsetTop + this.translateY) /this.displayRatio* (this.scaleRatio )
+    const options = {
+      // sx : this.naturalWidth -(this.translateX - this.displayOffsetLeft)/this.displayRatio ,
+      // sy : this.naturalHeight -(this.translateY - this.displayOffsetTop) /this.displayRatio,
+      sx : sx ,
+      sy : sy ,
+      // sx : 500,
+      // sy :500,
+      sWidth : 280/this.displayRatio / (this.scaleRatio ),
+      sHeight : 280/this.displayRatio / (this.scaleRatio ),
+      dx : 0,
+      dy : 0,
+      dWidth : 280,
+      dHeight : 280
+    }
 
-    // this.size = Math.min(offsetWidth, offsetHeight) + 'px';
+    console.log('options.', options);
 
-    console.log('offset on load', offsetWidth, offsetHeight);
-  }
+    const image = new Image();
 
-  ngAfterViewInit() {
-    // let width = this.cropMask.nativeElement.offsetWidth;
-    // let height = this.cropMask.nativeElement.offsetHeight;
+    image.width = this.displayWidth;
+    image.height = this.displayHeight;
+    image.style.transform = transform
+    image.style.transformOrigin = transformOrigin
+    image.src = '../../../../assets/images/summer.jpg';
 
-    // console.log(
-    //   this.cropMask.nativeElement.getBoundingClientRect()
-    // );
+    image.onload = () => {
 
-    // console.log('offset', width, height)
+      console.log('img', image);
+
+      ctx.drawImage(image, options.sx, options.sy, options.sWidth, options.sHeight, options.dx, options.dy, options.dWidth, options.dHeight);
+      // ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    };
+
   }
 
 }
