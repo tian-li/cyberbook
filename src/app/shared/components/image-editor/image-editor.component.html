@@ -1,7 +1,11 @@
 <div>
 <!--  <h2>裁剪</h2>-->
   <div class="mat-typography">
-
+    <div>
+      <button mat-raised-button (click)="cutImage()">
+        裁剪
+      </button>
+    </div>
     <div class="cropper-container">
       <div class="cropper-window">
         <img id="image"  class="original-image" draggable="true" #imageElement src="../../../../assets/images/summer.jpg"
@@ -26,11 +30,9 @@
 
   <canvas id="preview" width="280px" height="280px" #previewCanvas></canvas>
 
-  <div>
-    <button mat-raised-button (click)="cutImage()">
-      裁剪
-    </button>
-  </div>
+  <div #imgRes></div>
+
+
 
 
 </div>
