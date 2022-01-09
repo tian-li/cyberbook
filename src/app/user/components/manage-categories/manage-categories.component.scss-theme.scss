@@ -1,36 +1,36 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-manage-categories-component-theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
   .category-list {
-    background: mat-color($background, background);
+    background: mat.get-color-from-palette($background, background);
   }
 
   .delete-button {
-    background: mat-color($background, card);
+    background: mat.get-color-from-palette($background, card);
   }
 
   .draggable-category-item {
-    background: mat-color($background, card);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
 
     .category-icon-background {
-      background: mat-color($background, app-bar);
+      background: mat.get-color-from-palette($background, app-bar);
     }
 
     i.md-drag_handle {
-      color: mat-color($foreground, secondary-text);
+      color: mat.get-color-from-palette($foreground, secondary-text);
     }
   }
 
   .category-name-border {
-    border-bottom: 1px solid mat-color($foreground, divider);
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
   }
 
   .placeholder {
     color: transparent;
-    background: mat-color($background, background);
+    background: mat.get-color-from-palette($background, background);
   }
 }

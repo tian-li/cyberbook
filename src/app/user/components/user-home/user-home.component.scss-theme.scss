@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-user-home-component-theme($theme) {
   $primary: map-get($theme, primary);
@@ -7,31 +7,31 @@
 
   .user-home-container {
     .user-info-overview {
-      background: mat-color($primary);
-      color: mat-color($primary, default-contrast);
+      background: mat.get-color-from-palette($primary);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
 
     .features {
-      border-top: 1px solid mat-color($foreground, divider);
-      border-bottom: 1px solid mat-color($foreground, divider);
+      border-top: 1px solid mat.get-color-from-palette($foreground, divider);
+      border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
 
       .feature {
-        background: mat-color($background, card);
+        background: mat.get-color-from-palette($background, card);
 
         &:not(:last-of-type) {
           .feature-content {
-            border-bottom: 1px solid mat-color($foreground, divider);
+            border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
           }
         }
       }
     }
 
     .about {
-      color: mat-color($foreground, secondary-text);
+      color: mat.get-color-from-palette($foreground, secondary-text);
 
       .github-link {
         mat-icon {
-          color: mat-color($foreground, secondary-text);
+          color: mat.get-color-from-palette($foreground, secondary-text);
         }
       }
     }

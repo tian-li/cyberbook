@@ -1,31 +1,31 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-transaction-item-component-theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
   .transaction-item {
-    background: mat-color($background, card);
+    background: mat.get-color-from-palette($background, card);
 
     .icon {
       .icon-inner-container {
-        background: mat-color($background, app-bar);
+        background: mat.get-color-from-palette($background, app-bar);
       }
     }
 
     .details {
       &:active {
-        background: mat-color($background, hover);
+        background: mat.get-color-from-palette($background, hover);
       }
     }
 
     .divide-line {
-      border-top: 1px solid mat-color($foreground, divider);
+      border-top: 1px solid mat.get-color-from-palette($foreground, divider);
     }
 
     .description {
       .subscription-marker {
-        color: mat-color($foreground, secondary-text);
+        color: mat.get-color-from-palette($foreground, secondary-text);
       }
     }
   }

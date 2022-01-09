@@ -1,12 +1,12 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-theme-selector-component-theme($theme) {
   $primary: map-get($theme, primary);
 
   .theme-container {
     .header {
-      background: mat-color($primary);
-      color: mat-color($primary, default-contrast);
+      background: mat.get-color-from-palette($primary);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
   }
 }

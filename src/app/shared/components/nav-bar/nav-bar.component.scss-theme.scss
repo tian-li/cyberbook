@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-nav-bar-component-theme($theme) {
   $primary: map-get($theme, primary);
@@ -6,15 +6,15 @@
   $background: map-get($theme, background);
 
   .nav-container {
-    background: mat-color($background, app-bar);
-    border-top: 1px solid mat-color($foreground, divider);
+    background: mat.get-color-from-palette($background, app-bar);
+    border-top: 1px solid mat.get-color-from-palette($foreground, divider);
 
     .nav-item {
-      color: mat-color($foreground, secondary-text);
+      color: mat.get-color-from-palette($foreground, secondary-text);
     }
 
     .activated-route {
-      color: mat-color($primary);
+      color: mat.get-color-from-palette($primary);
     }
   }
 }

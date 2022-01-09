@@ -1,16 +1,16 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-category-editor-component-theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
   .category-icon-background, .preview-icon-background {
-    background: mat-color($background, app-bar);
+    background: mat.get-color-from-palette($background, app-bar);
   }
 
   .appearance-selector {
     .selected {
-      border: 2px solid mat-color($foreground, secondary-text);
+      border: 2px solid mat.get-color-from-palette($foreground, secondary-text);
     }
   }
 }

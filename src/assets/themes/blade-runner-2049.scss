@@ -1,6 +1,6 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
-@include mat-core();
+@include mat.core();
 
 $blade-runner-2049-blue: (
   50: #FFFFFF,
@@ -18,20 +18,20 @@ $blade-runner-2049-blue: (
   A400: #FED369,
   A700: #F5C859,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
@@ -51,20 +51,20 @@ $blade-runner-2049-pink: (
   A400: #FFC0A3,
   A700: #FFAE8A,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
@@ -84,36 +84,36 @@ $blade-runner-2049-red: (
   A400: #FFBFC3,
   A700: #FFA6AB,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
   )
 );
 
-$blade-runner-2049-primary: mat-palette($blade-runner-2049-blue);
-$blade-runner-2049-accent: mat-palette($blade-runner-2049-pink);
-$blade-runner-2049-warn: mat-palette($mat-red);
+$blade-runner-2049-primary: mat.define-palette($blade-runner-2049-blue);
+$blade-runner-2049-accent: mat.define-palette($blade-runner-2049-pink);
+$blade-runner-2049-warn: mat.define-palette(mat.$red-palette);
 
-$blade-runner-2049-theme: mat-dark-theme($blade-runner-2049-primary, $blade-runner-2049-accent, $blade-runner-2049-warn);
+$blade-runner-2049-theme: mat.define-dark-theme($blade-runner-2049-primary, $blade-runner-2049-accent, $blade-runner-2049-warn);
 
 
 // Insert custom background color
 $foreground: map-get($blade-runner-2049-theme, foreground);
 
 $contrast-text-color: white;
-$contrast-secondary-text-color: $dark-secondary-text;
-$contrast-dividers-color: $dark-dividers;
+$contrast-secondary-text-color: rgba(black, 0.54);
+$contrast-dividers-color: rgba(black, 0.12);
 
 $foreground: map_merge($foreground, (
   contrast-text: $contrast-text-color,

@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 @mixin app-graph-chart-pie-component-theme($theme) {
   $primary: map-get($theme, primary);
@@ -11,7 +11,7 @@
       align-items: center;
 
       .month-nav-arrow {
-        background: mat-color($foreground, divider);
+        background: mat.get-color-from-palette($foreground, divider);
       }
 
       .month-picker {
