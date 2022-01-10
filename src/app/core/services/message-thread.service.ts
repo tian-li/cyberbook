@@ -14,13 +14,13 @@ export class MessageThreadService {
   }
 
   loadAllMessageThreadsByUser(): Observable<MessageThread[]> {
-    return this.http.get(`${this.messageThreadRoute}`).pipe(
+    return this.http.get<CyberbookServerResponse>(`${this.messageThreadRoute}`).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   loadMessageThreadById(messageThreadId: string): Observable<MessageThread> {
-    return this.http.get(`${this.messageThreadRoute}/${messageThreadId}`).pipe(
+    return this.http.get<CyberbookServerResponse>(`${this.messageThreadRoute}/${messageThreadId}`).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }

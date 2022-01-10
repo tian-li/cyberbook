@@ -6,6 +6,7 @@ import { UploadStatus, UploadRole } from '@cyberbook/shared/constants';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { CyberbookServerResponse } from '../model/cyberbook-server-response';
 
 const allowedImageTypes = ['image/png', 'image/jpeg'];
 
@@ -16,7 +17,7 @@ export class ImageUploadService {
   progress$ = new BehaviorSubject(0);
   status$ = new BehaviorSubject(UploadStatus.NotStarted);
 
-  image: File;
+  image!: File;
 
   constructor(private http: HttpClient, private store: Store) {
     // this.image =
@@ -38,20 +39,20 @@ export class ImageUploadService {
     formData.append('file', image);
     formData.append('role', uploadRole);
 
-    this.http.post(`${this.imageRoute}/upload`, formData, {
+    this.http.post<CyberbookServerResponse>(`${this.imageRoute}/upload`, formData, {
       reportProgress: true,
       observe: 'events'
-    }).subscribe((event: HttpEvent<{ data: string, message: string }>) => {
+    }).subscribe((event: HttpEvent<CyberbookServerResponse>) => {
         switch (event.type) {
           case HttpEventType.Sent:
             this.status$.next(UploadStatus.Started);
             break;
           case HttpEventType.UploadProgress:
             this.status$.next(UploadStatus.InProgress);
-            this.progress$.next(Math.round(event.loaded / event.total * 100));
+            this.progress$.next(Math.round(event.loaded / event.total! * 100));
             break;
           case HttpEventType.Response:
-            this.processUploadResult(event.body.data, uploadRole);
+            this.processUploadResult(event.body!.data, uploadRole);
             this.finishUpload();
             break;
         }

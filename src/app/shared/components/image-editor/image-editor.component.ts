@@ -10,15 +10,15 @@ import { Store } from '@ngrx/store';
 })
 export class ImageEditorComponent implements OnInit, OnDestroy {
 
-  image: File;
+  image!: File;
 
-  @ViewChild('imageElement') imageElement: ElementRef;
-  @ViewChild('previewCanvas') previewCanvas: ElementRef;
-  @ViewChild('cropMask') cropMask: ElementRef;
-  @ViewChild('imgRes') imgRes: ElementRef;
-  naturalWidth;
-  naturalHeight;
-  naturalRatio;
+  @ViewChild('imageElement') imageElement!: ElementRef;
+  @ViewChild('previewCanvas') previewCanvas!: ElementRef;
+  @ViewChild('cropMask') cropMask!: ElementRef;
+  @ViewChild('imgRes') imgRes!: ElementRef;
+  naturalWidth!: number;
+  naturalHeight!: number;
+  naturalRatio!: number;
   displayWidth = 280;
   displayHeight = 280;
 
@@ -59,7 +59,7 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
     this.store.dispatch(showToolbar());
   }
 
-  onImgLoad(event) {
+  onImgLoad(event: any) {
     console.log('onImgLoad', event);
     this.naturalWidth = this.imageElement.nativeElement.naturalWidth;
     this.naturalHeight = this.imageElement.nativeElement.naturalHeight;
@@ -92,7 +92,7 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
     this.displayRatio = this.displayWidth / this.naturalWidth;
   }
 
-  onResult(e) {
+  onResult(e: any) {
     this.scaleRatio = e.scaleRatio;
     this.translateX = e.translateX;
     this.translateY = e.translateY;

@@ -180,8 +180,21 @@
               "devServerTarget": "cyberbook:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
-    }},
-  "defaultProject": "cyberbook"
+    }
+  },
+  "defaultProject": "cyberbook",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

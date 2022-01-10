@@ -30,7 +30,7 @@ export interface State {
 export const initialState: State = {
   user: defaultTempUser,
   isAuthenticated: false,
-  theme: null,
+  theme: null!,
 };
 
 const reducer = createReducer(

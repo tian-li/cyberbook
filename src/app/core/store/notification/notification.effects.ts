@@ -14,7 +14,7 @@ export class NotificationEffects {
         ofType(notifyWithSnackBar),
         debounceTime(200),
         tap(action => {
-            let message = action.snackBar.message;
+            let message = action.snackBar.message!;
 
             if (action.snackBar.prefixIcon !== undefined) {
               message = `${action.snackBar.prefixIcon} ${message}`;

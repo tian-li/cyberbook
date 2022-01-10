@@ -13,8 +13,8 @@ import { SwipeResult } from '@cyberbook/shared/model/helper-models';
   styleUrls: ['./transaction-item.component.scss']
 })
 export class TransactionItemComponent {
-  @Input() transactionVO: TransactionVO;
-  @Input() firstOfDate: boolean;
+  @Input() transactionVO!: TransactionVO;
+  @Input() firstOfDate!: boolean;
 
   constructor(private dialog: MatDialog, private store: Store) {
   }

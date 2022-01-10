@@ -13,8 +13,8 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./feedback.component.scss']
 })
 export class FeedbackComponent implements OnInit {
-  formGroup: FormGroup;
-  userId: string;
+  formGroup!: FormGroup;
+  userId!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +29,7 @@ export class FeedbackComponent implements OnInit {
     });
 
     this.store.pipe(select(fromUser.selectUser), take(1)).subscribe(user => {
-      this.userId = user.id;
+      this.userId = user.id!;
     });
   }
 
@@ -38,7 +38,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   submit() {
-    const message = this.formGroup.get('message').value;
+    const message = this.formGroup.get('message')?.value;
     const privateMessage: Partial<PrivateMessage> = {
       message,
       fromUserId: this.userId

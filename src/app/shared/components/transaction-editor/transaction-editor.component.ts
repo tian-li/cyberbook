@@ -34,11 +34,11 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     { value: 'income', display: '收入' },
   ];
 
-  loading: boolean;
-  title: string;
-  formGroup: FormGroup;
-  categories$: Observable<Category[]>;
-  categoryEntities: Dictionary<Category>;
+  loading!: boolean;
+  title!: string;
+  formGroup!: FormGroup;
+  categories$!: Observable<Category[]>;
+  categoryEntities!: Dictionary<Category>;
 
   selectedCategoryType = this.defaultCategoryType;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
@@ -75,10 +75,10 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: string) {
-    this.selectedCategoryType = type;
+  changeCategoryType(type: string | boolean) {
+    this.selectedCategoryType = <string>type;
     this.categoryTypeControl.setValue(type);
-    this.formGroup.get('categoryId').reset(undefined);
+    this.formGroup.get('categoryId')?.reset(undefined);
   }
 
   cancel() {
@@ -103,7 +103,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
     const formValue = this.formGroup.value;
     let amount = Number.parseFloat(Number.parseFloat(formValue.amount).toFixed(2));
 
-    if (this.categoryEntities[formValue.categoryId].type === 'spend') {
+    if (this.categoryEntities[formValue.categoryId]?.type === 'spend') {
       amount = 0 - amount;
     }
 

@@ -20,11 +20,11 @@ import { take, takeUntil } from 'rxjs/operators';
 })
 export class UserHomeComponent implements OnInit, OnDestroy {
   readonly defaultProfilePhoto = defaultProfilePhoto;
-  user: User;
+  user!: Partial<User>;
   registeredLength = 1;
-  numberOfAllTransactions$: Observable<number>;
-  darkThemeEnabled;
-  @ViewChild('uploader') uploader: ElementRef;
+  numberOfAllTransactions$!: Observable<number>;
+  darkThemeEnabled!: boolean;
+  @ViewChild('uploader') uploader!: ElementRef;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -43,8 +43,7 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     this.store.pipe(
       select(fromUser.selectUser),
       takeUntil(this.unsubscribe$)
-    ).subscribe((user: User) => {
-      console.log('user', user);
+    ).subscribe((user: Partial<User>) => {
       this.user = user;
       this.registeredLength = registeredDays(this.user) + 1;
     });
@@ -128,11 +127,11 @@ export class UserHomeComponent implements OnInit, OnDestroy {
     this.uploader.nativeElement.click();
   }
 
-  resetUploader(event) {
+  resetUploader(event: any) {
     event.target.value = '';
   }
 
-  profileImageSelected(event) {
+  profileImageSelected(event: any) {
     if (event.target.files?.length > 0) {
       this.imageUploadService.image = event.target.files[0]
       // this.router.navigate(['/image-editor']);

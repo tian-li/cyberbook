@@ -6,10 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./type-switcher.component.scss']
 })
 export class TypeSwitcherComponent implements OnInit {
-  @Input() types: { value: string, display: string }[];
-  @Input() selectedType: string;
+  @Input() types!: { value: string | boolean, display: string }[];
+  @Input() selectedType!: string | boolean;
 
-  @Output() typeChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Output() typeChanged: EventEmitter<string | boolean> = new EventEmitter<string | boolean>();
 
   ngOnInit() {
     if (!this.selectedType) {
@@ -17,7 +17,7 @@ export class TypeSwitcherComponent implements OnInit {
     }
   }
 
-  changeType(type: string) {
+  changeType(type: string | boolean) {
     this.selectedType = type;
     this.typeChanged.emit(type);
   }

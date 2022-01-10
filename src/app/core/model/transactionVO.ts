@@ -19,7 +19,7 @@ export class TransactionVO {
   dateCreated: dayjs.Dayjs;
   dateModified: dayjs.Dayjs;
 
-  constructor(props) {
+  constructor(props: any) {
     this.icon = props.icon;
     this.id = props.id;
     this.userId = props.userId;

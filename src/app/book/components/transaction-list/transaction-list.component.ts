@@ -6,7 +6,7 @@ import { TransactionVO } from '@cyberbook/core/model/transactionVO';
   templateUrl: './transaction-list.component.html'
 })
 export class TransactionListComponent {
-  @Input() transactionVOs: TransactionVO[];
+  @Input() transactionVOs!: TransactionVO[];
 
   constructor() {
   }
@@ -16,7 +16,7 @@ export class TransactionListComponent {
       transaction.transactionDate.date() !== this.transactionVOs[index - 1].transactionDate.date();
   }
 
-  trackByFn(index: number, item): number {
+  trackByFn(index: number, item: TransactionVO): string {
     return item.id;
   }
 }

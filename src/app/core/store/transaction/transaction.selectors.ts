@@ -40,11 +40,11 @@ export const selectAllTransactionVOs = createSelector(selectCategoryEntities,
     .map((transaction: Transaction) =>
       new TransactionVO({
         ...transaction,
-        categoryName: categories[transaction.categoryId].name,
-        categoryColor: categories[transaction.categoryId].color,
-        categoryType: categories[transaction.categoryId].type,
+        categoryName: categories[transaction.categoryId]!.name,
+        categoryColor: categories[transaction.categoryId]!.color,
+        categoryType: categories[transaction.categoryId]!.type,
         description: transaction.description,
-        icon: categories[transaction.categoryId].icon
+        icon: categories[transaction.categoryId]!.icon
       })
     )
     // 先按 transactionDate，再按 dateModified，较新的放前面
@@ -78,7 +78,7 @@ export const getTransactionSummaryByDate = (date: string) =>
         spend: 0
       };
       transactionIdsByDate[date].forEach(id => {
-        const transaction = transactionEntities[id];
+        const transaction = transactionEntities[id]!;
         if (transaction.amount > 0) {
           summary.income += transaction.amount;
         } else {

@@ -8,37 +8,63 @@
 
 <div class="subscription-list-container">
   <div class="subscription-list">
-    <div *ngFor="let subscription of allSubscriptions; last as last; index as index; trackBy: trackByFn">
+    <div
+      *ngFor="
+        let subscription of allSubscriptions;
+        last as last;
+        index as index;
+        trackBy: trackByFn
+      "
+    >
       <app-swipeable-item
         [canSwipeRight]="!hasSubscriptionEnded(subscription.endDate)"
         [swipeRightIcon]="'timer_off'"
-        (swipeResult)="onSwipe($event, subscription)">
-        <div class="draggable-subscription-item" (click)="editSubscription(subscription)">
+        (swipeResult)="onSwipe($event, subscription)"
+      >
+        <div
+          class="draggable-subscription-item"
+          (click)="editSubscription(subscription)"
+        >
           <div class="category-icon">
             <div class="category-icon-background">
-              <i class="material-icons-twotone"
-                 [ngClass]="'md-' + categoryEntities[subscription.categoryId].icon"
-                 [ngStyle]="{'color': categoryEntities[subscription.categoryId].color}"
+              <i
+                class="material-icons-twotone"
+                [ngClass]="
+                  'md-' + categoryEntities[subscription.categoryId]?.icon
+                "
+                [ngStyle]="{
+                  color: categoryEntities[subscription.categoryId]?.color
+                }"
               ></i>
             </div>
           </div>
 
-          <div class="subscription-details" [ngClass]="{'subscription-name-border ': !last}">
+          <div
+            class="subscription-details"
+            [ngClass]="{ 'subscription-name-border ': !last }"
+          >
             <div class="description-summary">
               <div>
-                <span>{{getDescriptionDisplay(subscription)}}</span>
-                <span class="tag-ended-subscription" *ngIf="!subscription.activateStatus">已结束</span>
+                <span>{{ getDescriptionDisplay(subscription) }}</span>
+                <span
+                  class="tag-ended-subscription"
+                  *ngIf="!subscription.activateStatus"
+                  >已结束</span
+                >
               </div>
               <div class="quick-overview">
-                {{quickOverview(subscription)}}
+                {{ quickOverview(subscription) }}
               </div>
             </div>
             <div class="amount-info">
-              <div class="amount" [ngStyle]="{ 'color': subscription.amount > 0 ? 'green' : 'red' }">
-                {{subscription.amount.toFixed(2)}}
+              <div
+                class="amount"
+                [ngStyle]="{ color: subscription.amount > 0 ? 'green' : 'red' }"
+              >
+                {{ subscription.amount.toFixed(2) }}
               </div>
               <div class="total-amount">
-                总计：{{subscription.totalAmount.toFixed(2)}}
+                总计：{{ subscription.totalAmount.toFixed(2) }}
               </div>
             </div>
           </div>

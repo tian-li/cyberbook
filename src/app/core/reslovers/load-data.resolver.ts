@@ -17,9 +17,9 @@ export class LoadDataResolver implements Resolve<any> {
   }
 
   resolve() {
-    const token: string = getLocalStorageValueByKey('jwt_token');
+    const token: string = getLocalStorageValueByKey('jwt_token')!;
     if (!!token) {
-      let decoded;
+      let decoded: any;
 
       try {
         decoded = JwtDecode(token);

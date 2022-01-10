@@ -16,12 +16,12 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
   styleUrls: ['./book-header.component.scss']
 })
 export class BookHeaderComponent implements OnInit, OnDestroy {
-  @ViewChild('headerRef') headerRef: ElementRef;
+  @ViewChild('headerRef') headerRef!: ElementRef;
 
-  displayMonth: ISOString;
-  monthSummary: PeriodSummary;
-  dialogRef: MatDialogRef<any>;
-  balance: number;
+  displayMonth!: ISOString;
+  monthSummary!: PeriodSummary;
+  dialogRef!: MatDialogRef<any>;
+  balance!: number;
 
   private unsubscribe$: Subject<void> = new Subject();
 

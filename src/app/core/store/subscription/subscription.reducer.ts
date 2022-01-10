@@ -14,7 +14,7 @@ import {
 export const subscriptionFeatureKey = 'subscription';
 
 export interface State extends EntityState<Subscription> {
-  selectedSubscriptionId: number | string;
+  selectedSubscriptionId: number | string | null;
 }
 
 export const adapter: EntityAdapter<Subscription> = createEntityAdapter<Subscription>({

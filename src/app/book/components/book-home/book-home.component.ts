@@ -16,10 +16,10 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 export class BookHomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly today: dayjs.Dayjs = dayjs();
 
-  @ViewChild(BookHeaderComponent) bookHeaderComponent: BookHeaderComponent;
+  @ViewChild(BookHeaderComponent) bookHeaderComponent!: BookHeaderComponent;
 
-  transactionVOs: TransactionVO[];
-  headerHeight: string;
+  transactionVOs!: TransactionVO[];
+  headerHeight!: string;
 
   private unsubscribe$: Subject<void> = new Subject();
 

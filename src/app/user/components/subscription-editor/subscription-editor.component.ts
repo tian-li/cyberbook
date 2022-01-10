@@ -42,11 +42,11 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   ];
 
   periods: number[] = [];
-  loading: boolean;
-  title: string;
-  formGroup: FormGroup;
-  categories$: Observable<Category[]>;
-  categoryEntities: Dictionary<Category>;
+  loading!: boolean;
+  title!: string;
+  formGroup!: FormGroup;
+  categories$!: Observable<Category[]>;
+  categoryEntities!: Dictionary<Category>;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
 
   private unsubscribe$: Subject<void> = new Subject();
@@ -89,9 +89,9 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: string) {
+  changeCategoryType(type: string | boolean) {
     this.categoryTypeControl.setValue(type);
-    this.formGroup.get('categoryId').reset();
+    this.formGroup.get('categoryId')?.reset();
   }
 
   save() {
@@ -123,18 +123,18 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
 
     let amount = Number.parseFloat(Number.parseFloat(formValue.amount).toFixed(2));
 
-    if (this.categoryEntities[formValue.categoryId].type === 'spend') {
+    if (this.categoryEntities[formValue.categoryId]?.type === 'spend') {
       amount = 0 - amount;
     }
 
     let subscription: Partial<Subscription> = {
       nextDate,
       amount,
-      description: formValue.description ? formValue.description.trim() : null,
+      description: formValue.description ? formValue.description.trim() : undefined,
       frequency: formValue.frequency,
       period: formValue.period,
       startDate: dayjs(formValue.startDate).toISOString(),
-      endDate: formValue.endDate ? dayjs(formValue.endDate).toISOString() : null,
+      endDate: formValue.endDate ? dayjs(formValue.endDate).toISOString() : undefined,
       categoryId: formValue.categoryId,
       dateModified: this.today.toISOString(),
       summary: this.summary
@@ -167,15 +167,15 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   }
 
   get periodControlValue(): number {
-    return this.formGroup.get('period').value;
+    return this.formGroup.get('period')?.value;
   }
 
   get frequencyControlValue(): SubscriptionFrequencyTypes {
-    return this.formGroup.get('frequency').value;
+    return this.formGroup.get('frequency')?.value;
   }
 
   get startDateControlValue(): string | Date {
-    return this.formGroup.get('startDate').value;
+    return this.formGroup.get('startDate')?.value;
   }
 
   get showSummary(): boolean {
@@ -183,7 +183,7 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
   }
 
   get summary(): string {
-    let summary: string;
+    let summary: string = '';
     let periodStr: string | number;
 
     if (this.periodControlValue === 1) {

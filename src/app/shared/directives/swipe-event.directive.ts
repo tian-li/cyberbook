@@ -11,18 +11,18 @@ export class SwipeEventDirective {
   @Output() endSwipe = new EventEmitter<SwipeInfo>();
   @Output() cancelSwipe = new EventEmitter();
 
-  private touchstartTime: number;
+  private touchstartTime!: number;
   private isSwiping = false;
   private percentage = 0;
-  private direction: SwipeDirection;
+  private direction!: SwipeDirection;
 
   // track moving
-  private touchStartX: number;
-  private touchStartY: number;
-  private firstMoveX: number;
-  private firstMoveY: number;
-  private touchEndX: number;
-  private touchEndY: number;
+  private touchStartX!: number;
+  private touchStartY!: number;
+  private firstMoveX!: number;
+  private firstMoveY!: number;
+  private touchEndX!: number;
+  private touchEndY!: number;
 
   @HostListener('touchstart', ['$event'])
   private onTouchStart(event: TouchEvent) {
@@ -116,12 +116,12 @@ export class SwipeEventDirective {
     this.isSwiping = false;
     this.touchstartTime = 0;
     this.percentage = 0;
-    this.direction = undefined;
+    this.direction = undefined!;
     this.touchStartX = 0;
     this.touchStartY = 0;
     this.touchEndX = 0;
     this.touchEndY = 0;
-    this.firstMoveX = undefined;
-    this.firstMoveY = undefined;
+    this.firstMoveX = undefined!;
+    this.firstMoveY = undefined!;
   }
 }

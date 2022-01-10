@@ -17,19 +17,19 @@ export class SubscriptionService {
   }
 
   loadSubscriptionsByUser(): Observable<Subscription[]> {
-    return this.http.get(`${this.subscriptionRoute}`).pipe(
+    return this.http.get<CyberbookServerResponse>(`${this.subscriptionRoute}`).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   addSubscription(subscription: Partial<Subscription>): Observable<Subscription> {
-    return this.http.post(`${this.subscriptionRoute}`, subscription).pipe(
+    return this.http.post<CyberbookServerResponse>(`${this.subscriptionRoute}`, subscription).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   updateSubscription(subscription: Update<Subscription>): Observable<Subscription> {
-    return this.http.put(`${this.subscriptionRoute}/${subscription.id}`, subscription.changes).pipe(
+    return this.http.put<CyberbookServerResponse>(`${this.subscriptionRoute}/${subscription.id}`, subscription.changes).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
@@ -40,7 +40,7 @@ export class SubscriptionService {
       // endDate: dayjs().startOf('day').toISOString(),
       endDate: dayjs().startOf('minute').toISOString(), // test with minute
     };
-    return this.http.post(`${this.subscriptionRoute}/stop/${id}`, changes).pipe(
+    return this.http.post<CyberbookServerResponse>(`${this.subscriptionRoute}/stop/${id}`, changes).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }

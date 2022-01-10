@@ -19,8 +19,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // readonly passwordPattern =
   // new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
 
-  userId: string;
-  form: FormGroup;
+  userId!: string;
+  form!: FormGroup;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       select(fromUser.selectUser),
       takeUntil(this.unsubscribe$)
     ).subscribe((user) => {
-      this.userId = user.id;
+      this.userId = user.id!;
 
       this.form = this.fb.group({
         username: new FormControl(user.username, Validators.required),

@@ -1,29 +1,32 @@
 <div>
-<!--  <h2>裁剪</h2>-->
+  <!--  <h2>裁剪</h2>-->
   <div class="mat-typography">
     <div>
-      <button mat-raised-button (click)="cutImage()">
-        裁剪
-      </button>
+      <button mat-raised-button (click)="cutImage()">裁剪</button>
     </div>
     <div class="cropper-container">
       <div class="cropper-window">
-        <img id="image"  class="original-image" draggable="true" #imageElement src="../../../../assets/images/summer.jpg"
-             alt="图片"
-             [ngStyle]="{
-              'width': displayWidth + 'px',
-              'height': displayHeight + 'px',
-              'left': displayOffsetLeft + 'px',
-              'top': displayOffsetTop + 'px'
-             }"
-             (load)="onImgLoad($event)"
-             cbkTouchDragEvent
-             [initialWidth] = displayWidth
-             [initialHeight] = displayHeight
-             [initialLeft] = displayOffsetLeft
-             [initialTop] = displayOffsetTop
-             (result)="onResult($event)"
-        >
+        <img
+          id="image"
+          class="original-image"
+          draggable="true"
+          #imageElement
+          src="../../../../assets/images/summer.jpg"
+          alt="图片"
+          [ngStyle]="{
+            width: displayWidth + 'px',
+            height: displayHeight + 'px',
+            left: displayOffsetLeft + 'px',
+            top: displayOffsetTop + 'px'
+          }"
+          (load)="onImgLoad($event)"
+          appTouchDragEvent
+          [initialWidth]="displayWidth"
+          [initialHeight]="displayHeight"
+          [initialLeft]="displayOffsetLeft"
+          [initialTop]="displayOffsetTop"
+          (dragResult)="onResult($event)"
+        />
       </div>
     </div>
   </div>
@@ -31,10 +34,4 @@
   <canvas id="preview" width="280px" height="280px" #previewCanvas></canvas>
 
   <div #imgRes></div>
-
-
-
-
 </div>
-
-

@@ -12,7 +12,7 @@ export class YearMonthPickerComponent implements OnInit {
   readonly allowedYears = years;
   readonly allMonths = months;
 
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
   constructor(
     private dialogRef: MatDialogRef<YearMonthPickerComponent>,

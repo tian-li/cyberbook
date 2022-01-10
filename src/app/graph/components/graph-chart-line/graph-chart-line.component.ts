@@ -46,16 +46,16 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
     { value: 'income', display: '收入' },
   ];
 
-  @ViewChild('myChart', { static: false }) myChart: ElementRef;
+  @ViewChild('myChart', { static: false }) myChart!: ElementRef;
   startDate = this.today.subtract(4, 'month').date(1);
   endDate = this.today.endOf('month');
   selectedTransactionType: string = TransactionTypes.both;
   dateAxisFormat = DateFormats.month;
-  transactionVOs: TransactionVO[];
+  transactionVOs!: TransactionVO[];
 
-  private lineChart: Chart;
+  private lineChart!: Chart;
   private dateAxisScale = DateAxisScales.month;
-  private dialogRef: MatDialogRef<DateRangePickerComponent>;
+  private dialogRef!: MatDialogRef<DateRangePickerComponent>;
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store, private dialog: MatDialog) {
@@ -108,10 +108,10 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
     });
   }
 
-  changeTransactionType(type: string) {
-    this.selectedTransactionType = type;
-    this.lineChart.data.datasets.forEach((dataset: ChartDataSets) => {
-      let lineColor;
+  changeTransactionType(type: string | boolean) {
+    this.selectedTransactionType = <string>type;
+    this.lineChart.data.datasets!.forEach((dataset: ChartDataSets) => {
+      let lineColor: string;
       switch (type) {
         case TransactionTypes.spend:
           lineColor = dataset.label === '花费' ? this.spendColor : 'transparent';
@@ -123,7 +123,7 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
           lineColor = dataset.label === '收入' ? this.incomeColor : this.spendColor;
           break;
         default:
-          lineColor = dataset.borderColor;
+          lineColor = <string>dataset.borderColor!;
       }
       dataset.borderColor = lineColor;
       dataset.pointBackgroundColor = lineColor;
@@ -132,8 +132,8 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   updateChartData(chartData: ChartData) {
-    this.lineChart.data.labels = [...chartData.labels];
-    this.lineChart.data.datasets = [...chartData.datasets];
+    this.lineChart.data.labels = [...chartData.labels!];
+    this.lineChart.data.datasets = [...chartData.datasets!];
     this.lineChart.update();
   }
 
@@ -168,8 +168,8 @@ export class GraphChartLineComponent implements OnInit, AfterViewInit, OnDestroy
 
     Object.keys(periodSummaries)
     .forEach((month) => {
-      spendSet.data.push(periodSummaries[month].spend);
-      incomeSet.data.push(periodSummaries[month].income);
+      spendSet.data!.push(periodSummaries[month].spend);
+      incomeSet.data!.push(periodSummaries[month].income);
       labels.push(month);
     });
 

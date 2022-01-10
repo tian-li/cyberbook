@@ -15,7 +15,7 @@ import {
 export const categoryFeatureKey = 'category';
 
 export interface State extends EntityState<Category> {
-  selectedCategoryId: string | number;
+  selectedCategoryId: string | number | null;
 }
 
 export const adapter: EntityAdapter<Category> = createEntityAdapter<Category>({

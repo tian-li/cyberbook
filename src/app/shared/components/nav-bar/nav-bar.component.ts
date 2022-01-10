@@ -24,10 +24,10 @@ import { take, takeUntil } from 'rxjs/operators';
   ]
 })
 export class NavBarComponent implements OnInit, OnDestroy {
-  user: Partial<User>;
+  user!: Partial<User>;
   addButtonAnimateState = 'closed';
 
-  showToolbar$: Observable<boolean>;
+  showToolbar$!: Observable<boolean>;
 
   private unsubscribe$ = new Subject();
 

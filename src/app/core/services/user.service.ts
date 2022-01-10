@@ -14,19 +14,19 @@ export class UserService {
   }
 
   loginWithToken(): Observable<User> {
-    return this.http.post(`${this.userRoute}/login-with-token`, {}).pipe(
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/login-with-token`, {}).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post(`${this.userRoute}/login`, { email, password }).pipe(
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/login`, { email, password }).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   register(user: Partial<User>, password: string): Observable<User> {
-    return this.http.post(`${this.userRoute}/register`, {
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/register`, {
       ...user,
       password,
     }).pipe(
@@ -35,13 +35,13 @@ export class UserService {
   }
 
   registerTempUser(): Observable<User> {
-    return this.http.post(`${this.userRoute}/register-temp-user`, {}).pipe(
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/register-temp-user`, {}).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   saveTempUser(user: Partial<User>, password: string): Observable<User> {
-    return this.http.post(`${this.userRoute}/save-temp-user`, {
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/save-temp-user`, {
       ...user,
       password,
     }).pipe(
@@ -50,16 +50,16 @@ export class UserService {
   }
 
   updateProfile(user: Partial<User>): Observable<User> {
-    return this.http.put(`${this.userRoute}/update-profile`, user).pipe(
+    return this.http.put<CyberbookServerResponse>(`${this.userRoute}/update-profile`, user).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   setTheme(theme: string): Observable<any> {
-    return this.http.post(`${this.userRoute}/set-theme`, theme);
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/set-theme`, theme);
   }
 
   giveFeedback(feedbackInfo: { contact: string, feedback: string }): Observable<any> {
-    return this.http.post(`${this.userRoute}/give-feedback`, feedbackInfo);
+    return this.http.post<CyberbookServerResponse>(`${this.userRoute}/give-feedback`, feedbackInfo);
   }
 }

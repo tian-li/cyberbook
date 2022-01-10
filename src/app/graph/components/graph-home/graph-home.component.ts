@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class GraphHomeComponent {
   chartType = 'line';
 
-  chartTypeChanged(chartType) {
+  chartTypeChanged(chartType: string) {
     this.chartType = chartType;
   }
 }

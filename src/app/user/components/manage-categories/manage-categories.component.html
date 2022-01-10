@@ -13,29 +13,48 @@
 ></app-nav-header>
 
 <div class="category-list-container">
-  <div class="category-list" #list
-       cdkDropList
-       [cdkDropListData]="sortingContainerData"
-       (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let category of sortingContainerData; last as last; index as index; trackBy: trackByFn"
-         cdkDrag cdkDragLockAxis="y"
-         [cdkDragDisabled]="!sortingMode"
-         [cdkDragPreviewClass]="theme$ | async">
-      <app-swipeable-item (swipeResult)="delete($event, index)" [swipeableItemDisabled]="sortingMode">
+  <div
+    class="category-list"
+    #list
+    cdkDropList
+    [cdkDropListData]="sortingContainerData"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      *ngFor="
+        let category of sortingContainerData;
+        last as last;
+        index as index;
+        trackBy: trackByFn
+      "
+      cdkDrag
+      cdkDragLockAxis="y"
+      [cdkDragDisabled]="!sortingMode"
+      [cdkDragPreviewClass]="(theme$ | async)!"
+    >
+      <app-swipeable-item
+        (swipeResult)="delete($event, index)"
+        [swipeableItemDisabled]="sortingMode"
+      >
         <div class="draggable-category-item" (click)="editCategory(category)">
           <div class="category-icon">
             <div class="category-icon-background">
-              <i class="material-icons-twotone"
-                 [ngClass]="'md-' + category.icon"
-                 [ngStyle]="{'color': category.color}"
+              <i
+                class="material-icons-twotone"
+                [ngClass]="'md-' + category.icon"
+                [ngStyle]="{ color: category.color }"
               ></i>
             </div>
-
           </div>
-          <div class="category-name" [ngClass]="{'category-name-border ': !last}">
-            <span>{{category.name}}</span>
-            <i class="material-icons md-drag_handle" cdkDragHandle
-               [@toggleDragHandle]="sortingMode"
+          <div
+            class="category-name"
+            [ngClass]="{ 'category-name-border ': !last }"
+          >
+            <span>{{ category.name }}</span>
+            <i
+              class="material-icons md-drag_handle"
+              cdkDragHandle
+              [@toggleDragHandle]="sortingMode"
             ></i>
           </div>
         </div>

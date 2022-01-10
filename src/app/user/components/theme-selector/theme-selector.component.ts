@@ -57,8 +57,8 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
     },
   ];
 
-  previousTheme: string;
-  selectedTheme: string;
+  previousTheme!: string;
+  selectedTheme!: string;
 
   constructor(
     private store: Store,
@@ -76,8 +76,8 @@ export class ThemeSelectorComponent implements OnInit, OnDestroy {
       filter(theme => !!theme),
       take(1)
     ).subscribe(theme => {
-      this.previousTheme = theme;
-      this.selectedTheme = theme;
+      this.previousTheme = theme!;
+      this.selectedTheme = theme!;
     });
   }
 
