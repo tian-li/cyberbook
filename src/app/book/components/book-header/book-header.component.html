@@ -1,53 +1,47 @@
 <div appPreventScroll class="book-header" #headerRef>
   <div class="tool-bar">
     <div class="chart">
-      <i class="material-icons md-timeline" style="opacity: 0;"></i>
+      <i class="material-icons md-timeline" style="opacity: 0"></i>
     </div>
 
     <div class="month">
-      <i class="material-icons md-play_arrow"
-         style="transform: rotate(180deg);"
-         (click)="previousMonth()"
+      <i
+        class="material-icons md-play_arrow"
+        style="transform: rotate(180deg)"
+        (click)="previousMonth()"
       ></i>
 
-      <span (click)="changeMonth()">{{displayMonth | date:'yyyy年MM月'}}</span>
+      <span (click)="changeMonth()">{{
+        displayMonth | date: "yyyy年MM月"
+      }}</span>
 
-      <i class="material-icons md-play_arrow"
-         (click)="nextMonth()"
-      ></i>
+      <i class="material-icons md-play_arrow" (click)="nextMonth()"></i>
     </div>
 
     <div class="search" (click)="search()">
       <i class="material-icons md-search"></i>
     </div>
-
   </div>
 
   <div class="monthly-spend">
-    <div class="label">
-      支出
-    </div>
+    <div class="label">支出</div>
     <div class="spend-amount">
-      <span>{{monthSummary?.spend.toFixed(2)}}</span>
+      <span>{{ monthSummary?.spend?.toFixed(2) }}</span>
     </div>
   </div>
 
   <div class="monthly-overview">
     <div class="overview income">
-      <div class="label">
-        收入
-      </div>
+      <div class="label">收入</div>
       <div class="amount">
-        <span>{{monthSummary?.income.toFixed(2)}}</span>
+        <span>{{ monthSummary?.income?.toFixed(2) }}</span>
       </div>
     </div>
 
     <div class="overview balance">
-      <div class="label">
-        结余
-      </div>
+      <div class="label">结余</div>
       <div class="amount">
-        <span>{{balance.toFixed(2)}}</span>
+        <span>{{ balance.toFixed(2) }}</span>
       </div>
     </div>
   </div>
@@ -58,4 +52,3 @@
     <div class="header-bg-img"></div>
   </div>
 </div>
-

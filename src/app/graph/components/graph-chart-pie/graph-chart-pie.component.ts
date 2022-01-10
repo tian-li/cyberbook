@@ -23,18 +23,18 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     { value: 'income', display: '收入' },
   ];
 
-  @ViewChild('myChart', { static: false }) myChart: ElementRef;
-  transactionVOs: TransactionVO[];
-  displayMonth: ISOString;
+  @ViewChild('myChart', { static: false }) myChart!: ElementRef;
+  transactionVOs!: TransactionVO[];
+  displayMonth!: ISOString;
   selectedTransactionType: string = TransactionTypes.spend;
   pieChartData: ChartData = {
     datasets: [],
     labels: []
   };
-  pieChart: Chart;
-  spendTransactionVOs: TransactionVO[];
-  incomeTransactionVOs: TransactionVO[];
-  dialogRef: MatDialogRef<any>;
+  pieChart!: Chart;
+  spendTransactionVOs!: TransactionVO[];
+  incomeTransactionVOs!: TransactionVO[];
+  dialogRef!: MatDialogRef<any>;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -47,7 +47,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       tap(displayMonth => this.displayMonth = displayMonth),
       switchMap((displayMonth: ISOString) =>
         this.store.pipe(
-          select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) })
+          select(fromTransaction.selectAllTransactionVOsByYearMonth(new Date(displayMonth)))
         )
       ),
       takeUntil(this.unsubscribe$)
@@ -99,10 +99,10 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
     });
   }
 
-  changeTransactionType(type: string) {
-    this.selectedTransactionType = type;
+  changeTransactionType(type: string | boolean) {
+    this.selectedTransactionType = <string>type;
 
-    this.updateChart(this.createChartData(type));
+    this.updateChart(this.createChartData(<string>type));
   }
 
   private createChartData(transactionType: string): ChartData {
@@ -152,10 +152,10 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   private updateChart(chartData: ChartData) {
-    this.pieChart.data.labels = [...chartData.labels];
-    this.pieChart.data.datasets.forEach((dataset) => {
-      dataset.data = chartData.datasets[0].data;
-      dataset.backgroundColor = chartData.datasets[0].backgroundColor;
+    this.pieChart.data.labels = [...chartData.labels!];
+    this.pieChart.data.datasets?.forEach((dataset) => {
+      dataset.data = chartData.datasets![0].data;
+      dataset.backgroundColor = chartData.datasets![0].backgroundColor;
     });
 
     this.pieChart.update();

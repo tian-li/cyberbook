@@ -1,22 +1,32 @@
 <div class="user-home-container">
   <div class="user-info-overview">
     <div class="profile-photo" (click)="changeProfilePhoto()">
-      <img [src]="(user.profilePhoto | imageUrl:user.id:defaultProfilePhoto)" alt="profile photo">
+      <img
+        [src]="user.profilePhoto! | imageUrl: user.id!:defaultProfilePhoto"
+        alt="profile photo"
+      />
       <!--      TODO: upload progress circle-->
       <!--      <div class="upload-progress">-->
       <!--        <i class="material-icons md-done"></i>-->
       <!--      </div>-->
     </div>
 
-    <input #uploader style="display: none" type="file" accept="image/x-png,image/jpeg"
-           (change)="profileImageSelected($event)"
-           (click)="resetUploader($event)"
-    >
+    <input
+      #uploader
+      style="display: none"
+      type="file"
+      accept="image/x-png,image/jpeg"
+      (change)="profileImageSelected($event)"
+      (click)="resetUploader($event)"
+    />
 
     <div class="user-info" (click)="gotoAccountDetail()">
       <div class="user-name">
-        <div>{{user.username}}</div>
-        <i class="material-icons md-create edit-icon" *ngIf="user.registered"></i>
+        <div>{{ user.username }}</div>
+        <i
+          class="material-icons md-create edit-icon"
+          *ngIf="user.registered"
+        ></i>
         <div class="proceed-register" *ngIf="!user.registered">
           <div class="proceed-register-text">立即注册</div>
           <i class="material-icons md-keyboard_arrow_right proceed-icon"></i>
@@ -24,7 +34,10 @@
       </div>
 
       <div class="statistics">
-        <div>开始记账第 {{registeredLength}} 天，共 {{numberOfAllTransactions$|async}} 笔</div>
+        <div>
+          开始记账第 {{ registeredLength }} 天，共
+          {{ numberOfAllTransactions$ | async }} 笔
+        </div>
       </div>
     </div>
 
@@ -46,10 +59,10 @@
       <div class="feature">
         <i class="material-icons-outlined md-category feature-icon"></i>
         <div class="feature-content">
-          <div class="feature-text" (click)="manageCategories()">
-            管理分类
-          </div>
-          <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+          <div class="feature-text" (click)="manageCategories()">管理分类</div>
+          <i
+            class="material-icons md-keyboard_arrow_right feature-proceeding-action"
+          ></i>
         </div>
       </div>
 
@@ -59,17 +72,19 @@
           <div class="feature-text" (click)="subscriptionManagement()">
             周期性账目
           </div>
-          <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+          <i
+            class="material-icons md-keyboard_arrow_right feature-proceeding-action"
+          ></i>
         </div>
       </div>
 
       <div class="feature">
         <i class="material-icons-outlined md-palette feature-icon"></i>
         <div class="feature-content">
-          <div class="feature-text" (click)="selectTheme()">
-            选择主题
-          </div>
-          <i class="material-icons md-keyboard_arrow_right feature-proceeding-action"></i>
+          <div class="feature-text" (click)="selectTheme()">选择主题</div>
+          <i
+            class="material-icons md-keyboard_arrow_right feature-proceeding-action"
+          ></i>
         </div>
       </div>
     </div>
@@ -78,9 +93,7 @@
       <div class="feature">
         <i class="material-icons-outlined md-email feature-icon"></i>
         <div class="feature-content">
-          <div class="feature-text" (click)="openFeedbackForm()">
-            反馈意见
-          </div>
+          <div class="feature-text" (click)="openFeedbackForm()">反馈意见</div>
         </div>
       </div>
     </div>
@@ -89,18 +102,18 @@
       <div class="feature" (click)="logout()">
         <i class="material-icons md-log_out feature-icon"></i>
         <div class="feature-content">
-          <div class="feature-text">
-            退出登录
-          </div>
+          <div class="feature-text">退出登录</div>
         </div>
       </div>
     </div>
 
     <div class="about">
-      <div class="version">
-        version: 0.2.5
-      </div>
-      <a class="github-link" href="https://github.com/tian-li/cyberbook" target="_blank">
+      <div class="version">version: 0.2.5</div>
+      <a
+        class="github-link"
+        href="https://github.com/tian-li/cyberbook"
+        target="_blank"
+      >
         <mat-icon svgIcon="github"></mat-icon>
       </a>
     </div>

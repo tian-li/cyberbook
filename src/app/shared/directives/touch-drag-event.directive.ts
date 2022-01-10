@@ -1,19 +1,19 @@
 import { Directive, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 
 @Directive({
-  selector: '[cbkTouchDragEvent]'
+  selector: '[appTouchDragEvent]'
 })
 export class TouchDragEventDirective {
 
   @Input() maxScale: number = 5;
   @Input() minScale: number = 1;
 
-  @Input() initialWidth: number;
-  @Input() initialHeight: number;
-  @Input() initialLeft: number;
-  @Input() initialTop: number;
+  @Input() initialWidth!: number;
+  @Input() initialHeight!: number;
+  @Input() initialLeft!: number;
+  @Input() initialTop!: number;
 
-  @Output() result = new EventEmitter();
+  @Output() dragResult = new EventEmitter();
 
   translateXLeftLimit: number = 0;
   translateYUpperLimit: number = 0;
@@ -29,14 +29,14 @@ export class TouchDragEventDirective {
     x: 0,
     y: 0
   };
-  preTouchesClientx1y1x2y2 = [];
+  preTouchesClientx1y1x2y2!: [number, number, number, number];
   originHaveSet = false;
 
   constructor(private img: ElementRef) {
   }
 
   @HostListener('touchstart', ['$event'])
-  onTouchstart(e) {
+  onTouchstart(e: any) {
     let touches = e.touches;
     if (touches.length > 1) {
       let one = touches['0'];
@@ -48,7 +48,7 @@ export class TouchDragEventDirective {
   };
 
   @HostListener('touchmove', ['$event'])
-  onTouchmove(e) {
+  onTouchmove(e: any) {
     let touches = e.touches;
     if (touches.length === 1) {
       let oneTouch = touches['0'];
@@ -65,7 +65,7 @@ export class TouchDragEventDirective {
       let one = touches['0'];
       let two = touches['1'];
 
-      this.scaleRatio = this.distance(one.clientX, one.clientY, two.clientX, two.clientY) / this.distance(...this.preTouchesClientx1y1x2y2) * this.scaleRatio || 1;
+      this.scaleRatio = this.distance(one.clientX, one.clientY, two.clientX, two.clientY) / this.distance(...this.preTouchesClientx1y1x2y2!) * this.scaleRatio || 1;
       if (this.scaleRatio > this.maxScale) {
         this.scaleRatio = this.maxScale;
       }
@@ -94,14 +94,14 @@ export class TouchDragEventDirective {
 
   // 触摸点离开时更新最后位置
   @HostListener('touchend', ['$event'])
-  onTouchend(e) {
+  onTouchend(e: TouchEvent) {
     let touches = e.touches;
     if (touches.length === 1) {
       this.recordPreTouchPosition(touches['0']);
     }
 
 
-    this.result.emit({
+    this.dragResult.emit({
       scaleRatio: this.scaleRatio,
       translateX: this.translateX,
       translateY: this.translateY,
@@ -115,7 +115,7 @@ export class TouchDragEventDirective {
   }
 
   @HostListener('touchcancel', ['$event'])
-  ontouchcancel(e) {
+  ontouchcancel(e: TouchEvent) {
     let touches = e.touches;
     if (touches.length === 1) {
       this.recordPreTouchPosition(touches['0']);
@@ -142,12 +142,12 @@ export class TouchDragEventDirective {
     }
   }
 
-  getStyle(target, style) {
+  getStyle(target: Element, style: string) {
     let styles = window.getComputedStyle(target, null);
     return styles.getPropertyValue(style);
   }
 
-  getTranslate(target) {
+  getTranslate(target: Element) {
     let matrix = this.getStyle(target, 'transform');
     let nums = matrix.substring(7, matrix.length - 1).split(', ');
     let left = parseInt(nums[4]) || 0;
@@ -158,14 +158,14 @@ export class TouchDragEventDirective {
     };
   }
 
-  recordPreTouchPosition(touch) {
+  recordPreTouchPosition(touch: any) {
     this.preTouchPosition = {
       x: touch.clientX,
       y: touch.clientY
     };
   }
 
-  relativeCoordinate(x, y, rect) {
+  relativeCoordinate(x: number, y: number, rect: {left: number, top: number}) {
     let cx = (x - rect.left) / this.scaleRatio;
     let cy = (y - rect.top) / this.scaleRatio;
     return {
@@ -174,11 +174,11 @@ export class TouchDragEventDirective {
     };
   }
 
-  setStyle(key, value) {
+  setStyle(key: string, value: string | number) {
     this.img.nativeElement.style[key] = value;
   }
 
-  distance(x1?, y1?, x2?, y2?) {
+  distance(x1: number, y1: number, x2: number, y2: number) {
     let a = x1 - x2;
     let b = y1 - y2;
     return Math.sqrt(a * a + b * b);

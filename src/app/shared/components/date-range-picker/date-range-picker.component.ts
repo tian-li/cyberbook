@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as dayjs from 'dayjs';
@@ -10,7 +10,7 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./date-range-picker.component.scss']
 })
 export class DateRangePickerComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
   matcher = new MyErrorStateMatcher();
   readonly inValidRange = 'inValidRange';
 
@@ -33,7 +33,7 @@ export class DateRangePickerComponent implements OnInit {
     }, { validators: this.rangeValidator });
   }
 
-  rangeValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+  rangeValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const startDate = control.get('startDate');
     const endDate = control.get('endDate');
 
@@ -53,6 +53,6 @@ export class DateRangePickerComponent implements OnInit {
 
 class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return form && form.invalid;
+    return (form && form.invalid)!;
   }
 }

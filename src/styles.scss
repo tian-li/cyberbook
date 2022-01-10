@@ -1,4 +1,5 @@
 // icons
+@use '@angular/material' as mat;
 @import url('assets/fonts/material-icons/baseline.css');
 @import url('assets/fonts/material-icons/outline.css');
 @import url('assets/fonts/material-icons/twotone.css');
@@ -13,7 +14,7 @@
 @import 'assets/themes/cyberpunk-2077';
 @import 'assets/themes/blade-runner-2049';
 
-@include mat-core();
+@include mat.core();
 
 // theme components
 // book
@@ -60,7 +61,7 @@
 }
 
 .cyberpunk-2077-theme {
-  @include angular-material-theme($cyberpunk-2077-theme);
+  @include mat.all-component-themes($cyberpunk-2077-theme);
   @include custom-components-theme($cyberpunk-2077-theme);
 
   .theme-header-bg {
@@ -103,27 +104,27 @@
 }
 
 .blade-runner-2049-theme {
-  @include angular-material-theme($blade-runner-2049-theme);
+  @include mat.all-component-themes($blade-runner-2049-theme);
   @include custom-components-theme($blade-runner-2049-theme);
 }
 
 .seasons-spring-theme {
-  @include angular-material-theme($seasons-spring-theme);
+  @include mat.all-component-themes($seasons-spring-theme);
   @include custom-components-theme($seasons-spring-theme);
 }
 
 .seasons-summer-theme {
-  @include angular-material-theme($seasons-summer-theme);
+  @include mat.all-component-themes($seasons-summer-theme);
   @include custom-components-theme($seasons-summer-theme);
 }
 
 .seasons-autumn-theme {
-  @include angular-material-theme($seasons-autumn-theme);
+  @include mat.all-component-themes($seasons-autumn-theme);
   @include custom-components-theme($seasons-autumn-theme);
 }
 
 .seasons-winter-theme {
-  @include angular-material-theme($seasons-winter-theme);
+  @include mat.all-component-themes($seasons-winter-theme);
   @include custom-components-theme($seasons-winter-theme);
 }
 

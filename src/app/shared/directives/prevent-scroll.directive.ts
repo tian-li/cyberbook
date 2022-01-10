@@ -5,7 +5,7 @@ import { Directive, HostListener } from '@angular/core';
 })
 export class PreventScrollDirective {
   @HostListener('touchmove', ['$event'])
-  onTouchMove(event) {
+  onTouchMove(event: TouchEvent) {
     event.preventDefault();
   }
 }

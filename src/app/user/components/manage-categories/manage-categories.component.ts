@@ -46,12 +46,12 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     { value: 'income', display: '收入' },
   ];
 
-  @ViewChild('list') list: ElementRef;
+  @ViewChild('list') list!: ElementRef;
 
   loading = false;
 
-  categories: Category[];
-  sortingContainerData: Category[];
+  categories!: Category[];
+  sortingContainerData!: Category[];
   selectedCategoryType = this.defaultCategoryType;
   categoryTypeControl = new FormControl(this.defaultCategoryType);
   sortingMode = false;
@@ -69,7 +69,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     types: this.categoryTypes
   };
 
-  theme$: Observable<string>;
+  theme$!: Observable<string | null>;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -105,7 +105,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
-      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))),
+      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType(type)))),
       debounceTime(200),
       takeUntil(this.unsubscribe$)
     ).subscribe(categories => {
@@ -121,8 +121,8 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  changeCategoryType(type: string) {
-    this.selectedCategoryType = type;
+  changeCategoryType(type: string | boolean) {
+    this.selectedCategoryType = <string>type;
     this.categoryTypeControl.setValue(type);
   }
 
@@ -156,12 +156,12 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     this.disableDragging();
   }
 
-  drop(event) {
+  drop(event: any) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 
   // delete category
-  delete(swipeResult: SwipeResult, index) {
+  delete(swipeResult: SwipeResult, index: number) {
     if (!swipeResult.result) {
       return;
     }
@@ -173,7 +173,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     });
   }
 
-  trackByFn(index: number, item): number {
+  trackByFn(index: number, item: Category): string {
     return item.id;
   }
 
@@ -212,7 +212,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
   }
 
   private getCategoriesNeedToUpdate(updatedCategories: Category[]): Category[] {
-    return updatedCategories.reduce((result, category, index) => {
+    return updatedCategories.reduce((result: Category[], category: Category, index: number) => {
       if (this.categories[index].name !== category.name) {
         result.push({ ...category, sortOrder: index });
       }
@@ -237,7 +237,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     );
   }
 
-  private doDelete(index) {
+  private doDelete(index: number) {
     this.sortingContainerData.splice(index, 1);
     const categoriesToUpdate: Category[] = [];
 
@@ -268,9 +268,9 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
     }).afterClosed().pipe(map(response => false));
   }
 
-  private getTransactionCountOfCategory(category): Observable<number> {
+  private getTransactionCountOfCategory(category: Category): Observable<number> {
     return this.store.pipe(
-      select(fromTransaction.getTransactionCountByCategoryId, { categoryId: category.id }),
+      select(fromTransaction.getTransactionCountByCategoryId(category.id)),
       take(1)
     );
   }

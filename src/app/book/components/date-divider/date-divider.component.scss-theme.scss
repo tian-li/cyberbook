@@ -1,14 +1,14 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 @mixin app-date-divider-component-theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
   .date-divider {
-    background: mat-color($background, background);
-    color: mat-color($foreground, secondary-text);;
-    border-bottom: 1px solid mat-color($foreground, divider);
-    border-top: 1px solid mat-color($foreground, divider);
+    background: mat.get-color-from-palette($background, background);
+    color: mat.get-color-from-palette($foreground, secondary-text);;
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
+    border-top: 1px solid mat.get-color-from-palette($foreground, divider);
   }
 
 }

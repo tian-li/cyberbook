@@ -18,6 +18,6 @@ export interface User {
 
 export const defaultProfilePhoto = './assets/images/profile-photo.png';
 
-export function registeredDays(user: User): number {
+export function registeredDays(user: User | Partial<User>): number {
   return dayjs().diff(dayjs(user.dateRegistered), 'day');
 }

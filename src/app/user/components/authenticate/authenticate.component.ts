@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -47,8 +48,8 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   // TODO: readonly passwordPattern =
   //  new RegExp(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?\/~_+-=|]).{8,32}$/);
   matcher = new MyErrorStateMatcher();
-  userId;
-  form: FormGroup;
+  userId!: string;
+  form!: FormGroup;
   registerMode = true;
 
   slideDownState = 'up';
@@ -62,7 +63,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
     this.route.data.subscribe(data => {
-      this.registerMode = data.registerMode;
+      this.registerMode = data['registerMode'];
       if(this.registerMode) {
         this.animateToRegisterMode();
       } else {
@@ -78,7 +79,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
       select(fromUser.selectUser),
       take(1),
     ).subscribe((user) => {
-      this.userId = user.id;
+      this.userId = user.id!;
 
       this.form = this.fb.group({
         username: new FormControl({
@@ -124,12 +125,12 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   toggleRegisterMode() {
     this.registerMode = !this.registerMode;
     if (this.registerMode) {
-      this.form.controls.username.enable();
-      this.form.controls.confirmPassword.enable();
+      this.form.controls['username'].enable();
+      this.form.controls['confirmPassword'].enable();
       this.animateToRegisterMode();
     } else {
-      this.form.controls.username.disable();
-      this.form.controls.confirmPassword.disable();
+      this.form.controls['username'].disable();
+      this.form.controls['confirmPassword'].disable();
       this.animateToLoginMode();
     }
   }
@@ -150,7 +151,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     this.fadeState = 'hide';
   }
 
-  private isPasswordMatch: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+  private isPasswordMatch: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     if (!this.registerMode) {
       return null;
     }
@@ -165,6 +166,6 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
 
 class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return control && control.touched && form && (form.hasError(passwordNotMatch) || control.hasError('required'));
+    return (control && control.touched && form && (form.hasError(passwordNotMatch) || control.hasError('required')))!;
   }
 }

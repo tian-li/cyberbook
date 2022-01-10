@@ -31,5 +31,6 @@ export class AutoLoginGuard implements CanActivate {
       }
       return of(true);
     }
+    return of(false);
   }
 }

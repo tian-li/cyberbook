@@ -16,12 +16,12 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
   styleUrls: ['./book-header.component.scss']
 })
 export class BookHeaderComponent implements OnInit, OnDestroy {
-  @ViewChild('headerRef') headerRef: ElementRef;
+  @ViewChild('headerRef') headerRef!: ElementRef;
 
-  displayMonth: ISOString;
-  monthSummary: PeriodSummary;
-  dialogRef: MatDialogRef<any>;
-  balance: number;
+  displayMonth!: ISOString;
+  monthSummary!: PeriodSummary;
+  dialogRef!: MatDialogRef<any>;
+  balance!: number;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -33,7 +33,7 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
       select(fromUI.selectDisplayMonth),
       tap(displayMonth => this.displayMonth = displayMonth),
       switchMap((displayMonth: ISOString) =>
-        this.store.pipe(select(fromTransaction.getTransactionSummaryByMonth, { displayMonth: new Date(displayMonth) }))
+        this.store.pipe(select(fromTransaction.getTransactionSummaryByMonth(new Date(displayMonth))))
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(monthSummary => {

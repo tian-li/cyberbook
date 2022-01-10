@@ -17,8 +17,8 @@ import { take, takeUntil } from 'rxjs/operators';
 export class MessageCenterHomeComponent implements OnInit, OnDestroy {
   readonly today = dayjs();
 
-  user: Partial<User>;
-  allMessageThreads: MessageThread[];
+  user!: Partial<User>;
+  allMessageThreads!: MessageThread[];
 
   private unsubscribe$: Subject<void> = new Subject();
 

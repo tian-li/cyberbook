@@ -15,7 +15,7 @@ import {
 export const transactionFeatureKey = 'transaction';
 
 export interface State extends EntityState<Transaction> {
-  selectedTransactionId: number | string;
+  selectedTransactionId: number | string | null;
   transactionIdsByDate: { [date: string]: (number | string)[] };
 }
 
@@ -32,7 +32,7 @@ export const initialState: State = adapter.getInitialState({
 const reducer = createReducer(
   initialState,
   on(loadTransactionsByUserSuccess, (state, { transactions }) => {
-    let transactionIdsByDate = {};
+    let transactionIdsByDate: any = {};
     transactions.forEach((transaction: Transaction) => {
       const date = dayjs(transaction.transactionDate).format(FullDate);
       transactionIdsByDate = {
@@ -58,7 +58,7 @@ const reducer = createReducer(
   }),
   on(updateTransactionSuccess, (state, { update }) => {
     const updatedTransaction = update.changes;
-    const oldTransaction = state.entities[update.id];
+    const oldTransaction = state.entities[update.id]!;
 
     if (updatedTransaction.transactionDate !== oldTransaction.transactionDate) {
       const newDate = dayjs(updatedTransaction.transactionDate).format(FullDate);
@@ -80,7 +80,7 @@ const reducer = createReducer(
     return adapter.updateOne(update, { ...state, selectedTransactionId: update.id });
   }),
   on(removeTransaction, (state, { id }) => {
-    const date = dayjs(state.entities[id].transactionDate).format(FullDate);
+    const date = dayjs(state.entities[id]!.transactionDate).format(FullDate);
 
     const updatedTransactionIdsByDate = {
       ...state.transactionIdsByDate,

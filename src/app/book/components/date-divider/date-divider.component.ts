@@ -13,15 +13,14 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./date-divider.component.scss']
 })
 export class DateDividerComponent implements OnInit, OnDestroy {
-  @Input() date: dayjs.Dayjs;
+  @Input() date!: dayjs.Dayjs;
 
   daySummary: { income: number, spend: number } = {
     income: 0,
     spend: 0
   };
 
-  dateString: number;
-
+  dateString!: number;
 
   private unsubscribe$: Subject<void> = new Subject();
 
@@ -31,7 +30,7 @@ export class DateDividerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dateString = this.date.valueOf();
     this.store.pipe(
-      select(fromTransaction.getTransactionSummaryByDate, { date: this.date.format(FullDate) }),
+      select(fromTransaction.getTransactionSummaryByDate(this.date.format(FullDate))),
       takeUntil(this.unsubscribe$)
     ).subscribe(daySummary => {
       this.daySummary = daySummary;

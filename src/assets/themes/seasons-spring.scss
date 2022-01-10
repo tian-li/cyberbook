@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 $seasons-spring-blue: (
   50: #EBF6E1,
@@ -16,20 +16,20 @@ $seasons-spring-blue: (
   A400: #7FD62B,
   A700: #73B631,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
@@ -49,34 +49,34 @@ $seasons-spring-orange: (
   A400: #CCDF61,
   A700: #BED057,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
-$seasons-spring-primary: mat-palette($seasons-spring-blue);
-$seasons-spring-accent: mat-palette($seasons-spring-orange);
-$seasons-spring-warn: mat-palette($mat-red);
+$seasons-spring-primary: mat.define-palette($seasons-spring-blue);
+$seasons-spring-accent: mat.define-palette($seasons-spring-orange);
+$seasons-spring-warn: mat.define-palette(mat.$red-palette);
 
-$seasons-spring-theme: mat-light-theme($seasons-spring-primary, $seasons-spring-accent, $seasons-spring-warn);
+$seasons-spring-theme: mat.define-light-theme($seasons-spring-primary, $seasons-spring-accent, $seasons-spring-warn);
 
 $foreground: map-get($seasons-spring-theme, foreground);
 
 $contrast-text-color: rgba(black, 0.87);
-$contrast-secondary-text-color: $dark-secondary-text;
-$contrast-dividers-color: $dark-dividers;
+$contrast-secondary-text-color: rgba(black, 0.54);
+$contrast-dividers-color: rgba(black, 0.12);
 
 $foreground: map_merge($foreground, (
   contrast-text: $contrast-text-color,

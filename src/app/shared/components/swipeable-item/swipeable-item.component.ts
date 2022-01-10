@@ -41,7 +41,7 @@ export class SwipeableItemComponent {
   showSwipeIcon = false;
   widthPercentage = '0%';
   widthPercentageNumber = 0;
-  swipeDirection: SwipeDirection;
+  swipeDirection!: SwipeDirection;
 
   getTranslateXValue(): string {
     let direction = '';
@@ -87,7 +87,7 @@ export class SwipeableItemComponent {
     this.reset();
   }
 
-  flyOutFinished(event) {
+  flyOutFinished(event: any) {
     if (event.triggerName === 'flyInOut' && event.toState === 'out') {
       this.swipeResult.emit({ direction: this.swipeDirection, result: true });
       this.flyInOutState = 'in';
@@ -115,7 +115,7 @@ export class SwipeableItemComponent {
   private reset() {
     this.widthPercentage = '0%';
     this.widthPercentageNumber = 0;
-    this.swipeDirection = undefined;
+    this.swipeDirection = undefined!;
   }
 
 }

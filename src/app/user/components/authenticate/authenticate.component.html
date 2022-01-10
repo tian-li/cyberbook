@@ -10,11 +10,27 @@
 
         <mat-form-field [@fade]="fadeState" class="username" appearance="fill">
           <mat-label>用户名</mat-label>
-          <input matInput type="text" placeholder="用户名" formControlName="username" required/>
-          <mat-error *ngIf="form.controls.username.hasError('pattern') && !form.controls.username.hasError('required')">
+          <input
+            matInput
+            type="text"
+            placeholder="用户名"
+            formControlName="username"
+            required
+          />
+          <mat-error
+            *ngIf="
+              form.controls['username'].hasError('pattern') &&
+              !form.controls['username'].hasError('required')
+            "
+          >
             无效的用户名
           </mat-error>
-          <mat-error *ngIf="!form.controls.username.hasError('pattern') && form.controls.username.hasError('required')">
+          <mat-error
+            *ngIf="
+              !form.controls['username'].hasError('pattern') &&
+              form.controls['username'].hasError('required')
+            "
+          >
             必填
           </mat-error>
         </mat-form-field>
@@ -22,47 +38,93 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" formControlName="email" required/>
-        <mat-error *ngIf="form.controls.email.hasError('pattern') && !form.controls.email.hasError('required')">无效的Email
+        <input matInput placeholder="Email" formControlName="email" required />
+        <mat-error
+          *ngIf="
+            form.controls['email'].hasError('pattern') &&
+            !form.controls['email'].hasError('required')
+          "
+          >无效的Email
         </mat-error>
-        <mat-error *ngIf="!form.controls.email.hasError('pattern') && form.controls.email.hasError('required')">必填
+        <mat-error
+          *ngIf="
+            !form.controls['email'].hasError('pattern') &&
+            form.controls['email'].hasError('required')
+          "
+          >必填
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>密码</mat-label>
-        <input matInput type="password" placeholder="密码" formControlName="password" required/>
-        <mat-error *ngIf="form.controls.password.hasError('pattern') && !form.controls.password.hasError('required')">
+        <input
+          matInput
+          type="password"
+          placeholder="密码"
+          formControlName="password"
+          required
+        />
+        <mat-error
+          *ngIf="
+            form.controls['password'].hasError('pattern') &&
+            !form.controls['password'].hasError('required')
+          "
+        >
           无效的密码
         </mat-error>
-        <mat-error *ngIf="!form.controls.password.hasError('pattern') && form.controls.password.hasError('required')">必填
+        <mat-error
+          *ngIf="
+            !form.controls['password'].hasError('pattern') &&
+            form.controls['password'].hasError('required')
+          "
+          >必填
         </mat-error>
-
       </mat-form-field>
 
       <div class="animate-wrapper" [@slideDown]="slideDownState">
         <mat-form-field [@fade]="fadeState" class="username" appearance="fill">
           <mat-label>确认密码</mat-label>
-          <input matInput type="password" placeholder="确认密码" formControlName="confirmPassword" required
-                 [errorStateMatcher]="matcher"/>
-          <mat-error *ngIf="form.hasError('passwordNotMatch') && !form.controls.confirmPassword.hasError('required')">
+          <input
+            matInput
+            type="password"
+            placeholder="确认密码"
+            formControlName="confirmPassword"
+            required
+            [errorStateMatcher]="matcher"
+          />
+          <mat-error
+            *ngIf="
+              form.hasError('passwordNotMatch') &&
+              !form.controls['confirmPassword'].hasError('required')
+            "
+          >
             密码不一致
           </mat-error>
-          <mat-error *ngIf="!form.hasError('passwordNotMatch') && form.controls.confirmPassword.hasError('required')">必填
+          <mat-error
+            *ngIf="
+              !form.hasError('passwordNotMatch') &&
+              form.controls['confirmPassword'].hasError('required')
+            "
+            >必填
           </mat-error>
         </mat-form-field>
 
         <div class="actions">
           <div>
-            <button class="button-register" mat-raised-button color="primary" (click)="submit()"
-                    [disabled]="form.invalid">
-              {{registerMode ? '注册' : '登录'}}
+            <button
+              class="button-register"
+              mat-raised-button
+              color="primary"
+              (click)="submit()"
+              [disabled]="form.invalid"
+            >
+              {{ registerMode ? "注册" : "登录" }}
             </button>
           </div>
 
           <div class="sub-actions">
             <div (click)="toggleRegisterMode()">
-              {{registerMode ? '返回登录' : '快速注册'}}
+              {{ registerMode ? "返回登录" : "快速注册" }}
             </div>
 
             <!--        <div *ngIf="!registerMode">-->

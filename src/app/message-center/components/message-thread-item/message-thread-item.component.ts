@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MessageThread } from '@cyberbook/core/model/message-thread';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -8,16 +8,10 @@ import 'dayjs/locale/zh-cn';
   templateUrl: './message-thread-item.component.html',
   styleUrls: ['./message-thread-item.component.scss']
 })
-export class MessageThreadItemComponent implements OnInit {
-  @Input() messageThread: MessageThread;
-  @Input() today: dayjs.Dayjs;
-  @Input() isLastItem: boolean;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+export class MessageThreadItemComponent {
+  @Input() messageThread!: MessageThread;
+  @Input() today!: dayjs.Dayjs;
+  @Input() isLastItem!: boolean;
 
   lastMessageTimeDisplay(): string {
     const lastMessageTime = dayjs(this.messageThread.lastMessageDate);
@@ -47,9 +41,11 @@ export class MessageThreadItemComponent implements OnInit {
     if (diff >= 7) {
       return lastMessageTime.format('MM/DD/YY');
     }
+    
+    return '';
   }
 
-  delete(event) {
+  delete(event: any) {
 
   }
 

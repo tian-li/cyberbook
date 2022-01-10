@@ -14,13 +14,13 @@ export class PrivateMessageService {
   }
 
   loadPrivateMessagesByMessageThreadId(messageThreadId: string): Observable<PrivateMessage[]> {
-    return this.http.get(`${this.privateMessageRoute}/message-thread/${messageThreadId}`).pipe(
+    return this.http.get<CyberbookServerResponse>(`${this.privateMessageRoute}/message-thread/${messageThreadId}`).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }
 
   sendPrivateMessage(privateMessage: Partial<PrivateMessage>): Observable<PrivateMessage> {
-    return this.http.post(`${this.privateMessageRoute}/feedback`, privateMessage).pipe(
+    return this.http.post<CyberbookServerResponse>(`${this.privateMessageRoute}/feedback`, privateMessage).pipe(
       map((res: CyberbookServerResponse) => res.data)
     );
   }

@@ -17,7 +17,7 @@ export class GraphHeaderComponent {
     types: this.chartTypes
   };
 
-  changeCartType(chartType) {
-    this.chartTypeChanged.emit(chartType);
+  changeCartType(chartType: string | boolean) {
+    this.chartTypeChanged.emit(<string>chartType);
   }
 }

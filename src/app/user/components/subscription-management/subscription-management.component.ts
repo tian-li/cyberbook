@@ -30,8 +30,8 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     { value: false, display: '已结束' },
   ];
 
-  allSubscriptions: Subscription[];
-  categoryEntities: Dictionary<Category>;
+  allSubscriptions!: Subscription[];
+  categoryEntities!: Dictionary<Category>;
   selectedCategoryType = this.defaultSubscriptionActivateStatus;
   subscriptionTypeControl = new FormControl(this.defaultSubscriptionActivateStatus);
 
@@ -56,7 +56,7 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     this.subscriptionTypeControl.valueChanges.pipe(
       startWith(this.defaultSubscriptionActivateStatus),
       switchMap(activateStatus =>
-        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: activateStatus }))
+        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus(activateStatus)))
       ),
       debounceTime(200),
       takeUntil(this.unsubscribe$)
@@ -78,8 +78,8 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  changeSubscriptionType(type) {
-    this.selectedCategoryType = type;
+  changeSubscriptionType(type: string | boolean) {
+    this.selectedCategoryType = <boolean>type;
     this.subscriptionTypeControl.setValue(type);
   }
 
@@ -113,8 +113,8 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     });
   }
 
-  getDescriptionDisplay(subscription: Subscription): string {
-    return subscription.description ? subscription.description : this.categoryEntities[subscription.categoryId].name;
+  getDescriptionDisplay(subscription: Subscription): string | undefined {
+    return subscription.description ? subscription.description : this.categoryEntities[subscription.categoryId]?.name;
   }
 
   quickOverview(subscription: Subscription): string {
@@ -125,7 +125,7 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     }
   }
 
-  trackByFn(index: number, item): number {
+  trackByFn(index: number, item: Subscription): string {
     return item.id;
   }
 

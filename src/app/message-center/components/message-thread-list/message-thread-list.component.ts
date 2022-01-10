@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class MessageThreadListComponent implements OnInit, OnDestroy {
 
-  allMessageThreads: MessageThread[];
+  allMessageThreads!: MessageThread[];
   today: dayjs.Dayjs = dayjs();
 
   private unsubscribe$: Subject<void> = new Subject();
