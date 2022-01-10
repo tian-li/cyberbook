@@ -22,12 +22,12 @@ export const {
   selectTotal: selectPrivateMessageTotal,
 } = fromPrivateMessage.adapter.getSelectors(selectPrivateMessageState);
 
-
-export const selectAllSortedPrivateMessagesByMessageThreadId = createSelector(
-  selectAllPrivateMessages,
-  (privateMessages: PrivateMessage[], props: { messageThreadId: string }) => {
-    return privateMessages
-    .filter((pm: PrivateMessage) => pm.messageThreadId === props.messageThreadId)
-    .sort((a, b) => dayjs(b.dateCreated).valueOf() - dayjs(a.dateCreated).valueOf());
-  }
-);
+export const selectAllSortedPrivateMessagesByMessageThreadId = (messageThreadId: string) => 
+  createSelector(
+    selectAllPrivateMessages,
+    (privateMessages: PrivateMessage[]) => {
+      return privateMessages
+      .filter((pm: PrivateMessage) => pm.messageThreadId === messageThreadId)
+      .sort((a, b) => dayjs(b.dateCreated).valueOf() - dayjs(a.dateCreated).valueOf());
+    }
+  );

@@ -31,16 +31,18 @@ export const selectAllSubscriptionsOrderByModifiedDate = createSelector(
   }
 );
 
-export const getSubscriptionCountByCategoryId = createSelector(
-  selectAllSubscriptions,
-  (subscriptions: Subscription[], props: { categoryId: string }) => {
-    return subscriptions.filter(s => s.categoryId === props.categoryId).length;
-  }
-);
+export const getSubscriptionCountByCategoryId = (categoryId: string) =>
+  createSelector(
+    selectAllSubscriptions,
+    (subscriptions: Subscription[]) => {
+      return subscriptions.filter(s => s.categoryId === categoryId).length;
+    }
+  );
 
-export const selectAllSubscriptionsByActiveStatus = createSelector(
-  selectAllSubscriptionsOrderByModifiedDate,
-  (subscriptions: Subscription[], props: { active: boolean }) => {
-    return subscriptions.filter((s: Subscription) => s.activateStatus === props.active);
-  }
-);
+export const selectAllSubscriptionsByActiveStatus = (active: boolean) =>
+  createSelector(
+    selectAllSubscriptionsOrderByModifiedDate,
+    (subscriptions: Subscription[]) => {
+      return subscriptions.filter((s: Subscription) => s.activateStatus === active);
+    }
+  );

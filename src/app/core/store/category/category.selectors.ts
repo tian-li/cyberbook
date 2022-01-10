@@ -26,9 +26,10 @@ export const selectAllSortedCategories = createSelector(
   }
 );
 
-export const selectAllSortedCategoriesByType = createSelector(
-  selectAllSortedCategories,
-  (categories: Category[], props: { type: 'income' | 'spend' }) => {
-    return categories.filter((c) => c.type === props.type);
-  }
-);
+export const selectAllSortedCategoriesByType = (type: 'income' | 'spend') => 
+  createSelector(
+    selectAllSortedCategories,
+    (categories: Category[]) => {
+      return categories.filter((c) => c.type === type);
+    }
+  );

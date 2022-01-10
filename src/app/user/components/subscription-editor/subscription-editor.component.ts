@@ -77,7 +77,7 @@ export class SubscriptionEditorComponent implements OnInit, OnDestroy {
     this.categories$ = this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
       switchMap((type) => {
-        return this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }));
+        return this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType(type)));
       }),
     );
 

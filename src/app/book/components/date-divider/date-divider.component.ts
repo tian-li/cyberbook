@@ -31,7 +31,7 @@ export class DateDividerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.dateString = this.date.valueOf();
     this.store.pipe(
-      select(fromTransaction.getTransactionSummaryByDate, { date: this.date.format(FullDate) }),
+      select(fromTransaction.getTransactionSummaryByDate(this.date.format(FullDate))),
       takeUntil(this.unsubscribe$)
     ).subscribe(daySummary => {
       this.daySummary = daySummary;
