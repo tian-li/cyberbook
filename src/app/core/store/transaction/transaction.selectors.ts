@@ -1,7 +1,6 @@
 import { Category } from '@cyberbook/core/model/category';
 import { Transaction } from '@cyberbook/core/model/transaction';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
-import { RootState } from '@cyberbook/core/store';
 import * as fromTransaction from '@cyberbook/core/store/transaction/transaction.reducer';
 import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import { Dictionary } from '@ngrx/entity';
@@ -10,7 +9,7 @@ import { selectCategoryEntities } from '../category';
 
 const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;
 
-export const selectTransactionState = createFeatureSelector<RootState, fromTransaction.State>(
+export const selectTransactionState = createFeatureSelector<fromTransaction.State>(
   fromTransaction.transactionFeatureKey
 );
 

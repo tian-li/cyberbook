@@ -1,12 +1,11 @@
 import { PrivateMessage } from '@cyberbook/core/model/private-message';
-import { RootState } from '@cyberbook/core/store';
 import * as fromPrivateMessage from '@cyberbook/core/store/private-message/private-message.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 
 const getSelectedPrivateMessageId = (state: fromPrivateMessage.State) => state.selectedPrivateMessageId;
 
-export const selectPrivateMessageState = createFeatureSelector<RootState, fromPrivateMessage.State>(
+export const selectPrivateMessageState = createFeatureSelector<fromPrivateMessage.State>(
   fromPrivateMessage.privateMessageFeatureKey
 );
 

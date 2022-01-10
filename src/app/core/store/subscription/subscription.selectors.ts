@@ -1,12 +1,11 @@
-import { hasSubscriptionEnded, Subscription } from '@cyberbook/core/model/subscription';
-import { RootState } from '@cyberbook/core/store';
+import { Subscription } from '@cyberbook/core/model/subscription';
 import * as fromSubscription from '@cyberbook/core/store/subscription/subscription.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 
 const getSelectedSubscriptionId = (state: fromSubscription.State) => state.selectedSubscriptionId;
 
-export const selectSubscriptionState = createFeatureSelector<RootState, fromSubscription.State>(
+export const selectSubscriptionState = createFeatureSelector<fromSubscription.State>(
   fromSubscription.subscriptionFeatureKey
 );
 
