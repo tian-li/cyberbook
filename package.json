@@ -9,9 +9,7 @@
     "build-local-test": "ng build --aot --configuration=local-test",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "mock-server": "json-server --watch mock-data/db.json",
-    "postinstall": "ngcc"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
