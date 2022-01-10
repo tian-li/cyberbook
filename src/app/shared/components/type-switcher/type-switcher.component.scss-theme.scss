@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 @mixin app-type-switcher-component-theme($theme) {
   $primary: map-get($theme, primary);
@@ -6,17 +6,17 @@
   $foreground: map-get($theme, foreground);
 
   .type-switcher {
-    border: 1px solid mat-color($foreground, contrast-dividers);
+    border: 1px solid mat.get-color-from-palette($foreground, contrast-dividers);
 
     .type-item {
       &:not(:first-of-type) {
-        border-left: 1px solid mat-color($foreground, contrast-dividers);
+        border-left: 1px solid mat.get-color-from-palette($foreground, contrast-dividers);
       }
     }
 
     .selected {
-      background: mat-color($accent, 300);
-      color: mat-color($primary, default-contrast);
+      background: mat.get-color-from-palette($accent, 300);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
   }
 }

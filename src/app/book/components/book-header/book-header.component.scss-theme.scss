@@ -1,24 +1,24 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 @mixin app-book-header-component-theme($theme) {
   $primary: map-get($theme, primary);
   $foreground: map-get($theme, foreground);
 
   .book-header {
-    background: mat-color($primary);
+    background: mat.get-color-from-palette($primary);
 
     .monthly-spend, .tool-bar, .monthly-overview {
-      color: mat-color($primary, default-contrast);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
 
     .year-month {
       .month-group {
-        border-right: 1px solid mat-color($primary, default-contrast);
+        border-right: 1px solid mat.get-color-from-palette($primary, default-contrast);
       }
     }
 
     .label {
-      color: mat-color($foreground, contrast-secondary-text);
+      color: mat.get-color-from-palette($foreground, contrast-secondary-text);
     }
   }
 }

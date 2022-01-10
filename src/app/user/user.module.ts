@@ -16,31 +16,27 @@ import { CanLeaveAuthGuard } from './guards/can-leave-auth.guard';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
-  declarations: [
-    AuthenticateComponent,
-    ProfileComponent,
-    UserHomeComponent,
-    UserComponent,
-    ThemeSelectorComponent,
-    ManageCategoriesComponent,
-    SubscriptionManagementComponent,
-    CategoryEditorComponent,
-    SubscriptionEditorComponent,
-  ],
-  imports: [
-    SharedModule,
-    UserRoutingModule,
-    FormsModule
-  ],
-  providers: [
-    CanRegisterGuard,
-    LoadDataResolver,
-    CanLeaveAuthGuard
-  ],
-  entryComponents: [
-    CategoryEditorComponent,
-    SubscriptionEditorComponent
-  ]
+    declarations: [
+        AuthenticateComponent,
+        ProfileComponent,
+        UserHomeComponent,
+        UserComponent,
+        ThemeSelectorComponent,
+        ManageCategoriesComponent,
+        SubscriptionManagementComponent,
+        CategoryEditorComponent,
+        SubscriptionEditorComponent,
+    ],
+    imports: [
+        SharedModule,
+        UserRoutingModule,
+        FormsModule
+    ],
+    providers: [
+        CanRegisterGuard,
+        LoadDataResolver,
+        CanLeaveAuthGuard
+    ]
 })
 export class UserModule {
 }

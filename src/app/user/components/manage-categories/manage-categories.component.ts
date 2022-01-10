@@ -105,7 +105,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
     this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
-      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))),
+      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType(type)))),
       debounceTime(200),
       takeUntil(this.unsubscribe$)
     ).subscribe(categories => {
@@ -270,7 +270,7 @@ export class ManageCategoriesComponent implements OnInit, OnDestroy {
 
   private getTransactionCountOfCategory(category): Observable<number> {
     return this.store.pipe(
-      select(fromTransaction.getTransactionCountByCategoryId, { categoryId: category.id }),
+      select(fromTransaction.getTransactionCountByCategoryId(category.id)),
       take(1)
     );
   }

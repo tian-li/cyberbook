@@ -102,21 +102,14 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, FeedbackComponent, ImageEditorComponent],
-  imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
-  exports: [
-    CommonModule,
-    ReactiveFormsModule,
-    ...material,
-    ...components,
-
-  ],
-  entryComponents: [
-    TransactionEditorComponent,
-    YearMonthPickerComponent,
-    DateRangePickerComponent,
-    ConfirmationAlertComponent
-  ]
+    declarations: [...components, FeedbackComponent, ImageEditorComponent],
+    imports: [CommonModule, ReactiveFormsModule, ...material, RouterModule],
+    exports: [
+        CommonModule,
+        ReactiveFormsModule,
+        ...material,
+        ...components,
+    ]
 })
 export class SharedModule {
 }

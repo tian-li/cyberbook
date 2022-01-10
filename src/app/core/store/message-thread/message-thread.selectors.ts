@@ -1,12 +1,11 @@
 import { MessageThread } from '@cyberbook/core/model/message-thread';
-import { RootState } from '@cyberbook/core/store';
 import * as fromMessageThread from '@cyberbook/core/store/message-thread/message-thread.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 
 const getSelectedMessageThreadId = (state: fromMessageThread.State) => state.selectedMessageThreadId;
 
-export const selectMessageThreadState = createFeatureSelector<RootState, fromMessageThread.State>(
+export const selectMessageThreadState = createFeatureSelector<fromMessageThread.State>(
   fromMessageThread.messageThreadFeatureKey
 );
 

@@ -63,7 +63,7 @@ export class TransactionEditorComponent implements OnInit, OnDestroy {
 
     this.categories$ = this.categoryTypeControl.valueChanges.pipe(
       startWith(this.defaultCategoryType),
-      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType, { type }))),
+      switchMap((type) => this.store.pipe(select(fromCategory.selectAllSortedCategoriesByType(type)))),
     );
 
     this.title = this.data.editMode ? '编辑账目' : '添加账目';

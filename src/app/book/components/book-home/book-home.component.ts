@@ -31,7 +31,7 @@ export class BookHomeComponent implements OnInit, AfterViewInit, OnDestroy {
       select(fromUI.selectDisplayMonth),
       switchMap((displayMonth: ISOString) =>
         this.store.pipe(
-          select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) })
+          select(fromTransaction.selectAllTransactionVOsByYearMonth(new Date(displayMonth)))
         )
       ),
       takeUntil(this.unsubscribe$)

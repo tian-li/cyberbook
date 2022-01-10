@@ -1,8 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { RootState } from '@cyberbook/core/store';
 import * as fromUI from './ui.reducer';
 
-const selectUIState = createFeatureSelector<RootState, fromUI.State>(
+const selectUIState = createFeatureSelector<fromUI.State>(
   fromUI.uiFeatureKey
 );
 

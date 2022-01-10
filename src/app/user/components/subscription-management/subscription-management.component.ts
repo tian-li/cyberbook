@@ -56,7 +56,7 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
     this.subscriptionTypeControl.valueChanges.pipe(
       startWith(this.defaultSubscriptionActivateStatus),
       switchMap(activateStatus =>
-        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus, { active: activateStatus }))
+        this.store.pipe(select(fromSubscription.selectAllSubscriptionsByActiveStatus(activateStatus)))
       ),
       debounceTime(200),
       takeUntil(this.unsubscribe$)

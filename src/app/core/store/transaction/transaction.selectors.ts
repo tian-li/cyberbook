@@ -1,7 +1,6 @@
 import { Category } from '@cyberbook/core/model/category';
 import { Transaction } from '@cyberbook/core/model/transaction';
 import { TransactionVO } from '@cyberbook/core/model/transactionVO';
-import { RootState } from '@cyberbook/core/store';
 import * as fromTransaction from '@cyberbook/core/store/transaction/transaction.reducer';
 import { PeriodSummary } from '@cyberbook/shared/model/helper-models';
 import { Dictionary } from '@ngrx/entity';
@@ -10,7 +9,7 @@ import { selectCategoryEntities } from '../category';
 
 const getSelectedTransactionId = (state: fromTransaction.State) => state.selectedTransactionId;
 
-export const selectTransactionState = createFeatureSelector<RootState, fromTransaction.State>(
+export const selectTransactionState = createFeatureSelector<fromTransaction.State>(
   fromTransaction.transactionFeatureKey
 );
 
@@ -56,60 +55,64 @@ export const selectAllTransactionVOs = createSelector(selectCategoryEntities,
   }
 );
 
-export const selectAllTransactionVOsByYearMonth = createSelector(
-  selectAllTransactionVOs,
-  (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
-    const year: number = props.displayMonth.getFullYear();
-    const month: number = props.displayMonth.getMonth();
-    return transactionVOs.filter(
-      (transactionVO: TransactionVO) => transactionVO.transactionDate.year() === year &&
-        transactionVO.transactionDate.month() === month
-    );
-  }
-);
+export const selectAllTransactionVOsByYearMonth = (displayMonth: Date) => 
+  createSelector(
+    selectAllTransactionVOs,
+    (transactionVOs: TransactionVO[]) => {
+      const year: number = displayMonth.getFullYear();
+      const month: number = displayMonth.getMonth();
+      return transactionVOs.filter(
+        (transactionVO: TransactionVO) => transactionVO.transactionDate.year() === year &&
+          transactionVO.transactionDate.month() === month
+      );
+    }
+  );
 
-export const getTransactionSummaryByDate = createSelector(
-  selectTransactionEntities,
-  selectTransactionIdsByDate,
-  (transactionEntities: Dictionary<Transaction>, transactionIdsByDate, props: { date: string }) => {
-    const summary = {
-      income: 0,
-      spend: 0
-    };
-    transactionIdsByDate[props.date].forEach(id => {
-      const transaction = transactionEntities[id];
-      if (transaction.amount > 0) {
-        summary.income += transaction.amount;
-      } else {
-        summary.spend -= transaction.amount;
-      }
-    });
-    return summary;
-  }
-);
+export const getTransactionSummaryByDate = (date: string) => 
+  createSelector(
+    selectTransactionEntities,
+    selectTransactionIdsByDate,
+    (transactionEntities: Dictionary<Transaction>, transactionIdsByDate) => {
+      const summary = {
+        income: 0,
+        spend: 0
+      };
+      transactionIdsByDate[date].forEach(id => {
+        const transaction = transactionEntities[id];
+        if (transaction.amount > 0) {
+          summary.income += transaction.amount;
+        } else {
+          summary.spend -= transaction.amount;
+        }
+      });
+      return summary;
+    }
+  );
 
-export const getTransactionSummaryByMonth = createSelector(
-  selectAllTransactionVOsByYearMonth,
-  (transactionVOs: TransactionVO[], props: { displayMonth: Date }) => {
-    const monthSummary: PeriodSummary = {
-      income: 0,
-      spend: 0
-    };
+export const getTransactionSummaryByMonth = (displayMonth: Date) => 
+  createSelector(
+    selectAllTransactionVOsByYearMonth(displayMonth),
+    (transactionVOs: TransactionVO[]) => {
+      const monthSummary: PeriodSummary = {
+        income: 0,
+        spend: 0
+      };
 
-    transactionVOs.forEach((transaction) => {
-      if (transaction.amount > 0) {
-        monthSummary.income += transaction.amount;
-      } else {
-        monthSummary.spend -= transaction.amount;
-      }
-    });
-    return monthSummary;
-  }
-);
+      transactionVOs.forEach((transaction) => {
+        if (transaction.amount > 0) {
+          monthSummary.income += transaction.amount;
+        } else {
+          monthSummary.spend -= transaction.amount;
+        }
+      });
+      return monthSummary;
+    }
+  );
 
-export const getTransactionCountByCategoryId = createSelector(
-  selectAllTransactions,
-  (transitions: Transaction[], props: { categoryId: string }) => {
-    return transitions.filter(t => t.categoryId === props.categoryId).length;
-  }
-);
+export const getTransactionCountByCategoryId = (categoryId: string) =>
+  createSelector(
+    selectAllTransactions,
+    (transitions: Transaction[]) => {
+      return transitions.filter(t => t.categoryId === categoryId).length;
+    }
+  );

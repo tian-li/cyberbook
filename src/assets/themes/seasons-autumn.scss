@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
 $seasons-autumn-blue: (
   50: #FFFFFF,
@@ -16,20 +16,20 @@ $seasons-autumn-blue: (
   A400: #EF7D53,
   A700: #E27046,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
@@ -49,34 +49,34 @@ $seasons-autumn-orange: (
   A400: #FEF8A0,
   A700: #F7F08D,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
-$seasons-autumn-primary: mat-palette($seasons-autumn-blue);
-$seasons-autumn-accent: mat-palette($seasons-autumn-orange);
-$seasons-autumn-warn: mat-palette($mat-red);
+$seasons-autumn-primary: mat.define-palette($seasons-autumn-blue);
+$seasons-autumn-accent: mat.define-palette($seasons-autumn-orange);
+$seasons-autumn-warn: mat.define-palette(mat.$red-palette);
 
-$seasons-autumn-theme: mat-light-theme($seasons-autumn-primary, $seasons-autumn-accent, $seasons-autumn-warn);
+$seasons-autumn-theme: mat.define-light-theme($seasons-autumn-primary, $seasons-autumn-accent, $seasons-autumn-warn);
 
 $foreground: map-get($seasons-autumn-theme, foreground);
 
 $contrast-text-color: rgba(black, 0.87);
-$contrast-secondary-text-color: $dark-secondary-text;
-$contrast-dividers-color: $dark-dividers;
+$contrast-secondary-text-color: rgba(black, 0.54);
+$contrast-dividers-color: rgba(black, 0.12);
 
 $foreground: map_merge($foreground, (
   contrast-text: $contrast-text-color,

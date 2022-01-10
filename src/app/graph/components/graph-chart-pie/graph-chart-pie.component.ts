@@ -47,7 +47,7 @@ export class GraphChartPieComponent implements OnInit, AfterViewInit, OnDestroy 
       tap(displayMonth => this.displayMonth = displayMonth),
       switchMap((displayMonth: ISOString) =>
         this.store.pipe(
-          select(fromTransaction.selectAllTransactionVOsByYearMonth, { displayMonth: new Date(displayMonth) })
+          select(fromTransaction.selectAllTransactionVOsByYearMonth(new Date(displayMonth)))
         )
       ),
       takeUntil(this.unsubscribe$)

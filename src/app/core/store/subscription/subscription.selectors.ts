@@ -1,12 +1,11 @@
-import { hasSubscriptionEnded, Subscription } from '@cyberbook/core/model/subscription';
-import { RootState } from '@cyberbook/core/store';
+import { Subscription } from '@cyberbook/core/model/subscription';
 import * as fromSubscription from '@cyberbook/core/store/subscription/subscription.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 
 const getSelectedSubscriptionId = (state: fromSubscription.State) => state.selectedSubscriptionId;
 
-export const selectSubscriptionState = createFeatureSelector<RootState, fromSubscription.State>(
+export const selectSubscriptionState = createFeatureSelector<fromSubscription.State>(
   fromSubscription.subscriptionFeatureKey
 );
 
@@ -31,16 +30,18 @@ export const selectAllSubscriptionsOrderByModifiedDate = createSelector(
   }
 );
 
-export const getSubscriptionCountByCategoryId = createSelector(
-  selectAllSubscriptions,
-  (subscriptions: Subscription[], props: { categoryId: string }) => {
-    return subscriptions.filter(s => s.categoryId === props.categoryId).length;
-  }
-);
+export const getSubscriptionCountByCategoryId = (categoryId: string) =>
+  createSelector(
+    selectAllSubscriptions,
+    (subscriptions: Subscription[]) => {
+      return subscriptions.filter(s => s.categoryId === categoryId).length;
+    }
+  );
 
-export const selectAllSubscriptionsByActiveStatus = createSelector(
-  selectAllSubscriptionsOrderByModifiedDate,
-  (subscriptions: Subscription[], props: { active: boolean }) => {
-    return subscriptions.filter((s: Subscription) => s.activateStatus === props.active);
-  }
-);
+export const selectAllSubscriptionsByActiveStatus = (active: boolean) =>
+  createSelector(
+    selectAllSubscriptionsOrderByModifiedDate,
+    (subscriptions: Subscription[]) => {
+      return subscriptions.filter((s: Subscription) => s.activateStatus === active);
+    }
+  );

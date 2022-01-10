@@ -4,6 +4,7 @@ import { SwUpdate } from '@angular/service-worker';
 @Injectable()
 export class PwaService {
 
+  // TODO: available and activated are deprecated
   constructor(updates: SwUpdate) {
     updates.available.subscribe(event => {
       // console.log('current version is', event.current);

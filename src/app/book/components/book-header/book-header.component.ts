@@ -33,7 +33,7 @@ export class BookHeaderComponent implements OnInit, OnDestroy {
       select(fromUI.selectDisplayMonth),
       tap(displayMonth => this.displayMonth = displayMonth),
       switchMap((displayMonth: ISOString) =>
-        this.store.pipe(select(fromTransaction.getTransactionSummaryByMonth, { displayMonth: new Date(displayMonth) }))
+        this.store.pipe(select(fromTransaction.getTransactionSummaryByMonth(new Date(displayMonth))))
       ),
       takeUntil(this.unsubscribe$)
     ).subscribe(monthSummary => {
