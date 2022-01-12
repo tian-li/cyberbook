@@ -74,11 +74,11 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
     this.displayWidth = width;
     this.displayHeight = height;
 
-    if (this.displayWidth > 280) {
+    if (this.displayWidth >= 280) {
       this.displayOffsetLeft = -(this.displayWidth - 280) / 2;
     }
 
-    if (this.displayHeight > 280) {
+    if (this.displayHeight >= 280) {
       this.displayOffsetTop = -(this.displayHeight - 280) / 2;
     }
 
