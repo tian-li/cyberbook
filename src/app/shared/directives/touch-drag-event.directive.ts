@@ -4,10 +4,8 @@ import { Directive, ElementRef, HostListener, Input, Output, EventEmitter } from
   selector: '[appTouchDragEvent]'
 })
 export class TouchDragEventDirective {
-
   @Input() maxScale: number = 5;
   @Input() minScale: number = 1;
-
   @Input() initialWidth!: number;
   @Input() initialHeight!: number;
   @Input() initialLeft!: number;
@@ -15,7 +13,7 @@ export class TouchDragEventDirective {
 
   @Output() dragResult = new EventEmitter();
 
-  translateXLeftLimit: number = 0;
+  translateXLeftLimit!: number;
   translateYUpperLimit: number = 0;
 
   translateXRightLimit: number = 0;
@@ -33,6 +31,31 @@ export class TouchDragEventDirective {
   originHaveSet = false;
 
   constructor(private img: ElementRef) {
+    img.nativeElement.onload = ()=> {
+      this.reset();
+    }
+  }
+
+  reset() {
+    console.log('reset')
+    this.translateXLeftLimit = 0;
+    this.translateYUpperLimit = 0;
+
+    this.translateXRightLimit = 0;
+    this.translateYLowerLimit = 0;
+
+    this.preTouchPosition = {};
+    this.translateX = 0;
+    this.translateY = 0;
+    this.scaleRatio = 1;
+    this.scaleOrigin = {
+      x: 0,
+      y: 0
+    };
+    this.preTouchesClientx1y1x2y2 = undefined!;
+    this.originHaveSet = false;
+    this.setStyle('transform', 'none')
+    this.setStyle('transform-origin', '50% 50%');
   }
 
   @HostListener('touchstart', ['$event'])
@@ -99,19 +122,9 @@ export class TouchDragEventDirective {
     if (touches.length === 1) {
       this.recordPreTouchPosition(touches['0']);
     }
-
-
     this.dragResult.emit({
-      scaleRatio: this.scaleRatio,
-      translateX: this.translateX,
-      translateY: this.translateY,
-      scaleOriginX: this.scaleOrigin.x,
-      scaleOriginY: this.scaleOrigin.y
+      scaleRatio: this.scaleRatio
     });
-
-    // console.log('scaleRatio', this.scaleRatio);
-    // console.log('translateX', this.translateX);
-    // console.log('translateY', this.translateY);
   }
 
   @HostListener('touchcancel', ['$event'])
