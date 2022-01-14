@@ -1,66 +1,97 @@
-.image-editor{
-  position: relative;
-}
-
-.cropper-container {
-  position: relative;
-  overflow: hidden;
-  height: 300px;
-  margin-top: 16px;
-  background-color: #000;
-}
-
-.cropper-window {
-  position: absolute;
-  overflow: visible;
-  width: 280px;
-  height: 280px;
-  border-radius: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
+.image-editor {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__header {
+    display: flex;
+    position: relative;
     width: 100%;
-    height: 100%;
-    -webkit-box-shadow: 0 0 0 500px rgb(0 0 0 / 60%);
-    box-shadow: 0 0 0 500px rgb(0 0 0 / 60%);
-    //border-radius: 100%;
-    content: "";
-    pointer-events: none;
+    height: 3rem;
+    align-items: center;
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  &__wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 280px;
+    margin-top: 15%;
+    background-color: #000;
+  }
+
+  &__window {
+    position: absolute;
+    overflow: visible;
+    width: 280px;
+    height: 280px;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-box-shadow: 0 0 0 500px rgb(0 0 0 / 60%);
+      box-shadow: 0 0 0 500px rgb(0 0 0 / 60%);
+      border-radius: 100%;
+      content: "";
+      pointer-events: none;
+    }
+  }
+
+  &__original-image {
+    -ms-touch-action: none;
+    touch-action: none;
+    will-change: left, top, width, height, transform;
+    position: absolute;
+    cursor: pointer;
+    transform-origin: center center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+
+  &__button-save {
+    margin-top: 2rem;
+    width: 10rem;
+  }
+
+  &__button-cancel {
+    margin-top: 1rem;
+    width: 10rem;
   }
 }
 
-img {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-  //width: 280px;
-  //height: 280px;
-}
+// .cropper-container {
+//   position: relative;
+//   overflow: hidden;
+//   height: 300px;
+//   margin-top: 16px;
+//   background-color: #000;
+// }
 
-.original-image {
-  -ms-touch-action: none;
-  touch-action: none;
-  will-change: left, top, width, height, transform;
-  position: absolute;
-  //width: 280px;
-  //height: 280px;
-  //-webkit-transform: translateZ(0);
-  //transform: translateZ(0);
-  cursor: pointer;
+// img {
+//   margin: 0;
+//   padding: 0;
+//   border: 0;
+//   font-size: 100%;
+//   vertical-align: baseline;
+//   background: transparent;
+// }
 
-
-  //width: 1898.45px;
-  //height: 280px;
-  transform-origin: center center;
-  //transform: translateZ(0px);
-  //left: -809.223px;
-  //top: 0px;
-}
+// .

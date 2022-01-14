@@ -17,32 +17,32 @@ export class ImageUploadService {
   progress$ = new BehaviorSubject(0);
   status$ = new BehaviorSubject(UploadStatus.NotStarted);
 
-  image!: File;
+  image!: Blob;
 
   constructor(private http: HttpClient, private store: Store) {
     // this.image =
   }
 
-  uploadImage(image: File, uploadRole: UploadRole) {
-    this.checkRealMimeType(image).then((valid: boolean) => {
-      if (valid) {
-        this.doUpload(image, uploadRole);
-      }
-    }).catch(() => {
-      this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '不支持此类型的文件', level: 'error' } }));
-    });
+  uploadImage(image: Blob, uploadRole: UploadRole, extensionName: string) {
+    this.doUpload(image, uploadRole, extensionName);
   }
 
-  private doUpload(image: File, uploadRole: UploadRole) {
+  clear() {
+    this.image = undefined!;
+  }
+
+  private doUpload(image: Blob, uploadRole: UploadRole, extensionName: string) {
     const formData: FormData = new FormData();
 
     formData.append('file', image);
     formData.append('role', uploadRole);
+    formData.append('extensionName', extensionName);
 
     this.http.post<CyberbookServerResponse>(`${this.imageRoute}/upload`, formData, {
       reportProgress: true,
       observe: 'events'
-    }).subscribe((event: HttpEvent<CyberbookServerResponse>) => {
+    }).subscribe(
+      (event: HttpEvent<CyberbookServerResponse>) => {
         switch (event.type) {
           case HttpEventType.Sent:
             this.status$.next(UploadStatus.Started);
@@ -59,10 +59,11 @@ export class ImageUploadService {
       },
       (error) => {
         this.store.dispatch(notifyWithSnackBar({ snackBar: { message: '发生未知错误，请稍后重试', level: 'error' } }));
-      });
+      }
+    );
   }
 
-  private checkRealMimeType(file: File): Promise<boolean> {
+  private checkRealMimeType(file: Blob): Promise<any> {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.onloadend = (e: any) => {
@@ -98,6 +99,7 @@ export class ImageUploadService {
   private finishUpload() {
     this.progress$.next(100);
     this.status$.next(UploadStatus.Finished);
+    this.image = undefined!;
   }
 
   private processUploadResult(imageName: string, target: UploadRole) {

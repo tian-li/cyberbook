@@ -1,37 +1,54 @@
-<div>
-  <!--  <h2>裁剪</h2>-->
-  <div class="mat-typography">
-    <div>
-      <button mat-raised-button (click)="cutImage()">裁剪</button>
-    </div>
-    <div class="cropper-container">
-      <div class="cropper-window">
-        <img
-          id="image"
-          class="original-image"
-          draggable="true"
-          #imageElement
-          src="../../../../assets/images/summer.jpg"
-          alt="图片"
-          [ngStyle]="{
-            width: displayWidth + 'px',
-            height: displayHeight + 'px',
-            left: displayOffsetLeft + 'px',
-            top: displayOffsetTop + 'px'
-          }"
-          (load)="onImgLoad($event)"
-          appTouchDragEvent
-          [initialWidth]="displayWidth"
-          [initialHeight]="displayHeight"
-          [initialLeft]="displayOffsetLeft"
-          [initialTop]="displayOffsetTop"
-          (dragResult)="onResult($event)"
-        />
-      </div>
+<div class="image-editor__container">
+  <div class="image-editor__header">
+    <div class="image-editor__title">编辑图片</div>
+  </div>
+
+  <div class="image-editor__wrapper">
+    <div class="image-editor__window" #cropperWindow>
+      <img
+        id="image"
+        class="image-editor__original-image"
+        draggable="true"
+        #imageElement
+        alt="图片"
+        [ngStyle]="{
+          width: displayWidth + 'px',
+          height: displayHeight + 'px',
+          left: displayOffsetLeft + 'px',
+          top: displayOffsetTop + 'px'
+        }"
+        (load)="onImgLoad($event)"
+        appTouchDragEvent
+        [initialWidth]="displayWidth"
+        [initialHeight]="displayHeight"
+        [initialLeft]="displayOffsetLeft"
+        [initialTop]="displayOffsetTop"
+        (dragResult)="onResult($event)"
+      />
     </div>
   </div>
 
-  <canvas id="preview" width="280px" height="280px" #previewCanvas></canvas>
+  <button
+    class="image-editor__button-save"
+    mat-raised-button
+    color="accent"
+    (click)="cutImage()"
+  >
+    确认
+  </button>
+  <button
+    class="image-editor__button-cancel"
+    mat-raised-button
+    (click)="cancel()"
+  >
+    取消
+  </button>
 
-  <div #imgRes></div>
+  <!-- <button class="button-save" mat-raised-button color="accent" (click)="save()">
+    保存
+  </button>
+
+  <button class="button-cancel" mat-raised-button (click)="cancel()">
+    取消
+  </button> -->
 </div>

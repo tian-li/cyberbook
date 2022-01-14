@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutoLoginGuard } from '@cyberbook/core/guards/auto-login.guard';
 import { ImageEditorComponent } from '@cyberbook/shared/components/image-editor/image-editor.component';
+import { ImageEditorGuard } from './core/guards/image-editor.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       },
       {
         path: 'image-editor',
-        component: ImageEditorComponent
+        component: ImageEditorComponent,
+        canActivate: [ImageEditorGuard],
       },
       {
         path: 'user',

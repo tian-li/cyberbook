@@ -1,46 +1,47 @@
 // icons
-@use '@angular/material' as mat;
-@import url('assets/fonts/material-icons/baseline.css');
-@import url('assets/fonts/material-icons/outline.css');
-@import url('assets/fonts/material-icons/twotone.css');
+@use "@angular/material" as mat;
+@import url("assets/fonts/material-icons/baseline.css");
+@import url("assets/fonts/material-icons/outline.css");
+@import url("assets/fonts/material-icons/twotone.css");
 
 // light themes
-@import 'assets/themes/seasons-spring';
-@import 'assets/themes/seasons-summer';
-@import 'assets/themes/seasons-autumn';
-@import 'assets/themes/seasons-winter';
+@import "assets/themes/seasons-spring";
+@import "assets/themes/seasons-summer";
+@import "assets/themes/seasons-autumn";
+@import "assets/themes/seasons-winter";
 
 // dark themes
-@import 'assets/themes/cyberpunk-2077';
-@import 'assets/themes/blade-runner-2049';
+@import "assets/themes/cyberpunk-2077";
+@import "assets/themes/blade-runner-2049";
 
 @include mat.core();
 
 // theme components
 // book
-@import 'app/book/components/book-header/book-header.component.scss-theme';
-@import 'app/book/components/date-divider/date-divider.component.scss-theme';
-@import 'app/book/components/transaction-item/transaction-item.component.scss-theme';
-@import 'app/book/components/book-home/book-home.component.scss-theme';
+@import "app/book/components/book-header/book-header.component.scss-theme";
+@import "app/book/components/date-divider/date-divider.component.scss-theme";
+@import "app/book/components/transaction-item/transaction-item.component.scss-theme";
+@import "app/book/components/book-home/book-home.component.scss-theme";
 
 // graph
-@import 'app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme';
+@import "app/graph/components/graph-chart-pie/graph-chart-pie.component.scss-theme";
 
 // user
-@import 'app/user/components/theme-selector/theme-selector.component.scss-theme';
-@import 'app/user/components/user-home/user-home.component.scss-theme';
-@import 'app/user/components/profile/profile.component.scss-theme';
-@import 'app/user/components/manage-categories/manage-categories.component.scss-theme';
-@import 'app/user/components/subscription-management/subscription-management.component.scss-theme';
-@import 'app/user/components/category-editor/category-editor.component.scss-theme';
+@import "app/user/components/theme-selector/theme-selector.component.scss-theme";
+@import "app/user/components/user-home/user-home.component.scss-theme";
+@import "app/user/components/profile/profile.component.scss-theme";
+@import "app/user/components/manage-categories/manage-categories.component.scss-theme";
+@import "app/user/components/subscription-management/subscription-management.component.scss-theme";
+@import "app/user/components/category-editor/category-editor.component.scss-theme";
 
 // message-center
-@import 'app/message-center/components/message-thread-item/message-thread-item.component.scss-theme';
+@import "app/message-center/components/message-thread-item/message-thread-item.component.scss-theme";
 
 // shared
-@import 'app/shared/components/nav-bar/nav-bar.component.scss-theme';
-@import 'app/shared/components/type-switcher/type-switcher.component.scss-theme';
-@import 'app/shared/components/nav-header/nav-header.component.scss-theme';
+@import "app/shared/components/nav-bar/nav-bar.component.scss-theme";
+@import "app/shared/components/type-switcher/type-switcher.component.scss-theme";
+@import "app/shared/components/nav-header/nav-header.component.scss-theme";
+@import "app/shared//components//image-editor/image-editor.component.scss-theme";
 
 @mixin custom-components-theme($theme) {
   @include app-theme-selector-component-theme($theme);
@@ -58,6 +59,7 @@
   @include app-nav-header-component-theme($theme);
   @include app-message-thread-item-component-theme($theme);
   @include app-book-home-component-theme($theme);
+  @include app-image-editor-component-theme($theme);
 }
 
 .cyberpunk-2077-theme {
@@ -128,31 +130,33 @@
   @include custom-components-theme($seasons-winter-theme);
 }
 
-
 @font-face {
-  font-family: 'Helvetica Neue Light';
+  font-family: "Helvetica Neue Light";
   font-style: normal;
   font-weight: normal;
-  src: local('Helvetica Neue Light'), url('./assets/fonts/HelveticaNeue-Light.woff') format('woff');
+  src: local("Helvetica Neue Light"),
+    url("./assets/fonts/HelveticaNeue-Light.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'YouSheBiaoTiHei';
+  font-family: "YouSheBiaoTiHei";
   font-style: normal;
   font-weight: normal;
-  src: url('./assets/fonts/YouSheBiaoTiHei-2.ttf') format('ttf'),
-  url('./assets/fonts/YouSheBiaoTiHei-2.woff') format('woff'),
-  url('./assets/fonts/YouSheBiaoTiHei-2.woff2') format('woff2');
+  src: url("./assets/fonts/YouSheBiaoTiHei-2.ttf") format("ttf"),
+    url("./assets/fonts/YouSheBiaoTiHei-2.woff") format("woff"),
+    url("./assets/fonts/YouSheBiaoTiHei-2.woff2") format("woff2");
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei,
+    Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
   user-select: none;
 }
 
@@ -175,7 +179,7 @@ body {
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
     }
   }
 }
@@ -198,7 +202,7 @@ body {
   $steps: 18;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
     }
   }
 }

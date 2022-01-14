@@ -1,7 +1,9 @@
-import { Component, ElementRef, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ImageUploadService } from '@cyberbook/core/services/image-upload.service';
 import { hideToolbar, showToolbar } from '@cyberbook/core/store/ui';
+import { UploadRole } from '@cyberbook/shared/constants';
 import { Store } from '@ngrx/store';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-image-editor',
@@ -9,10 +11,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./image-editor.component.scss']
 })
 export class ImageEditorComponent implements OnInit, OnDestroy {
-  image!: File;
-
   @ViewChild('imageElement') imageElement!: ElementRef;
-  @ViewChild('previewCanvas') previewCanvas!: ElementRef;
   @ViewChild('cropperWindow') cropperWindow!: ElementRef;
   naturalWidth!: number;
   naturalHeight!: number;
@@ -30,7 +29,8 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
 
   constructor(
     private imageUploadService: ImageUploadService,
-    private store: Store
+    private store: Store,
+    private location: Location
   ) {
   }
 
@@ -38,19 +38,18 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
     this.store.dispatch(hideToolbar());
     this.reader.onload = (e: any) => {
       this.imageResult = e.target.result;
-      this.imageElement.nativeElement.setAttribute('src', this.imageResult );
+      this.imageElement.nativeElement.setAttribute('src', this.imageResult);
     };
-    // reader.readAsDataURL(this.imageUploadService.image);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if(changes['image'].currentValue) {
-      this.reader.readAsDataURL(this.image)
-    }
+    this.reader.readAsDataURL(this.imageUploadService.image);
   }
 
   ngOnDestroy() {
     this.store.dispatch(showToolbar());
+  }
+
+  cancel() {
+    this.imageUploadService.clear();
+    this.location.back()
   }
 
   onImgLoad(event: any) {
@@ -74,11 +73,11 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
     this.displayWidth = width;
     this.displayHeight = height;
 
-    if (this.displayWidth > 280) {
+    if (this.displayWidth >= 280) {
       this.displayOffsetLeft = -(this.displayWidth - 280) / 2;
     }
 
-    if (this.displayHeight > 280) {
+    if (this.displayHeight >= 280) {
       this.displayOffsetTop = -(this.displayHeight - 280) / 2;
     }
 
@@ -92,14 +91,17 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
   cutImage() {
     const originalImg = this.imageElement.nativeElement;
     const domRect = originalImg.getBoundingClientRect();
-    const canvas = this.previewCanvas.nativeElement;
-    const ctx = canvas.getContext('2d');
+    const canvas = document.createElement('canvas');
+    canvas.width = 280;
+    canvas.height = 280;
+
+    const ctx = canvas.getContext('2d')!;
     const image = new Image();
     image.src = this.imageResult;
 
     const options = {
-      sx: (this.cropperWindowDomRect.x-domRect.x)/ this.displayRatio / this.scaleRatio,
-      sy: (this.cropperWindowDomRect.y-domRect.y)/ this.displayRatio / this.scaleRatio,
+      sx: (this.cropperWindowDomRect.x - domRect.x) / this.displayRatio / this.scaleRatio,
+      sy: (this.cropperWindowDomRect.y - domRect.y) / this.displayRatio / this.scaleRatio,
       sWidth: 280 / this.displayRatio / this.scaleRatio,
       sHeight: 280 / this.displayRatio / this.scaleRatio,
       dx: 0,
@@ -110,7 +112,11 @@ export class ImageEditorComponent implements OnInit, OnDestroy {
 
     image.onload = () => {
       ctx.drawImage(image, options.sx, options.sy, options.sWidth, options.sHeight, options.dx, options.dy, options.dWidth, options.dHeight);
+      const url = canvas.toDataURL('image/png', 1)
+
+      fetch(url)
+        .then(res => res.blob())
+        .then(blob => this.imageUploadService.uploadImage(blob, UploadRole.Profile, 'png'))
     };
   }
-
 }

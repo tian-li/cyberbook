@@ -134,14 +134,14 @@ export class UserHomeComponent implements OnInit, OnDestroy {
   profileImageSelected(event: any) {
     if (event.target.files?.length > 0) {
       this.imageUploadService.image = event.target.files[0]
-      // this.router.navigate(['/image-editor']);
+      this.router.navigate(['/image-editor']);
       // this.dialog.open(ImageEditorComponent, {
       //   height: '450px',
       //   data: {
       //     image: event.target.files[0]
       //   }
       // })
-      this.imageUploadService.uploadImage(event.target.files[0], UploadRole.Profile);
+      // this.imageUploadService.uploadImage(event.target.files[0], UploadRole.Profile);
     }
   }
 }

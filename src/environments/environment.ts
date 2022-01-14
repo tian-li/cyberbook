@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   test: true,
   appName: 'Cyberbook',
-  server: 'http://localhost:8899/api',
-  imageServer: 'https://image.cyberbook.app/ftptest'
+  server: 'http://192.168.0.12:8899/api',
+  imageServer: 'http://localhost:8899'
 };
 
 /*

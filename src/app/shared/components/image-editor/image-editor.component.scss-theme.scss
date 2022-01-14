@@ -1,0 +1,12 @@
+@use "@angular/material" as mat;
+
+@mixin app-image-editor-component-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .image-editor__container {
+    .image-editor__header {
+      background: mat.get-color-from-palette($primary);
+      color: mat.get-color-from-palette($primary, default-contrast);
+    }
+  }
+}
